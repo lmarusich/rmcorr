@@ -5,8 +5,8 @@
 #' @param measure2 A numeric variable giving the observations for the second measure.
 #' @param dataset The data frame containing the variables.
 #' @param CIs The method of calculating confidence intervals.
-#' @param bstrap.out Determines if the output include the bootstrap resamples.
 #' @param nreps The number of resamples to take if bootstrapping.
+#' @param bstrap.out Determines if the output include the bootstrap resamples.
 #' @return A list with class "rmc" containing the following components.
 #' \item{r}{the value of the repeated measures correlation coefficient.}
 #' \item{CI}{the 95\% confidence interval for the repeated measures correlation coefficient.}
@@ -16,13 +16,13 @@
 #' @seealso \code{\link{rmcplot}}
 #' @examples
 #' ## Bland Altman 1995 data
-#' rmcorr(Subject, pH, PacO2, bland1995)
+#' rmcorr(Subject, PacO2, pH, bland1995)
 #' @export
 
 
 rmcorr <- function(participant, measure1, measure2, dataset, 
                    CIs = c("analytic", "bootstrap"), 
-                   bstrap.out = F, nreps = NULL) {
+                   nreps = 100, bstrap.out = F) {
     
     options(contrasts = c("contr.sum", "contr.poly"))
     
@@ -42,7 +42,7 @@ rmcorr <- function(participant, measure1, measure2, dataset,
     
     CIs <- match.arg(CIs)
     
-    lmmodel <- lm(Measure1 ~ Participant + Measure2)
+    lmmodel <- lm(Measure2 ~ Participant + Measure1)
     lmslope <- coef(lmmodel)["Measure2"]
     errordf <- lmmodel$df.residual
     
@@ -66,7 +66,7 @@ rmcorr <- function(participant, measure1, measure2, dataset,
         rmcorrvalueCI <- psych::r.con(rmcorrvalue, errordf) 
     } else if (CIs == "bootstrap") {
         nsubs <- length(levels(Participant))
-        if (is.null(nreps)){stop("Specify the number of bootstrap resamples to take")}
+        if (!is.numeric(nreps)){stop("Specify the number of bootstrap resamples to take")}
         cor.reps <- numeric(nreps)
         
         for (i in 1:nreps){
@@ -99,7 +99,8 @@ rmcorr <- function(participant, measure1, measure2, dataset,
     
     
     rmoutput <- list(r = rmcorrvalue, CI = rmcorrvalueCI, p = pvalue, 
-                     model = lmmodel, resamples = resamples)
+                     model = lmmodel, 
+                     vars = as.character(c(args$participant,args$measure1,args$measure2)))
     if (bstrap.out) {rmoutput$resamples <- resamples}
     class(rmoutput) <- "rmc"
     return (rmoutput)
@@ -113,7 +114,7 @@ rmcorr <- function(participant, measure1, measure2, dataset,
 #' @seealso \code{\link{rmcorr}}
 #' @examples
 #' ## Bland Altman 1995 data
-#' blandrmc <- rmcorr(Subject, pH, PacO2, bland1995)
+#' blandrmc <- rmcorr(Subject, PacO2, pH, bland1995)
 #' blandrmc
 #' @export
 

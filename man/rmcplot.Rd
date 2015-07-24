@@ -4,15 +4,10 @@
 \alias{rmcplot}
 \title{Plot the repeated measures correlation coefficient.}
 \usage{
-rmcplot(participant, measure1, measure2, dataset, overall = F, xlab = NULL,
-  ylab = NULL, ...)
+rmcplot(rmc, dataset, overall = T, xlab = NULL, ylab = NULL, ...)
 }
 \arguments{
-\item{participant}{a variable giving the subject name/id for each observation.}
-
-\item{measure1}{a numeric variable giving the observations for one measure.}
-
-\item{measure2}{a numeric variable giving the observations for the second measure.}
+\item{rmc}{an object of class "rmc" generated from the \code{\link{rmcorr}} function.}
 
 \item{dataset}{the data frame containing the variables.}
 
@@ -21,8 +16,7 @@ measure2, ignoring the participant variable.}
 
 \item{xlab}{label for the x axis, defaults to the variable name for measure1.}
 
-\item{ylab}{label for the y axis, defaults to the variable name for measure2.
-names for measure1 and measure2.}
+\item{ylab}{label for the y axis, defaults to the variable name for measure2.}
 
 \item{...}{additional arguments to \code{\link[graphics]{plot}}.}
 }
@@ -33,8 +27,9 @@ Parallel lines are fitted to each subject's data.
 }
 \examples{
 ## Bland Altman 1995 data
-rmcplot(participant = Subject, measure1 = PacO2, measure2 = pH,
-dataset = bland1995, overall = TRUE)
+my.rmc <- rmcorr(participant = Subject, measure1 = PacO2, measure2 = pH,
+dataset = bland1995)
+rmcplot(my.rmc, bland1995, overall = TRUE)
 }
 \seealso{
 \code{\link{rmcorr}}
