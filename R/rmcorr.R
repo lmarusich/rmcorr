@@ -61,6 +61,7 @@ rmcorr <- function(participant, measure1, measure2, dataset,
     pvalue <- type3rmcorr$'Pr(>F)'[3]
     
     #analytic
+    resamples <- NULL
     if (CIs == "analytic"){
         rmcorrvalueCI <- psych::r.con(rmcorrvalue, errordf) 
     } else if (CIs == "bootstrap") {
@@ -92,9 +93,10 @@ rmcorr <- function(participant, measure1, measure2, dataset,
             cor.reps[i] <- as.numeric(repsign*sqrt(SSFactor/(SSFactor+SSresidual)))
         }
         rmcorrvalueCI <- quantile(cor.reps,probs=c(.025,.975))
+        resamples <- cor.reps
     }
     
-    resamples <- ifelse(CIs == "boostrap",cor.reps,NULL)
+    
     
     rmoutput <- list(r = rmcorrvalue, CI = rmcorrvalueCI, p = pvalue, 
                      model = lmmodel, resamples = resamples)
