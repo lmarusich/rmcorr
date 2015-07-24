@@ -1,4 +1,4 @@
-#' Plot the repeated measures correlation coefficient.
+e#' Plot the repeated measures correlation coefficient.
 #' 
 #' \code{rmcplot}  produces a scatterplot of \code{measure1} on the x-axis and 
 #' \code{measure2} on the y-axis, with a different color used for each subject.
@@ -14,6 +14,7 @@
 #' @param ylab label for the y axis, defaults to the variable name for measure2.
 #' names for measure1 and measure2.
 #' @param ... additional arguments to \code{\link[graphics]{plot}}.
+#' @seealso \code{\link{rmcorr}}
 #' @examples
 #' ## Bland Altman 1995 data
 #' rmcplot(participant = Subject, measure1 = PacO2, measure2 = pH, 

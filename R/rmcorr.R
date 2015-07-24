@@ -8,13 +8,14 @@
 #' \item{r}{the value of the repeated measures correlation coefficient.}
 #' \item{CI}{the 95\% confidence interval for the repeated measures correlation coefficient.}
 #' \item{p}{the p-value for the repeated measures correlation coefficient.}
+#' @seealso \code{\link{rmcplot}}
 #' @examples
 #' ## Bland Altman 1995 data
 #' rmcorr(Subject, pH, PacO2, bland1995)
 #' @export
 
 
-rmcorr <- function(participant,measure1, measure2, dataset) {
+rmcorr <- function(participant,measure1, measure2, dataset, ci = ) {
     
     options(contrasts = c("contr.sum", "contr.poly"))
     
@@ -56,6 +57,7 @@ rmcorr <- function(participant,measure1, measure2, dataset) {
 #     rmoutput$r <- rmcorrvalue
     rmoutput$CI <- c(rmcorrvalueCI)
     rmoutput$p <- pvalue
+    rmoutput$model <- lmmodel
     
     class(rmoutput) <- "rmc"
     return (rmoutput)
@@ -66,6 +68,7 @@ rmcorr <- function(participant,measure1, measure2, dataset) {
 #' 
 #' @param x An object of class "rmc", a result of a call to rmcorr.
 #' @param ... additional arguments to \code{\link[base]{print}}.
+#' @seealso \code{\link{rmcorr}}
 #' @examples
 #' ## Bland Altman 1995 data
 #' blandrmc <- rmcorr(Subject, pH, PacO2, bland1995)

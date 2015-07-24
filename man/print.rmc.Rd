@@ -19,4 +19,7 @@ Calculate the repeated measures correlation coefficient.
 blandrmc <- rmcorr(Subject, pH, PacO2, bland1995)
 blandrmc
 }
+\seealso{
+\code{\link{rmcorr}}
+}
 

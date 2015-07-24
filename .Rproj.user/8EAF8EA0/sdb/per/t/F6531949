@@ -1,0 +1,16 @@
+{
+    "contents" : "98#' @name bland1995\n#' @title Repeated measurements of intramural pH and PaCO2\n#' @description A dataset containing the repeated measurements of intramural pH\n#' and PaCO2 for eight subjects, from Bland & Altman (1995).\n#' @docType data\n#' @usage bland1995\n#' @format A data frame with 47 rows and 3 variables\n#' \\itemize{\n#' \\item \\code{[, 1] Subject}\n#' \\item \\code{[, 2] pH}\n#' \\item \\code{[, 3] PacO2}\n#' }\n#' @source Bland, J.M., & Altman, D.G. (1995). Calculating correlation \n#' coefficients with repeated observations: Part 1 - correlation within\n#' subjects. \\emph{BMJ, 310}, 446.\n#' \nNULL\n\n#' @name gilden2010\n#' @title Repeated measurements of reaction time and accuracy\n#' @description A dataset containing four repeated measurements of reaction time\n#' (RT) and accuracy from eleven subjects in a visual search experiment. Each\n#' measurement is the mean RT and accuracy from a block of 288 search trials.\n#' blocks of visual search, for eleven subjects  \n#' @docType data\n#' @usage gilden2010\n#' @format A data frame with 44 rows and 4 variables\n#' \\tabular{lll}{\n#' \\code{[, 1]} \\tab \\code{sub} \\tab {Subject ID} \\cr\n#' \\code{[, 2]} \\tab \\code{block} \\tab {Block ID} \\cr\n#' \\code{[, 3]} \\tab \\code{rt} \\tab {Mean reaction time} \\cr\n#' \\code{[, 4]} \\tab \\code{acc} \\tab {Mean accuracy} \\cr\n#' }\n#' @source Gilden, D.L., Thornton, T.L., & Marusich, L.R. (2010). The serial\n#' process in visual search. \\emph{Journal of Experimental Psychology: Human \n#' Perception and Performance, 36}, 533-542. \n#' \nNULL",
+    "created" : 1432320490694.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "547405438",
+    "id" : "F6531949",
+    "lastKnownWriteTime" : 1437067784,
+    "path" : "C:/Users/Laura Cooper/Desktop/Need from Laptop/rmcorr package/rmcorr/R/data.R",
+    "project_path" : "R/data.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

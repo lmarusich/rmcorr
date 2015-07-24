@@ -36,4 +36,7 @@ Parallel lines are fitted to each subject's data.
 rmcplot(participant = Subject, measure1 = PacO2, measure2 = pH,
 dataset = bland1995, overall = TRUE)
 }
+\seealso{
+\code{\link{rmcorr}}
+}
 

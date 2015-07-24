@@ -28,4 +28,7 @@ Calculate the repeated measures correlation coefficient.
 ## Bland Altman 1995 data
 rmcorr(Subject, pH, PacO2, bland1995)
 }
+\seealso{
+\code{\link{rmcplot}}
+}
 
