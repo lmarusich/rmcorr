@@ -15,7 +15,8 @@
 #' @export
 
 
-rmcorr <- function(participant,measure1, measure2, dataset, ci = ) {
+rmcorr <- function(participant,measure1, measure2, dataset, 
+                   ci = c("Fisher", "Bootstrap")) {
     
     options(contrasts = c("contr.sum", "contr.poly"))
     
