@@ -1,4 +1,4 @@
-e#' Plot the repeated measures correlation coefficient.
+#' Plot the repeated measures correlation coefficient.
 #' 
 #' \code{rmcplot}  produces a scatterplot of \code{measure1} on the x-axis and 
 #' \code{measure2} on the y-axis, with a different color used for each subject.
