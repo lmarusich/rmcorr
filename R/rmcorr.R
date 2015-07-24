@@ -35,6 +35,9 @@ rmcorr <- function(participant, measure1, measure2, dataset,
     if (!is.numeric(Measure1) || !is.numeric(Measure2))
         stop("'Measure 1' and 'Measure 2' must be numeric")
     
+    CIs <- match.arg(CIs)
+    pval <- match.arg(pval)
+    
     lmmodel <- lm(Measure1 ~ Participant + Measure2)
     lmslope <- coef(lmmodel)["Measure2"]
     errordf <- lmmodel$df.residual
@@ -53,7 +56,7 @@ rmcorr <- function(participant, measure1, measure2, dataset,
     # Pvalue and confidence intervals
     
     #analytic
-    if (ci == "analytic")
+    if (CIs == "analytic"){}
      
     
     pvalue <- type3rmcorr$'Pr(>F)'[3]
