@@ -15,8 +15,9 @@
 #' @export
 
 
-rmcorr <- function(participant,measure1, measure2, dataset, 
-                   ci = c("Fisher", "Bootstrap")) {
+rmcorr <- function(participant, measure1, measure2, dataset, 
+                   CIs = c("analytic", "bootstrap"), 
+                   pval = c("analytic", "bootstrap")) {
     
     options(contrasts = c("contr.sum", "contr.poly"))
     
@@ -46,20 +47,25 @@ rmcorr <- function(participant,measure1, measure2, dataset,
     SSFactor <- type3rmcorr$'Sum of Sq'[3] 
     SSresidual <- type3rmcorr$RSS[1]
     
-    # Pvalue and effect size  
-    pvalue <- type3rmcorr$'Pr(>F)'[3] 
+    #correlation coefficient
     rmcorrvalue <- as.numeric(corrsign * sqrt(SSFactor / (SSFactor + SSresidual)))
+    
+    # Pvalue and confidence intervals
+    
+    #analytic
+    if (ci == "analytic")
+     
+    
+    pvalue <- type3rmcorr$'Pr(>F)'[3]
     rmcorrvalueCI <- psych::r.con(rmcorrvalue, errordf)  
     
-#     rmoutput <- data.frame(rmcorrvalue, rmcorrvalueCI[1], rmcorrvalueCI[2], pvalue)
-#     colnames(rmoutput) <- c("rm correlation", "Lower 95% CI", "Upper 95% CI",
-#                           "pvalue")
-    rmoutput <- list(r = rmcorrvalue)
-#     rmoutput$r <- rmcorrvalue
-    rmoutput$CI <- c(rmcorrvalueCI)
-    rmoutput$p <- pvalue
-    rmoutput$model <- lmmodel
+    #bootstrapped confidence intervals
     
+    #bootstrapped p-value
+    
+    
+    rmoutput <- list(r = rmcorrvalue, CI = rmcorrvalueCI, p = pvalue, 
+                     model = lmmodel)
     class(rmoutput) <- "rmc"
     return (rmoutput)
 } 
