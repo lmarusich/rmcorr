@@ -4,7 +4,8 @@
 \alias{rmcorr}
 \title{Calculate the repeated measures correlation coefficient.}
 \usage{
-rmcorr(participant, measure1, measure2, dataset)
+rmcorr(participant, measure1, measure2, dataset, CIs = c("analytic",
+  "bootstrap"), bstrap.out = F, nreps = NULL)
 }
 \arguments{
 \item{participant}{A variable giving the subject name/id for each observation.}
@@ -14,12 +15,20 @@ rmcorr(participant, measure1, measure2, dataset)
 \item{measure2}{A numeric variable giving the observations for the second measure.}
 
 \item{dataset}{The data frame containing the variables.}
+
+\item{CIs}{The method of calculating confidence intervals.}
+
+\item{bstrap.out}{Determines if the output include the bootstrap resamples.}
+
+\item{nreps}{The number of resamples to take if bootstrapping.}
 }
 \value{
 A list with class "rmc" containing the following components.
 \item{r}{the value of the repeated measures correlation coefficient.}
 \item{CI}{the 95\% confidence interval for the repeated measures correlation coefficient.}
 \item{p}{the p-value for the repeated measures correlation coefficient.}
+\item{model}{the multiple regression model used to calculate the correlation coefficient.}
+\item{resamples}{the bootstrap resampled correlation values.}
 }
 \description{
 Calculate the repeated measures correlation coefficient.
