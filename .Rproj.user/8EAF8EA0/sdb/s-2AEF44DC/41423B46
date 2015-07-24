@@ -12,6 +12,7 @@
     "properties" : {
         "tempName" : "Untitled1"
     },
+    "relative_order" : 0,
     "source_on_save" : false,
     "type" : "r_source"
 }

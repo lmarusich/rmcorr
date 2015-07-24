@@ -41,7 +41,6 @@ rmcorr <- function(participant, measure1, measure2, dataset,
         stop("'Measure 1' and 'Measure 2' must be numeric")
     
     CIs <- match.arg(CIs)
-    pval <- match.arg(pval)
     
     lmmodel <- lm(Measure1 ~ Participant + Measure2)
     lmslope <- coef(lmmodel)["Measure2"]
