@@ -43,7 +43,7 @@ rmcorr <- function(participant, measure1, measure2, dataset,
     CIs <- match.arg(CIs)
     
     lmmodel <- lm(Measure2 ~ Participant + Measure1)
-    lmslope <- coef(lmmodel)["Measure2"]
+    lmslope <- coef(lmmodel)["Measure1"]
     errordf <- lmmodel$df.residual
     
     # Direction of correlation based on whether slope is positive or negative  
