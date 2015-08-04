@@ -1,4 +1,4 @@
-98#' @name bland1995
+#' @name bland1995
 #' @title Repeated measurements of intramural pH and PaCO2
 #' @description A dataset containing the repeated measurements of intramural pH
 #' and PaCO2 for eight subjects, from Bland & Altman (1995).
@@ -31,8 +31,29 @@ NULL
 #' \code{[, 3]} \tab \code{rt} \tab {Mean reaction time} \cr
 #' \code{[, 4]} \tab \code{acc} \tab {Mean accuracy} \cr
 #' }
-#' @source Gilden, D.L., Thornton, T.L., & Marusich, L.R. (2010). The serial
+#' #' @source Gilden, D.L., Thornton, T.L., & Marusich, L.R. (2010). The serial
 #' process in visual search. \emph{Journal of Experimental Psychology: Human 
-#' Perception and Performance, 36}, 533-542. 
+#' Perception and Performance, 36}, 533-542.
+#'
+NULL
+
+#' @name raz2005
+#' @title Repeated measurements of xxx
+#' @description xxx  
+#' @docType data
+#' @usage raz2005
+#' @format A data frame with 144 rows and 4 variables
+#' \tabular{lll}{
+#' \code{[, 1]} \tab \code{Participant} \tab {Participant ID} \cr
+#' \code{[, 2]} \tab \code{Time} \tab {Measurement time} \cr
+#' \code{[, 3]} \tab \code{Age} \tab {Participant's age (years)} \cr
+#' \code{[, 4]} \tab \code{Volume} \tab {Adjusted volume of cerebellar 
+#' hemispheres (cm^3)} \cr
+#' }
+ 
+#' @source Raz, N., Lindenberger, U., Rodrigue, K.M., Kennedy, K.M., Head, D., 
+#' Williamson, A., Dahle, C., Gerstorf, D., & Acker, J.D. (2005). Regional brain
+#'  changes in aging healthy adults: General trends, individual differences, and
+#' modifiers. \emph{Cerebral Cortex, 15}, 1676-1689.
 #' 
 NULL

@@ -1,0 +1,18 @@
+{
+    "contents" : "#' Plot the repeated measures correlation coefficient.\n#' \n#' \\code{plot.rmc}  produces a scatterplot of \\code{measure1} on the x-axis and \n#' \\code{measure2} on the y-axis, with a different color used for each subject.\n#' Parallel lines are fitted to each subject's data.\n#' \n#' @param rmc an object of class \"rmc\" generated from the \\code{\\link{rmcorr}} function.\n#' @param dataset the data frame containing the variables.\n#' @param overall logical: if TRUE, plots the regression line between measure1 and\n#' measure2, ignoring the participant variable.\n#' @param palette the palette to be used. Defaults to the RColorBrewer \"Paired\" palette \n#' @param xlab label for the x axis, defaults to the variable name for measure1.\n#' @param ylab label for the y axis, defaults to the variable name for measure2.\n#' @param overall.col the color of the overall regression line\n#' @param overall.lwd the line thickness of the overall regression line\n#' @param overall.lty the line type of the overall regression line\n#' @param ... additional arguments to \\code{\\link[graphics]{plot}}.\n#' @seealso \\code{\\link{rmcorr}}\n#' @examples\n#' ## Bland Altman 1995 data\n#' my.rmc <- rmcorr(participant = Subject, measure1 = PacO2, measure2 = pH, dataset = bland1995)\n#' plot(my.rmc, bland1995, overall = TRUE)\n#' \n#' ## Raz et al. 2005 data\n#' my.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = Volume, dataset = raz2005)\n#' blueset <- brewer.pal(8, 'Blues')\n#' pal <- colorRampPalette(blueset)\n#' plot(my.rmc, raz2005, overall = TRUE, palette = pal, overall.col = 'black') \n#' \n#' ## Gilden et al. 2010 data\n#' my.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset = gilden2010)\n#' plot(my.rmc, gilden2010, overall = F, lty = 2, xlab = \"Reaction Time\", ylab = \"Accuracy\")\n#' @export\n\nplot.rmc <-function(rmc, dataset, overall = T, palette = NULL, xlab = NULL,\n                   ylab = NULL, overall.col = \"gray60\", overall.lwd = 3,\n                   overall.lty = 2, ...) {    \n    \n    \n    subs <- factor(dataset[[eval(rmc$vars[[1]])]])\n    m1 <- dataset[[eval(rmc$vars[[2]])]]\n    m2 <- dataset[[eval(rmc$vars[[3]])]]\n    \n    if (is.null(xlab)){\n        xlab <- rmc$vars[[2]]\n    }\n    if (is.null(ylab)){\n        ylab <- rmc$vars[[3]]\n    }\n    \n    if (is.null(palette)){\n        set1 <- RColorBrewer::brewer.pal(12,'Paired')\n        palette <- colorRampPalette(set1)\n    }\n    colors <- palette(length(levels(subs)))\n    plot(m1, m2, pch=16, col = colors[subs], xlab=xlab, ylab = ylab, ...)\n    \n    nsubs <- length(levels(subs))\n    \n    preds <- predict(rmc$model)\n    \n    for (i in 1:nsubs){\n        subindex <- which(subs == levels(subs)[i])\n        lines(m1[subindex], preds[subindex], col = colors[i], ...)\n    }\n    \n    if (overall) {\n        abline(lm(m2 ~ m1), col = overall.col, lwd = overall.lwd, \n               lty = overall.lty)\n    }\n}\n",
+    "created" : 1438702834072.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "993739639",
+    "id" : "B454782B",
+    "lastKnownWriteTime" : 1438703574,
+    "path" : "C:/Users/Laura Cooper/Desktop/Need from Laptop/rmcorr package/rmcorr/R/plot.rmc.R",
+    "project_path" : "R/plot.rmc.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

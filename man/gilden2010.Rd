@@ -10,7 +10,8 @@
 \code{[, 2]} \tab \code{block} \tab {Block ID} \cr
 \code{[, 3]} \tab \code{rt} \tab {Mean reaction time} \cr
 \code{[, 4]} \tab \code{acc} \tab {Mean accuracy} \cr
-}}
+}
+#'}
 \source{
 Gilden, D.L., Thornton, T.L., & Marusich, L.R. (2010). The serial
 process in visual search. \emph{Journal of Experimental Psychology: Human
