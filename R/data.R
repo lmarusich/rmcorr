@@ -38,8 +38,10 @@ NULL
 NULL
 
 #' @name raz2005
-#' @title Repeated measurements of xxx
-#' @description xxx  
+#' @title Repeated measurements of age and cerebellar volume
+#' @description A dataset containing two repeated measures, on two occasions
+#' (\code{Time}), of age and adjusted volume of cerebellar hemispheres from 72
+#' participants.  
 #' @docType data
 #' @usage raz2005
 #' @format A data frame with 144 rows and 4 variables
@@ -51,6 +53,32 @@ NULL
 #' hemispheres (cm^3)} \cr
 #' }
  
+#' @source Raz, N., Lindenberger, U., Rodrigue, K.M., Kennedy, K.M., Head, D., 
+#' Williamson, A., Dahle, C., Gerstorf, D., & Acker, J.D. (2005). Regional brain
+#'  changes in aging healthy adults: General trends, individual differences, and
+#' modifiers. \emph{Cerebral Cortex, 15}, 1676-1689.
+#' 
+NULL
+
+#' @name SizeDistance
+#' @title Repeated measurements of perceived size and distance
+#' @description xxx  
+#' @docType data
+#' @usage SizeDistance
+#' @format A data frame with 360 rows and 9 variables
+#' \tabular{lll}{
+#' \code{[, 1]} \tab \code{Participant} \tab {Participant ID} \cr
+#' \code{[, 2]} \tab \code{Actual_dist_meters} \tab {Measurement time} \cr
+#' \code{[, 3]} \tab \code{Actual_size} \tab {Participant's age (years)} \cr
+#' \code{[, 4]} \tab \code{Actual_size_cm} \tab {Participant's age (years)} \cr
+#' \code{[, 5]} \tab \code{Perceived_dist} \tab {Participant's age (years)} \cr
+#' \code{[, 6]} \tab \code{Perceived_size_cms} \tab {Participant's age (years)} \cr
+#' \code{[, 7]} \tab \code{Retinal_angle_degrees} \tab {Participant's age (years)} \cr
+#' \code{[, 8]} \tab \code{Emmert_distance_meters} \tab {Participant's age (years)} \cr
+#' \code{[, 9]} \tab \code{Emmert_size} \tab {Adjusted volume of cerebellar 
+#' hemispheres (cm^3)} \cr
+#' }
+
 #' @source Raz, N., Lindenberger, U., Rodrigue, K.M., Kennedy, K.M., Head, D., 
 #' Williamson, A., Dahle, C., Gerstorf, D., & Acker, J.D. (2005). Regional brain
 #'  changes in aging healthy adults: General trends, individual differences, and

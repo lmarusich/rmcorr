@@ -38,6 +38,6 @@ Calculate the repeated measures correlation coefficient.
 rmcorr(Subject, PacO2, pH, bland1995)
 }
 \seealso{
-\code{\link{rmcplot}}
+\code{\link{plot.rmc}}
 }
 

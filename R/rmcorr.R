@@ -13,7 +13,7 @@
 #' \item{p}{the p-value for the repeated measures correlation coefficient.}
 #' \item{model}{the multiple regression model used to calculate the correlation coefficient.}
 #' \item{resamples}{the bootstrap resampled correlation values.}
-#' @seealso \code{\link{rmcplot}}
+#' @seealso \code{\link{plot.rmc}}
 #' @examples
 #' ## Bland Altman 1995 data
 #' rmcorr(Subject, PacO2, pH, bland1995)

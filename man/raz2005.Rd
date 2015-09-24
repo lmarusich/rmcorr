@@ -3,7 +3,7 @@
 \docType{data}
 \name{raz2005}
 \alias{raz2005}
-\title{Repeated measurements of xxx}
+\title{Repeated measurements of age and cerebellar volume}
 \format{A data frame with 144 rows and 4 variables
 \tabular{lll}{
 \code{[, 1]} \tab \code{Participant} \tab {Participant ID} \cr
@@ -22,6 +22,8 @@ modifiers. \emph{Cerebral Cortex, 15}, 1676-1689.
 raz2005
 }
 \description{
-xxx
+A dataset containing two repeated measures, on two occasions
+(\code{Time}), of age and adjusted volume of cerebellar hemispheres from 72
+participants.
 }
 

@@ -1,14 +1,17 @@
 Package: rmcorr
-Type: Package
 Title: Repeated Measures Correlation
 Version: 1.0
-Date: 2015-05-20
 Author: Jonathan Bakdash, Laura Marusich
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Description: Compute the repeated measures correlation, a statistical technique
+    for determining the overall within-individual relationship among paired
+    measures assessed on two or more occasions, first introduced by Bland and
+    Altman (1995). 
+    Includes functions for diagnostics, p-value, effect size with confidence 
+    interval including optional bootstrapping, as well as graphing. Also includes
+    several example datasets.
+Depends: R (>= 3.2.1)
 License: GPL-2
-LazyData: yes
-Depends: R (>= 2.10)
+LazyData: true
 Imports: pwr,
-    psych,
-    RColorBrewer
+        psych,
+        RColorBrewer
