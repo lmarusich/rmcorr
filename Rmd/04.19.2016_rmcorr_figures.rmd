@@ -1,0 +1,446 @@
+---
+title: "Reproduce results of rmcorr paper"
+author: "Jon Bakdash and Laura Marusich"
+date: "April 19, 2016"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+```{r, echo=FALSE}
+#require(knitr)
+#opts_chunk$set(dev=c('png','postscript'), fig.show="show")
+
+require(pwr)
+require(psych) 
+require(Hmisc)
+require(RColorBrewer)
+require(grDevices)
+require(plotrix)
+require(metafor)
+library(rmcorr)
+require(devtools)
+
+#install_github('lmarusich/rmcorr')
+
+#require(checkpoint)
+#checkpoint("2016-XX-YY") #Won't work yet b/c rmcorr doesn't yet exist in CRAN
+#require(memoise)
+
+```
+
+##Figure 1: rmcorr and reg plot
+
+##Figure 2: rmcorr w/data transformations
+
+##Figure 3: rmcorr vs OLS reg
+
+##Figure 4: Power curves 
+```{r, echo=FALSE}
+power.rmcorr<-function(k, N, effectsizer, sig)
+    {
+    pwr.r.test(n = ((N)*(k-1))+1, r = effectsizer, sig.level = sig) 
+    #df are specified this way because pwr.r.test assumes the input is N, so it uses N - 2 for the df
+    }
+
+par(mfrow=c(1,3), cex.lab=1.25, cex.axis=1.25, cex.main=1.25, cex.sub=1.25, mar=c(4.5,4.5,1.75,1))
+  
+#Small effect size
+  k<-c(3, 5, 10, 20) 
+  nvals <- seq(6, 300)
+  powPearsonSmall <- sapply(nvals, function (x) pwr.r.test(n=x, r=0.1)$power)
+  
+  bluecolors<-c("#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5", "#084594")
+  #bluecols<-brewer.pal(9, "Blues")
+  #bluecols3<-c(greenscols[6], bluecols[2],bluecols[3],bluecols[5],bluecols[7],bluecols[9])
+  
+
+ 
+  plot(nvals, seq(0,1, length.out=length(nvals)), 
+       main = expression(bold("a)")~bolditalic('r'[rm])~bold(and)~bolditalic(r)~bold('=')~ bold('0.10')), 
+       xlab=expression(Sample~Size~"("*italic('N')*")"),
+       yaxt = "n", ylab = "Power", las = 1, col = "white", 
+       xlim=c(0,300))
+  
+  yLabels <- seq(0, 1, 0.2)
+  axis(2, at=yLabels, labels=sprintf(round(100*yLabels), fmt="%2.0f%%"), las=1, cex.sub = 2)
+  
+  for (i in 1:4) 
+    {
+    powvals <- sapply(nvals, function (x) power.rmcorr(k[i], x, 0.1, 0.05)$power)
+    lines(nvals, powvals, lwd=2.5, col=bluecolors[i+1])
+    }
+  legend("bottomright", lwd=2.5, col=bluecolors, bty= 'n', legend=c("1", "3", "5", "10", "20"), title = expression(italic('k')),
+         cex = 1.2)
+  lines(nvals, powPearsonSmall, col=bluecolors[1], lwd= 2.5)
+  abline(a = 0.8, b=0, col=1, lty=2, lwd= 2.5)
+
+#Medium effect size
+  k<-c(3, 5, 10, 20)
+  nvals <- seq(6, 50)
+  powPearsonMedium <- sapply(nvals, function (x) pwr.r.test(n=x, r=0.3)$power)
+  greencolors<-c("#c7e9c0","#a1d99b","#74c476","#41ab5d","#238b45","#005a32")
+  
+  #orangecols<-brewer.pal(9, "Oranges")
+  #orangecols3<-c(orangecols[2],orangecols[3],orangecols[5],orangecols[7],orangecols[9])
+  
+  plot(nvals, seq(0,1, length.out=length(nvals)), 
+       main = expression(bold("b)")~bolditalic('r'[rm])~bold(and)~bolditalic(r)~bold('=')~ bold('0.30')), 
+       xlab=expression(Sample~Size~"("*italic('N')*")"),
+       yaxt = "n", ylab = "Power", las = 1, col = "white", 
+       xlim=c(0,50))
+  
+  yLabels <- seq(0, 1, 0.2)
+  axis(2, at=yLabels, main = "Power", labels=sprintf(round(100*yLabels), fmt="%2.0f%%"), las=1)
+  
+  for (i in 1:4) 
+  {
+    powvals <- sapply(nvals, function (x) power.rmcorr(k[i], x, 0.3, 0.05)$power)
+    lines(nvals, powvals, lwd=2.5, col=greencolors[i+1])
+  }
+  legend("bottomright", lwd=2, col=greencolors, bty = 'n', legend=c("1", "3", "5", "10", "20"), title = expression(italic('k')),
+         cex = 1.2)
+  lines(nvals, powPearsonMedium, col=greencolors[1], lwd = 2.5)
+  abline(a = 0.8, b=0, col=1, lty=2, lwd= 2.5)
+  
+#Large effect size
+  k<-c(3, 5, 10, 20)
+  nvals <- seq(6, 30)
+  powPearsonlarge <- sapply(nvals, function (x) pwr.r.test(n=x, r=0.5)$power)
+  
+  purplecolors<-c("#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#807dba", "#6a51a3", "#4a1486")
+  
+  plot(nvals, seq(0,1, length.out=length(nvals)), 
+        main = expression(bold("c)")~bolditalic('r'[rm])~bold(and)~bolditalic(r)~bold('=')~ bold('0.50')),
+       xlab=expression(Sample~Size~"("*italic('N')*")"),
+       yaxt = "n", ylab = "Power", las = 1, col = "white", xlim=c(0,30))
+  yLabels <- seq(0, 1, 0.2)
+  axis(2, at=yLabels, main = "Power", labels=sprintf(round(100*yLabels), fmt="%2.0f%%"), las=1)
+  
+  for (i in 1:4) 
+  {
+    powvals <- sapply(nvals, function (x) power.rmcorr(k[i], x, 0.5, 0.05)$power)
+    lines(nvals, powvals, lwd=2.5, col=purplecolors[i+2])
+  }
+  legend("bottomright", lwd=2, col=purplecolors, legend=c("1", "3", "5", "10", "20"), bty = 'n', title = expression(italic('k')),
+         cex = 1.2)
+  abline(a = 0.8, b=0, col=1, lty=2, lwd= 2.5)
+  lines(nvals, powPearsonlarge, col=purplecolors[2], lwd = 2.5)
+
+dev.copy(pdf, file="plots/Figure4_Power_curves.pdf", 8, 8)
+dev.off()
+
+```
+
+##Visual search rmcorr and simple reg/cor results
+```{r, echo=FALSE}
+vissearch.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset = gilden2010)
+print(vissearch.rmc)
+
+vissearch.lm<-lm(acc~rt, data = gilden2010)
+print(vissearch.lm)
+
+cor.test(gilden2010$rt, gilden2010$acc)
+```
+
+##Figure 5: Visual search rmcorr and simple reg/cor
+```{r, echo=FALSE}
+
+par(mfrow=c(1,2), mar=c(5,4.6,4,0.5), mgp=c(3.2,0.8,0),  oma = c(0, 0, 0, 0), las = 1)
+
+plot(vissearch.rmc, gilden2010, overall = F, xlab = "Reaction Time", ylab = "Accuracy", cex = 1.2, 
+     main = expression(bold("a)")~bold('Rmcorr'))) 
+     axis.break(axis = 1, style = "slash")
+     axis.break(axis = 2, style = "slash")
+
+plot(acc~rt, data = gilden2010, xlab = "Reaction Time (seconds)", ylab = "Accuracy", cex = 1.2, pch = 16,
+     main = ("b) Simple Regression/\nCorrelation"))
+     abline(vissearch.lm, col = "red", lwd = 2)
+     axis.break(axis = 1, style = "slash")
+     axis.break(axis = 2, style = "slash")
+
+     
+#pdf("plots/Figure5_Visual_Search.pdf", 9, 6)   
+#dev.print()
+
+dev.copy(pdf, file="plots/Figure5_Visual_Search.pdf", 9, 6)
+dev.off()
+```
+
+
+##Emmert Distance (size) and distance rmcorrs 
+```{r, echo=TRUE}
+
+#Subset the data first
+  Size_distance_actual2<-subset(Size_distance, Actual_dist_meters==2)
+  Size_distance_actual4<-subset(Size_distance, Actual_dist_meters==4)   
+  Size_distance_actual6<-subset(Size_distance, Actual_dist_meters==6)
+
+#Seperate rmcorr on each actual distance (factor level)
+  Distance_EmmertDist2.rmc<-rmcorr(participant = Participant, measure1 = Perceived_dist, measure2 = Emmert_distance_meters, dataset = Size_distance_actual2)
+  Distance_EmmertDist2.rmc
+  
+  Distance_EmmertDist4.rmc<-rmcorr(participant = Participant, measure1 = Perceived_dist, 
+                                     measure2 = Emmert_distance_meters, dataset = Size_distance_actual4)
+  Distance_EmmertDist4.rmc
+  
+  Distance_EmmertDist6.rmc<-rmcorr(participant = Participant, measure1 = Perceived_dist, 
+                                     measure2 = Emmert_distance_meters, dataset = Size_distance_actual6)
+  Distance_EmmertDist6.rmc
+```
+
+##Figure 6: Emmert Distance (size) and distance rmcorrs 
+```{r, echo=FALSE}
+
+par(mfrow=c(1,3), cex.lab=1.1, cex.axis=1.1, cex.main=1.1, cex.sub = 1.1, mgp=c(3.2,0.8,0))
+#par(mfrow=c(1,3), mar=c(5,5,4,0.75), oma=c(0,2,0,0), mgp=c(3.2,0.80,0), cex.lab=1.2, cex.axis=1.1, cex.main=1.2, cex.sub=1.15)
+
+Blues<-(brewer.pal(9,'Blues'))
+pal1<-colorRampPalette(Blues)
+
+Oranges<-(brewer.pal(9,'Oranges'))
+pal2<-colorRampPalette(Oranges)
+
+Greens<-(brewer.pal(9,'Greens'))
+pal3<-colorRampPalette(Greens)
+
+plot(Distance_EmmertDist2.rmc, Size_distance_actual2, overall = FALSE,
+     ylab = "Emmert Distance (m)",
+     xlab = "Perceived Distance\n(m)", las = 1, ylim = c(1,3), xlim = c(1,3), palette = pal1,
+     main = ("a) Actual Distance\n2m"), cex = 1.2)
+     axis.break(axis = 1, style = "slash", brw = 0.0125)
+     axis.break(axis = 2, style = "slash", brw = 0.0125)
+
+plot(Distance_EmmertDist4.rmc, Size_distance_actual4, overall = FALSE,       
+     ylab = "Emmert Distance (m)",
+     xlab = "Perceived Distance\n(m)", las = 1, ylim = c(2,7), xlim = c(2,6), palette = pal2,
+     main = ("b) Actual Distance\n4m"), cex = 1.2)
+     axis.break(axis = 1, style = "slash", brw = 0.0125)
+     axis.break(axis = 2, style = "slash", brw = 0.0125)
+
+plot(Distance_EmmertDist6.rmc, Size_distance_actual6, overall = FALSE, 
+     ylab = "Emmert Distance (m)",
+     xlab = "Perceived Distance\n(m)", las = 1, ylim = c(2,11), xlim = c(3,9), palette = pal3,
+     main = ("c) Actual Distance\n6m"), cex = 1.2)
+     axis.break(axis = 1, style = "slash", brw = 0.0125)
+     axis.break(axis = 2, style = "slash", brw = 0.0125)
+     
+dev.copy(pdf, file="plots/Figure6_size_dist_sep.pdf", 10, 5)     
+dev.off()  
+
+```
+
+##Figure 7: Stats and Forest plot 
+```{r, echo=FALSE}
+
+yi<-c(Distance_EmmertDist2.rmc$r, Distance_EmmertDist4.rmc$r, Distance_EmmertDist6.rmc$r)
+ni<-rep(101, length.out = 3)
+effectlabels<-c("Actual Distance 2m","Actual Distance 4m", "Actual Distance 6m")
+DistMeta<-data.frame(cbind(effectlabels, as.numeric(yi), as.numeric(ni)))
+
+#Parametric Confidence Intervals
+dev <-escalc(ri = yi, ni = ni, measure="ZCOR", method ="REML", data = DistMeta, append = FALSE)
+devRE <- rma(yi, vi, data = dev)
+confint(devRE)
+summary(devRE)
+ 
+Figure7<-forest(devRE, slab = effectlabels, mlab = "Overall (Random Effects Model)",
+         xlab = expression("Repeated Measures Correlation Coefficient"~"("*italic('r'[rm])*")")) 
+         text(-0.88, 5, "Factor Level", pos = 1, font = 2)
+         text(0.70, 5, expression(italic(r)[rm] ~~ "[95% CI]"), pos = 1, font = 2)
+
+dev.copy(pdf, file="plots/Figure7_Forest.pdf", 9, 6)  
+dev.off()
+
+```
+
+##Figure 8: Stats and plot of Size and distance rmcorr overall (ignoring factor levels) 
+```{r, echo=FALSE}
+#Seperate rmcorr on each actual distance (factor level)
+Distance_EmmertDist_Overall.rmc<-rmcorr(participant = Participant, measure1 = Perceived_dist, measure2 = Emmert_distance_meters, dataset = Size_distance)
+Distance_EmmertDist_Overall.rmc
+
+#Palette different than 9? 
+#pal4<-colorRampPalette(brewer.pal(9,'Reds'))(20) 
+pal4<-colorRampPalette(brewer.pal(9,"Reds"))
+
+par(cex.lab=1.2, cex.axis=1.2, cex.main=1.2, cex.sub=1.2, mar=c(6,5.5,4,3.5), oma=c(1,1,1,1), mgp = c(4, 1, 0))
+Figure8<-plot(Distance_EmmertDist_Overall.rmc, Size_distance, overall = FALSE,
+     ylab = "Emmert Distance (m)",
+     xlab = "Perceived Distance\n(m)", las = 1, palette = pal4,
+     main = ("Rmcorr Ignoring Factor Levels"))
+     axis.break(axis = 1, style = "slash")
+     axis.break(axis = 2, style = "slash")
+
+dev.copy(pdf, file="plots/Figure8_FLOP_rm_overall.pdf", 9, 6)  
+dev.off()
+
+```
+
+##Size and distance No Pooling
+```{r, echo = FALSE}
+#Overfit model
+SizeDist.lm<-lm(Emmert_distance_meters~Perceived_dist, data = Size_distance)
+print(SizeDist.lm)
+summary(SizeDist.lm)
+cor.test(Size_distance$Emmert_distance_meters, Size_distance$Perceived_dist)
+
+plot(Emmert_distance_meters~Perceived_dist, data = Size_distance, pch = 16, 
+     col=rgb(red = 0.0, green = 0.0, blue = 0.0, alpha = 0.3),
+     main = "Overfit Simple Regression/Correlation: No Pooling",
+     ylab = "Emmert Distance (m)",
+     xlab = "Perceived Distance\n(m)", 
+     las = 1) 
+     abline(SizeDist.lm, col = "red", lwd = 2)
+     axis.break(axis = 1, style = "slash")
+     axis.break(axis = 2, style = "slash")
+
+dev.copy(pdf, file="plots/Figure9_Size_dist_No_Pooling_Regression.pdf", 6, 6)  
+dev.off()
+
+#Aggregation
+
+#Correct
+#   Participant Emmert_distance_meters Perceived_dist
+# 1          201               4.858742       3.725556
+# 2          202               4.043453       3.570000
+# 3          203               3.681649       4.328889
+# 4          204               3.273914       3.128333
+# 5          205               3.075058       3.376111
+# 6          206               4.713291       4.276667
+# 7          207               4.101597       3.634444
+# 8          208               4.540865       4.108333
+# 9          209               3.478419       3.610000
+# 10         210               5.588911       4.098889
+# 11         212               4.536855       4.568889
+# 12         213               4.362788       3.460556
+# 13         214               4.308472       4.225000
+# 14         215               4.157371       3.996667
+# 15         216               3.681649       3.713889
+# 16         217               5.905512       4.088889
+# 17         218               5.882546       3.152222
+# 18         219               5.093504       3.956667
+# 19         220               4.309930       4.686111
+# 20         221               4.098134       3.333889
+
+
+# AvgSizeDistance<-aggregate(Emmert_distance_meters~Perceived_dist, subset = Participant, FUN = mean, data=Size_distance)
+#                            
+#Wrong
+# AvgSizeDistance
+#    Participant Perceived_dist Emmert_distance_meters
+# 1          202           2.90               3.937008
+# 2          204           3.02               3.149606
+# 3          205           3.04               2.952756
+# 4          204           3.20               2.460630
+# 5          202           3.37               3.641732
+# 6          209           3.39               3.937008
+# 7          205           3.43               3.051181
+# 8          201           3.54               4.330709
+# 9          207           3.70               3.937008
+# 10         212           3.71               4.330709
+# 11         201           3.74               4.921260
+# 12         209           3.88               3.543307
+# 13         210           3.97               5.118110
+# 14         208           4.05               5.413386
+# 15         210           4.32               6.200787
+# 16         208           4.41               5.216535
+# 17         206           4.57               5.118110
+# 18         203           4.83               3.740157
+# 19         203           4.92               4.133858
+
+#Finally, average by block for each participant
+AvgSizeDistance<-aggregate(cbind(Emmert_distance_meters, Perceived_dist) ~ Actual_dist_meters + Participant, FUN = mean, data=Size_distance)
+SizeDistAvg.lm<-lm(Emmert_distance_meters~Perceived_dist , data = AvgSizeDistance)
+anova(SizeDistAvg.lm)
+summary(SizeDistAvg.lm)
+
+plot(Emmert_distance_meters~Perceived_dist, data = AvgSizeDistance) 
+abline(SizeDistAvg.lm, col = "red", lwd = 2)
+cor.test(AvgSizeDistance$Emmert_distance_meters, AvgSizeDistance$Perceived_dist)
+
+Ss1<-subset(Size_distance, Participant == 201)
+cor.test(Ss1$Emmert_distance_meters, Ss1$Perceived_dist)
+
+Ss2<-subset(Size_distance, Participant == 202)
+cor.test(Ss2$Emmert_distance_meters, Ss2$Perceived_dist)
+
+#Regression by pariticipant 
+
+#Equivalent to AvgSizeDistance<-aggregate(cbind(Emmert_distance_meters, Perceived_dist, Emmert_size, Perceived_size_cms)~Participant, FUN = mean, data=Size_distance)
+AvgSizeDistance2<-aggregate(cbind(Emmert_distance_meters, Perceived_dist) ~ Participant, FUN = mean, data=AvgSizeDistance)
+
+
+AvgSizeDistance4<-aggregate(cbind(Emmert_distance_meters, Perceived_dist) ~ Participant + Actual_dist_meters, FUN = mean, data=Size_distance_actual4)
+AvgSizeDistance6<-aggregate(cbind(Emmert_distance_meters, Perceived_dist) ~ Participant + Actual_dist_meters, FUN = mean, data=Size_distance_actual6)
+
+SizeDistAvg.lm<-lm(Emmert_distance_meters~Perceived_dist , data = AvgSizeDistance6)
+anova(SizeDistAvg.lm)
+summary(SizeDistAvg.lm)
+
+plot(Emmert_distance_meters~Perceived_dist, data = AvgSizeDistance) 
+abline(SizeDistAvg.lm, col = "red", lwd = 2)
+
+
+
+#Aggregation
+AvgSizeDistance<-aggregate(cbind(Emmert_distance_meters, Perceived_dist, Emmert_size, Perceived_size_cms)~Participant, FUN = mean, 
+                           data=Size_distance)
+
+SizeDistAvg.lm<-lm(Emmert_distance_meters~Emmert_size , data = AvgSizeDistance)
+print(SizeDistAvg.lm)
+summary(SizeDistAvg.lm)
+
+plot(Emmert_distance_meters~Emmert_size, data = AvgSizeDistance) 
+abline(SizeDistAvg.lm, col = "red", lwd = 2)
+
+cor(AvgSizeDistance$Emmert_distance_meters, AvgSizeDistance$Emmert_size)
+
+cor.test(AvgSizeDistance$Emmert_size, AvgSizeDistance$Perceived_dist)
+
+```
+
+##Appendix: Rmcorr minus standard corr power 
+
+```{r, echo=FALSE}
+k<-2
+nvals <- seq(8, 250)
+powPearsonLarge <- sapply(nvals, function (x) pwr.r.test(n=x, r=0.5)$power)
+#bluecolors<-c("#c6dbef", "#9ecae1")
+
+par(mfrow=c(1,1), cex.lab=1.1, cex.axis=1.1, cex.main=1.2, cex.sub=1.2)
+AppendFig1<-plot(nvals, seq(0,1, length.out=length(nvals)), 
+            xlab="Sample Size", yaxt = "n", ylab = paste("Power Difference:",  "Rmcorr (k = 2)", " -", " Pearson correlation"), las = 1, col = "white", xlim=c(0,250), ylim=c(0,0.05))
+            yLabels <- seq(0, 0.2, 0.01)
+            axis(2, at=yLabels, labels=sprintf(round(100*yLabels), fmt="%2.0f%%"), las=1, cex.sub = 2)
+
+powvals <- sapply(nvals, function (x) power.rmcorr(k[1], x, 0.5, 0.05)$power)
+powvalsdiff<-as.numeric(powvals) - as.numeric(powPearsonLarge)
+lines(nvals, powvalsdiff, lwd=2.5, col="red")
+
+dev.copy(pdf, file="plots/Appendix_Figure.pdf", 9, 6) 
+dev.off()
+``` 
+
+## Standard Correlation Power Curve (not in paper)
+```{r, echo=FALSE}
+  rs <- c(0.1, 0.3, 0.5)
+  nvals <- seq(8, 1000, length.out=1000)
+  
+  greenscols<-brewer.pal(9, "Greens")
+  greenscols3<-c(greenscols[3],greenscols[6],greenscols[9])
+  
+  plot(nvals, seq(0,1, length.out=length(nvals)), xlab="Sample Size", ylab="Power",
+       main="Power Curve for Standard Correlation", type="n")
+  for (i in 1:3) 
+    {
+    powvals <<- sapply(nvals, function (x) pwr.r.test(n=x, r=rs[i])$power)
+    lines(nvals, powvals, lwd=2.5, col=greenscols3[i])
+    }
+  legend("bottomright", lwd=2, col=greenscols3, legend=c("0.1", "0.3", "0.5"))
+  abline(a = 0.8, b=0, col=1, lty=2, lwd= 2.5)
+```
+
+
+
+
