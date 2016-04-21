@@ -16,8 +16,10 @@ require(grDevices)
 require(plotrix)
 require(metafor)
 library(rmcorr)
-require(devtools)
-
+require(devtools) #Comment out in final version
+require(lme4)
+require(AICcmodavg)
+require(MuMIn)
 #install_github('lmarusich/rmcorr')
 
 #require(checkpoint)
@@ -26,13 +28,13 @@ require(devtools)
 
 ```
 
-##Figure 1: rmcorr and reg plot
+###1. Figure 1: rmcorr and reg plot
 
-##Figure 2: rmcorr w/data transformations
+###2. Figure 2: rmcorr w/data transformations
 
-##Figure 3: rmcorr vs OLS reg
+###3. Figure 3: rmcorr vs OLS reg
 
-##Figure 4: Power curves 
+###4. Figure 4: Power curves 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8}
 power.rmcorr<-function(k, N, effectsizer, sig)
     {
@@ -129,7 +131,8 @@ dev.off()
 
 ```
 
-##Visual search rmcorr and simple reg/cor results
+###5. Visual search rmcorr and simple reg/cor results and Figure 5
+#### a) rmcorr and simple reg results
 ```{r, echo=FALSE}
 vissearch.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset = gilden2010)
 print(vissearch.rmc)
@@ -140,7 +143,7 @@ print(vissearch.lm)
 cor.test(gilden2010$rt, gilden2010$acc)
 ```
 
-##Figure 5: Visual search rmcorr and simple reg/cor
+#### b) Figure 5: Visual search rmcorr and simple reg/cor
 ```{r, echo=FALSE, fig.width = 9, fig.height = 6}
 
 par(mfrow=c(1,2), mar=c(5,4.6,4,0.5), mgp=c(3.2,0.8,0),  oma = c(0, 0, 0, 0), las = 1)
@@ -160,18 +163,27 @@ dev.copy(pdf, file="plots/Figure5_Visual_Search.pdf", 9, 6)
 dev.off()
 ```
 
-##Size and distance: Complete Pooling using OLS Regression
-```{r, echo = FALSE, fig.width = 9, fig.height = 6}
-#Complete Pooling: Fit a single model to all data points
+###6. Complete pooling examples (fit a single model to all data points) using regression: Size and Distance
+##### a) Regression Results 
+```{r, echo = FALSE}
 SizeDistPoolAll.lm<-lm(Emmert_distance_meters~Perceived_dist, data = Size_distance)
 print(SizeDistPoolAll.lm)
 summary(SizeDistPoolAll.lm)
 
+#Complete Pooling by block: Single model fit to data averaged by block, by participant 
+BlockSizeDistance<-aggregate(cbind(Emmert_distance_meters, Perceived_dist) ~ Actual_dist_meters + Participant, FUN = mean, data=Size_distance)
+SizeDistBlock.lm<-lm(Emmert_distance_meters~Perceived_dist , data = BlockSizeDistance)
+print(SizeDistBlock.lm)
+summary(SizeDistBlock.lm)
+```
+
+##### b) Figure 6
+```{r, echo = FALSE, fig.width = 9, fig.height = 6}
 par(mfrow=c(1,2), mar=c(5,4.6,4,0.5), mgp=c(3.2,0.8,0),  oma = c(0, 0, 0, 0), las = 1)
 
 plot(Emmert_distance_meters~Perceived_dist, data = Size_distance, pch = 16, 
      col=rgb(red = 0.0, green = 0.0, blue = 0.0, alpha = 0.3),
-     main = "Complete Pooling: All data",
+     main = "Complete Pooling: All Data",
      ylab = "Emmert Distance (m)",
      xlab = "Perceived Distance (m)", 
      las = 1) 
@@ -179,16 +191,10 @@ plot(Emmert_distance_meters~Perceived_dist, data = Size_distance, pch = 16,
      axis.break(axis = 1, style = "slash")
      axis.break(axis = 2, style = "slash")
      
-#Complete Pooling by block: Single model fit to data averaged by block, by participant 
-BlockSizeDistance<-aggregate(cbind(Emmert_distance_meters, Perceived_dist) ~ Actual_dist_meters + Participant, FUN = mean, data=Size_distance)
-SizeDistBlock.lm<-lm(Emmert_distance_meters~Perceived_dist , data = BlockSizeDistance)
-print(SizeDistBlock.lm)
-summary(SizeDistBlock.lm)
-
 SizeDistBlock.lm
 plot(Emmert_distance_meters~Perceived_dist, data = BlockSizeDistance, pch = 16, 
      col=rgb(red = 0.0, green = 0.0, blue = 0.0, alpha = 0.3),
-     main = "Complete Pooling: \nAveraged by block, by participant",
+     main = "Complete Pooling: \nAveraged by Block, by Participant",
      ylab = "Emmert Distance (m)",
      xlab = "Perceived Distance (m)", 
      las = 1) 
@@ -200,13 +206,45 @@ dev.copy(pdf, file="plots/Figure6_CompletePooling.pdf", 9, 6)
 dev.off()
 ```  
 
-##Size and distance: No Pooling using OLS Regression
-```{r, echo = FALSE, fig.width = 8, fig.height = 8}    
+###7. No pooling (no overall predictor, "separate" models for each participant) using regression: Size and distance 
+##### a)  Multiple Regression: Different intercepts for each participant, common slope 
+```{r, echo = FALSE}    
 #No constant term (-1) so all participants are included 
 SizeDistNoPool.lm<-lm(Emmert_distance_meters~Perceived_dist + factor(Participant) - 1, data = Size_distance)
 print(SizeDistNoPool.lm)
-summary(SizeDistBlock.lm)
+summary(SizeDistNoPool.lm)
 
+# #Separate models for each actual dist, quasi-piecewise/segmented regression  
+# Break2<-subset(Size_distance, Actual_dist_meters == 2)
+# Break4<-subset(Size_distance, Actual_dist_meters == 4)
+# Break6<-subset(Size_distance, Actual_dist_meters == 6)
+# 
+# SizeDistNoPoolBreak2.lm<-lm(Emmert_distance_meters~ Perceived_dist, data = Break2)
+# print(SizeDistNoPoolBreak2.lm)
+# summary(SizeDistNoPoolBreak2.lm)
+# 
+# SizeDistNoPoolBreak4.lm<-lm(Emmert_distance_meters~ Perceived_dist, data = Break4)
+# print(SizeDistNoPoolBreak4.lm)
+# summary(SizeDistNoPoolBreak4.lm)
+# 
+# SizeDistNoPoolBreak6.lm<-lm(Emmert_distance_meters~ Perceived_dist, data = Break6)
+# print(SizeDistNoPoolBreak6.lm)
+# summary(SizeDistNoPoolBreak6.lm)
+# 
+# 
+# plot(Emmert_distance_meters~Perceived_dist, data = Size_distance, pch = 16, 
+#      col=rgb(red = 0.0, green = 0.0, blue = 0.0, alpha = 0.3),
+#      main = "Separate Regressions of Actual Distance:\n Emmert Distance and Perceived Distance",
+#      ylab = "Emmert Distance (m)",
+#      xlab = "Perceived Distance\n(m)", 
+#      las = 1) 
+# curve(1.5336 + 0.2851*x, add = TRUE, from = min(Break2$Perceived_dist), to = max(Break2$Perceived_dist))
+# curve(3.0811 + 0.3387*x, add = TRUE, from = min(Break4$Perceived_dist), to = max(Break4$Perceived_dist))
+# curve(5.6731 + 0.1786*x, add = TRUE, from = min(Break6$Perceived_dist), to = max(Break6$Perceived_dist))
+# ```
+
+##### b) Figure 7
+```{r, echo = FALSE, fig.width = 8, fig.height = 8}
 #Wish list: Each regression line clipped by range of participant data, points and lines matched by participant 
 plot(Emmert_distance_meters~Perceived_dist, data = Size_distance, pch = 16, 
      col=rgb(red = 0.0, green = 0.0, blue = 0.0, alpha = 0.3),
@@ -225,10 +263,10 @@ dev.off()
 #Another wish list item
 #Separate models: Separate regression for each participant (another form of no pooling), 
 #same as above except each individual has their own slope 
-
 ```
 
-##Emmert Distance (size) and distance rmcorrs 
+###8. Emmert Distance (size) and distance rmcorrs 
+##### a) Three separate rmcorr
 ```{r, echo=TRUE}
 
 #Subset the data first
@@ -249,7 +287,7 @@ dev.off()
   Distance_EmmertDist6.rmc
 ```
 
-##Figure 6: Emmert Distance (size) and distance rmcorrs 
+##### b) Figure 8: Emmert Distance (size) and distance rmcorrs 
 ```{r, echo=FALSE, fig.width = 10, fig.height = 5}
 
 par(mfrow=c(1,3), cex.lab=1.1, cex.axis=1.1, cex.main=1.1, cex.sub = 1.1, mgp=c(3.2,0.8,0))
@@ -290,7 +328,7 @@ dev.off()
 
 ```
 
-##Figure 7: Stats and Forest plot 
+###9. Forest plot of separate rmcorrs 
 ```{r, echo=FALSE, fig.width = 9, fig.height = 6}
 
 yi<-c(Distance_EmmertDist2.rmc$r, Distance_EmmertDist4.rmc$r, Distance_EmmertDist6.rmc$r)
@@ -314,12 +352,16 @@ dev.off()
 
 ```
 
-##Figure 10: Stats and plot of Size and distance rmcorr overall (ignoring factor levels) 
-```{r, echo=FALSE, fig.width = 9, fig.height = 6}
+###10. Complete pooling of size and distance using rmcorr overall (ignoring factor levels of actual distance) 
+##### a) rmcorr results
+```{r, echo=FALSE}
 #Seperate rmcorr on each actual distance (factor level)
 Distance_EmmertDist_Overall.rmc<-rmcorr(participant = Participant, measure1 = Perceived_dist, measure2 = Emmert_distance_meters, dataset = Size_distance)
 Distance_EmmertDist_Overall.rmc
+```
 
+##### b) Figure 10: rmcorr FLOP 
+```{r, echo=FALSE, fig.width = 9, fig.height = 6}
 #Palette different than 9? 
 #pal4<-colorRampPalette(brewer.pal(9,'Reds'))(20) 
 pal4<-colorRampPalette(brewer.pal(9,"Reds"))
@@ -337,39 +379,77 @@ dev.off()
 
 ```
 
-
-##Multi-level modeling 
+###10. Multi-level modeling of size and distance data 
+##### a) Multi-level modeling and model comparison
 ```{r, echo=FALSE}
-library(lme4)
-library(AICcmodavg)
 
-#Random Int only
-NullModel<-lmer(Emmert_distance_meters~ 1 + (1|Participant), data =Size_distance, REML = FALSE)
+#Knitting the Rmd throws errors with data = ... in lmer, even though it works fine as a script. No clue why????
+#NullModel<-lmer(Emmert_distance_meters ~  1 + (1|Participant), data = Size_distance, REML = FALSE)
+#Note actual_dist_meters has only 3 levels, very spare for random effect. Not specified as an RE here.
 
-#Null + fixed effect for perceived distance
-Model1 <-lmer(Emmert_distance_meters~ Perceived_dist + (1|Participant), data =Size_distance, REML = FALSE)
+#Clunky Rmd safe version
+#Random Int (Participant) only
+NullModel<-lmer(Size_distance$Emmert_distance_meters ~  1 + (1 | Size_distance$Participant), REML = FALSE)
 
-#Model 1 + fixed effect for actual distance (crossed with perceived distance)
-Model2 <-lmer(Emmert_distance_meters~ Actual_dist_meters * Perceived_dist + (1|Participant), data =Size_distance, REML = FALSE)
+#Model 1: Null + fixed effect actual distance
+Model1 <-lmer(Size_distance$Emmert_distance_meters ~ Size_distance$Actual_dist_meters + 
+              (1|Size_distance$Participant), 
+              REML = FALSE)
+
+#Model 2: Model 1 + fixed effect perceived distance  
+Model2 <-lmer(Size_distance$Emmert_distance_meters ~ Size_distance$Actual_dist_meters + Size_distance$Perceived_dist + 
+             (1|Size_distance$Participant), 
+             REML = FALSE)
+
+#Model 3: Model 2 + fixed effect actual distance x  perceived dist (fully crossed)
+Model3 <-lmer(Size_distance$Emmert_distance_meters ~ Size_distance$Actual_dist_meters*Size_distance$Perceived_dist + 
+             (1|Size_distance$Participant), 
+             REML = FALSE)
+
+#Model 4: Model 2 plus random int by participant, random effect slope for perceived dist by participant
+Model4 <-lmer(Size_distance$Emmert_distance_meters ~ Size_distance$Actual_dist_meters + Size_distance$Perceived_dist +
+             (1| Size_distance$Participant) + 
+             (-1+Size_distance$Perceived_dist |  Size_distance$Participant), 
+             REML = FALSE)
+
+#Does not converge
+#Model 5: Model 3 plus plus random int by participant, random effect int and slope for perceived dist by participant
+# Model5 <-lmer(Size_distance$Emmert_distance_meters ~ Size_distance$Actual_dist_meters*Size_distance$Perceived_dist +
+#              (1| Size_distance$Participant) + 
+#              (Size_distance$Perceived_dist |  Size_distance$Participant), 
+#              REML = FALSE)
 
 #Model Comparison
-anova(NullModel, Model1, Model2)
+anova(NullModel, Model1, Model2, Model3, Model4)
 
 SizeDistModels<-list()
 SizeDistModels[[1]]<-NullModel
 SizeDistModels[[2]]<-Model1
 SizeDistModels[[3]]<-Model2
+SizeDistModels[[4]]<-Model3
+SizeDistModels[[5]]<-Model4
 
-ModelTable<-aictab(SizeDistModels, modnames = c("Null", "Model 1", "Model 2")) 
+ModelTable<-aictab(SizeDistModels, modnames = c("Null", "Model 1", "Model 2", "Model 3", "Model 4"))
 ModelTable
 evidence(ModelTable)
 
-#Model 3:  RE slopes for perceived dist. Does not converge with defaults. 
-#Model3 <-lmer(Emmert_distance_meters~ Actual_dist_meters * Perceived_dist + (1 + Perceived_dist |Participant), data =Size_distance, REML = #FALSE)
+#Pseudo R2s
+r.squaredGLMM(NullModel)
+r.squaredGLMM(Model1)
+r.squaredGLMM(Model2)
+r.squaredGLMM(Model3)
+r.squaredGLMM(Model4)
+#
+# Model3FitFE<-fitted(Model3)
+#Model3FitRE<-predict(Model3, re.form = ~0)
+# plot(Model3, ranef(.,standard = TRUE)~Participant, abline = 0)
 
-#Graph Model 2, ughh. 
+#Good lmer plotting ref: AdvPlot_HO.pdf
 
 ```
+
+##### b) Graph best fit model: Model 4
+
 ##Appendix: Rmcorr minus standard corr power 
 
 ```{r, echo=FALSE}
