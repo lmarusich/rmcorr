@@ -215,37 +215,37 @@ print(SizeDistNoPool.lm)
 summary(SizeDistNoPool.lm)
 
 # #Separate models for each actual dist, quasi-piecewise/segmented regression  
-# Break2<-subset(Size_distance, Actual_dist_meters == 2)
-# Break4<-subset(Size_distance, Actual_dist_meters == 4)
-# Break6<-subset(Size_distance, Actual_dist_meters == 6)
-# 
-# SizeDistNoPoolBreak2.lm<-lm(Emmert_distance_meters~ Perceived_dist, data = Break2)
-# print(SizeDistNoPoolBreak2.lm)
-# summary(SizeDistNoPoolBreak2.lm)
-# 
-# SizeDistNoPoolBreak4.lm<-lm(Emmert_distance_meters~ Perceived_dist, data = Break4)
-# print(SizeDistNoPoolBreak4.lm)
-# summary(SizeDistNoPoolBreak4.lm)
-# 
-# SizeDistNoPoolBreak6.lm<-lm(Emmert_distance_meters~ Perceived_dist, data = Break6)
-# print(SizeDistNoPoolBreak6.lm)
-# summary(SizeDistNoPoolBreak6.lm)
-# 
-# 
-# plot(Emmert_distance_meters~Perceived_dist, data = Size_distance, pch = 16, 
-#      col=rgb(red = 0.0, green = 0.0, blue = 0.0, alpha = 0.3),
-#      main = "Separate Regressions of Actual Distance:\n Emmert Distance and Perceived Distance",
-#      ylab = "Emmert Distance (m)",
-#      xlab = "Perceived Distance\n(m)", 
-#      las = 1) 
-# curve(1.5336 + 0.2851*x, add = TRUE, from = min(Break2$Perceived_dist), to = max(Break2$Perceived_dist))
-# curve(3.0811 + 0.3387*x, add = TRUE, from = min(Break4$Perceived_dist), to = max(Break4$Perceived_dist))
-# curve(5.6731 + 0.1786*x, add = TRUE, from = min(Break6$Perceived_dist), to = max(Break6$Perceived_dist))
-# ```
+Break2<-subset(Size_distance, Actual_dist_meters == 2)
+Break4<-subset(Size_distance, Actual_dist_meters == 4)
+Break6<-subset(Size_distance, Actual_dist_meters == 6)
+
+SizeDistNoPoolBreak2.lm<-lm(Emmert_distance_meters~ Perceived_dist, data = Break2)
+print(SizeDistNoPoolBreak2.lm)
+summary(SizeDistNoPoolBreak2.lm)
+
+SizeDistNoPoolBreak4.lm<-lm(Emmert_distance_meters~ Perceived_dist, data = Break4)
+print(SizeDistNoPoolBreak4.lm)
+summary(SizeDistNoPoolBreak4.lm)
+
+SizeDistNoPoolBreak6.lm<-lm(Emmert_distance_meters~ Perceived_dist, data = Break6)
+print(SizeDistNoPoolBreak6.lm)
+summary(SizeDistNoPoolBreak6.lm)
+
+
+plot(Emmert_distance_meters~Perceived_dist, data = Size_distance, pch = 16,
+     col=rgb(red = 0.0, green = 0.0, blue = 0.0, alpha = 0.3),
+     main = "Separate Regressions of Actual Distance:\n Emmert Distance and Perceived Distance",
+     ylab = "Emmert Distance (m)",
+     xlab = "Perceived Distance\n(m)",
+     las = 1)
+curve(1.5336 + 0.2851*x, add = TRUE, from = min(Break2$Perceived_dist), to = max(Break2$Perceived_dist))
+curve(3.0811 + 0.3387*x, add = TRUE, from = min(Break4$Perceived_dist), to = max(Break4$Perceived_dist))
+curve(5.6731 + 0.1786*x, add = TRUE, from = min(Break6$Perceived_dist), to = max(Break6$Perceived_dist))
+```
 
 ##### b) Figure 7
 ```{r, echo = FALSE, fig.width = 8, fig.height = 8}
-#Wish list: Each regression line clipped by range of participant data, points and lines matched by participant 
+#Wish list: Each regression line clipped by range of participant data, color of points and lines matched to participant 
 plot(Emmert_distance_meters~Perceived_dist, data = Size_distance, pch = 16, 
      col=rgb(red = 0.0, green = 0.0, blue = 0.0, alpha = 0.3),
      main = "No Pooling:\nRegression of Emmert Distance and Perceived Distance",
@@ -260,7 +260,7 @@ plot(Emmert_distance_meters~Perceived_dist, data = Size_distance, pch = 16,
 dev.copy(pdf, file="plots/Figure7_NoPooling.pdf", 8, 8)  
 dev.off()
 
-#Another wish list item
+
 #Separate models: Separate regression for each participant (another form of no pooling), 
 #same as above except each individual has their own slope 
 ```
@@ -379,8 +379,8 @@ dev.off()
 
 ```
 
-###10. Multi-level modeling of size and distance data 
-##### a) Multi-level modeling and model comparison
+###11. Multi-level modeling of size and distance data 
+##### Multi-level modeling and model comparison
 ```{r, echo=FALSE}
 
 #Knitting the Rmd throws errors with data = ... in lmer, even though it works fine as a script. No clue why????
@@ -406,18 +406,13 @@ Model3 <-lmer(Size_distance$Emmert_distance_meters ~ Size_distance$Actual_dist_m
              (1|Size_distance$Participant), 
              REML = FALSE)
 
-#Model 4: Model 2 plus random int by participant, random effect slope for perceived dist by participant
-Model4 <-lmer(Size_distance$Emmert_distance_meters ~ Size_distance$Actual_dist_meters + Size_distance$Perceived_dist +
-             (1| Size_distance$Participant) + 
-             (-1+Size_distance$Perceived_dist |  Size_distance$Participant), 
-             REML = FALSE)
+#Model 4: Model 3 + varying int for actual dist by participant (discontinous for actual dist, allow diff ints by participant)
+Model4 <-lmer(Size_distance$Emmert_distance_meters ~ Size_distance$Actual_dist_meters*Size_distance$Perceived_dist +
+              (0 + Size_distance$Actual_dist_meters| Size_distance$Participant), 
+              REML = FALSE)
 
-#Does not converge
-#Model 5: Model 3 plus plus random int by participant, random effect int and slope for perceived dist by participant
-# Model5 <-lmer(Size_distance$Emmert_distance_meters ~ Size_distance$Actual_dist_meters*Size_distance$Perceived_dist +
-#              (1| Size_distance$Participant) + 
-#              (Size_distance$Perceived_dist |  Size_distance$Participant), 
-#              REML = FALSE)
+#Good reference for distcont change: Singer and Willett (2003), Chapter 6
+#R code:http://www.ats.ucla.edu/stat/r/examples/alda/ch6.htm
 
 #Model Comparison
 anova(NullModel, Model1, Model2, Model3, Model4)
@@ -429,26 +424,87 @@ SizeDistModels[[3]]<-Model2
 SizeDistModels[[4]]<-Model3
 SizeDistModels[[5]]<-Model4
 
+
 ModelTable<-aictab(SizeDistModels, modnames = c("Null", "Model 1", "Model 2", "Model 3", "Model 4"))
 ModelTable
 evidence(ModelTable)
 
 #Pseudo R2s
-r.squaredGLMM(NullModel)
-r.squaredGLMM(Model1)
-r.squaredGLMM(Model2)
-r.squaredGLMM(Model3)
 r.squaredGLMM(Model4)
-#
-# Model3FitFE<-fitted(Model3)
-#Model3FitRE<-predict(Model3, re.form = ~0)
-# plot(Model3, ranef(.,standard = TRUE)~Participant, abline = 0)
-
-#Good lmer plotting ref: AdvPlot_HO.pdf
 
 ```
 
-##### b) Graph best fit model: Model 4
+##### b) Graph the best fit model: Model 4 
+```{r, echo=FALSE, fig.width = 9, fig.height = 6}
+plot(Emmert_distance_meters~Perceived_dist, data = Size_distance, pch = 16, 
+     col=rgb(red = 0.0, green = 0.0, blue = 0.0, alpha = 0.3),
+     main = "Best Fit Multilevel Model",
+     ylab = "Emmert Distance (m)",
+     xlab = "Perceived Distance\n(m)", 
+     las = 1) 
+
+getranges<-function(readdata) 
+  {
+  XYRange<<-range(readdata["Perceived_dist"])
+  }
+
+#Get predicted values 
+PercDistModel4<-predict(Model4)
+SeqParticipant<- rep(1:20, each = 2, times = 9)
+SizeDistMod4<-cbind(SeqParticipant, Size_distance, PercDistModel4)
+SizeDistBestFit<-SizeDistMod4[order(SeqParticipant, SizeDistMod4$PercDistModel4),]
+  
+Predict2<-subset(SizeDistBestFit,Actual_dist_meters == 2)
+Predict4<-subset(SizeDistBestFit,Actual_dist_meters == 4)
+Predict6<-subset(SizeDistBestFit,Actual_dist_meters == 6)
+
+#Plot OVerall (Level 2) fixed effects w/o discont
+FixedEffectsMod4<-fixef(Model4)
+SlopeFE<-FixedEffectsMod4[2]+FixedEffectsMod4[3]+FixedEffectsMod4[4]
+getranges(SizeDistBestFit)
+ablineclip(FixedEffectsMod4[1], SlopeFE, col = "red",  x1 = XYRange[1], x2 = XYRange[2])
+
+#Plot Overall fixed effects w/discont
+#Actual distance has a mean = 4, sd = 2 
+#Ints
+Int2<-FixedEffectsMod4[1]+FixedEffectsMod4[2]*(2)
+Int4<-FixedEffectsMod4[1]+FixedEffectsMod4[2]*(4)
+Int6<-FixedEffectsMod4[1]+FixedEffectsMod4[2]*(6)
+
+#Slopes (sd * mean)
+Slope2<-FixedEffectsMod4[3]+FixedEffectsMod4[4]*(-1*2)
+Slope4<-FixedEffectsMod4[3]+FixedEffectsMod4[4]*(0*2)
+Slope6<-FixedEffectsMod4[3]+FixedEffectsMod4[4]*(1*2)
+
+
+
+getranges(Predict2)
+ablineclip(Int2, Slope2, col = "red", lty = 2, x1 = XYRange[1], x2 = XYRange[2])
+
+getranges(Predict4)
+ablineclip(Int4, Slope2, col = "red", lty = 2, x1 = XYRange[1], x2 = XYRange[2])
+
+getranges(Predict6)
+ablineclip(Int6, Slope2, col = "red", lty = 2, x1 = XYRange[1], x2 = XYRange[2])
+
+
+#Plot random effects
+ PlotRE<- function(N, length, PredictData) 
+{
+   for (i in 1:N) 
+   {
+   Extract<-1+(i-1)*length  #Starts at 1, then goes to 7, 13, ..., 115 
+   abline(lines(spline(PredictData[Extract:(length*i), 6],PredictData[Extract:(length*i), 11])), col = "grey", lty = 1, lwd = 1)
+   }
+ }
+NumParticipants<-20
+PlotRE(NumParticipants, 6, Predict2)
+PlotRE(NumParticipants, 6, Predict4)
+PlotRE(NumParticipants, 6, Predict6)
+
+dev.copy(pdf, file="plots/Figure11_multilevel_model.pdf", 9, 6)  
+dev.off()
+```
 
 ##Appendix: Rmcorr minus standard corr power 
 
