@@ -25,8 +25,9 @@ rmcorr(participant, measure1, measure2, dataset, CIs = c("analytic",
 \value{
 A list with class "rmc" containing the following components.
 \item{r}{the value of the repeated measures correlation coefficient.}
-\item{CI}{the 95\% confidence interval for the repeated measures correlation coefficient.}
+\item{df}{the degrees of freedom}
 \item{p}{the p-value for the repeated measures correlation coefficient.}
+\item{CI}{the 95\% confidence interval for the repeated measures correlation coefficient.}
 \item{model}{the multiple regression model used to calculate the correlation coefficient.}
 \item{resamples}{the bootstrap resampled correlation values.}
 }

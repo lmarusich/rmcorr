@@ -1,4 +1,5 @@
 {
+    "collab_server" : "",
     "contents" : "#' A package for computing the repeated measures correlation coefficient\n#' \n#' @docType package\n#' @name rmcorr-package\n#' @description \\packageDescription{rmcorr}\n#' @details details\n#' \nNULL\n\n# \\name{rmcorr-package}\n# \\alias{rmcorr-package}\n# \\docType{package}\n# \\title{\n#     \\packageTitle{rmcorr}\n# }\n# \\description{\n#     \\packageDescription{rmcorr}\n# }\n# \\details{\n#     \n#     The DESCRIPTION file:\n#         \\packageDESCRIPTION{rmcorr}\n#     \\packageIndices{rmcorr}\n#     \n# }\n# \\author{\n#     \\packageAuthor{rmcorr}\n#     \n#     Maintainer: \\packageMaintainer{rmcorr}\n# }\n# \\references{\n#     ~~ Literature or other references for background information ~~\n# }\n# \n# \\keyword{ package }\n# \n# \\examples{\n#     \n# }",
     "created" : 1443129451260.000,
     "dirty" : false,
@@ -7,11 +8,13 @@
     "hash" : "4079713514",
     "id" : "41ACF3E4",
     "lastKnownWriteTime" : 1432238521,
+    "last_content_update" : 0,
     "path" : "C:/Users/Laura Cooper/Desktop/Need from Laptop/rmcorr package/rmcorr/R/rmcorr-package.R",
     "project_path" : "R/rmcorr-package.R",
     "properties" : {
     },
     "relative_order" : 5,
     "source_on_save" : false,
+    "source_window" : "",
     "type" : "r_source"
 }

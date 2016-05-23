@@ -9,8 +9,9 @@
 #' @param bstrap.out Determines if the output include the bootstrap resamples.
 #' @return A list with class "rmc" containing the following components.
 #' \item{r}{the value of the repeated measures correlation coefficient.}
-#' \item{CI}{the 95\% confidence interval for the repeated measures correlation coefficient.}
+#' \item{df}{the degrees of freedom}
 #' \item{p}{the p-value for the repeated measures correlation coefficient.}
+#' \item{CI}{the 95\% confidence interval for the repeated measures correlation coefficient.}
 #' \item{model}{the multiple regression model used to calculate the correlation coefficient.}
 #' \item{resamples}{the bootstrap resampled correlation values.}
 #' @seealso \code{\link{plot.rmc}}
@@ -98,8 +99,8 @@ rmcorr <- function(participant, measure1, measure2, dataset,
     
     
     
-    rmoutput <- list(r = rmcorrvalue, CI = rmcorrvalueCI, p = pvalue, 
-                     model = lmmodel, 
+    rmoutput <- list(r = rmcorrvalue, df = errordf, p = pvalue, 
+                     CI = rmcorrvalueCI, model = lmmodel, 
                      vars = as.character(c(args$participant,args$measure1,args$measure2)))
     if (bstrap.out) {rmoutput$resamples <- resamples}
     class(rmoutput) <- "rmc"
@@ -122,10 +123,13 @@ print.rmc <- function(x, ...) {
     cat("\nRepeated measures correlation\n\n")
     cat("r\n")
     cat(x$r)
+    cat("\n\ndegrees of freedom\n")
+    cat(x$df)
+    cat("\n\np-value\n")
+    cat(x$p)
     cat("\n\n95% confidence interval\n")
     cat(x$CI)
-    cat("\n\np-value\n\n")
-    cat(x$p)
+    
 }   
     
     
