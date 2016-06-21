@@ -87,11 +87,11 @@ cols <- mypal(10)
 
 par(mfrow = c(1, 2), mgp = c(2.5, .75, 0), mar = c(4,4,2,1), cex = 1.2)
 
-plot(example.rmc, exampleMat, xlab = "x", ylab = "y", main = "Rmcorr Plot",
+plot(example.rmc, exampleMat, xlab = "x", ylab = "y", main = "a) Rmcorr Plot",
      overall = F, palette = mypal, las = 1)
 text(-3,-8,paste('rmcorr =', round(example.rmc$r,2),'\np < 0.001'), adj = 0)
 
-plot(submeanx[,2], submeany[,2], pch = 16, col = cols, main = "Regression Plot", 
+plot(submeanx[,2], submeany[,2], pch = 16, col = cols, main = "b) Regression Plot", 
      xlab = "x (averaged for each participant)",
      ylab = "y (averaged for each participant)", las = 1)
 stdr <- cor.test(submeanx[,2], submeany[,2])
@@ -134,7 +134,7 @@ example.rmc <- rmcorr(sub,newX,newY,exampleMat)
 mypal <- colorRampPalette(RColorBrewer::brewer.pal(10,'Paired'))
 cols <- mypal(10)
 
-plot(example.rmc, exampleMat, xlab = "x", ylab = "", main = "Original",
+plot(example.rmc, exampleMat, xlab = "x", ylab = "", main = "a) Original",
      overall = F, palette = mypal, xlim = c(-3.5, 1), ylim = c(-2.25,2), las = 1)
 text(-3.5,1.75,paste('rmcorr =', round(example.rmc$r,2),'\np < 0.001'), adj = 0)
 mtext(side = 2, "y", las = 1, line = 2.5, cex = 1.2)
@@ -143,7 +143,7 @@ mtext(side = 2, "y", las = 1, line = 2.5, cex = 1.2)
 exampleMat2 <- exampleMat
 exampleMat2$newX <- exampleMat2$newX * .5 + 1
 example2.rmc <- rmcorr(sub, newX, newY, exampleMat2)
-plot(example2.rmc, exampleMat2, xlab = "x", ylab = "", main = "x / 2 + 1", overall = F,
+plot(example2.rmc, exampleMat2, xlab = "x", ylab = "", main = "b) x / 2 + 1", overall = F,
      palette = mypal, xlim = c(-3.5, 1), ylim = c(-2.25,2), las = 1)
 text(-3.5,1.75,paste('rmcorr =', round(example2.rmc$r,2),'\np < 0.001'), adj = 0)
 mtext(side = 2, "y", las = 1, line = 2.5, cex = 1.2)
@@ -152,7 +152,7 @@ mtext(side = 2, "y", las = 1, line = 2.5, cex = 1.2)
 exampleMat3 <- exampleMat
 exampleMat3$newY[11:15] <- exampleMat3$newY[11:15] - 2
 example3.rmc <- rmcorr(sub, newX, newY, exampleMat3)
-plot(example3.rmc, exampleMat3, xlab = "x", ylab = "", main = "Subject 3: y - 2", overall = F,
+plot(example3.rmc, exampleMat3, xlab = "x", ylab = "", main = "c) Subject 3: y - 2", overall = F,
      palette = mypal, xlim = c(-3.5, 1), ylim = c(-2.25,2), las = 1)
 text(-3.5,1.75,paste('rmcorr =', round(example3.rmc$r,2),'\np < 0.001'), adj = 0)
 mtext(side = 2, "y", las = 1, line = 2.5, cex = 1.2)
@@ -215,7 +215,7 @@ makeminiplot(subxs, .9, -4.6, 12, xax = "s")
 mtext(side = 1, outer = T, line = 1.5, "x", at = c(.175, .5, .85))
 mtext(side = 2, outer = T, line = 1.5, "y", at = c(.175, .5, .85), las = 1)
 mtext(side = 3, outer = T, line = .5, 
-      c("A. rmcorr = -1", "B. rmcorr = 0", "C. rmcorr = 1"),
+      c("a) rmcorr = -1", "b) rmcorr = 0", "c) rmcorr = 1"),
       at = c(.175, .5, .85), las = 1, cex = 1.5)
 
 
@@ -422,7 +422,7 @@ par(mfrow=c(1,2), mar=c(5,4.6,4,0.5), mgp=c(3.2,0.8,0),  oma = c(0, 0, 0, 0), la
 
 plot(Emmert_distance_meters~Perceived_dist, data = Size_distance, pch = 16, 
      col=rgb(red = 0.0, green = 0.0, blue = 0.0, alpha = 0.3),
-     main = "Complete Pooling: All Data",
+     main = "a) Complete Pooling: All Data",
      ylab = "Emmert Distance (m)",
      xlab = "Perceived Distance (m)", 
      las = 1) 
@@ -433,7 +433,7 @@ axis.break(axis = 2, style = "slash")
 SizeDistBlock.lm
 plot(Emmert_distance_meters~Perceived_dist, data = BlockSizeDistance, pch = 16, 
      col=rgb(red = 0.0, green = 0.0, blue = 0.0, alpha = 0.3),
-     main = "Complete Pooling: \nAveraged by Block, by Participant",
+     main = "b) Complete Pooling: \nAveraged by Block, by Participant",
      ylab = "Emmert Distance (m)",
      xlab = "Perceived Distance (m)", 
      las = 1) 

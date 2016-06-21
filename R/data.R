@@ -41,7 +41,8 @@ NULL
 #' @title Repeated measurements of age and cerebellar volume
 #' @description A dataset containing two repeated measures, on two occasions
 #' (\code{Time}), of age and adjusted volume of cerebellar hemispheres from 72
-#' participants.  
+#' participants. Data were captured from Figure 8, Cerebellar Hemispheres
+#' (lower right) of Raz et al. (2005).
 #' @docType data
 #' @usage raz2005
 #' @format A data frame with 144 rows and 4 variables

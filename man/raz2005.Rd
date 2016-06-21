@@ -24,6 +24,7 @@ raz2005
 \description{
 A dataset containing two repeated measures, on two occasions
 (\code{Time}), of age and adjusted volume of cerebellar hemispheres from 72
-participants.
+participants. Data were captured from Figure 8, Cerebellar Hemispheres
+(lower right) of Raz et al. (2005).
 }
 
