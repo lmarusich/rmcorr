@@ -54,7 +54,7 @@ colorRampPaletteAlpha <- function(colors, n=32, interpolate='linear') {
 
 ###1. Figure 1: rmcorr and reg plot
 ```{r, echo = FALSE, warning = FALSE, results =  "hide", fig.height = 6, fig.width = 12}
-set.seed(50)
+set.seed(1)
 
 initX <- rnorm(50)
 newY <- NULL
@@ -63,17 +63,15 @@ sub <- rep(1:10, each = 5)
 
 rsq <- .9
 
-addy <- 6
 addx <- -2
 for (i in 1:10){
-  addy <- addy - 1
-  addx <- addx + .25
-  tempData <- initX[sub == i] + addx
-  sdx <- sd(tempData)
-  sdnoise <- sdx * (sqrt((1-rsq)/rsq))
-  tempy <- tempData + rnorm(5,0,sdnoise) + rnorm(1,addy,3)
-  newY <- c(newY, tempy)
-  newX <- c(newX,tempData)
+    addx <- addx + .25
+    tempData <- initX[sub == i] + addx
+    sdx <- sd(tempData)
+    sdnoise <- sdx * (sqrt((1-rsq)/rsq))
+    tempy <- tempData + rnorm(5,0,sdnoise) + rnorm(1,0,3)
+    newY <- c(newY, tempy)
+    newX <- c(newX,tempData)
 }
 
 exampleMat <-data.frame(cbind(sub,newX,newY))
@@ -88,14 +86,14 @@ cols <- mypal(10)
 par(mfrow = c(1, 2), mgp = c(2.5, .75, 0), mar = c(4,4,2,1), cex = 1.2)
 
 plot(example.rmc, exampleMat, xlab = "x", ylab = "y", main = "a) Rmcorr Plot",
-     overall = F, palette = mypal, las = 1)
-text(-3,-8,paste('rmcorr =', round(example.rmc$r,2),'\np < 0.001'), adj = 0)
+     overall = F, palette = mypal, las = 1, ylim = c(-6, 6.5))
+text(1,-5,paste('rmcorr =', round(example.rmc$r,2),'\np < 0.001'), adj = 1)
 
-plot(submeanx[,2], submeany[,2], pch = 16, col = cols, main = "b) Regression Plot", 
-     xlab = "x (averaged for each participant)",
-     ylab = "y (averaged for each participant)", las = 1)
+plot(submeanx[,2], submeany[,2], pch = 16, col = cols, las = 1,
+     main = "b) Regression Plot", xlab = "x (averaged for each participant)",
+     ylab = "y (averaged for each participant)", ylim=c(-6,6.5), xlim=c(-3, 1))
 stdr <- cor.test(submeanx[,2], submeany[,2])
-text(-1.75,-7,paste('r =', round(stdr$est,2),'\np =', round(stdr$p.value,2)), adj = 0)
+text(1,-5,paste('r =', round(stdr$est,2),'\np =', round(stdr$p.value,2)), adj = 1)
 abline(lm(submeany[,2]~submeanx[,2]),col="gray50")
 
 dev.copy(pdf, file="plots/Figure1_Rmcorr_vs_reg.pdf", 9, 6)
