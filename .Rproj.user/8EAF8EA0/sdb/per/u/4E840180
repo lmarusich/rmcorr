@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "require(rmcorr)\n\n#a - rmcorr\nvissearch.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset = gilden2010)\nprint(vissearch.rmc)\n\n#b - averaged data\ngildenMeans <- aggregate(gilden2010[,3:4], by = list(gilden2010$sub), mean)\navg.lm <- lm(acc ~ rt, data = gildenMeans)\nprint(avg.lm)\nb.rtest <- cor.test(gildenMeans$rt, gildenMeans$acc)\nprint(b.rtest)\n\n#c - aggregated data (treated as independent)\nagg.lm <- lm(acc ~ rt, data = gilden2010)\nprint(agg.lm)\nc.rtest <- cor.test(gilden2010$rt, gilden2010$acc)\nprint(c.rtest)\n\npar(mfrow=c(1,3), mar=c(5,4.6,4,0.5), mgp=c(3.2,0.8,0),  oma = c(0, 0, 0, 0), las = 1)\n\nplot(vissearch.rmc, gilden2010, overall = F, xlab = \"Reaction Time (seconds)\", \n     ylab = \"Accuracy\", cex = 1.2, main = expression(bold(\"a)\")~bold('Rmcorr')),\n     ylim = c(.79, 1), xlim = c(0.45, .95)) \naxis.break(axis = 1, style = \"slash\")\naxis.break(axis = 2, style = \"slash\")\ntext(.95,.8,paste('rmcorr =', round(vissearch.rmc$r,2),'\\np =',\n                  round(vissearch.rmc$p, 2)), adj = 1)\n\nplot(acc~rt, data = gildenMeans, cex = 1.2, pch = 16, ylim = c(.79, 1), \n     xlim = c(0.45, .95), xlab = \"Reaction Time (seconds)\",  ylab = \"\", \n     main = (\"b) Simple Regression\\n(Averaged Data)\"))\nabline(avg.lm, col = \"red\", lwd = 2)\naxis.break(axis = 1, style = \"slash\")\naxis.break(axis = 2, style = \"slash\")\ntext(.95,.8,paste('r =', round(b.rtest$est,2),'\\np =', round(b.rtest$p.value,2)), adj = 1)\n\nplot(acc~rt, data = gilden2010, xlab = \"Reaction Time (seconds)\", ylab = \"\",\n     cex = 1.2, pch = 16, ylim = c(.79, 1), xlim = c(0.45, .95),\n     main = (\"c) Simple Regression\\n(Aggregated Data\"))\nabline(vissearch.lm, col = \"red\", lwd = 2)\naxis.break(axis = 1, style = \"slash\")\naxis.break(axis = 2, style = \"slash\")\ntext(.95,.8,paste('r =', round(c.rtest$est,2),'\\np =', round(c.rtest$p.value,2)), adj = 1)",
+    "created" : 1467209164151.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2729742902",
+    "id" : "4E840180",
+    "lastKnownWriteTime" : 28429264711581810,
+    "last_content_update" : 1467214344058,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
