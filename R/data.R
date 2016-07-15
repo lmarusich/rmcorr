@@ -61,7 +61,7 @@ NULL
 #' 
 NULL
 
-#' @name SizeDistance
+#' @name Size_distance
 #' @title Repeated measurements of perceived size and distance
 #' @description xxx  
 #' @docType data

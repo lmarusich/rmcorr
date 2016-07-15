@@ -11,8 +11,7 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 require(pwr)
 require(psych) 
 require(Hmisc)
-# require(RColorBrewer)
-# require(grDevices)
+require(RColorBrewer)
 require(plotrix)
 library(rmcorr)
 require(devtools) #Comment out in final version

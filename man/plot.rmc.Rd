@@ -42,13 +42,14 @@ plot(my.rmc, bland1995, overall = TRUE)
 
 ## Raz et al. 2005 data
 my.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = Volume, dataset = raz2005)
+library(RColorBrewer)
 blueset <- brewer.pal(8, 'Blues')
 pal <- colorRampPalette(blueset)
 plot(my.rmc, raz2005, overall = TRUE, palette = pal, overall.col = 'black')
 
 ## Gilden et al. 2010 data
 my.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset = gilden2010)
-plot(my.rmc, gilden2010, overall = F, lty = 2, xlab = "Reaction Time", ylab = "Accuracy")
+plot(my.rmc, gilden2010, overall = FALSE, lty = 2, xlab = "Reaction Time", ylab = "Accuracy")
 }
 \seealso{
 \code{\link{rmcorr}}
