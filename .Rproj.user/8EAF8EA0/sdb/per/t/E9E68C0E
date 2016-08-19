@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Compare Slopes\"\nauthor: \"Laura\"\ndate: \"August 9, 2016\"\noutput: html_document\n---\n\n```{r, echo=FALSE, warning=FALSE, message=FALSE}\nrequire(pwr)\nrequire(psych) \nrequire(Hmisc)\nrequire(RColorBrewer)\nrequire(plotrix)\nlibrary(rmcorr)\n\naddalpha <- function(colors, alpha=1.0) {\n    r <- col2rgb(colors, alpha=T)\n    # Apply alpha\n    r[4,] <- alpha*255\n    r <- r/255.0\n    return(rgb(r[1,], r[2,], r[3,], r[4,]))\n}\n\n```\n\n## Different units - changes slope but does not change rmcorr\n```{r, echo = FALSE, warning = FALSE}\nset.seed(1)\n\ninitX <- rnorm(50)\nnewY <- NULL\nnewX <- NULL\nsub <- rep(1:10, each = 5)\n\nrsq <- .9\n\naddx <- -2\nfor (i in 1:10){\n    addx <- addx + .25\n    tempData <- initX[sub == i] + addx\n    sdx <- sd(tempData)\n    sdnoise <- sdx * (sqrt((1-rsq)/rsq))\n    tempy <- tempData + rnorm(5,0,sdnoise) + rnorm(1,0,3)\n    newY <- c(newY, tempy)\n    newX <- c(newX,tempData)\n}\n\nnewX <- newX * 11\n```\n\n```{r, warning = FALSE}\nnewX\nnewY\n\nnewYtimes2 <- newY * 2\nnewYtimes2\n\nmat1 <-data.frame(cbind(sub, newX, newY))\nrmc1 <- rmcorr(sub, newX, newY, mat1)\nrmc1$r\nrmc1$model$coef[[\"Measure1\"]]\n\nmat2 <- data.frame(cbind(sub, newX, newYtimes2))\nrmc2 <- rmcorr(sub, newX, newYtimes2, mat2)\nrmc2$r\nrmc2$model$coef[[\"Measure1\"]]\n\n\n```\n\n```{r, echo = FALSE, warning = FALSE, fig.height = 6, fig.width = 12}\nmypal <- colorRampPalette(RColorBrewer::brewer.pal(10,'Paired'))\ncols <- mypal(10)\n\npar(mfrow = c(1, 2), mgp = c(2.5, .75, 0), mar = c(4,4,2,1), cex = 1.2)\n\nplot(rmc1, mat1, xlab = \"x\", ylab = \"y\", main = \"rmcorr with y\",\n     overall = F, palette = mypal, las = 1, ylim = c(-10, 10))\ntext(10,-9,paste('rmcorr =', round(rmc1$r,2),'\\nslope =', round(rmc1$model$coef[[\"Measure1\"]],3)), adj = 1)\n\nplot(rmc2, mat2, xlab = \"x\", ylab = \"y\", main = \"rmcorr with y times 2\",\n     overall = F, palette = mypal, las = 1, ylim = c(-10, 10))\ntext(10,-9,paste('rmcorr =', round(rmc2$r,2),'\\nslope =', round(rmc2$model$coef[[\"Measure1\"]],3)), adj = 1)\n```\n",
+    "created" : 1470771123717.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "622391016",
+    "id" : "E9E68C0E",
+    "lastKnownWriteTime" : 1470772587,
+    "last_content_update" : 1470772587960,
+    "path" : "C:/Users/Laura Cooper/Desktop/Need from Laptop/rmcorr package/rmcorr/Rmd/compareSlopes.Rmd",
+    "project_path" : "Rmd/compareSlopes.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
