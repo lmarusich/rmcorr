@@ -43,15 +43,15 @@ rmcorr <- function(participant, measure1, measure2, dataset,
     
     CIs <- match.arg(CIs)
     
-    lmmodel <- lm(Measure2 ~ Participant + Measure1)
-    lmslope <- coef(lmmodel)["Measure1"]
+    lmmodel <- stats::lm(Measure2 ~ Participant + Measure1)
+    lmslope <- stats::coef(lmmodel)["Measure1"]
     errordf <- lmmodel$df.residual
     
     # Direction of correlation based on whether slope is positive or negative  
     corrsign <- sign(lmslope)  
     
     # Drop each term for Type III sums of squares
-    type3rmcorr <- drop1(lmmodel, ~., test="F" )
+    type3rmcorr <- stats::drop1(lmmodel, ~., test="F" )
     SSFactor <- type3rmcorr$'Sum of Sq'[3] 
     SSresidual <- type3rmcorr$RSS[1]
     
@@ -82,18 +82,18 @@ rmcorr <- function(participant, measure1, measure2, dataset,
             }
             
             bs.Part <- Participant
-            repmodel<-lm(bs.1 ~ bs.Part + bs.2)
-            repslope <- coef(repmodel)["bs.2"]
+            repmodel<-stats::lm(bs.1 ~ bs.Part + bs.2)
+            repslope <- stats::coef(repmodel)["bs.2"]
             errordf <- repmodel$df.residual
             repsign <- sign(repslope)  
             
-            type3rmcorr<-drop1(repmodel, ~., test="F" )
+            type3rmcorr<-stats::drop1(repmodel, ~., test="F" )
             SSFactor<-type3rmcorr$'Sum of Sq'[3] 
             SSresidual<-type3rmcorr$RSS[1]
             
             cor.reps[i] <- as.numeric(repsign*sqrt(SSFactor/(SSFactor+SSresidual)))
         }
-        rmcorrvalueCI <- quantile(cor.reps,probs=c(.025,.975))
+        rmcorrvalueCI <- stats::quantile(cor.reps,probs=c(.025,.975))
         resamples <- cor.reps
     }
     

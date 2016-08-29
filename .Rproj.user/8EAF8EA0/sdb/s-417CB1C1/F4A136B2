@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "## Test environments\n* local Windows install, R 3.3.1\n\n\n\n## R CMD check results\n\n## Downstream dependencies",
+    "created" : 1472482557055.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1116645793",
+    "id" : "F4A136B2",
+    "lastKnownWriteTime" : 1472482687,
+    "last_content_update" : 1472495526680,
+    "path" : "C:/Users/Laura Cooper/Desktop/Need from Laptop/rmcorr package/rmcorr/cran-comments.md",
+    "project_path" : "cran-comments.md",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}

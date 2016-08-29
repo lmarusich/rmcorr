@@ -4,16 +4,23 @@ Version: 0.1.0
 Author: Jonathan Z. Bakdash, Laura R. Marusich
 Maintainer: Laura R. Marusich <laura.r.marusich.ctr@mail.mil>
 Description: Compute the repeated measures correlation, a statistical technique
-    for determining the overall within-individual relationship among paired
-    measures assessed on two or more occasions, first introduced by Bland and
-    Altman (1995). 
-    Includes functions for diagnostics, p-value, effect size with confidence 
+    for determining the overall within-individual relationship among paired measures
+    assessed on two or more occasions, first introduced by Bland and Altman (1995).
+    Includes functions for diagnostics, p-value, effect size with confidence
     interval including optional bootstrapping, as well as graphing. Also includes
     several example datasets.
-Depends: R (>= 3.2.1)
+Depends:
+    R (>= 3.2.1)
 License: GPL-2
 LazyData: true
-Imports: pwr,
-        psych,
-        RColorBrewer,
-        mnormt
+Imports:
+    stats,
+    grDevices,
+    graphics,
+    pwr,
+    psych,
+    RColorBrewer,
+    mnormt
+RoxygenNote: 5.0.1
+Suggests: knitr, rmarkdown, plotrix
+VignetteBuilder: knitr

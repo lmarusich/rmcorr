@@ -1,6 +1,10 @@
 {
-    "path" : "C:/Users/Laura Cooper/Desktop/Need from Laptop/rmcorr package/rmcorr/Rmd",
+    "path" : "C:/Users/Laura Cooper/Desktop/Need from Laptop/rmcorr package/rmcorr/inst/doc",
     "sortOrder" : [
+        {
+            "ascending" : false,
+            "columnIndex" : 4
+        },
         {
             "ascending" : true,
             "columnIndex" : 2

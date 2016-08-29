@@ -4,7 +4,7 @@
 #' \code{measure2} on the y-axis, with a different color used for each subject.
 #' Parallel lines are fitted to each subject's data.
 #' 
-#' @param rmc an object of class "rmc" generated from the \code{\link{rmcorr}} function.
+#' @param x an object of class "rmc" generated from the \code{\link{rmcorr}} function.
 #' @param dataset the data frame containing the variables.
 #' @param overall logical: if TRUE, plots the regression line between measure1 and
 #' measure2, ignoring the participant variable.
@@ -33,40 +33,39 @@
 #' plot(my.rmc, gilden2010, overall = FALSE, lty = 2, xlab = "Reaction Time", ylab = "Accuracy")
 #' @export
 
-plot.rmc <-function(rmc, dataset, overall = T, palette = NULL, xlab = NULL,
+plot.rmc <-function(x, dataset,  overall = T, palette = NULL, xlab = NULL,
                    ylab = NULL, overall.col = "gray60", overall.lwd = 3,
                    overall.lty = 2, ...) {    
     
-    
-    subs <- factor(dataset[[eval(rmc$vars[[1]])]])
-    m1 <- dataset[[eval(rmc$vars[[2]])]]
-    m2 <- dataset[[eval(rmc$vars[[3]])]]
+    subs <- factor(dataset[[eval(x$vars[[1]])]])
+    m1 <- dataset[[eval(x$vars[[2]])]]
+    m2 <- dataset[[eval(x$vars[[3]])]]
     
     if (is.null(xlab)){
-        xlab <- rmc$vars[[2]]
+        xlab <- x$vars[[2]]
     }
     if (is.null(ylab)){
-        ylab <- rmc$vars[[3]]
+        ylab <- x$vars[[3]]
     }
     
     if (is.null(palette)){
         set1 <- RColorBrewer::brewer.pal(12,'Paired')
-        palette <- colorRampPalette(set1)
+        palette <- grDevices::colorRampPalette(set1)
     }
     colors <- palette(length(levels(subs)))
-    plot(m1, m2, pch=16, col = colors[subs], xlab=xlab, ylab = ylab, ...)
+    graphics::plot(m1, m2, pch=16, col = colors[subs], xlab=xlab, ylab = ylab, ...)
     
     nsubs <- length(levels(subs))
     
-    preds <- predict(rmc$model)
+    preds <- stats::predict(x$model)
     
     for (i in 1:nsubs){
         subindex <- which(subs == levels(subs)[i])
-        lines(m1[subindex], preds[subindex], col = colors[i], ...)
+        graphics::lines(m1[subindex], preds[subindex], col = colors[i], ...)
     }
     
     if (overall) {
-        abline(lm(m2 ~ m1), col = overall.col, lwd = overall.lwd, 
+        graphics::abline(stats::lm(m2 ~ m1), col = overall.col, lwd = overall.lwd, 
                lty = overall.lty)
     }
 }
