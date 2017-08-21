@@ -1,6 +1,3 @@
-## New submission
-This is the first submission of this package.
-
 ## Test environments
 * local Windows install, R 3.3.1
 * ubuntu 12.04.5 (on travis-ci), R 3.3.1

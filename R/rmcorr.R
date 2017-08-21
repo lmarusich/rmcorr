@@ -42,7 +42,7 @@ rmcorr <- function(participant, measure1, measure2, dataset,
         stop("'Measure 1' and 'Measure 2' must be numeric")
     
     #check for missing values
-    newdat <- na.omit(data.frame(Participant, Measure1, Measure2))
+    newdat <- stats::na.omit(data.frame(Participant, Measure1, Measure2))
     Participant <- newdat$Participant
     Measure1 <- newdat$Measure1
     Measure2 <- newdat$Measure2

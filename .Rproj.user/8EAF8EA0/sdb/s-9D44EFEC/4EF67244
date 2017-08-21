@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "## Test environments\n* local Windows install, R 3.3.3\n* ubuntu 12.04.5 (on travis-ci), R 3.3.1\n* win-builder (devel and release)\n\n## R CMD check results\nThere were no ERRORs, WARNINGs, or NOTEs. \n\n## Downstream dependencies\nI have also run R CMD check on downstream dependencies of rmcorr - all packages passed\n",
+    "created" : 1503329659099.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2106577562",
+    "id" : "4EF67244",
+    "lastKnownWriteTime" : 1503329863,
+    "last_content_update" : 1503329895515,
+    "path" : "C:/Users/Laura Cooper/Desktop/Need from Laptop/rmcorr package/rmcorr/cran-comments.md",
+    "project_path" : "cran-comments.md",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}
