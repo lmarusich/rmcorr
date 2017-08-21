@@ -33,13 +33,19 @@ rmcorr <- function(participant, measure1, measure2, dataset,
     if (!is.factor(Participant)) 
     {
         Participant <- factor(Participant)
-        warning("Participant coerced into a factor")
+        warning(paste("'", args$participant, "' coerced into a factor", sep = ""))
     }
     
     Measure1 <- eval(args$measure1, dataset)
     Measure2 <- eval(args$measure2, dataset)
     if (!is.numeric(Measure1) || !is.numeric(Measure2))
         stop("'Measure 1' and 'Measure 2' must be numeric")
+    
+    #check for missing values
+    newdat <- na.omit(data.frame(Participant, Measure1, Measure2))
+    Participant <- newdat$Participant
+    Measure1 <- newdat$Measure1
+    Measure2 <- newdat$Measure2
     
     CIs <- match.arg(CIs)
     

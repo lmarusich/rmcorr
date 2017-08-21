@@ -1,0 +1,7 @@
+"0","# mtext(side = 3, outer = T, line = .5, "
+"0","#       c(""a) rmcorr = -1"", ""b) rmcorr = 0"", ""c) rmcorr = 1""),"
+"0","#       at = c(.175, .5, .85), las = 1, cex = 1.5)"
+"0","dev.copy2eps(pdf, file=""plots/Figure2_Rmcorr_vs_OLS.eps"")"
+"2","Error in match(x, table, nomatch = 0L) : 
+  'match' requires vector arguments
+"

@@ -41,6 +41,12 @@ plot.rmc <-function(x, dataset,  overall = T, palette = NULL, xlab = NULL,
     m1 <- dataset[[eval(x$vars[[2]])]]
     m2 <- dataset[[eval(x$vars[[3]])]]
     
+    #check for missing values
+    newdat <- na.omit(data.frame(subs, m1, m2))
+    subs <- newdat$subs
+    m1 <- newdat$m1
+    m2 <- newdat$m2
+    
     if (is.null(xlab)){
         xlab <- x$vars[[2]]
     }

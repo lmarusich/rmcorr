@@ -10,4 +10,9 @@
 \details{
 details
 }
+\references{
+Bakdash, J.Z., & Marusich, L.R. (2017). 
+Repeated Measures Correlation. \emph{Frontiers in Psychology, 8}, 256. 
+\url{https://doi.org/10.3389/fpsyg.2017.00456}.
+}
 

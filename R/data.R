@@ -31,7 +31,7 @@ NULL
 #' \code{[, 3]} \tab \code{rt} \tab {Mean reaction time} \cr
 #' \code{[, 4]} \tab \code{acc} \tab {Mean accuracy} \cr
 #' }
-#' #' @source Gilden, D.L., Thornton, T.L., & Marusich, L.R. (2010). The serial
+#' @source Gilden, D.L., Thornton, T.L., & Marusich, L.R. (2010). The serial
 #' process in visual search. \emph{Journal of Experimental Psychology: Human 
 #' Perception and Performance, 36}, 533-542.
 #'
