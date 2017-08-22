@@ -2,7 +2,11 @@
 title: "Reproduce results of rmcorr paper"
 author: "Jon Bakdash and Laura Marusich"
 date: "February 6, 2017"
-output: html_document
+output: rmarkdown::html_document
+vignette: >
+  %\VignetteIndexEntry{Reproduce results of rmcorr paper}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
 ---
 
 

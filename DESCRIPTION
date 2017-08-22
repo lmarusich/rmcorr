@@ -17,9 +17,8 @@ Imports:
     stats,
     grDevices,
     graphics,
-    pwr,
     psych,
     RColorBrewer
 RoxygenNote: 6.0.1
-Suggests: knitr, rmarkdown, plotrix
+Suggests: knitr, rmarkdown, plotrix, lme4, AICcmodavg, ggplot2, merTools, pwr
 VignetteBuilder: knitr
