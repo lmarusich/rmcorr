@@ -318,23 +318,15 @@ model1.vis &lt;-<span class="st"> </span><span class="kw">lmer</span>(acc ~<span
 ##            Df     AIC     BIC logLik deviance  Chisq Chi Df Pr(&gt;Chisq)
 ## null.vis    4 -197.41 -190.27 102.70  -205.41                         
 ## model1.vis  6 -193.46 -182.75 102.73  -205.46 0.0497      2     0.9754</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#b) Evidence ratio using AIC</span>
-Models.vis&lt;-<span class="kw">list</span>()
-Models.vis&lt;-<span class="kw">c</span>(null.vis, model1.vis)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># #b) Evidence ratio using AIC</span>
+<span class="co"># Models.vis&lt;-list()</span>
+<span class="co"># Models.vis&lt;-c(null.vis, model1.vis)</span>
+<span class="co"># </span>
+<span class="co"># ModelTable2&lt;-AICcmodavg::aictab(Models.vis, modnames = c(&quot;null&quot;, &quot;Model 1&quot;))</span>
+<span class="co"># ModelTable2</span>
+<span class="co"># evidence(ModelTable2)</span>
 
-ModelTable2&lt;-<span class="kw">aictab</span>(Models.vis, <span class="dt">modnames =</span> <span class="kw">c</span>(<span class="st">&quot;null&quot;</span>, <span class="st">&quot;Model 1&quot;</span>))
-ModelTable2</code></pre></div>
-<pre><code>## 
-## Model selection based on AICc:
-## 
-##         K    AICc Delta_AICc AICcWt Cum.Wt     LL
-## null    4 -196.38       0.00   0.93   0.93 102.70
-## Model 1 6 -191.19       5.19   0.07   1.00 102.73</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">evidence</span>(ModelTable2)</code></pre></div>
-<pre><code>## 
-## Evidence ratio between models 'null' and 'Model 1':
-## 13.43</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="co">#Estimating CIs: Convergence problems with model 1</span>
+  <span class="co">#Estimating CIs: Convergence problems with model 1</span>
   <span class="kw">confint</span>(model1.vis)</code></pre></div>
 <pre><code>## Computing profile confidence intervals ...</code></pre>
 <pre><code>## Warning in zeta(shiftpar, start = opt[seqpar1][-w]): NAs detected in

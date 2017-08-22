@@ -17,7 +17,7 @@ require(RColorBrewer)
 require(plotrix)
 require(rmcorr)
 require(lme4)
-require(AICcmodavg)
+# require(AICcmodavg)
 require(ggplot2)
 require(merTools)
 
@@ -531,13 +531,13 @@ model1.vis <- lmer(acc ~ rt + (1 + rt | sub), data = gilden2010, REML = FALSE)
 #a) Chi-Square
 anova(null.vis, model1.vis)
 
-#b) Evidence ratio using AIC
-Models.vis<-list()
-Models.vis<-c(null.vis, model1.vis)
-
-ModelTable2<-aictab(Models.vis, modnames = c("null", "Model 1"))
-ModelTable2
-evidence(ModelTable2)
+# #b) Evidence ratio using AIC
+# Models.vis<-list()
+# Models.vis<-c(null.vis, model1.vis)
+# 
+# ModelTable2<-AICcmodavg::aictab(Models.vis, modnames = c("null", "Model 1"))
+# ModelTable2
+# evidence(ModelTable2)
 
   #Estimating CIs: Convergence problems with model 1
   confint(model1.vis)
