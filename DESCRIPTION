@@ -19,8 +19,7 @@ Imports:
     graphics,
     pwr,
     psych,
-    RColorBrewer,
-    mnormt
+    RColorBrewer
 RoxygenNote: 6.0.1
 Suggests: knitr, rmarkdown, plotrix
 VignetteBuilder: knitr

@@ -2,7 +2,7 @@
 % Please edit documentation in R/rmcorr.R
 \name{print.rmc}
 \alias{print.rmc}
-\title{Calculate the repeated measures correlation coefficient.}
+\title{Print the results of a repeated measures correlation}
 \usage{
 \method{print}{rmc}(x, ...)
 }
@@ -12,7 +12,7 @@
 \item{...}{additional arguments to \code{\link[base]{print}}.}
 }
 \description{
-Calculate the repeated measures correlation coefficient.
+Print the results of a repeated measures correlation
 }
 \examples{
 ## Bland Altman 1995 data

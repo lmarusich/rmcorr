@@ -19,8 +19,6 @@
 #' ## Bland Altman 1995 data
 #' rmcorr(Subject, PacO2, pH, bland1995)
 #' @export
-
-
 rmcorr <- function(participant, measure1, measure2, dataset, 
                    CIs = c("analytic", "bootstrap"), 
                    nreps = 100, bstrap.out = F) {
@@ -114,7 +112,7 @@ rmcorr <- function(participant, measure1, measure2, dataset,
 } 
 
 
-#' Calculate the repeated measures correlation coefficient.
+#' Print the results of a repeated measures correlation
 #' 
 #' @param x An object of class "rmc", a result of a call to rmcorr.
 #' @param ... additional arguments to \code{\link[base]{print}}.
