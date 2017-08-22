@@ -3,10 +3,6 @@ title: "Reproduce results of rmcorr paper"
 author: "Jon Bakdash and Laura Marusich"
 date: "June 21, 2016"
 output: rmarkdown::html_document
-vignette: >
-  %\VignetteIndexEntry{Reproduce results of rmcorr paper}
-  %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
 ---
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
