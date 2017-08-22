@@ -22,4 +22,3 @@ blandrmc
 \seealso{
 \code{\link{rmcorr}}
 }
-

@@ -25,4 +25,3 @@ A dataset containing four repeated measurements of reaction time
 measurement is the mean RT and accuracy from a block of 288 search trials.
 blocks of visual search, for eleven subjects
 }
-

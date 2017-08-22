@@ -41,4 +41,3 @@ rmcorr(Subject, PacO2, pH, bland1995)
 \seealso{
 \code{\link{plot.rmc}}
 }
-

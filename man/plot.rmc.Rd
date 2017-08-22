@@ -54,4 +54,3 @@ plot(my.rmc, gilden2010, overall = FALSE, lty = 2, xlab = "Reaction Time", ylab 
 \seealso{
 \code{\link{rmcorr}}
 }
-

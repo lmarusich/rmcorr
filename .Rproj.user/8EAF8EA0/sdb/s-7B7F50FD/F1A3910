@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Package: rmcorr\nTitle: Repeated Measures Correlation\nVersion: 0.2.0\nAuthor: Jonathan Z. Bakdash, Laura R. Marusich\nMaintainer: Laura R. Marusich <laura.r.marusich.ctr@mail.mil>\nDescription: Compute the repeated measures correlation, a statistical technique\n    for determining the overall within-individual relationship among paired measures\n    assessed on two or more occasions, first introduced by Bland and Altman (1995).\n    Includes functions for diagnostics, p-value, effect size with confidence\n    interval including optional bootstrapping, as well as graphing. Also includes\n    several example datasets.\nDepends:\n    R (>= 3.2.1)\nLicense: GPL-2\nLazyData: true\nImports:\n    stats,\n    grDevices,\n    graphics,\n    pwr,\n    psych,\n    RColorBrewer,\n    mnormt\nRoxygenNote: 6.0.1\nSuggests: knitr, rmarkdown, plotrix\nVignetteBuilder: knitr\n",
+    "created" : 1443129240780.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2541967092",
+    "id" : "F1A3910",
+    "lastKnownWriteTime" : 1503419060,
+    "last_content_update" : 1503419060,
+    "path" : "C:/Users/Laura Cooper/Desktop/Need from Laptop/rmcorr package/rmcorr/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "dcf"
+}

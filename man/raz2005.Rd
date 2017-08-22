@@ -27,4 +27,3 @@ A dataset containing two repeated measures, on two occasions
 participants. Data were captured from Figure 8, Cerebellar Hemispheres
 (lower right) of Raz et al. (2005).
 }
-

@@ -22,4 +22,3 @@ bland1995
 A dataset containing the repeated measurements of intramural pH
 and PaCO2 for eight subjects, from Bland & Altman (1995).
 }
-
