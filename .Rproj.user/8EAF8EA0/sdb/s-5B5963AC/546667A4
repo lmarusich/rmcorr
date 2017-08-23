@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# Setup\n\n## Platform\n\n|setting  |value                        |\n|:--------|:----------------------------|\n|version  |R version 3.4.1 (2017-06-30) |\n|system   |x86_64, mingw32              |\n|ui       |RStudio (1.0.153)            |\n|language |(EN)                         |\n|collate  |English_United States.1252   |\n|tz       |America/Chicago              |\n|date     |2017-08-22                   |\n\n## Packages\n\n|package      |*  |version |date       |source                      |\n|:------------|:--|:-------|:----------|:---------------------------|\n|ggplot2      |   |2.2.1   |2016-12-30 |CRAN (R 3.4.1)              |\n|knitr        |   |1.17    |2017-08-10 |CRAN (R 3.4.1)              |\n|lme4         |   |1.1-13  |2017-04-19 |CRAN (R 3.4.1)              |\n|merTools     |   |0.3.0   |2016-12-12 |CRAN (R 3.4.1)              |\n|plotrix      |   |3.6-6   |2017-08-16 |CRAN (R 3.4.1)              |\n|psych        |   |1.7.5   |2017-05-03 |CRAN (R 3.4.1)              |\n|pwr          |   |1.2-1   |2017-03-25 |CRAN (R 3.4.1)              |\n|RColorBrewer |   |1.1-2   |2014-12-07 |CRAN (R 3.4.1)              |\n|rmarkdown    |   |1.6     |2017-06-15 |CRAN (R 3.4.1)              |\n|rmcorr       |*  |0.2.0   |2017-08-22 |local (lmarusich/rmcorr@NA) |\n\n# Check results\n\n0 packages with problems\n\n\n\n\n",
+    "created" : 1503428512995.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2705511635",
+    "id" : "546667A4",
+    "lastKnownWriteTime" : 1503428503,
+    "last_content_update" : 1503428503,
+    "path" : "C:/Users/Laura Cooper/Desktop/Need from Laptop/rmcorr package/rmcorr/revdep/problems.md",
+    "project_path" : "revdep/problems.md",
+    "properties" : {
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}
