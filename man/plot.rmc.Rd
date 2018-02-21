@@ -4,14 +4,12 @@
 \alias{plot.rmc}
 \title{Plot the repeated measures correlation coefficient.}
 \usage{
-\method{plot}{rmc}(x, dataset, overall = T, palette = NULL, xlab = NULL,
+\method{plot}{rmc}(x, overall = F, palette = NULL, xlab = NULL,
   ylab = NULL, overall.col = "gray60", overall.lwd = 3, overall.lty = 2,
   ...)
 }
 \arguments{
 \item{x}{an object of class "rmc" generated from the \code{\link{rmcorr}} function.}
-
-\item{dataset}{the data frame containing the variables.}
 
 \item{overall}{logical: if TRUE, plots the regression line between measure1 and
 measure2, ignoring the participant variable.}
@@ -29,6 +27,8 @@ measure2, ignoring the participant variable.}
 \item{overall.lty}{the line type of the overall regression line}
 
 \item{...}{additional arguments to \code{\link[graphics]{plot}}.}
+
+\item{dataset}{the data frame containing the variables.}
 }
 \description{
 \code{plot.rmc}  produces a scatterplot of \code{measure1} on the x-axis and 

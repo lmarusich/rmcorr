@@ -27,15 +27,26 @@ rmcorr <- function(participant, measure1, measure2, dataset,
     
     args <- as.list(match.call())
     
-    Participant <- eval(args$participant, dataset)
+    if (class(args$measure1) == "character" & 
+        class(args$measure2) == "character" & 
+        class(args$participant) == "character"){
+        print("hi")
+        Measure1 <- dataset[[measure1]]
+        Measure2 <- dataset[[measure2]]
+        Participant <- dataset[[participant]]
+        
+    }else {
+        Participant <- eval(args$participant, dataset)
+        Measure1 <- eval(args$measure1, dataset)
+        Measure2 <- eval(args$measure2, dataset)
+    }
+    
     if (!is.factor(Participant)) 
     {
         Participant <- factor(Participant)
         warning(paste("'", args$participant, "' coerced into a factor", sep = ""))
     }
     
-    Measure1 <- eval(args$measure1, dataset)
-    Measure2 <- eval(args$measure2, dataset)
     if (!is.numeric(Measure1) || !is.numeric(Measure2))
         stop("'Measure 1' and 'Measure 2' must be numeric")
     

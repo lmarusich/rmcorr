@@ -33,13 +33,13 @@
 #' plot(my.rmc, gilden2010, overall = FALSE, lty = 2, xlab = "Reaction Time", ylab = "Accuracy")
 #' @export
 
-plot.rmc <-function(x, dataset,  overall = T, palette = NULL, xlab = NULL,
+plot.rmc <-function(x, overall = F, palette = NULL, xlab = NULL,
                    ylab = NULL, overall.col = "gray60", overall.lwd = 3,
                    overall.lty = 2, ...) {    
     
-    subs <- factor(dataset[[eval(x$vars[[1]])]])
-    m1 <- dataset[[eval(x$vars[[2]])]]
-    m2 <- dataset[[eval(x$vars[[3]])]]
+    subs <- x$model$model$Participant
+    m1 <- x$model$model$Measure1
+    m2 <- x$model$model$Measure2
     
     #check for missing values
     newdat <- stats::na.omit(data.frame(subs, m1, m2))
