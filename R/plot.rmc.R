@@ -31,7 +31,7 @@
 #' ## Gilden et al. 2010 data
 #' my.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset = gilden2010)
 #' plot(my.rmc, gilden2010, overall = FALSE, lty = 2, xlab = "Reaction Time", ylab = "Accuracy")
-#' @export
+
 
 plot.rmc <-function(x, overall = F, palette = NULL, xlab = NULL,
                    ylab = NULL, overall.col = "gray60", overall.lwd = 3,
