@@ -67,7 +67,7 @@ cols <- mypal(10)
 
 par(mfrow = c(1, 2), mgp = c(2.5, .75, 0), mar = c(4,4,2,1), cex = 1.2)
 
-plot(example.rmc, exampleMat, xlab = "x", ylab = "y", 
+plot(example.rmc, xlab = "x", ylab = "y", 
      overall = F, palette = mypal, las = 1, ylim = c(-6, 6.5))
 text(1,-5,paste('rmcorr =', round(example.rmc$r,2),'\np < 0.001'), adj = 1)
 
@@ -386,7 +386,7 @@ print(c.rtest)
 ## ---- echo=FALSE, fig.width = 9, fig.height = 6--------------------------
 par(mfrow=c(1,3), mar=c(5,4.6,4,0.5), mgp=c(3.2,0.8,0),  oma = c(0, 0, 0, 0), las = 1)
 
-plot(vissearch.rmc, gilden2010, overall = F, xlab = "Reaction Time (seconds)", 
+plot(vissearch.rmc, overall = F, xlab = "Reaction Time (seconds)", 
      ylab = "Accuracy", cex = 1.2,
      ylim = c(.79, 1), xlim = c(0.45, .95)) 
 axis.break(axis = 1, style = "slash")

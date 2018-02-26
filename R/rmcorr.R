@@ -18,6 +18,7 @@
 #' @examples
 #' ## Bland Altman 1995 data
 #' rmcorr(Subject, PacO2, pH, bland1995)
+#' @export
 
 rmcorr <- function(participant, measure1, measure2, dataset, 
                    CIs = c("analytic", "bootstrap"), 
@@ -132,6 +133,7 @@ rmcorr <- function(participant, measure1, measure2, dataset,
 #' ## Bland Altman 1995 data
 #' blandrmc <- rmcorr(Subject, PacO2, pH, bland1995)
 #' blandrmc
+#' @export
 
 
 print.rmc <- function(x, ...) {

@@ -39,9 +39,10 @@ my.rmc <- rmcorr(participant = Subject, measure1 = PacO2, measure2 = pH, dataset
 plot(my.rmc, overall = TRUE)
 
 #using ggplot instead
-ggplot(bland1995, aes(x = PacO2, y = pH, group = factor(Subject), color = factor(Subject))) +
-      geom_point(aes(colour = factor(Subject))) +
-      geom_line(aes(y = my.rmc$model$fitted.values), linetype = 1) 
+ggplot2::ggplot(bland1995, ggplot2::aes(x = PacO2, y = pH, group = factor(Subject),
+      color = factor(Subject))) +
+      ggplot2::geom_point(ggplot2::aes(colour = factor(Subject))) +
+      ggplot2::geom_line(ggplot2::aes(y = my.rmc$model$fitted.values), linetype = 1) 
 
 
 ## Raz et al. 2005 data
@@ -55,7 +56,6 @@ plot(my.rmc, overall = TRUE, palette = pal, overall.col = 'black')
 ## Gilden et al. 2010 data
 my.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset = gilden2010)
 plot(my.rmc, overall = FALSE, lty = 2, xlab = "Reaction Time", ylab = "Accuracy")
-
 }
 \seealso{
 \code{\link{rmcorr}}
