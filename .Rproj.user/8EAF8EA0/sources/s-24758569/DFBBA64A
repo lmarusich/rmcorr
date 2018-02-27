@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r\n\nlanguage: R\nsudo: false\ncache: packages\n\n",
+    "created" : 1503426149799.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2665781812",
+    "id" : "DFBBA64A",
+    "lastKnownWriteTime" : 1503427072,
+    "last_content_update" : 1503427072780,
+    "path" : "C:/Users/Laura Cooper/Desktop/Need from Laptop/rmcorr package/rmcorr/.travis.yml",
+    "project_path" : ".travis.yml",
+    "properties" : {
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "yaml"
+}
