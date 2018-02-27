@@ -18,9 +18,10 @@ Repeated measures correlation (rmcorr) is a statistical technique for determinin
 
 ## Installation
 
-You can install rmcorr from github with:
-
 ```{r gh-installation, eval = FALSE}
+install.packages('rmcorr')
+
+#development version:
 # install.packages("devtools")
 devtools::install_github("lmarusich/rmcorr")
 ```
@@ -29,6 +30,8 @@ devtools::install_github("lmarusich/rmcorr")
 
 
 ```{r example}
+
+library(rmcorr)
 rmcorr(Subject, PacO2, pH, bland1995)
 
 ```
