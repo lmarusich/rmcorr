@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "---\noutput: github_document\n---\n\n<!-- README.md is generated from README.Rmd. Please edit that file -->\n\n```{r, echo = FALSE}\nknitr::opts_chunk$set(\n  collapse = TRUE,\n  comment = \"#>\",\n  fig.path = \"README-\"\n)\n```\n\n# rmcorr\n\nRepeated measures correlation (rmcorr) is a statistical technique for determining the common within-individual association for paired measures assessed on two or more occasions for multiple individuals.\n\n## Installation\n\nYou can install rmcorr from github with:\n\n```{r gh-installation, eval = FALSE}\n# install.packages(\"devtools\")\ndevtools::install_github(\"lmarusich/rmcorr\")\n```\n\n## Example\n\n\n```{r example}\nrmcorr(Subject, PacO2, pH, bland1995)\n\n```\n",
+    "created" : 1519744067899.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1006615707",
+    "id" : "FB2A5E7",
+    "lastKnownWriteTime" : 1519744471,
+    "last_content_update" : 1519744471874,
+    "path" : "C:/Users/Laura Cooper/Desktop/Need from Laptop/rmcorr package/rmcorr/README.Rmd",
+    "project_path" : "README.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
