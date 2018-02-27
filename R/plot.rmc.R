@@ -5,6 +5,7 @@
 #' Parallel lines are fitted to each subject's data.
 #' 
 #' @param x an object of class "rmc" generated from the \code{\link{rmcorr}} function.
+#' @param dataset Deprecated: This argument is no longer required
 #' @param overall logical: if TRUE, plots the regression line between measure1 and
 #' measure2, ignoring the participant variable.
 #' @param palette the palette to be used. Defaults to the RColorBrewer "Paired" palette 
@@ -42,9 +43,14 @@
 
 
 
-plot.rmc <-function(x, overall = F, palette = NULL, xlab = NULL,
+plot.rmc <-function(x, dataset = NULL, overall = F, palette = NULL, xlab = NULL,
                    ylab = NULL, overall.col = "gray60", overall.lwd = 3,
                    overall.lty = 2, ...) {    
+    
+    calls <- names(sapply(match.call(), deparse))[-1]
+    if(any("dataset" %in% calls)) {
+        warning("dataset parameter is deprecated")
+    }
     
     subs <- x$model$model$Participant
     m1 <- x$model$model$Measure1
