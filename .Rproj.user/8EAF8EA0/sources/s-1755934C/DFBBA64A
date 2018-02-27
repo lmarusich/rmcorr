@@ -1,6 +1,6 @@
 {
     "collab_server" : "",
-    "contents" : "# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r\n\nlanguage: R\nsudo: false\ncache: packages\n\n",
+    "contents" : "",
     "created" : 1503426149799.000,
     "dirty" : false,
     "encoding" : "UTF-8",
