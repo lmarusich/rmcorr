@@ -1,4 +1,8 @@
-
+[![Travis-CI Build Status](https://travis-ci.org/lmarusich/rmcorr.svg?branch=master)](https://https://travis-ci.org/lmarusich/rmcorr)
+[![](http://www.r-pkg.org/badges/version/rmcorr)](https://CRAN.R-project.org/package=rmcorr)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/rmcorr)](https://CRAN.R-project.org/package=rmcorr)
+[![](http://cranlogs.r-pkg.org/badges/last-month/rmcorr)](https://CRAN.R-project.org/package=rmcorr)
+<!--[![Coverage Status]-->
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 rmcorr
 ======
