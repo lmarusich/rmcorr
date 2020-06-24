@@ -159,5 +159,4 @@ print.rmc <- function(x, ...) {
     cat(x$CI,"\n\n")
     
 }   
-    
-    
+
