@@ -1,2 +1,0 @@
-"0","stdr <- cor.test(submeanx[,2], submeany[,2])"
-"0","text(1,-5,paste('r =', round(stdr$est,2),'\np =', round(stdr$p.value,2)), adj = 1)"

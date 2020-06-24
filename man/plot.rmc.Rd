@@ -4,9 +4,18 @@
 \alias{plot.rmc}
 \title{Plot the repeated measures correlation coefficient.}
 \usage{
-\method{plot}{rmc}(x, dataset = NULL, overall = F, palette = NULL,
-  xlab = NULL, ylab = NULL, overall.col = "gray60", overall.lwd = 3,
-  overall.lty = 2, ...)
+\method{plot}{rmc}(
+  x,
+  dataset = NULL,
+  overall = F,
+  palette = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  overall.col = "gray60",
+  overall.lwd = 3,
+  overall.lty = 2,
+  ...
+)
 }
 \arguments{
 \item{x}{an object of class "rmc" generated from the \code{\link{rmcorr}} function.}

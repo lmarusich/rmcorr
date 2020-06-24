@@ -1,1 +1,0 @@
-"0","text(1,-5,paste('rmcorr =', round(example.rmc$r,2),'\np < 0.001'), adj = 1)"

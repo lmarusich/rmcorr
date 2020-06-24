@@ -4,8 +4,16 @@
 \alias{rmcorr}
 \title{Calculate the repeated measures correlation coefficient.}
 \usage{
-rmcorr(participant, measure1, measure2, dataset, CIs = c("analytic",
-  "bootstrap"), nreps = 100, bstrap.out = F)
+rmcorr(
+  participant,
+  measure1,
+  measure2,
+  dataset,
+  CI.level = 0.95,
+  CIs = c("analytic", "bootstrap"),
+  nreps = 100,
+  bstrap.out = F
+)
 }
 \arguments{
 \item{participant}{A variable giving the subject name/id for each observation.}
@@ -15,6 +23,8 @@ rmcorr(participant, measure1, measure2, dataset, CIs = c("analytic",
 \item{measure2}{A numeric variable giving the observations for the second measure.}
 
 \item{dataset}{The data frame containing the variables.}
+
+\item{CI.level}{The confidence level of the interval}
 
 \item{CIs}{The method of calculating confidence intervals.}
 

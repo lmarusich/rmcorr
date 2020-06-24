@@ -173,7 +173,7 @@ example.rmc <- rmcorr(sub,newX,newY,exampleMat)
 
 mypal <- colorRampPalette(RColorBrewer::brewer.pal(10,'Paired'))
 
-plot(example.rmc, exampleMat, xlab = "x", ylab = "", 
+plot(example.rmc, xlab = "x", ylab = "", 
      overall = F, palette = mypal, xlim = c(-3.5, 1), ylim = c(-2.5,2), las = 1)
 text(-3.5,1.75,paste('rmcorr =', round(example.rmc$r,2),'\np < 0.001'), adj = 0)
 mtext(side = 2, "y", las = 1, line = 2.5, cex = 1.2)
@@ -182,7 +182,7 @@ mtext(side = 2, "y", las = 1, line = 2.5, cex = 1.2)
 exampleMat2 <- exampleMat
 exampleMat2$newX <- exampleMat2$newX * .5 + 1
 example2.rmc <- rmcorr(sub, newX, newY, exampleMat2)
-plot(example2.rmc, exampleMat2, xlab = "x", ylab = "", overall = F,
+plot(example2.rmc, xlab = "x", ylab = "", overall = F,
      palette = mypal, xlim = c(-3.5, 1), ylim = c(-2.5,2), las = 1)
 text(-3.5,1.75,paste('rmcorr =', round(example2.rmc$r,2),'\np < 0.001'), adj = 0)
 mtext(side = 2, "y", las = 1, line = 2.5, cex = 1.2)
@@ -191,7 +191,7 @@ mtext(side = 2, "y", las = 1, line = 2.5, cex = 1.2)
 exampleMat3 <- exampleMat
 exampleMat3$newY[11:15] <- exampleMat3$newY[11:15] - 2
 example3.rmc <- rmcorr(sub, newX, newY, exampleMat3)
-plot(example3.rmc, exampleMat3, xlab = "x", ylab = "", overall = F,
+plot(example3.rmc, xlab = "x", ylab = "", overall = F,
      palette = mypal, xlim = c(-3.5, 1), ylim = c(-2.5,2), las = 1)
 text(-3.5,1.75,paste('rmcorr =', round(example3.rmc$r,2),'\np < 0.001'), adj = 0)
 mtext(side = 2, "y", las = 1, line = 2.5, cex = 1.2)
@@ -349,7 +349,7 @@ mtext(side = 2, expression(Cerebellar~Hemisphere~Volume~(cm^{3})), cex = .7,
 par(mar = c(4,3,4,2))
 blueset <- brewer.pal(8, 'Blues')
 pal <- colorRampPalette(blueset)
-plot(brainvolage.rmc, raz2005, overall = F, palette = pal, ylab = "", xlab = "Age", 
+plot(brainvolage.rmc, overall = F, palette = pal, ylab = "", xlab = "Age", 
      cex = 1.2, xlim = c(15,85), ylim = c(105,170)) 
 axis.break(axis = 2, style = "slash")
 text(20,107,paste('rmcorr =', round(brainvolage.rmc$r,2),'\np < 0.001'), adj = 0)
