@@ -1,6 +1,6 @@
 Package: rmcorr
 Title: Repeated Measures Correlation
-Version: 0.3.1
+Version: 0.4.0
 Author: Jonathan Z. Bakdash, Laura R. Marusich
 Maintainer: Laura R. Marusich <laura.m.cooper20.civ@mail.mil>
 Description: Compute the repeated measures correlation, a statistical technique
