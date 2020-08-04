@@ -48,6 +48,15 @@ Calculate the repeated measures correlation coefficient.
 ## Bland Altman 1995 data
 rmcorr(Subject, PacO2, pH, bland1995)
 }
+\references{
+Bakdash, J.Z., & Marusich, L.R. (2017). 
+Repeated Measures Correlation. \emph{Frontiers in Psychology, 8}, 256. 
+\url{https://doi.org/10.3389/fpsyg.2017.00456}.
+
+Bland, J.M., & Altman, D.G. (1995). Calculating correlation 
+coefficients with repeated observations: Part 1 - correlation within
+subjects. \emph{BMJ, 310}, 446.
+}
 \seealso{
 \code{\link{plot.rmc}}
 }

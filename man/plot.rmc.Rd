@@ -37,7 +37,7 @@ measure2, ignoring the participant variable.}
 
 \item{overall.lty}{the line type of the overall regression line}
 
-\item{...}{additional arguments to \code{\link[graphics]{plot}}.}
+\item{...}{additional arguments to \code{\link[graphics:plot.default]{plot}}.}
 }
 \description{
 \code{plot.rmc}  produces a scatterplot of \code{measure1} on the x-axis and 

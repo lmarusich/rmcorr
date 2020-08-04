@@ -14,7 +14,7 @@
 #' @param overall.col the color of the overall regression line
 #' @param overall.lwd the line thickness of the overall regression line
 #' @param overall.lty the line type of the overall regression line
-#' @param ... additional arguments to \code{\link[graphics]{plot}}.
+#' @param ... additional arguments to \code{\link[graphics:plot.default]{plot}}.
 #' @seealso \code{\link{rmcorr}}
 #' @examples
 #' ## Bland Altman 1995 data

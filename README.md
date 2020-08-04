@@ -1,16 +1,21 @@
-[![Travis-CI Build Status](https://travis-ci.org/lmarusich/rmcorr.svg?branch=master)](https://https://travis-ci.org/lmarusich/rmcorr)
-[![](http://www.r-pkg.org/badges/version/rmcorr)](https://CRAN.R-project.org/package=rmcorr)
-[![](http://cranlogs.r-pkg.org/badges/grand-total/rmcorr)](https://CRAN.R-project.org/package=rmcorr)
-[![](http://cranlogs.r-pkg.org/badges/last-month/rmcorr)](https://CRAN.R-project.org/package=rmcorr)
-<!--[![Coverage Status]-->
+
+[![Build
+Status](https://travis-ci.org/lmarusich/rmcorr.svg?branch=master)](https://travis-ci.org/lmarusich/rmcorr)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/rmcorr)](https://cran.r-project.org/package=rmcorr)
+[![metacran
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmcorr)](https://cran.r-project.org/package=rmcorr)
+[![metacran
+downloads](https://cranlogs.r-pkg.org/badges/rmcorr)](https://cran.r-project.org/package=rmcorr)
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-rmcorr
-======
 
-Repeated measures correlation (rmcorr) is a statistical technique for determining the common within-individual association for paired measures assessed on two or more occasions for multiple individuals.
+# rmcorr
 
-Installation
-------------
+Repeated measures correlation (rmcorr) is a statistical technique for
+determining the common within-individual association for paired measures
+assessed on two or more occasions for multiple individuals.
+
+## Installation
 
 ``` r
 install.packages('rmcorr')
@@ -20,8 +25,7 @@ install.packages('rmcorr')
 devtools::install_github("lmarusich/rmcorr")
 ```
 
-Example
--------
+## Example
 
 ``` r
 
