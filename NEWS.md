@@ -1,3 +1,7 @@
+# rmcorr 0.4.1
+
+* Fixed error in last update for bootstrapped confidence intervals
+
 # rmcorr 0.4.0
 
 * Added argument for confidence level
