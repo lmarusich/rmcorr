@@ -101,19 +101,18 @@ rmcorr <- function(participant, measure1, measure2, dataset,
         nsubs <- length(levels(Participant))
         if (!is.numeric(nreps)){stop("Specify the number of bootstrap resamples to take")}
         cor.reps <- numeric(nreps)
-        
+
         for (i in 1:nreps){
-            bs.1 <- NULL
-            bs.2 <- NULL
+
+            split.by.sub <- split(newdat, newdat$Participant)
+            bs.df <- do.call(rbind,
+                             lapply(split.by.sub, 
+                                    function(x) x[sample(nrow(x), replace = T), ]))
+            bs.1 <- bs.df$Measure1
+            bs.2 <- bs.df$Measure2
+            bs.Part <- bs.df$Participant
             
-            for (j in 1:nsubs) {
-                subdata <- which(Participant==levels(Participant)[j])
-                resamp <- sample(subdata,length(subdata),replace=T)
-                bs.1 <- c(bs.1,Measure1[resamp])
-                bs.2 <- c(bs.2,Measure2[resamp])
-            }
             
-            bs.Part <- Participant
             repmodel<-stats::lm(bs.1 ~ bs.Part + bs.2)
             repslope <- stats::coef(repmodel)["bs.2"]
             errordf <- repmodel$df.residual
@@ -124,6 +123,7 @@ rmcorr <- function(participant, measure1, measure2, dataset,
             SSresidual<-type3rmcorr$RSS[1]
             
             cor.reps[i] <- as.numeric(repsign*sqrt(SSFactor/(SSFactor+SSresidual)))
+            
         }
         CI.limits <- c((1-CI.level)/2, (1-CI.level)/2 + CI.level)
         rmcorrvalueCI <- stats::quantile(cor.reps,probs=CI.limits)
