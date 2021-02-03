@@ -549,7 +549,7 @@ title("C)", adj = 0)
 dev.copy(pdf, file="plots/Figure6_Visual_Search.pdf", height = 9, width = 6)
 dev.off()
 
-## ---- echo = TRUE, warning = FALSE------------------------------------------------------
+## ---- echo = TRUE, warning = FALSE, fig.width = 6, fig.height = 6-----------------------
 brainvolage.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = Volume, dataset = raz2005)
 
 #Null multilevel model: Random intercept and fixed slope
@@ -605,7 +605,7 @@ ggplot(raz2005, aes(x = Age, y = Volume, group = Participant, color = Participan
 ggsave(file = "plots/AppendixC_Figure1.pdf", width = 5.70 , height = 5.73, dpi = 300)
 dev.off()
 
-## ---- echo = TRUE,  warning = FALSE-----------------------------------------------------
+## ---- echo = TRUE,  warning = FALSE, fig.width = 6, fig.height = 6----------------------
 vissearch.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset = gilden2010)
 
 null.vis <- lmer(acc ~ rt + (1 | sub), data = gilden2010, REML = FALSE)
@@ -672,7 +672,7 @@ ggplot(gilden2010, aes(x = rt, y = acc, group = sub, color = sub)) +
 #colored lines for Level 1 (participant) effects and the dashed black line for Level 2 (experiment)
 #effects. The shaded areas are 95% confidence intervals for Level 1 effects. Note the models
 #clearly overlap, despite the absence of confidence intervals for rmcorr. 
-ggsave(file = "plots/AppendixC_Figure2.pdf", width = 5.70 , height = 5.73, dpi = 300)
+ggsave(file = "plots/AppendixC_Figure2.pdf", width = 6.5 , height = 6.5, dpi = 300)
 
 
 #Estimating CIs: Convergence problems with model 1
