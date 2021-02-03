@@ -1,6 +1,7 @@
 # rmcorr 0.4.2
 
 * Fixed another error in bootstrapped confidence intervals
+* Updated vignette
 
 # rmcorr 0.4.1
 

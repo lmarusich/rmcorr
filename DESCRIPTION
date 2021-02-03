@@ -19,7 +19,7 @@ Imports:
     graphics,
     psych,
     RColorBrewer
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Encoding: UTF-8
-Suggests: knitr, rmarkdown, plotrix, ggplot2, lme4, merTools, pwr
+Suggests: knitr, rmarkdown, plotrix, ggplot2, lme4, merTools, pwr, pacman
 VignetteBuilder: knitr

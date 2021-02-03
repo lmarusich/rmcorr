@@ -2,16 +2,19 @@
 title: "Reproduce the results of Repeated Measures Correlation paper"
 author: "Jonathan Bakdash and Laura Marusich"
 date: "Sept 2, 2020"
-output:
-  html_document:
-    df_print: paged
-  pdf_document:
-    latex_engine: xelatex
-editor_options:
-  chunk_output_type: console
-chunk_output_type: console
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
@@ -25,9 +28,42 @@ workingdir <- getwd()
 
 dir.create(file.path(workingdir, "/plots"), showWarnings = F)
 
-source(paste0(workingdir, "/fcts/pvals.R"))
-source(paste0(workingdir, "/fcts/addalpha.R"))
-source(paste0(workingdir, "/fcts/colorRampPaletteAlpha.R"))
+pvals.fct <- function(input)
+{
+  input <- ifelse(input < 0.001, "< 0.001",
+                  ifelse(input < 0.01, "< 0.01",
+                         ifelse(input < 0.05 & input > 0.04, "< 0.05",
+                                ifelse(round(input, 2) == 1.00, "0.99",
+                                       sprintf("%.2f", round(input, 2)))
+                         )  
+                  )                   
+  )
+}
+
+
+addalpha <- function(colors, alpha=1.0) {
+  r <- col2rgb(colors, alpha=T)
+  # Apply alpha
+  r[4,] <- alpha*255
+  r <- r/255.0
+  return(rgb(r[1,], r[2,], r[3,], r[4,]))
+}
+
+colorRampPaletteAlpha <- function(colors, n = 32, interpolate='linear') {
+  # Create the color ramp normally
+  cr <- colorRampPalette(colors, interpolate=interpolate)(n)
+  # Find the alpha channel
+  a <- col2rgb(colors, alpha=T)[4,]
+  # Interpolate
+  if (interpolate=='linear') {
+    l <- approx(a, n=n)
+  } else {
+    l <- spline(a, n=n)
+  }
+  l$y[l$y > 255] <- 255 # Clamp if spline is > 255
+  cr <- addalpha(cr, l$y/255.0)
+  return(cr)
+}
 
 num.cpus <- parallel::detectCores(logical = T)
 options(boot.ncpus = num.cpus)
@@ -38,7 +74,7 @@ getOption("boot.ncpus", 1L)
 sessionInfo()
 ```
 
-## 1. Figure 1: rmcorr and reg plot
+###1. Figure 1: rmcorr and reg plot
 ```{r, fig.height = 6, fig.width = 8}
 # echo = FALSE, warning = FALSE, results =  "hide",
 set.seed(1)
@@ -110,7 +146,7 @@ dev.copy(pdf, file="plots/Figure1_Rmcorr_vs_reg.pdf", height = 6, width = 8)
 dev.off()
 ```
 
-## 2. Figure 2: rmcorr vs OLS reg
+###2. Figure 2: rmcorr vs OLS reg
 ```{r, fig.height = 8, fig.width = 8}
 par(mfrow = c(3,3), mar = c(1,1,.5,.5), mgp = c(2.5,.75,0), 
     oma = c(4,4,4,0), cex = 1.1)
@@ -186,7 +222,7 @@ dev.copy(pdf, file="plots/Figure2_Rmcorr_vs_OLS.pdf", height = 8, width = 8)
 dev.off()
 ```
 
-## 3. Figure 3: rmcorr w/data transformations
+###3. Figure 3: rmcorr w/data transformations
 ```{r, fig.height = 6, fig.width = 12}
 set.seed(10)
 initX <- rnorm(15)
@@ -266,7 +302,7 @@ dev.copy(pdf, file="plots/Figure3_Transformations.pdf", height = 6, width = 12)
 dev.off()
 ```
 
-## 4. Figure 4: Power curves 
+###4. Figure 4: Power curves 
 ```{r, fig.height = 6, fig.width = 6}
 power.rmcorr<-function(k, N, effectsizer, sig)
 {
@@ -366,8 +402,8 @@ dev.copy(pdf, file="plots/Figure4_Power_curve.pdf", height = 6, width = 6)
 dev.off()
 ```
 
-## 5. Brain volume and age rmcorr and simple reg/cor results and Figure 5
-### rmcorr and simple reg results 
+###5. Brain volume and age rmcorr and simple reg/cor results and Figure 5
+#### rmcorr and simple reg results 
 ```{r, fig.width = 9, fig.height = 6}
 #Note for details on Raz: Data captured from Figure 8, Cerebellar Hemispheres (lower right)
 #a) Reproduce correlations in the paper: Cross-sectional (correlation at Time 1)
@@ -385,7 +421,7 @@ summary.a2.lm <- summary(a2.lm)
 a1.lm.r <- sprintf("%.2f", round(a1.rtest$estimate, 2)) #Same as Pearson correlation for simple regression
 a1.lm.p <- pvals.fct(summary.a1.lm$coefficients[2,4])
 
-a2.lm.r <- sprintf("%.2f", round(a1.rtest$estimate ,2)) #Same as Pearson correlation for simple regression
+a2.lm.r <- sprintf("%.2f", round(a2.rtest$estimate ,2)) #Same as Pearson correlation for simple regression
 a2.lm.p <- pvals.fct(summary.a2.lm$coefficients[2,4])
 
 #b) rmcorr analysis
@@ -478,8 +514,8 @@ dev.copy(pdf, file="plots/Figure5_Volume_Age.pdf", height = 6, width = 6)
 dev.off()
 ```
 
-## 6. Visual search rmcorr and simple reg/cor results and Figure 6
-### rmcorr and simple reg results
+###6. Visual search rmcorr and simple reg/cor results and Figure 6
+#### rmcorr and simple reg results
 ```{r, fig.width = 9, fig.height = 6}
 #a - rmcorr
 vissearch.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset = gilden2010)
@@ -540,7 +576,7 @@ dev.copy(pdf, file="plots/Figure6_Visual_Search.pdf", height = 9, width = 6)
 dev.off()
 ```
 
-## Appendix C
+##Appendix C
 1. Rmcorr and multilevel model with Raz et al. 2005 data 
 ```{r, echo = TRUE, warning = FALSE}
 brainvolage.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = Volume, dataset = raz2005)
@@ -679,36 +715,7 @@ ggsave(file = "plots/AppendixC_Figure2.pdf", width = 5.70 , height = 5.73, dpi =
   warnings()
 ```
 
-## ggplot example (not in paper)
-```{r, fig.height = 6, fig.width = 6}
-## Bland Altman 1995 data
-my.rmc <- rmcorr(participant = Subject, measure1 = PacO2, measure2 = pH, dataset = bland1995)
-plot(my.rmc, overall = TRUE)
-
-N.subs <- length(unique(bland1995$Subject))
-
-#using ggplot instead
-    #Different than the example in package doc
-    #Changed factor(Subject) to just (Subject) to use a custom palette
-ggplot(bland1995, aes(x = PacO2, y = pH, group = (Subject),
-      color = (Subject))) +
-      theme_minimal + theme(plot.title = element_text(hjust = 0.5)) +
-      geom_line(aes(y = my.rmc$model$fitted.values), linetype = 1)  +
-      labs(title = "Rmcorr and Bland & Altman (1995) Data", 
-           x = "PacO2", 
-           y = "pH") +
-      geom_point(aes(colour = (Subject))) +
-      scale_colour_gradientn(colours=tol(N.subs)) 
-        #N.Subs is only need with discrete palettes (e.g., kelley, stepped)
-        #   Note discrete palettes will only work for a smaller N
-        #Not need with coolwarm, viridis, etc
-        #See: https://cran.r-project.org/web/packages/pals/vignettes/pals_examples.html
-
-ggsave(file = "plots/Figure_rmcorr_ggplot.pdf", width = 5.70 , height = 5.73, dpi = 300)
-dev.off()
-```
-
-## Diagnostic Plot: Rmcorr and straight lines between points (not in paper)
+###Diagnostic Plot: Rmcorr and straight lines between points (not in paper)
 ```{r, fig.height = 6, fig.width = 6}
 brainvolage.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = Volume, dataset = raz2005)
 print(brainvolage.rmc)
@@ -727,7 +734,7 @@ theme_minimal =  theme_bw() +
 ggplot(raz2005, aes(x = Age, y = Volume, group = Participant, color = Participant)) +
   geom_line(aes(y = brainvolage.rmc$model$fitted.values), linetype = 1) + 
   theme_minimal + 
-  labs(title = "Rmcorr and Diagnostic Lines:\n Raz et al. (2005) Data", x = "Age", 
+  labs(title = "Rmcorr and Diagnostic Lines:\n Raz et al. 2005 Data", x = "Age", 
        y = expression(Cerebellar~Hemisphere~Volume~(cm^{3}))) +
   geom_point(aes(colour = Participant)) +
   scale_colour_gradientn(colours=kelly(22)) + theme(plot.title = element_text(hjust = 0.5)) + geom_line(linetype = 3)
