@@ -5,5 +5,4 @@
 ^README\.Rmd$
 ^README-.*\.png$
 ^CRAN-RELEASE$
-^doc$
-^Meta$
+^old$
