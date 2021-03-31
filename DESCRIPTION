@@ -21,5 +21,5 @@ Imports:
     RColorBrewer
 RoxygenNote: 7.1.1
 Encoding: UTF-8
-Suggests: knitr, rmarkdown, plotrix, ggplot2, lme4, merTools, pwr, pacman
+Suggests: knitr, rmarkdown, plotrix, ggplot2, lme4, merTools, pwr, AICcmodavg, pals
 VignetteBuilder: knitr
