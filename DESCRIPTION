@@ -2,7 +2,7 @@ Package: rmcorr
 Title: Repeated Measures Correlation
 Version: 0.4.3
 Author: Jonathan Z. Bakdash, Laura R. Marusich
-Maintainer: Laura R. Marusich <laura.m.cooper20.civ@mail.mil>
+Maintainer: Laura R. Marusich <lmarusich@gmail.com>
 Description: Compute the repeated measures correlation, a statistical technique
     for determining the overall within-individual relationship among paired measures
     assessed on two or more occasions, first introduced by Bland and Altman (1995).

@@ -1,6 +1,4 @@
-We received a message about problems with Version 0.4.2 - we have
-rewritten the vignette so that it no longer installs packages or 
-writes files to the user's working directory
+Submitting a change in the maintainer's email address
 
 ## Test environments
 * local Windows install, R 4.0.4
