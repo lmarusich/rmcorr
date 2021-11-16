@@ -39,6 +39,7 @@ rmcorr <- function(participant, measure1, measure2, dataset,
     options(contrasts = c("contr.sum", "contr.poly"))
     
     args <- as.list(match.call())
+    args <- lapply(args, as.character)
     
     Participant <- eval(args$participant, dataset, parent.frame())
     if (class(Participant) == "character"){
