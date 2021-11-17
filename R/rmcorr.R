@@ -45,11 +45,11 @@ rmcorr <- function(participant, measure1, measure2, dataset,
         Participant <- get(Participant, dataset)
     }
     Measure1 <- eval(args$measure1, dataset, parent.frame())
-    if (class(Measure1) == "character"){
+    if ((class(Measure1) == "character")&(length(Measure1) == 1)){
         Measure1 <- get(Measure1, dataset)
     }
     Measure2 <- eval(args$measure2, dataset, parent.frame())
-    if (class(Measure2) == "character"){
+    if ((class(Measure2) == "character")&(length(Measure2) == 1)){
         Measure2 <- get(Measure2, dataset)
     }
     
