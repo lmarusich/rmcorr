@@ -1,3 +1,12 @@
+# rmcorr 0.4.5
+
+* Fix issue in column names
+* Add testing
+
+# rmcorr 0.4.4
+
+* Just changing maintainer email address
+
 # rmcorr 0.4.3
 
 * Updated vignette
