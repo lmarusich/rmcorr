@@ -22,10 +22,12 @@
 #' plot(my.rmc, overall = TRUE)
 #' 
 #' #using ggplot instead
-#' ggplot2::ggplot(bland1995, ggplot2::aes(x = PacO2, y = pH, group = factor(Subject),
+#' if (requireNamespace("ggplot2", quietly = TRUE)){
+#'  ggplot2::ggplot(bland1995, ggplot2::aes(x = PacO2, y = pH, group = factor(Subject),
 #'       color = factor(Subject))) +
 #'       ggplot2::geom_point(ggplot2::aes(colour = factor(Subject))) +
-#'       ggplot2::geom_line(ggplot2::aes(y = my.rmc$model$fitted.values), linetype = 1) 
+#'       ggplot2::geom_line(ggplot2::aes(y = my.rmc$model$fitted.values), linetype = 1)
+#' }
 #' 
 #' 
 #' ## Raz et al. 2005 data

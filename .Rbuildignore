@@ -6,3 +6,5 @@
 ^README-.*\.png$
 ^CRAN-RELEASE$
 ^old$
+^CRAN-SUBMISSION$
+^.Renviron

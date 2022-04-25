@@ -34,4 +34,5 @@ inst/doc
 .Rproj.user
 .Rproj.user/shared/notebooks/paths
 old
+.Renviron
 

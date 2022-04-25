@@ -1,3 +1,7 @@
+# rmcorr 0.4.6
+
+* use packages in 'suggest' conditionally
+
 # rmcorr 0.4.5
 
 * Fix issue in column names
