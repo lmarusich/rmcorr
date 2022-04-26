@@ -1,6 +1,6 @@
 # rmcorr 0.4.6
 
-* use packages in 'suggest' conditionally
+* use packages in 'suggests' conditionally
 
 # rmcorr 0.4.5
 
