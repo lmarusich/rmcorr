@@ -8,3 +8,5 @@
 ^old$
 ^CRAN-SUBMISSION$
 ^.Renviron$
+^doc$
+^Meta$

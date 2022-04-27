@@ -665,9 +665,11 @@ anova(null.vis, model1.vis)
 Models.vis<-list()
 Models.vis<-c(null.vis, model1.vis)
 
-ModelTable2<-aictab(Models.vis, modnames = c("null", "Model 1"))
-ModelTable2
-evidence(ModelTable2)
+if (requireNamespace("AICcmodavg", quietly = TRUE)){
+  ModelTable2<-aictab(Models.vis, modnames = c("null", "Model 1"))
+  ModelTable2
+  evidence(ModelTable2)
+}
 
 #Estimating and graphing null model 
 #Parameter Confidence Intervals
