@@ -1,0 +1,7 @@
+pandoc: 2.17.1.1
+pkgdown: 2.0.3
+pkgdown_sha: ~
+articles:
+  New_rmcorr_paper_analyses_figures: New_rmcorr_paper_analyses_figures.html
+last_built: 2022-05-05T20:14Z
+
