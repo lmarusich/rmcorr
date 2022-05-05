@@ -15,7 +15,7 @@ A data frame with 44 rows and 4 variables
 }
 \source{
 Gilden, D.L., Thornton, T.L., & Marusich, L.R. (2010). The serial
-process in visual search. \emph{Journal of Experimental Psychology: Human 
+process in visual search. \emph{Journal of Experimental Psychology: Human
 Perception and Performance, 36}, 533-542.
 }
 \usage{

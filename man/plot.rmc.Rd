@@ -40,18 +40,18 @@ measure2, ignoring the participant variable.}
 \item{...}{additional arguments to \code{\link[graphics:plot.default]{plot}}.}
 }
 \description{
-\code{plot.rmc}  produces a scatterplot of \code{measure1} on the x-axis and 
+\code{plot.rmc}  produces a scatterplot of \code{measure1} on the x-axis and
 \code{measure2} on the y-axis, with a different color used for each subject.
 Parallel lines are fitted to each subject's data.
 }
 \examples{
 ## Bland Altman 1995 data
-my.rmc <- rmcorr(participant = Subject, measure1 = PacO2, measure2 = pH, dataset = bland1995)
+my.rmc <- rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, dataset = bland1995)
 plot(my.rmc, overall = TRUE)
 
 #using ggplot instead
 if (requireNamespace("ggplot2", quietly = TRUE)){
- ggplot2::ggplot(bland1995, ggplot2::aes(x = PacO2, y = pH, group = factor(Subject),
+ ggplot2::ggplot(bland1995, ggplot2::aes(x = PaCO2, y = pH, group = factor(Subject),
       color = factor(Subject))) +
       ggplot2::geom_point(ggplot2::aes(colour = factor(Subject))) +
       ggplot2::geom_line(ggplot2::aes(y = my.rmc$model$fitted.values), linetype = 1)
@@ -63,7 +63,7 @@ my.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = Volume, d
 library(RColorBrewer)
 blueset <- brewer.pal(8, 'Blues')
 pal <- colorRampPalette(blueset)
-plot(my.rmc, overall = TRUE, palette = pal, overall.col = 'black') 
+plot(my.rmc, overall = TRUE, palette = pal, overall.col = 'black')
 
 
 ## Gilden et al. 2010 data
