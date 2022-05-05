@@ -1,3 +1,8 @@
+# rmcorr 0.4.6.1
+
+* Fixed typo in Bland1995 example and data: PacO2 is now PaCO2 
+(partial pressure of CO2)
+
 # rmcorr 0.4.6
 
 * use packages in 'suggests' conditionally
