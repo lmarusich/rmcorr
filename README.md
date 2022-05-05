@@ -1,13 +1,15 @@
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# pkgdown <img src="man/figures/logo.png" align="right" />
+
 [![Build
 Status](https://travis-ci.org/lmarusich/rmcorr.svg?branch=master)](https://travis-ci.org/lmarusich/rmcorr)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/rmcorr)](https://cran.r-project.org/package=rmcorr)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/rmcorr)](https://cran.r-project.org/package=rmcorr)
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmcorr)](https://cran.r-project.org/package=rmcorr)
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/rmcorr)](https://cran.r-project.org/package=rmcorr)
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # rmcorr
 
@@ -28,10 +30,9 @@ devtools::install_github("lmarusich/rmcorr")
 ## Example
 
 ``` r
-
 library(rmcorr)
-rmcorr(Subject, PacO2, pH, bland1995)
-#> Warning in rmcorr(Subject, PacO2, pH, bland1995): 'Subject' coerced into a
+rmcorr(Subject, PaCO2, pH, bland1995)
+#> Warning in rmcorr(Subject, PaCO2, pH, bland1995): 'Subject' coerced into a
 #> factor
 #> 
 #> Repeated measures correlation
