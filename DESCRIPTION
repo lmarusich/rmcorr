@@ -2,11 +2,11 @@ Package: rmcorr
 Title: Repeated Measures Correlation
 Version: 0.4.6
 Authors@R: c(
-    person("Laura R.", "Marusich", email = "lmarusich@gmail.com", role = c("aut", "cre"),
-      comment = c(ORCID = "0000-0002-3524-6110")
-    ),
     person("Jonathan Z.", "Bakdash", role = "aut",
       comment = c(ORCID = "0000-0002-1409-4779")
+    ),
+    person("Laura R.", "Marusich", email = "lmarusich@gmail.com", role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0002-3524-6110")
     )
   )
 Description: Compute the repeated measures correlation, a statistical technique
