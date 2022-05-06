@@ -7,9 +7,6 @@
 \description{
 \packageDescription{rmcorr}
 }
-\details{
-details
-}
 \references{
 Bakdash, J.Z., & Marusich, L.R. (2017). 
 Repeated Measures Correlation. \emph{Frontiers in Psychology, 8}, 256. 
