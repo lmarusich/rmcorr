@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.6.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.6</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,10 +72,9 @@
 <div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Reproduce the results of Repeated Measures Correlation paper</h1>
-                        <h4 data-toc-skip class="author">Jonathan
-Bakdash and Laura Marusich</h4>
+                        <h4 data-toc-skip class="author">Jonathan Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2022-05-05</h4>
+            <h4 data-toc-skip class="date">2022-05-06</h4>
       
       
       <div class="d-none name"><code>New_rmcorr_paper_analyses_figures.Rmd</code></div>
@@ -428,8 +427,7 @@ Bakdash and Laura Marusich</h4>
 <span class="co">#dev.off()</span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="brain-volume-and-age-rmcorr-and-simple-regcor-results-and-figure-5">5. Brain volume and age rmcorr and simple reg/cor results and Figure
-5<a class="anchor" aria-label="anchor" href="#brain-volume-and-age-rmcorr-and-simple-regcor-results-and-figure-5"></a>
+<h3 id="brain-volume-and-age-rmcorr-and-simple-regcor-results-and-figure-5">5. Brain volume and age rmcorr and simple reg/cor results and Figure 5<a class="anchor" aria-label="anchor" href="#brain-volume-and-age-rmcorr-and-simple-regcor-results-and-figure-5"></a>
 </h3>
 <div class="section level4">
 <h4 id="rmcorr-and-simple-reg-results">rmcorr and simple reg results<a class="anchor" aria-label="anchor" href="#rmcorr-and-simple-reg-results"></a>
@@ -803,7 +801,7 @@ Bakdash and Laura Marusich</h4>
 
 <span class="co">#Model 1: Random intercept + random slope for RT</span>
 <span class="va">model1.vis</span> <span class="op">&lt;-</span> <span class="fu">lmer</span><span class="op">(</span><span class="va">acc</span> <span class="op">~</span> <span class="va">rt</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">rt</span> <span class="op">|</span> <span class="va">sub</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">gilden2010</span>, REML <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; boundary (singular) fit: see help('isSingular')</span>
+<span class="co">#&gt; boundary (singular) fit: see ?isSingular</span>
 
 <span class="co">#Model Comparison</span>
 <span class="co">#a) Chi-Square</span>
@@ -948,8 +946,7 @@ Bakdash and Laura Marusich</h4>
 <span class="co">#&gt; 44 0.9756523 1.0049782 0.9452859</span>
   <span class="fu"><a href="https://rdrr.io/r/base/warnings.html" class="external-link">warnings</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="section level3">
-<h3 id="diagnostic-plot-rmcorr-and-straight-lines-between-points-not-in-paper">Diagnostic Plot: Rmcorr and straight lines between points (not in
-paper)<a class="anchor" aria-label="anchor" href="#diagnostic-plot-rmcorr-and-straight-lines-between-points-not-in-paper"></a>
+<h3 id="diagnostic-plot-rmcorr-and-straight-lines-between-points-not-in-paper">Diagnostic Plot: Rmcorr and straight lines between points (not in paper)<a class="anchor" aria-label="anchor" href="#diagnostic-plot-rmcorr-and-straight-lines-between-points-not-in-paper"></a>
 </h3>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">brainvolage.rmc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr.html">rmcorr</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">Participant</span>, measure1 <span class="op">=</span> <span class="va">Age</span>, measure2 <span class="op">=</span> <span class="va">Volume</span>, dataset <span class="op">=</span> <span class="va">raz2005</span><span class="op">)</span>
@@ -1005,7 +1002,7 @@ paper)<a class="anchor" aria-label="anchor" href="#diagnostic-plot-rmcorr-and-st
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Laura R. Marusich.</p>
+<p>Developed by Laura R. Marusich, Jonathan Z. Bakdash.</p>
 </div>
 
 <div class="pkgdown-footer-right">

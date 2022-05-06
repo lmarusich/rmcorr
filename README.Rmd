@@ -18,8 +18,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-
-# rmcorr
+# rmcorr <img src="man/figures/logo.png" align="right" />
 
 Repeated measures correlation (rmcorr) is a statistical technique for determining the common within-individual association for paired measures assessed on two or more occasions for multiple individuals.
 

@@ -1,8 +1,14 @@
 Package: rmcorr
 Title: Repeated Measures Correlation
 Version: 0.4.6
-Author: Jonathan Z. Bakdash, Laura R. Marusich
-Maintainer: Laura R. Marusich <lmarusich@gmail.com>
+Authors@R: c(
+    person("Laura R.", "Marusich", email = "lmarusich@gmail.com", role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0002-3524-6110")
+    ),
+    person("Jonathan Z.", "Bakdash", role = "aut",
+      comment = c(ORCID = "0000-0002-1409-4779")
+    )
+  )
 Description: Compute the repeated measures correlation, a statistical technique
     for determining the overall within-individual relationship among paired measures
     assessed on two or more occasions, first introduced by Bland and Altman (1995).
@@ -34,3 +40,4 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Config/testthat/edition: 3
+URL: http://lmarusich.github.io/rmcorr
