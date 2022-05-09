@@ -28,6 +28,7 @@ install.packages('rmcorr')
 #development version:
 # install.packages("devtools")
 devtools::install_github("lmarusich/rmcorr")
+
 ```
 
 ## Example
@@ -35,4 +36,13 @@ devtools::install_github("lmarusich/rmcorr")
 ```{r example}
 library(rmcorr)
 rmcorr(Subject, PaCO2, pH, bland1995)
+
 ```
+
+## Graphical user interface for rmcorr
+
+A Shiny web and standalone app with a graphical user interface is also available: 
+<br>
+<a href="https://lmarusich.shinyapps.io/shiny_rmcorr/">Web app</a> 
+<br>
+<a href=https://github.com/lmarusich/rmcorrShiny">Standalone app </a>

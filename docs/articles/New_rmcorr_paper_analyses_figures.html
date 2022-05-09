@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.6.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.7</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +48,7 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a>
     <a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce the results of Repeated Measures Correlation paper</a>
   </div>
 </li>
@@ -75,7 +76,7 @@
                         <h4 data-toc-skip class="author">Jonathan
 Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2022-05-06</h4>
+            <h4 data-toc-skip class="date">2022-05-09</h4>
       
       
       <div class="d-none name"><code>New_rmcorr_paper_analyses_figures.Rmd</code></div>
@@ -456,8 +457,8 @@ Bakdash and Laura Marusich</h4>
 
 <span class="co">#b) rmcorr analysis</span>
 <span class="va">brainvolage.rmc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr.html">rmcorr</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">Participant</span>, measure1 <span class="op">=</span> <span class="va">Age</span>, measure2 <span class="op">=</span> <span class="va">Volume</span>, dataset <span class="op">=</span> <span class="va">raz2005</span><span class="op">)</span>
-<span class="co">#&gt; Warning in rmcorr(participant = Participant, measure1 = Age, measure2 = Volume, :</span>
-<span class="co">#&gt; 'Participant' coerced into a factor</span>
+<span class="co">#&gt; Warning in rmcorr(participant = Participant, measure1 = Age, measure2 =</span>
+<span class="co">#&gt; Volume, : 'Participant' coerced into a factor</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">brainvolage.rmc</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Repeated measures correlation</span>
@@ -600,8 +601,8 @@ Bakdash and Laura Marusich</h4>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#a - rmcorr</span>
 <span class="va">vissearch.rmc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr.html">rmcorr</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">sub</span>, measure1 <span class="op">=</span> <span class="va">rt</span>, measure2 <span class="op">=</span> <span class="va">acc</span>, dataset <span class="op">=</span> <span class="va">gilden2010</span><span class="op">)</span>
-<span class="co">#&gt; Warning in rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset = gilden2010):</span>
-<span class="co">#&gt; 'sub' coerced into a factor</span>
+<span class="co">#&gt; Warning in rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset =</span>
+<span class="co">#&gt; gilden2010): 'sub' coerced into a factor</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">vissearch.rmc</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Repeated measures correlation</span>
@@ -953,8 +954,8 @@ paper)<a class="anchor" aria-label="anchor" href="#diagnostic-plot-rmcorr-and-st
 </h3>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">brainvolage.rmc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr.html">rmcorr</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">Participant</span>, measure1 <span class="op">=</span> <span class="va">Age</span>, measure2 <span class="op">=</span> <span class="va">Volume</span>, dataset <span class="op">=</span> <span class="va">raz2005</span><span class="op">)</span>
-<span class="co">#&gt; Warning in rmcorr(participant = Participant, measure1 = Age, measure2 = Volume, :</span>
-<span class="co">#&gt; 'Participant' coerced into a factor</span>
+<span class="co">#&gt; Warning in rmcorr(participant = Participant, measure1 = Age, measure2 =</span>
+<span class="co">#&gt; Volume, : 'Participant' coerced into a factor</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">brainvolage.rmc</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Repeated measures correlation</span>
@@ -1005,7 +1006,7 @@ paper)<a class="anchor" aria-label="anchor" href="#diagnostic-plot-rmcorr-and-st
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Laura R. Marusich.</p>
+<p>Developed by Jonathan Z. Bakdash, Laura R. Marusich.</p>
 </div>
 
 <div class="pkgdown-footer-right">

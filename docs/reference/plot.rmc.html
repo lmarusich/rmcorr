@@ -14,7 +14,7 @@ Parallel lines are fitted to each subject's data."><meta property="og:image" con
     
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.6.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.7</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,6 +28,7 @@ Parallel lines are fitted to each subject's data."><meta property="og:image" con
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a>
     <a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce the results of Repeated Measures Correlation paper</a>
   </div>
 </li>
@@ -104,23 +105,26 @@ measure2, ignoring the participant variable.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Bland Altman 1995 data</span></span>
-<span class="r-in"><span class="va">my.rmc</span> <span class="op">&lt;-</span> <span class="fu"><a href="rmcorr.html">rmcorr</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">Subject</span>, measure1 <span class="op">=</span> <span class="va">PaCO2</span>, measure2 <span class="op">=</span> <span class="va">pH</span>, dataset <span class="op">=</span> <span class="va">bland1995</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">my.rmc</span> <span class="op">&lt;-</span> <span class="fu"><a href="rmcorr.html">rmcorr</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">Subject</span>, measure1 <span class="op">=</span> <span class="va">PaCO2</span>, measure2 <span class="op">=</span> <span class="va">pH</span>, </span>
+<span class="r-in">                 dataset <span class="op">=</span> <span class="va">bland1995</span><span class="op">)</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>'Subject' coerced into a factor</span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my.rmc</span>, overall <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="plot.rmc-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">#using ggplot instead</span></span>
 <span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"ggplot2"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
-<span class="r-in"> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">bland1995</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PaCO2</span>, y <span class="op">=</span> <span class="va">pH</span>, group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Subject</span><span class="op">)</span>,</span>
-<span class="r-in">      color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Subject</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in"> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">bland1995</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PaCO2</span>, y <span class="op">=</span> <span class="va">pH</span>, </span>
+<span class="r-in">                 group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Subject</span><span class="op">)</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Subject</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span class="r-in">      <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Subject</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">      <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">my.rmc</span><span class="op">$</span><span class="va">model</span><span class="op">$</span><span class="va">fitted.values</span><span class="op">)</span>, linetype <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span class="r-in">      <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">my.rmc</span><span class="op">$</span><span class="va">model</span><span class="op">$</span><span class="va">fitted.values</span><span class="op">)</span>, </span>
+<span class="r-in">      linetype <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-plt img"><img src="plot.rmc-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">## Raz et al. 2005 data</span></span>
-<span class="r-in"><span class="va">my.rmc</span> <span class="op">&lt;-</span> <span class="fu"><a href="rmcorr.html">rmcorr</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">Participant</span>, measure1 <span class="op">=</span> <span class="va">Age</span>, measure2 <span class="op">=</span> <span class="va">Volume</span>, dataset <span class="op">=</span> <span class="va">raz2005</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">my.rmc</span> <span class="op">&lt;-</span> <span class="fu"><a href="rmcorr.html">rmcorr</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">Participant</span>, measure1 <span class="op">=</span> <span class="va">Age</span>, measure2 <span class="op">=</span> </span>
+<span class="r-in">                 <span class="va">Volume</span>, dataset <span class="op">=</span> <span class="va">raz2005</span><span class="op">)</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>'Participant' coerced into a factor</span>
 <span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>package 'RColorBrewer' was built under R version 4.1.3</span>
@@ -131,9 +135,11 @@ measure2, ignoring the participant variable.</p></dd>
 <span class="r-in"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co">## Gilden et al. 2010 data</span></span>
-<span class="r-in"><span class="va">my.rmc</span> <span class="op">&lt;-</span> <span class="fu"><a href="rmcorr.html">rmcorr</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">sub</span>, measure1 <span class="op">=</span> <span class="va">rt</span>, measure2 <span class="op">=</span> <span class="va">acc</span>, dataset <span class="op">=</span> <span class="va">gilden2010</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">my.rmc</span> <span class="op">&lt;-</span> <span class="fu"><a href="rmcorr.html">rmcorr</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">sub</span>, measure1 <span class="op">=</span> <span class="va">rt</span>, measure2 <span class="op">=</span> <span class="va">acc</span>, </span>
+<span class="r-in">                 dataset <span class="op">=</span> <span class="va">gilden2010</span><span class="op">)</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>'sub' coerced into a factor</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my.rmc</span>, overall <span class="op">=</span> <span class="cn">FALSE</span>, lty <span class="op">=</span> <span class="fl">2</span>, xlab <span class="op">=</span> <span class="st">"Reaction Time"</span>, ylab <span class="op">=</span> <span class="st">"Accuracy"</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">my.rmc</span>, overall <span class="op">=</span> <span class="cn">FALSE</span>, lty <span class="op">=</span> <span class="fl">2</span>, xlab <span class="op">=</span> <span class="st">"Reaction Time"</span>, </span>
+<span class="r-in">     ylab <span class="op">=</span> <span class="st">"Accuracy"</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="plot.rmc-4.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -142,7 +148,7 @@ measure2, ignoring the participant variable.</p></dd>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by Laura R. Marusich.</p>
+  <p></p><p>Developed by Jonathan Z. Bakdash, Laura R. Marusich.</p>
 </div>
 
 <div class="pkgdown-footer-right">

@@ -1,0 +1,67 @@
+---
+title: "Frequently Asked Questions and Limitations"
+author: "Jonathan Bakdash and Laura Marusich"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Frequently Asked Questions and Limitations}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
+options(width = 80)
+library("knitr", "rmarkdown", "rmcorr") #, "stats")
+require(knitr)
+require(rmarkdown)
+require(rmcorr)
+
+```
+
+Frequently asked questions about rmcorr. 
+
+## FAQ
+
+### Extracting the Slope and its Confidence Interval
+```{r}
+#rmcorr(Subject, PaCO2, pH, bland1995)
+
+ my.rmc <- rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, 
+                  dataset = bland1995)
+ 
+# Structure of rmcorr object
+  #str(my.rmc)
+ 
+# Extract rmcorr model coefficients
+  coef.rmc  <- my.rmc$model$coefficients
+  coef.rmc
+ 
+ slope.rmc <- coef.rmc[length(coef.rmc)] #Last value in coefficients is the slope
+ slope.rmc
+ 
+# Confidence intervals around all estimates
+  coef.CIs <- stats::confint(my.rmc$model) 
+  coefs.all <- cbind(coef.rmc, coef.CIs)
+  coefs.all
+```
+
+## Limitations 
+
+### Varying Slopes
+If slopes meaningfully vary by individual, we recommend using multilevel modeling.
+Random effect slopes are even more \emph{problematic} for rmcorr with influential observations
+and/or highly unbalanced data. All of the above is nicely illustrated by Dr. Martas Karass: 
+<br>
+<a href="https://martakarass.github.io/post/2022-04-27-rmcorr_vs_lmm/">When rmcorr may not be ideal</a> 
+
+### Time 
+Rmcorr is a time-independent model (i.e., it does not model the change over time). The only partial
+exception is if time one of the dependent measures, such as age in the raz2005 dataset.

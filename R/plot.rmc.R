@@ -18,20 +18,23 @@
 #' @seealso \code{\link{rmcorr}}
 #' @examples
 #' ## Bland Altman 1995 data
-#' my.rmc <- rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, dataset = bland1995)
+#' my.rmc <- rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, 
+#'                  dataset = bland1995)
 #' plot(my.rmc, overall = TRUE)
 #'
 #' #using ggplot instead
 #' if (requireNamespace("ggplot2", quietly = TRUE)){
-#'  ggplot2::ggplot(bland1995, ggplot2::aes(x = PaCO2, y = pH, group = factor(Subject),
-#'       color = factor(Subject))) +
+#'  ggplot2::ggplot(bland1995, ggplot2::aes(x = PaCO2, y = pH, 
+#'                  group = factor(Subject), color = factor(Subject))) +
 #'       ggplot2::geom_point(ggplot2::aes(colour = factor(Subject))) +
-#'       ggplot2::geom_line(ggplot2::aes(y = my.rmc$model$fitted.values), linetype = 1)
+#'       ggplot2::geom_line(ggplot2::aes(y = my.rmc$model$fitted.values), 
+#'       linetype = 1)
 #' }
 #'
 #'
 #' ## Raz et al. 2005 data
-#' my.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = Volume, dataset = raz2005)
+#' my.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = 
+#'                  Volume, dataset = raz2005)
 #' library(RColorBrewer)
 #' blueset <- brewer.pal(8, 'Blues')
 #' pal <- colorRampPalette(blueset)
@@ -39,8 +42,10 @@
 #'
 #'
 #' ## Gilden et al. 2010 data
-#' my.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset = gilden2010)
-#' plot(my.rmc, overall = FALSE, lty = 2, xlab = "Reaction Time", ylab = "Accuracy")
+#' my.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc, 
+#'                  dataset = gilden2010)
+#' plot(my.rmc, overall = FALSE, lty = 2, xlab = "Reaction Time", 
+#'      ylab = "Accuracy")
 #' @export
 
 
@@ -76,7 +81,8 @@ plot.rmc <-function(x, dataset = NULL, overall = F, palette = NULL, xlab = NULL,
         palette <- grDevices::colorRampPalette(set1)
     }
     colors <- palette(length(levels(subs)))
-    graphics::plot(m1, m2, pch=16, col = colors[subs], xlab=xlab, ylab = ylab, ...)
+    graphics::plot(m1, m2, pch=16, col = colors[subs], xlab=xlab, 
+                   ylab = ylab, ...)
 
     nsubs <- length(levels(subs))
 
@@ -88,7 +94,7 @@ plot.rmc <-function(x, dataset = NULL, overall = F, palette = NULL, xlab = NULL,
     }
 
     if (overall) {
-        graphics::abline(stats::lm(m2 ~ m1), col = overall.col, lwd = overall.lwd,
-               lty = overall.lty)
+        graphics::abline(stats::lm(m2 ~ m1), col = overall.col, 
+                         lwd = overall.lwd, lty = overall.lty)
     }
 }

@@ -1,7 +1,7 @@
-# rmcorr 0.4.6.1
+# rmcorr 0.4.7
 
-* Fixed typo in Bland1995 example and data: PacO2 is now PaCO2 
-(partial pressure of CO2)
+* Add marusich2016 data and description 
+* Documentation: Add details to bland1995 data and add DOIs to all data references 
 
 # rmcorr 0.4.6
 

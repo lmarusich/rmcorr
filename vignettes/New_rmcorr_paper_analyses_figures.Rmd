@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
-options(width = 90)
+options(width = 80)
 library("knitr", "rmarkdown")
 
 #if (!require("pacman")) install.packages("pacman")
