@@ -48,9 +48,11 @@ rmcorr(Subject, PaCO2, pH, bland1995)
 #> -0.7112297 -0.223255
 ```
 
-## Graphical user interface for rmcorr
+## Graphical Interface for rmcorr
 
 A Shiny web and standalone app with a graphical user interface is also
 available: <br>
 <a href="https://lmarusich.shinyapps.io/shiny_rmcorr/">Web app</a> <br>
-<a href=https://github.com/lmarusich/rmcorrShiny">Standalone app </a>
+<a href="https://github.com/lmarusich/rmcorrShiny">Standalone app</a>
+
+<img src="man/figures/rmcorr_example_input_plot.jpg" width="80%" />
