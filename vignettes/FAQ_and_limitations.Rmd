@@ -79,7 +79,7 @@ exception is if time is a measure, such as age in the raz2005 dataset.
 ### Varying Slopes with Influential Observations and/or Unbalanced Data 
 If slopes meaningfully vary by individual, we recommend using multilevel modeling.
 Random effect slopes are even more \emph{problematic} for rmcorr with influential observations
-and/or highly unbalanced data. This is nicely illustrated in simulations by Dr. Martas Karass: 
+and/or highly unbalanced data. This is nicely illustrated in simulations by Dr. Marta Karas: 
 <br>
 <a href="https://martakarass.github.io/post/2022-04-27-rmcorr_vs_lmm/">When rmcorr may not be ideal</a> 
 
