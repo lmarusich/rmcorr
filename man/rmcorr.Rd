@@ -46,7 +46,7 @@ Calculate the repeated measures correlation coefficient.
 }
 \examples{
 ## Bland Altman 1995 data
-rmcorr(Subject, PacO2, pH, bland1995)
+rmcorr(Subject, PaCO2, pH, bland1995)
 }
 \references{
 Bakdash, J.Z., & Marusich, L.R. (2017). 

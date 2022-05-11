@@ -1,10 +1,10 @@
 ---
-title: "Reproduce the results of Repeated Measures Correlation paper"
+title: "Reproduce the Results of Repeated Measures Correlation paper"
 author: "Jonathan Bakdash and Laura Marusich"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Reproduce the results of Repeated Measures Correlation paper}
+  %\VignetteIndexEntry{Reproduce the Results of Repeated Measures Correlation paper}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
-options(width = 90)
+options(width = 80)
 library("knitr", "rmarkdown")
 
 #if (!require("pacman")) install.packages("pacman")

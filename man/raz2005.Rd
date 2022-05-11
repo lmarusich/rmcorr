@@ -8,17 +8,18 @@
 A data frame with 144 rows and 4 variables
 \tabular{lll}{
 \code{[, 1]} \tab \code{Participant} \tab {Participant ID} \cr
-\code{[, 2]} \tab \code{Time} \tab {Measurement time} \cr
-\code{[, 3]} \tab \code{Age} \tab {Participant's age (years)} \cr
-\code{[, 4]} \tab \code{Volume} \tab {Adjusted volume of cerebellar 
-hemispheres (cm^3)} \cr
+\code{[, 2]} \tab \code{Time}        \tab {Measurement time} \cr
+\code{[, 3]} \tab \code{Age}         \tab {Participant's age (years)} \cr
+\code{[, 4]} \tab \code{Volume}      \tab {Adjusted volume of cerebellar
+                                           hemispheres (cm^3)} \cr
 }
 }
 \source{
-Raz, N., Lindenberger, U., Rodrigue, K.M., Kennedy, K.M., Head, D., 
+Raz, N., Lindenberger, U., Rodrigue, K.M., Kennedy, K.M., Head, D.,
 Williamson, A., Dahle, C., Gerstorf, D., & Acker, J.D. (2005). Regional brain
- changes in aging healthy adults: General trends, individual differences, and
-modifiers. \emph{Cerebral Cortex, 15}, 1676-1689.
+changes in aging healthy adults: General trends, individual differences, and
+modifiers. \emph{Cerebral Cortex, 15}, 1676-1689, 
+\doi{https://doi.org/10.1093/cercor/bhi044}
 }
 \usage{
 raz2005

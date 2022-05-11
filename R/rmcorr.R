@@ -25,7 +25,7 @@
 #' @seealso \code{\link{plot.rmc}}
 #' @examples
 #' ## Bland Altman 1995 data
-#' rmcorr(Subject, PacO2, pH, bland1995)
+#' rmcorr(Subject, PaCO2, pH, bland1995)
 #' @export
 
 rmcorr <- function(participant, measure1, measure2, dataset,
@@ -149,7 +149,7 @@ rmcorr <- function(participant, measure1, measure2, dataset,
 #' @seealso \code{\link{rmcorr}}
 #' @examples
 #' ## Bland Altman 1995 data
-#' blandrmc <- rmcorr(Subject, PacO2, pH, bland1995)
+#' blandrmc <- rmcorr(Subject, PaCO2, pH, bland1995)
 #' blandrmc
 #' @export
 

@@ -1,4 +1,6 @@
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 [![Build
 Status](https://travis-ci.org/lmarusich/rmcorr.svg?branch=master)](https://travis-ci.org/lmarusich/rmcorr)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/rmcorr)](https://cran.r-project.org/package=rmcorr)
@@ -6,8 +8,6 @@ Status](https://travis-ci.org/lmarusich/rmcorr.svg?branch=master)](https://travi
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmcorr)](https://cran.r-project.org/package=rmcorr)
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/rmcorr)](https://cran.r-project.org/package=rmcorr)
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # rmcorr <img src="man/figures/logo.png" align="right" />
 
@@ -29,8 +29,8 @@ devtools::install_github("lmarusich/rmcorr")
 
 ``` r
 library(rmcorr)
-rmcorr(Subject, PacO2, pH, bland1995)
-#> Warning in rmcorr(Subject, PacO2, pH, bland1995): 'Subject' coerced into a
+rmcorr(Subject, PaCO2, pH, bland1995)
+#> Warning in rmcorr(Subject, PaCO2, pH, bland1995): 'Subject' coerced into a
 #> factor
 #> 
 #> Repeated measures correlation
@@ -47,3 +47,12 @@ rmcorr(Subject, PacO2, pH, bland1995)
 #> 95% confidence interval
 #> -0.7112297 -0.223255
 ```
+
+## Graphical Interface for rmcorr
+
+A Shiny web and standalone app with a graphical user interface is also
+available: <br>
+<a href="https://lmarusich.shinyapps.io/shiny_rmcorr/">Web app</a> <br>
+<a href="https://github.com/lmarusich/rmcorrShiny">Standalone app</a>
+
+<img src="man/figures/rmcorr_example_input_plot.jpg" width="80%" />

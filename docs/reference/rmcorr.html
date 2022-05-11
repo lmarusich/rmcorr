@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.7</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,8 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce the results of Repeated Measures Correlation paper</a>
+    <a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a>
+    <a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce the Results of Repeated Measures Correlation paper</a>
   </div>
 </li>
 <li class="nav-item">
@@ -116,7 +117,7 @@ subjects. <em>BMJ, 310</em>, 446.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Bland Altman 1995 data</span></span>
-<span class="r-in"><span class="fu">rmcorr</span><span class="op">(</span><span class="va">Subject</span>, <span class="va">PacO2</span>, <span class="va">pH</span>, <span class="va">bland1995</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">rmcorr</span><span class="op">(</span><span class="va">Subject</span>, <span class="va">PaCO2</span>, <span class="va">pH</span>, <span class="va">bland1995</span><span class="op">)</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>'Subject' coerced into a factor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Repeated measures correlation</span>

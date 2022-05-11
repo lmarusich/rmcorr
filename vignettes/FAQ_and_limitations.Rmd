@@ -1,0 +1,85 @@
+---
+title: "Frequently Asked Questions and Limitations"
+author: "Jonathan Bakdash and Laura Marusich"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Frequently Asked Questions and Limitations}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
+options(width = 80)
+library("knitr", "rmarkdown", "rmcorr") #, "stats")
+require(knitr)
+require(rmarkdown)
+require(rmcorr)
+
+```
+## Frequently Asked Questions 
+
+### How to Calculate Power
+Power can be calculated using the \emph{power.rmcorr} function in the paper vignette. This function modifies pwr.r.test from the <a href="https://cran.r-project.org/web/packages/pwr/index.html">pwr</a> package to use the rmcorr degrees of freedom.
+<br> 
+
+For G\*Power or another package, power can be calculated by substituting the rmcorr degrees of freedom for a Pearson correlation. Instead of sample size, use the degrees of freedom for rmcorr plus two. This is because a Pearson correlation has *N* - 2 degrees of freedom.<br>
+<br>
+Rmcorr exact degrees of freedom: (*k* - 1) x (*N* - 1), where *k* is the number of repeated measures for each individual and *N* is the sample size.<br>
+
+#### Example 
+Example: *k* = 3 and *N* = 100.<br> 
+rmcorr df = (3 - 1) x (100 - 1) = 2 x 99 = 198.<br>
+Add two (kludge): 198 + 2 = 200.<br>
+Enter *N* = 200 as the effective sample size in G\*Power.<br>
+G\*Power will calculate the degrees of freedom as *N* - 2 = 200 - 2 = 198. Thus, using the correct degrees of freedom for rmcorr.<br>
+
+### How to Extract the Slope and its Confidence Interval
+```{r}
+my.rmc <- rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, 
+                  dataset = bland1995)
+ 
+# Structure of rmcorr object
+#str(my.rmc)
+ 
+# Extract rmcorr model coefficients
+coef.rmc  <- my.rmc$model$coefficients
+coef.rmc
+ 
+slope.rmc <- coef.rmc[length(coef.rmc)] #Last value in coefficients is the slope
+slope.rmc
+ 
+# Confidence intervals around all estimates
+coef.CIs <- stats::confint(my.rmc$model) 
+coefs.all <- cbind(coef.rmc, coef.CIs)
+coefs.all
+```
+
+### Transformations
+Transformations can be used to make the data (errors) more normal. We highly recommend graphing both the raw and transformed data.
+<br>
+It may be appropriate to only transform one measure or transform both measures. "Consider transforming every variable in sight" (Gelman \& Hill, 2017: *Data Analysis Using Regression and Multilevel/Hierarchical Models*, ISBN: 9780521686891, p. 548).  
+<br>
+
+## Limitations 
+
+### Change Over Time 
+In general, rmcorr is a time-independent model-- it does not model change over time. A partial
+exception is if time is a measure, such as age in the raz2005 dataset.
+<br>
+
+### Varying Slopes with Influential Observations and/or Unbalanced Data 
+If slopes meaningfully vary by individual, we recommend using multilevel modeling.
+Random effect slopes are even more \emph{problematic} for rmcorr with influential observations
+and/or highly unbalanced data. This is nicely illustrated in simulations by Dr. Martas Karass: 
+<br>
+<a href="https://martakarass.github.io/post/2022-04-27-rmcorr_vs_lmm/">When rmcorr may not be ideal</a> 
+

@@ -16,7 +16,7 @@ Print the results of a repeated measures correlation
 }
 \examples{
 ## Bland Altman 1995 data
-blandrmc <- rmcorr(Subject, PacO2, pH, bland1995)
+blandrmc <- rmcorr(Subject, PaCO2, pH, bland1995)
 blandrmc
 }
 \seealso{
