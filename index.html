@@ -43,7 +43,7 @@
     
     <a class="navbar-brand me-2" href="index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.7</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,8 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/New_rmcorr_paper_analyses_figures.html">Reproduce the results of Repeated Measures Correlation paper</a>
+    <a class="dropdown-item" href="articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a>
+    <a class="dropdown-item" href="articles/New_rmcorr_paper_analyses_figures.html">Reproduce the Results of Repeated Measures Correlation paper</a>
   </div>
 </li>
 <li class="nav-item">
@@ -77,7 +78,7 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9">
-<!-- README.md is generated from README.Rmd. Please edit that file --><div class="section level1">
+<div class="section level1">
 <div class="page-header">
 <img src="logo.png" class="logo" alt=""><h1 id="rmcorr-">rmcorr <a class="anchor" aria-label="anchor" href="#rmcorr-"></a>
 </h1>
@@ -98,8 +99,8 @@
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://lmarusich.github.io/rmcorr">rmcorr</a></span><span class="op">)</span>
-<span class="fu"><a href="reference/rmcorr.html">rmcorr</a></span><span class="op">(</span><span class="va">Subject</span>, <span class="va">PacO2</span>, <span class="va">pH</span>, <span class="va">bland1995</span><span class="op">)</span>
-<span class="co">#&gt; Warning in rmcorr(Subject, PacO2, pH, bland1995): 'Subject' coerced into a</span>
+<span class="fu"><a href="reference/rmcorr.html">rmcorr</a></span><span class="op">(</span><span class="va">Subject</span>, <span class="va">PaCO2</span>, <span class="va">pH</span>, <span class="va">bland1995</span><span class="op">)</span>
+<span class="co">#&gt; Warning in rmcorr(Subject, PaCO2, pH, bland1995): 'Subject' coerced into a</span>
 <span class="co">#&gt; factor</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Repeated measures correlation</span>
@@ -115,6 +116,12 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; 95% confidence interval</span>
 <span class="co">#&gt; -0.7112297 -0.223255</span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="graphical-interface-for-rmcorr">Graphical Interface for rmcorr<a class="anchor" aria-label="anchor" href="#graphical-interface-for-rmcorr"></a>
+</h2>
+<p>A Shiny web and standalone app with a graphical user interface is also available: <br><a href="https://lmarusich.shinyapps.io/shiny_rmcorr/" class="external-link">Web app</a> <br><a href="https://github.com/lmarusich/rmcorrShiny" class="external-link">Standalone app</a></p>
+<p><img src="reference/figures/rmcorr_example_input_plot.jpg" width="80%"></p>
 </div>
 </div>
 
