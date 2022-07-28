@@ -92,3 +92,23 @@ NULL
 #'
 NULL
 
+#' @name bakdash_dist_measures
+#' @title x
+#' @description x 
+#' @docType data
+#' @usage bakdash_dist_measures
+#' @format A data frame with 230 rows 7 columns
+#' \tabular{lll}{
+#' \code{[, 1]} \tab \code{Subject}        \tab {Unique identifer for each participant} \cr
+#' \code{[, 2]} \tab \code{Physical Distance} \tab {x} \cr
+#' \code{[, 3]} \tab \code{Blindwalk Away}        \tab {x} \cr
+#' \code{[, 4]} \tab \code{Blindwalk Toward} \tab {x} \cr
+#' \code{[, 5]} \tab \code{Triangulated BW} \tab {x} \cr
+#' \code{[, 6]} \tab \code{Verbal} \tab {x} \cr
+#' \code{[, 7]} \tab \code{Visual Matching} \tab {x} \cr
+#' }
+
+#' @source x
+#'
+NULL
+
