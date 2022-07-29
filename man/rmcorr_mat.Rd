@@ -26,12 +26,12 @@ Create a repeated measures correlation matrix.
 }
 \examples{
 dist_rmc_mat <- rmcorr_mat(participant = Subject, 
-                           variables = c("Blindwalk.Away",
-                                         "Blindwalk.Toward",
-                                         "Triangulated.BW",
+                           variables = c("Blindwalk Away",
+                                         "Blindwalk Toward",
+                                         "Triangulated BW",
                                          "Verbal",
-                                         "Visual.matching"),
-                           dataset = bakdash_dist_measures,
+                                         "Visual matching"),
+                           dataset = twedt_dist_measures,
                            CI.level = 0.95)
 plot(dist_rmc_mat$models[[2]])
 }

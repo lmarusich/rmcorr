@@ -1,6 +1,6 @@
 Package: rmcorr
 Title: Repeated Measures Correlation
-Version: 0.4.7
+Version: 0.4.8
 Authors@R: c(
     person("Jonathan Z.", "Bakdash", role = "aut",
       comment = c(ORCID = "0000-0002-1409-4779")
@@ -14,9 +14,11 @@ Description: Compute the repeated measures correlation, a statistical technique
     assessed on two or more occasions, first introduced by Bland and Altman (1995).
     Includes functions for diagnostics, p-value, effect size with confidence
     interval including optional bootstrapping, as well as graphing. Also includes
-    several example datasets. For more details, see Bakdash and Marusich (2017) <doi:10.3389/fpsyg.2017.00456>.
+    several example datasets. For more details, see the web documentation 
+    https://lmarusich.github.io/rmcorr/index.html and the 
+    original paper: Bakdash and Marusich (2017) <doi:10.3389/fpsyg.2017.00456>.
 Depends:
-    R (>= 3.2.1)
+    R (>= 3.5.0)
 License: GPL-2
 LazyData: true
 Imports:
@@ -37,7 +39,9 @@ Suggests:
     pwr,
     AICcmodavg,
     pals,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    corrplot
 VignetteBuilder: knitr
 Config/testthat/edition: 3
-URL: http://lmarusich.github.io/rmcorr
+URL: https://github.com/lmarusich/rmcorr, http://lmarusich.github.io/rmcorr
+BugReports: https://github.com/lmarusich/rmcorr/issues

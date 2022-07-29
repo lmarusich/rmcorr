@@ -1,6 +1,13 @@
-# rmcorr 0.4.7
+# rmcorr 0.4.8
 
-* Fixed typo in Bland1995 example and data: PacO2 is now PaCO2 (partial pressure of CO2)
+* Beta: Added rmcorr_mat() to calculate an rmcorr correlation matrix 
+* To demonstrate rmcorr_mat(), added a new dataset and description: twedt_dist_measures 
+* Rewrote how variabls are saved in rmcorr()
+* Updated description: Minimum version of R is >3.5.0 because of serialized objects
+
+# rmcorr 0.4.7 (dev release only, not on CRAN)
+
+* Fixed typo in bland1995 example and data: PacO2 is now PaCO2 (partial pressure of CO2)
 * Add marusich2016 data and description 
 * Documentation: Add details to bland1995 data and add DOIs to all data references 
 
