@@ -96,7 +96,7 @@ NULL
 #' @title Repeated measures and multivariate measures of perceived distance 
 #' @description A dataset of repeated measures of distance perception  
 #' at  physical distances of 7, 8, 9, 10, and 11 meters. The data are also 
-#' multivariate five  dependent measures of distance perception. This is a 
+#' multivariate, with five  dependent measures of distance perception. This is a 
 #' 5 (physical distance) x 5 (dependent measure) within-participants design 
 #' with a sample size of 46. 
 #' Note data is missing for 15 trials due participant and experimenter errors.
@@ -104,54 +104,52 @@ NULL
 #' @usage twedt_dist_measures
 #' @format A data frame with 230 rows 7 columns
 #' \tabular{lll}{
-#' \code{[, 1]} \tab \code{Subject}           \tab {Unique identifier for each 
-#'                                                  participant} \cr
+#' \code{[ ,1]} \tab \code{Subject}           \tab Unique identifier for each 
+#'                                                  participant \cr \cr\cr
 #' \code{[, 2]} \tab \code{Physical Distance} \tab {Physical distance from the 
 #'                                                  participant to the target 
-#'                                                  cone, in meters} \cr
+#'                                                  cone, in meters} \cr \cr\cr
 #' \code{[, 3]} \tab \code{Blindwalk Away}    \tab {Participants put on the 
 #'                                                  blindfold after viewing the 
-#'                                                  target. Next, participants 
-#'                                                  took one step to the left 
-#'                                                  and turned 180 degrees to 
-#'                                                  face the opposite direction. 
-#'                                                  Participants were instructed 
-#'                                                  to walk forward until they 
-#'                                                  had walked the original 
-#'                                                  distance to the target.} \cr
+#'                                                  target.} \cr
+#'              \tab                          \tab {Next, participants took one step to 
+#'                                                  the left and turned 180 degrees to 
+#'                                                  face the opposite direction.}\cr
+#'              \tab                          \tab {Participants were instructed to walk
+#'                                                  forward until they had walked the 
+#'                                                  original distance to the target.} \cr\cr\cr
+#'                                                                                                                                             
 #' \code{[, 4]} \tab \code{Blindwalk Toward}  \tab {Participants put on the 
 #'                                                  blindfold after viewing the 
-#'                                                  target. Next, participants 
-#'                                                  walked forward until they 
-#'                                                  thought they had reached the 
-#'                                                  target cone. } \cr
-#' \code{[, 5]} \tab \code{Triangulated BW}   \tab {Triangulated Blindwalk: 
-#'                                                  Participants put on the 
+#'                                                  target.} \cr 
+#'              \tab                          \tab {Next, participants walked forward until
+#'                                                  they thought they had reached the 
+#'                                                  target cone.}\cr\cr\cr
+#' \code{[, 5]} \tab \code{Triangulated BW}   \tab {Participants put on the 
 #'                                                  blindfold after viewing the 
-#'                                                  target. Next, participants
-#'                                                  turned right 90 degrees 
-#'                                                  and walked forward 5 meters. 
-#'                                                  The experimenter told 
-#'                                                  participants when to stop 
-#'                                                  walking. Finally, 
-#'                                                  participants turned to face 
+#'                                                  target.} \cr
+#'              \tab                          \tab {Next, participants
+#'                                                  turned right 90 degrees and walked
+#'                                                  forward 5 meters.} \cr
+#'              \tab                          \tab {The experimenter told 
+#'                                                  participants when to stop walking.} \cr
+#'              \tab                          \tab  {Finally, participants turned to face 
 #'                                                  toward the target and walked 
-#'                                                  forward two steps.} \cr
-#' \code{[, 6]} \tab \code{Verbal}            \tab {Participants stated the 
-#'                                                  distance between the target 
-#'                                                  cone and themselves, 
-#'                                                  in feet and inches} \cr
+#'                                                  forward two steps.} \cr\cr\cr
+#' \code{[, 6]} \tab \code{Verbal}            \tab {Participants stated the distance 
+#'                                                  between the target cone and themselves, 
+#'                                                  in feet and inches} \cr\cr\cr
 #' \code{[, 7]} \tab \code{Visual Matching}   \tab {An experimenter stood next to
 #'                                                  the target cone and walked 
-#'                                                  away from the cone in a 
-#'                                                  straight line that was 
+#'                                                  away from the cone in a} \cr
+#'              \tab                          \tab  {straight line that was 
 #'                                                  perpendicular to the extent 
 #'                                                  between the target and the 
-#'                                                  participant. Participants 
-#'                                                  instructed the experimenter 
+#'                                                  participant.} \cr
+#'              \tab                          \tab  {Participants instructed the experimenter 
 #'                                                  to stop walking when they 
-#'                                                  thought that the distance 
-#'                                                  between the target and the 
+#'                                                  thought that the distance } \cr
+#'              \tab                          \tab  {between the target and the 
 #'                                                  experimenter was equal to 
 #'                                                  the the target distance.} \cr
 #' }

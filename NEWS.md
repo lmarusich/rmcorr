@@ -2,7 +2,7 @@
 
 * Beta: Added rmcorr_mat() to calculate an rmcorr correlation matrix 
 * To demonstrate rmcorr_mat(), added a new dataset and description: twedt_dist_measures 
-* Rewrote how variabls are saved in rmcorr()
+* Rewrote how variable names are saved in rmcorr()
 * Updated description: Minimum version of R is >3.5.0 because of serialized objects
 
 # rmcorr 0.4.7 (dev release only, not on CRAN)
