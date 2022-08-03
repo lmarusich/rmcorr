@@ -15,6 +15,7 @@ expect_identical(dist_rmc_mat_2by2$matrix,
 
 })
 
+
 test_that("5x5 correlation matrix generated correctly", {
     
     dist_rmc_mat <- rmcorr_mat(participant = Subject, 
@@ -28,7 +29,7 @@ test_that("5x5 correlation matrix generated correctly", {
     expect_s3_class(dist_rmc_mat, 'rmcmat')
     
     #Check dimensions
-    identical(dim(dist_rmc_mat$matrix), c(5,5))
+    identical(dim(dist_rmc_mat$matrix), c(5L,5L))
     
     #Check transpose of output rmcorr matrix too
     identical(dist_rmc_mat$matrix, 
@@ -113,5 +114,6 @@ test_that('rmcorr_mat summary matches single rmcorr model', {
     expect_identical(dist_rmc_mat$summary[7,]$p.vals, bwt.vis.rmc$p)
     
 })
-    
+
+
 

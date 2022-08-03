@@ -24,6 +24,18 @@ test_that("different classes of sub_ids work", {
     expect_silent(rmc.out <- rmcorr(as.factor(Subject), PaCO2, pH, bland1995mod))
 })
 
+test_that("check class", {
+    #Change Subject to factor so there is no warning
+    rmc.out <- rmcorr(as.factor(Subject), PaCO2, pH, bland1995)
+    expect_s3_class(rmc.out, 'rmc')
+})
+
+test_that("expected names for rmc", {
+    #Change Subject to factor so there is no warning
+    rmc.out <- rmcorr(as.factor(Subject), PaCO2, pH, bland1995)
+    expect_named(rmc.out, c("r", "df", "p", "CI", "CI.level", "model", "vars"))
+})
+
 test_that("non-numeric data columns throw error", {
     bland1995mod <- bland1995
     bland1995mod$pH <- as.character(bland1995mod$pH)

@@ -42,7 +42,7 @@ Repeated Measures Correlation. \emph{Frontiers in Psychology, 8}, 256.
 
 Bland, J.M., & Altman, D.G. (1995). Calculating correlation 
 coefficients with repeated observations: Part 1 - correlation within
-subjects. \emph{BMJ, 310}, 446.
+subjects. \emph{BMJ, 310}, 446, \doi{https://doi.org/10.1136/bmj.310.6977.446}.
 }
 \seealso{
 \code{\link{rmcorr}, \link{plot.rmc}}
