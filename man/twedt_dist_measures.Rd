@@ -58,8 +58,8 @@ A data frame with 230 rows and 7 columns
 }
 }
 \source{
-Twedt, E.T, Bakdash, J.Z., and Proffitt, D.R. (2022). 
-Repeated measures and multivariate measures of perceived distance (Data set)
+Twedt, E. Bakdash, J.Z., and Proffitt, D.R. (2022). 
+Repeated and multivariate measures of perceived distance (Dataset)
 \doi{https://doi.org/10.5281/zenodo.6967162}
 }
 \usage{
