@@ -102,7 +102,7 @@ NULL
 #' Note data is missing for 15 trials due participant and experimenter errors.
 #' @docType data
 #' @usage twedt_dist_measures
-#' @format A data frame with 230 rows 7 columns
+#' @format A data frame with 230 rows and 7 columns
 #' \tabular{lll}{
 #' \code{[ ,1]} \tab \code{Subject}           \tab Unique identifier for each 
 #'                                                  participant \cr \cr\cr
@@ -151,10 +151,12 @@ NULL
 #'                                                  thought that the distance } \cr
 #'              \tab                          \tab  {between the target and the 
 #'                                                  experimenter was equal to 
-#'                                                  the the target distance.} \cr
+#'                                                  the target distance.} \cr
 #' }
 
-#' @source Dataset: Add Zenodo link w/doi? Unpublished manuscript. 
+#' @source Twedt, E.T, Bakdash, J.Z., and Proffitt, D.R. (2022). 
+#' Repeated measures and multivariate measures of perceived distance (Data set)
+#' \doi{https://doi.org/10.5281/zenodo.6967162}
 #'
 NULL
 
