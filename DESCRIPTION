@@ -15,7 +15,7 @@ Description: Compute the repeated measures correlation, a statistical technique
     Includes functions for diagnostics, p-value, effect size with confidence
     interval including optional bootstrapping, as well as graphing. Also includes
     several example datasets. For more details, see the web documentation 
-    URL: https://lmarusich.github.io/rmcorr/index.html and the 
+    <https://lmarusich.github.io/rmcorr/index.html> and the 
     original paper: Bakdash and Marusich (2017) <doi:10.3389/fpsyg.2017.00456>.
 Depends:
     R (>= 3.5.0)
@@ -43,5 +43,5 @@ Suggests:
     corrplot
 VignetteBuilder: knitr
 Config/testthat/edition: 3
-URL: https://github.com/lmarusich/rmcorr, https://lmarusich.github.io/rmcorr
+URL: https://github.com/lmarusich/rmcorr, https://lmarusich.github.io/rmcorr/
 BugReports: https://github.com/lmarusich/rmcorr/issues
