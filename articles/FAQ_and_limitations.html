@@ -95,7 +95,7 @@
 <div class="section level3">
 <h3 id="how-to-calculate-power">How to Calculate Power<a class="anchor" aria-label="anchor" href="#how-to-calculate-power"></a>
 </h3>
-<p>Power can be calculated using the  function in the paper vignette. This function modifies pwr.r.test from the <a href="https://cran.r-project.org/web/packages/pwr/index.html" class="external-link">pwr</a> package to use the rmcorr degrees of freedom. <br></p>
+<p>Power can be calculated using the  function in the paper vignette. This function modifies pwr.r.test from the <a href="https://CRAN.R-project.org/package=pwr" class="external-link">pwr</a> package to use the rmcorr degrees of freedom. <br></p>
 <p>For G*Power or another package, power can be calculated by substituting the rmcorr degrees of freedom for a Pearson correlation. Instead of sample size, use the degrees of freedom for rmcorr plus two. This is because a Pearson correlation has <em>N</em> - 2 degrees of freedom.<br><br> Rmcorr exact degrees of freedom: (<em>k</em> - 1) x (<em>N</em> - 1), where <em>k</em> is the number of repeated measures for each individual and <em>N</em> is the sample size.<br></p>
 <div class="section level4">
 <h4 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
