@@ -1,4 +1,4 @@
-# rmcorr 0.4.8
+# rmcorr 0.5.0
 
 * Beta: Added rmcorr_mat() to calculate an rmcorr correlation matrix 
 * To demonstrate rmcorr_mat(), added a new dataset and description: twedt_dist_measures 
