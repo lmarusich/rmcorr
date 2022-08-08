@@ -28,7 +28,7 @@ require(rmcorr)
 ## Frequently Asked Questions 
 
 ### How to Calculate Power
-Power can be calculated using the \emph{power.rmcorr} function in the paper vignette. This function modifies pwr.r.test from the <a href="https://cran.r-project.org/web/packages/pwr/index.html">pwr</a> package to use the rmcorr degrees of freedom.
+Power can be calculated using the \emph{power.rmcorr} function in the paper vignette. This function modifies pwr.r.test from the <a href="https://CRAN.R-project.org/package=pwr">pwr</a> package to use the rmcorr degrees of freedom.
 <br> 
 
 For G\*Power or another package, power can be calculated by substituting the rmcorr degrees of freedom for a Pearson correlation. Instead of sample size, use the degrees of freedom for rmcorr plus two. This is because a Pearson correlation has *N* - 2 degrees of freedom.<br>
