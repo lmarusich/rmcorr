@@ -40,6 +40,9 @@
     <loc>http://lmarusich.github.io/rmcorr/reference/print.rmc.html</loc>
   </url>
   <url>
+    <loc>http://lmarusich.github.io/rmcorr/reference/print.rmcmat.html</loc>
+  </url>
+  <url>
     <loc>http://lmarusich.github.io/rmcorr/reference/raz2005.html</loc>
   </url>
   <url>
@@ -47,5 +50,11 @@
   </url>
   <url>
     <loc>http://lmarusich.github.io/rmcorr/reference/rmcorr.html</loc>
+  </url>
+  <url>
+    <loc>http://lmarusich.github.io/rmcorr/reference/rmcorr_mat.html</loc>
+  </url>
+  <url>
+    <loc>http://lmarusich.github.io/rmcorr/reference/twedt_dist_measures.html</loc>
   </url>
 </urlset>
