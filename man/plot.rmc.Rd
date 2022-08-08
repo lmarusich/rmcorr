@@ -48,7 +48,7 @@ Parallel lines are fitted to each subject's data.
 ## Bland Altman 1995 data
 my.rmc <- rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, 
                  dataset = bland1995)
-plot(my.rmc, overall = TRUE)
+plot(my.rmc)
 
 #using ggplot instead
 if (requireNamespace("ggplot2", quietly = TRUE)){
