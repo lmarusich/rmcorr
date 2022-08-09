@@ -8,10 +8,10 @@ awareness}
 \format{
 A data frame with 84 rows (28 dyads/pairs) and 4 variables
 \tabular{lll}{
-\code{[, 1]} \tab \code{Pair}        \tab {Unique identifer for each dyad} \cr
-\code{[, 2]} \tab \code{HVT_capture} \tab {Capture time} \cr
-\code{[, 3]} \tab \code{MARS}        \tab {subjective situation awareness} \cr
-\code{[, 4]} \tab \code{Source Reliability} \tab {1 = none, 2 = accurate, and
+\code{[,1]} \tab \code{Pair}        \tab {Unique identifer for each dyad} \cr
+\code{[,2]} \tab \code{HVT_capture} \tab {Capture time} \cr
+\code{[,3]} \tab \code{MARS}        \tab {subjective situation awareness} \cr
+\code{[,4]} \tab \code{Source Reliability} \tab {1 = none, 2 = accurate, and
 3 = inaccurate} \cr
 }
 }

@@ -7,10 +7,10 @@
 \format{
 A data frame with 144 rows and 4 variables
 \tabular{lll}{
-\code{[, 1]} \tab \code{Participant} \tab {Participant ID} \cr
-\code{[, 2]} \tab \code{Time}        \tab {Measurement time} \cr
-\code{[, 3]} \tab \code{Age}         \tab {Participant's age (years)} \cr
-\code{[, 4]} \tab \code{Volume}      \tab {Adjusted volume of cerebellar
+\code{[,1]} \tab \code{Participant} \tab {Participant ID} \cr
+\code{[,2]} \tab \code{Time}        \tab {Measurement time} \cr
+\code{[,3]} \tab \code{Age}         \tab {Participant's age (years)} \cr
+\code{[,4]} \tab \code{Volume}      \tab {Adjusted volume of cerebellar
                                            hemispheres (cm^3)} \cr
 }
 }

@@ -7,10 +7,10 @@
 \format{
 A data frame with 47 rows and 3 variables
 \tabular{lll}{
-\code{[, 1]} \tab \code{Subject} \tab {Unique identifer} \cr
-\code{[, 2]} \tab \code{pH}      \tab {Potential of hydrogen, 
+\code{[,1]} \tab \code{Subject} \tab {Unique identifer} \cr
+\code{[,2]} \tab \code{pH}      \tab {Potential of hydrogen, 
                                        acidity to base} \cr
-\code{[, 3]} \tab \code{PaCO2}   \tab {Partial pressure of carbon dioxide}\cr     
+\code{[,3]} \tab \code{PaCO2}   \tab {Partial pressure of carbon dioxide}\cr     
 }
 }
 \source{
