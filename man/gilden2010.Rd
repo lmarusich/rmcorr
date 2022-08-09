@@ -7,10 +7,10 @@
 \format{
 A data frame with 44 rows and 4 variables
 \tabular{lll}{
-\code{[, 1]} \tab \code{sub}   \tab {Subject ID} \cr
-\code{[, 2]} \tab \code{block} \tab {Block ID} \cr
-\code{[, 3]} \tab \code{rt}    \tab {Mean reaction time} \cr
-\code{[, 4]} \tab \code{acc}   \tab {Mean accuracy} \cr
+\code{[,1]} \tab \code{sub}   \tab {Subject ID} \cr
+\code{[,2]} \tab \code{block} \tab {Block ID} \cr
+\code{[,3]} \tab \code{rt}    \tab {Mean reaction time} \cr
+\code{[,4]} \tab \code{acc}   \tab {Mean accuracy} \cr
 }
 }
 \source{
