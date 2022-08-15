@@ -315,7 +315,7 @@ mtext(side = 2, "y", las = 1, line = 2.5, cex = 1.2)
 #dev.off()
 ```
 
-### 4. Figure 4: Power curves 
+### 4. Figure 4: Power curves {#power}
 ```{r, fig.height = 6, fig.width = 6}
 power.rmcorr<-function(k, N, effectsizer, sig)
 {

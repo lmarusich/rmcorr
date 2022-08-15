@@ -28,19 +28,39 @@ require(rmcorr)
 ## Frequently Asked Questions 
 
 ### How to Calculate Power
-Power can be calculated using the \emph{power.rmcorr} function in the paper vignette. This function modifies pwr.r.test from the <a href="https://CRAN.R-project.org/package=pwr">pwr</a> package to use the rmcorr degrees of freedom.
-<br> 
+Power can be calculated using the \emph{power.rmcorr} function. This function modifies pwr.r.test from the <a href="https://CRAN.R-project.org/package=pwr">pwr</a> package to use the rmcorr degrees of freedom. It is not 
+presently included in the rmcorr package. 
 
-For G\*Power or another package, power can be calculated by substituting the rmcorr degrees of freedom for a Pearson correlation. Instead of sample size, use the degrees of freedom for rmcorr plus two. This is because a Pearson correlation has *N* - 2 degrees of freedom.<br>
+`r ''````{r}
+install.packages("pwr")
+require(pwr)
+
+power.rmcorr <- function(k, N, effectsizer, sig)
+    {pwr.r.test(n = ((N)*(k-1))+1, r = effectsizer, sig.level = sig)}
+```
+
+See [Power curves](./New_rmcorr_paper_analyses_figures.html#power) for more information. 
+
+For <a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower">G\*Power</a> or other software, power can be calculated by substituting the rmcorr degrees of freedom for a Pearson correlation. Instead of sample size, use the degrees of freedom for rmcorr plus two (effective sample size). This is because a Pearson correlation has *N* - 2 degrees of freedom.<br>
+
+Notation: *N* is the sample size and *k* the number of repeated measures for each individual.
+
+- Rmcorr exact degrees of freedom = *N* x (*k* - 1) - 1 <br>
+- Approximate degrees of freedom = (*N* -1) x(*k* - 1)  <br>
+
+#### Exact Degrees of Fredom Example
+Values: *N* = 100 and *k* = 3 <br> 
+rmcorr df = 100 x (3 - 1) - 1 = 200 - 1 = 199 <br>
+Add two (kludge): 199 + 2 = 201 <br>
+Enter *N* = 201 as the effective sample size in G\*Power <br>
+G\*Power will calculate the degrees of freedom as *N* - 2 = 201 - 2 = 199. Thus, using the correct degrees of freedom for rmcorr.
 <br>
-Rmcorr exact degrees of freedom: (*k* - 1) x (*N* - 1), where *k* is the number of repeated measures for each individual and *N* is the sample size.<br>
 
-#### Example 
-Example: *k* = 3 and *N* = 100.<br> 
-rmcorr df = (3 - 1) x (100 - 1) = 2 x 99 = 198.<br>
-Add two (kludge): 198 + 2 = 200.<br>
-Enter *N* = 200 as the effective sample size in G\*Power.<br>
-G\*Power will calculate the degrees of freedom as *N* - 2 = 200 - 2 = 198. Thus, using the correct degrees of freedom for rmcorr.<br>
+#### Approximate Degrees of Freedom Example
+Vaules: *N* = 100 and *k* = 3 (same as above) <br>
+approx rmcorr df = (100 - 1) x (3 - 1) = 99 x 2 = 198 <br>
+Note the difference between the approximate vs. exact calculation is *only one* <br>
+Add two (same kludge) for G\*Power, entering a sample size of *N* = 200 <br>
 
 ### How to Extract the Slope and its Confidence Interval
 ```{r}
@@ -63,10 +83,33 @@ coefs.all <- cbind(coef.rmc, coef.CIs)
 coefs.all
 ```
 
+### isa Error
+**tldr**: Updating R appears to resolve this error. <br>
+
+We have had reports of this error when running rmcorr: <br>
+Error in isa(Participant, "character") : could not find function "isa" <br>
+<a href="https://stackoverflow.com/questions/73146762/how-to-solve-the-following-error-running-rmcorr-in-r-error-in-isaparticipant">Stack Question with error</a>
+
+#### Cause(s) for the error? 
+isa() is a base function included with R. We think this error occurs in versions of R prior
+to 3.5.0 (due to a change in serialization?) and also ran into the error in R 4.0.4. 
+
+Code to test isa():
+`r ''````{r}
+isa("test", "character")
+isa(5, "numeric")
+```
+
+If the above code does not work, another possibility is that an older package could be overwriting isa():
+`r ''````{r}
+base::isa("test", "character")
+base::isa(5, "numeric")
+```
+
 ### Transformations
 Transformations can be used to make the data (errors) more normal. We highly recommend graphing both the raw and transformed data.
 <br>
-It may be appropriate to only transform one measure or transform both measures. "Consider transforming every variable in sight" (Gelman \& Hill, 2017: *Data Analysis Using Regression and Multilevel/Hierarchical Models*, ISBN: 9780521686891, p. 548).  
+It may be appropriate to only transform one measure or transform both measures. "Consider transforming every variable in sight" (Gelman \& Hill, 2017: *Data Analysis Using Regression and Multilevel/Hierarchical Models*, ISBN: 9780521686891, p. 548): <a href="https://www.google.com/books/edition/Data_Analysis_Using_Regression_and_Multi/lV3DIdV0F9AC?hl=en&gbpv=1&bsq=consider%20transforming%20every%20variable%20in%20sight">Google Books</a> 
 <br>
 
 ## Limitations 
@@ -77,7 +120,7 @@ exception is if time is a measure, such as age in the raz2005 dataset.
 <br>
 
 ### Varying Slopes with Influential Observations and/or Unbalanced Data 
-If slopes meaningfully vary by individual, we recommend using multilevel modeling.
+If slopes meaningfully vary by individual, we recommend using multilevel modeling instead of rmcorr.
 Random effect slopes are even more \emph{problematic} for rmcorr with influential observations
 and/or highly unbalanced data. This is nicely illustrated in simulations by Dr. Marta Karas: 
 <br>
