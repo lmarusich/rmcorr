@@ -32,8 +32,7 @@ modifies pwr.r.test from the <a href="https://CRAN.R-project.org/package=pwr">pw
 package to use the rmcorr degrees of freedom. It is not presently included in 
 the rmcorr package. 
 
-Notation: *N* is the sample size and *k* the (average) number of repeated 
-measures for each individual.
+Notation: *N* is the sample size, *k* is the (average) number of repeated measures for each individual, and *r*<sub>*rm*</sub> is the rmcorr effect size.
 
 #### power.rmcorr Example
 *N* = 100, *k* = 3, and *r*<sub>*rm*</sub> = 0.20. This design has 82\% power.
@@ -137,8 +136,7 @@ base::isa(5, "numeric")
 
 ### Transformations
 Transformations can be used to make the data (errors) more normal. We highly recommend graphing both the raw and transformed data.
-<br>
-It may be appropriate to only transform one measure or transform both measures. "Consider transforming every variable in sight" (Gelman \& Hill, 2017: *Data Analysis Using Regression and Multilevel/Hierarchical Models*, ISBN: 9780521686891, p. 548): <a href="https://www.google.com/books/edition/Data_Analysis_Using_Regression_and_Multi/lV3DIdV0F9AC?hl=en&gbpv=1&bsq=consider%20transforming%20every%20variable%20in%20sight">Google Books</a> 
+<br> It may be appropriate to only transform one measure or transform both measures. "Consider transforming every variable in sight" (Gelman \& Hill, 2017: *Data Analysis Using Regression and Multilevel/Hierarchical Models*, ISBN: 9780521686891, p. 548): <a href="https://www.google.com/books/edition/Data_Analysis_Using_Regression_and_Multi/lV3DIdV0F9AC?hl=en&gbpv=1&bsq=consider%20transforming%20every%20variable%20in%20sight">Google Books</a> 
 <br>
 
 ## Limitations 
@@ -148,10 +146,29 @@ In general, rmcorr is a time-independent model-- it does not model change over t
 exception is if time is a measure, such as age in the raz2005 dataset.
 <br>
 
-### Varying Slopes with Influential Observations and/or Unbalanced Data 
+### Non-Linearity
+Rmcorr fits a linear model. If the data are non-linear, we recommend using multilevel modeling instead. 
+
+### Varying Slopes with Influential Observations and/or Unbalanced Data
 If slopes meaningfully vary by individual, we recommend using multilevel modeling instead of rmcorr.
 Random effect slopes are even more \emph{problematic} for rmcorr with influential observations
 and/or highly unbalanced data. This is nicely illustrated in simulations by Dr. Marta Karas: 
 <br>
 <a href="https://martakarass.github.io/post/2022-04-27-rmcorr_vs_lmm/">When rmcorr may not be ideal</a> 
 
+## Other Implementations of rmcorr
+We know of three other implementations of rmcorr.
+
+### 1) Shiny: Web App and Standalone with a graphical interface 
+- <a href="https://lmarusich.shinyapps.io/shiny_rmcorr/">Web App</a>
+
+- <a href="https://github.com/lmarusich/rmcorrShiny">Shiny Source Code and Information on Running Standalone</a> 
+
+- <a href="https://doi.org/10.12688/f1000research.55027.2">Corresponding Paper</a> 
+
+### 2) Python: rm_corr in pinguion 
+- <a href="https://pingouin-stats.org/generated/pingouin.rm_corr.html#pingouin.rm_corr">rm_corr</a>
+
+- <a href="https://doi.org/10.21105/joss.01026">Corresponding Paper</a> 
+### 3) Stata: RMCORR
+- <a href="https://ideas.repec.org/c/boc/bocode/s458971.html">RMCORR</a>

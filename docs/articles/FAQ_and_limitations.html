@@ -50,6 +50,7 @@
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a>
     <a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce the Results of Repeated Measures Correlation paper</a>
+    <a class="dropdown-item" href="../articles/rmcorr_mat.html">Plotting with rmcorr_mat</a>
   </div>
 </li>
 <li class="nav-item">
@@ -102,8 +103,9 @@ pwr.r.test from the
 <a href="https://CRAN.R-project.org/package=pwr" class="external-link">pwr</a> package to use
 the rmcorr degrees of freedom. It is not presently included in the
 rmcorr package.</p>
-<p>Notation: <em>N</em> is the sample size and <em>k</em> the (average)
-number of repeated measures for each individual.</p>
+<p>Notation: <em>N</em> is the sample size, <em>k</em> is the (average)
+number of repeated measures for each individual, and
+<em>r</em><sub><em>rm</em></sub> is the rmcorr effect size.</p>
 <div class="section level4">
 <h4 id="power-rmcorr-example">power.rmcorr Example<a class="anchor" aria-label="anchor" href="#power-rmcorr-example"></a>
 </h4>
@@ -258,6 +260,12 @@ change over time. A partial exception is if time is a measure, such as
 age in the raz2005 dataset. <br></p>
 </div>
 <div class="section level3">
+<h3 id="non-linearity">Non-Linearity<a class="anchor" aria-label="anchor" href="#non-linearity"></a>
+</h3>
+<p>Rmcorr fits a linear model. If the data are non-linear, we recommend
+using multilevel modeling instead.</p>
+</div>
+<div class="section level3">
 <h3 id="varying-slopes-with-influential-observations-andor-unbalanced-data">Varying Slopes with Influential Observations and/or Unbalanced
 Data<a class="anchor" aria-label="anchor" href="#varying-slopes-with-influential-observations-andor-unbalanced-data"></a>
 </h3>
@@ -266,6 +274,33 @@ multilevel modeling instead of rmcorr. Random effect slopes are even
 more for rmcorr with influential observations and/or highly unbalanced
 data. This is nicely illustrated in simulations by Dr. Marta Karas: <br><a href="https://martakarass.github.io/post/2022-04-27-rmcorr_vs_lmm/" class="external-link">When
 rmcorr may not be ideal</a></p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="other-implementations-of-rmcorr">Other Implementations of rmcorr<a class="anchor" aria-label="anchor" href="#other-implementations-of-rmcorr"></a>
+</h2>
+<p>We know of three other implementations of rmcorr.</p>
+<div class="section level3">
+<h3 id="shiny-web-app-and-standalone-with-a-graphical-interface">1) Shiny: Web App and Standalone with a graphical interface<a class="anchor" aria-label="anchor" href="#shiny-web-app-and-standalone-with-a-graphical-interface"></a>
+</h3>
+<ul>
+<li><p><a href="https://lmarusich.shinyapps.io/shiny_rmcorr/" class="external-link">Web
+App</a></p></li>
+<li><p><a href="https://github.com/lmarusich/rmcorrShiny" class="external-link">Shiny Source
+Code and Information on Running Standalone</a></p></li>
+<li><p><a href="https://doi.org/10.12688/f1000research.55027.2" class="external-link">Corresponding
+Paper</a></p></li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="python-rm_corr-in-pinguion">2) Python: rm_corr in pinguion<a class="anchor" aria-label="anchor" href="#python-rm_corr-in-pinguion"></a>
+</h3>
+<ul>
+<li><p><a href="https://pingouin-stats.org/generated/pingouin.rm_corr.html#pingouin.rm_corr" class="external-link">rm_corr</a></p></li>
+<li><p><a href="https://doi.org/10.21105/joss.01026" class="external-link">Corresponding
+Paper</a> ### 3) Stata: RMCORR</p></li>
+<li><p><a href="https://ideas.repec.org/c/boc/bocode/s458971.html" class="external-link">RMCORR</a></p></li>
+</ul>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
