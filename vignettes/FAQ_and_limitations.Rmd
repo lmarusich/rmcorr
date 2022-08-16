@@ -75,7 +75,7 @@ Thus, using the correct degrees of freedom for rmcorr.
 
 *Note* power is just slighty different in than the same calulcation in R, which uses an approximation.
 
-![G\*Power using the exact degrees of freedom](man/figures/Gpower_exact_df.jpg)
+![G\*Power using the exact degrees of freedom](Gpower_exact_df.jpg)
 
 #### Approximate Degrees of Freedom Example
 Vaules: *N* = 100, *k* = 3, and *r*<sub>*rm*</sub> = 0.20 (again, same as above) <br>
@@ -84,7 +84,7 @@ Note the small difference between the approximate vs. exact calculation: *one* d
 Add two (same kludge) for G\*Power, entering a sample size of *N* = 200 <br>
 
 *Note* power is slighty different than the exact formula above. 
-![G\*Power using the approx degrees of freedom](man/figures/Gpower_exact_df.jpg)
+![G\*Power using the approx degrees of freedom](Gpower_exact_df.jpg)
 
 ### How to Extract the Slope and its Confidence Interval
 ```{r}
