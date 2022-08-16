@@ -23,13 +23,20 @@ library("knitr", "rmarkdown", "rmcorr") #, "stats")
 require(knitr)
 require(rmarkdown)
 require(rmcorr)
-
 ```
 ## Frequently Asked Questions 
 
 ### How to Calculate Power
-Power can be calculated using the \emph{power.rmcorr} function. This function modifies pwr.r.test from the <a href="https://CRAN.R-project.org/package=pwr">pwr</a> package to use the rmcorr degrees of freedom. It is not 
-presently included in the rmcorr package. 
+Power can be calculated using the \emph{power.rmcorr} function. This function 
+modifies pwr.r.test from the <a href="https://CRAN.R-project.org/package=pwr">pwr</a> 
+package to use the rmcorr degrees of freedom. It is not presently included in 
+the rmcorr package. 
+
+Notation: *N* is the sample size and *k* the (average) number of repeated 
+measures for each individual.
+
+#### power.rmcorr Example
+*N* = 100, *k* = 3, and *r*<sub>*rm*</sub> = 0.20. This design has 82\% power.
 
 `r ''````{r}
 install.packages("pwr")
@@ -37,18 +44,27 @@ require(pwr)
 
 power.rmcorr <- function(k, N, effectsizer, sig)
     {pwr.r.test(n = ((N)*(k-1))+1, r = effectsizer, sig.level = sig)}
+    
+power.rmcorr(3, 100, 0.20, 0.05)    
+#> 
+#>      approximate correlation power calculation (arctangh transformation) 
+#> 
+#>               n = 201
+#>               r = 0.2
+#>       sig.level = 0.05
+#>           power = 0.8156984
+#>     alternative = two.sided
 ```
 
 See [Power curves](./New_rmcorr_paper_analyses_figures.html#power) for more information. 
 
 For <a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower">G\*Power</a> or other software, power can be calculated by substituting the rmcorr degrees of freedom for a Pearson correlation. Instead of sample size, use the degrees of freedom for rmcorr plus two (effective sample size). This is because a Pearson correlation has *N* - 2 degrees of freedom.<br>
 
-Notation: *N* is the sample size and *k* the number of repeated measures for each individual.
 
 - Rmcorr exact degrees of freedom = *N* x (*k* - 1) - 1 <br>
-- Approximate degrees of freedom = (*N* -1) x(*k* - 1)  <br>
+- Approximate degrees of freedom = (*N* -1) x (*k* - 1)  <br>
 
-#### Exact Degrees of Fredom Example
+#### Exact Degrees of Freedom Example
 Values: *N* = 100 and *k* = 3 <br> 
 rmcorr df = 100 x (3 - 1) - 1 = 200 - 1 = 199 <br>
 Add two (kludge): 199 + 2 = 201 <br>
@@ -56,16 +72,20 @@ Enter *N* = 201 as the effective sample size in G\*Power <br>
 G\*Power will calculate the degrees of freedom as *N* - 2 = 201 - 2 = 199. Thus, using the correct degrees of freedom for rmcorr.
 <br>
 
+![G\*Power using the exact degrees of freedom](man/figures/Gpower_exact_df.jpg)
+
 #### Approximate Degrees of Freedom Example
 Vaules: *N* = 100 and *k* = 3 (same as above) <br>
 approx rmcorr df = (100 - 1) x (3 - 1) = 99 x 2 = 198 <br>
 Note the difference between the approximate vs. exact calculation is *only one* <br>
 Add two (same kludge) for G\*Power, entering a sample size of *N* = 200 <br>
 
+![G\*Power using the approx degrees of freedom](man/figures/Gpower_exact_df.jpg)
+
 ### How to Extract the Slope and its Confidence Interval
 ```{r}
 my.rmc <- rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, 
-                  dataset = bland1995)
+                 dataset = bland1995)
  
 # Structure of rmcorr object
 #str(my.rmc)
@@ -91,16 +111,18 @@ Error in isa(Participant, "character") : could not find function "isa" <br>
 <a href="https://stackoverflow.com/questions/73146762/how-to-solve-the-following-error-running-rmcorr-in-r-error-in-isaparticipant">Stack Question with error</a>
 
 #### Cause(s) for the error? 
-isa() is a base function included with R. We think this error occurs in versions of R prior
-to 3.5.0 (due to a change in serialization?) and also ran into the error in R 4.0.4. 
+rmcorr uses isa(). isa() is a base function included with R. We think this error 
+occurs in versions of R prior to 3.5.0 (due to a change in serialization?) and 
+also ran into the error in R 4.0.4 
 
-Code to test isa():
+Code to test if isa() works:
 `r ''````{r}
 isa("test", "character")
 isa(5, "numeric")
 ```
 
-If the above code does not work, another possibility is that an older package could be overwriting isa():
+If there is a different error with isa, another possibility is that an older 
+package may have overwritten the base isa() function:
 `r ''````{r}
 base::isa("test", "character")
 base::isa(5, "numeric")
