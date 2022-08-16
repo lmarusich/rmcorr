@@ -65,21 +65,25 @@ For <a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologi
 - Approximate degrees of freedom = (*N* -1) x (*k* - 1)  <br>
 
 #### Exact Degrees of Freedom Example
-Values: *N* = 100 and *k* = 3 <br> 
+Values: *N* = 100, *k* = 3 , and *r*<sub>*rm*</sub> = 0.20 (same as above) <br> 
 rmcorr df = 100 x (3 - 1) - 1 = 200 - 1 = 199 <br>
 Add two (kludge): 199 + 2 = 201 <br>
 Enter *N* = 201 as the effective sample size in G\*Power <br>
-G\*Power will calculate the degrees of freedom as *N* - 2 = 201 - 2 = 199. Thus, using the correct degrees of freedom for rmcorr.
+G\*Power will calculate the degrees of freedom as *N* - 2 = 201 - 2 = 199. 
+Thus, using the correct degrees of freedom for rmcorr.
 <br>
+
+*Note* power is just slighty different in than the same calulcation in R, which uses an approximation.
 
 ![G\*Power using the exact degrees of freedom](man/figures/Gpower_exact_df.jpg)
 
 #### Approximate Degrees of Freedom Example
-Vaules: *N* = 100 and *k* = 3 (same as above) <br>
+Vaules: *N* = 100, *k* = 3, and *r*<sub>*rm*</sub> = 0.20 (again, same as above) <br>
 approx rmcorr df = (100 - 1) x (3 - 1) = 99 x 2 = 198 <br>
-Note the difference between the approximate vs. exact calculation is *only one* <br>
+Note the small difference between the approximate vs. exact calculation: *one* degree of freedom <br>
 Add two (same kludge) for G\*Power, entering a sample size of *N* = 200 <br>
 
+*Note* power is slighty different than the exact formula above. 
 ![G\*Power using the approx degrees of freedom](man/figures/Gpower_exact_df.jpg)
 
 ### How to Extract the Slope and its Confidence Interval
@@ -107,7 +111,10 @@ coefs.all
 **tldr**: Updating R appears to resolve this error. <br>
 
 We have had reports of this error when running rmcorr: <br>
-Error in isa(Participant, "character") : could not find function "isa" <br>
+`r ''````{r}
+Error in isa(Participant, "character") : could not find function "isa" 
+```
+
 <a href="https://stackoverflow.com/questions/73146762/how-to-solve-the-following-error-running-rmcorr-in-r-error-in-isaparticipant">Stack Question with error</a>
 
 #### Cause(s) for the error? 
