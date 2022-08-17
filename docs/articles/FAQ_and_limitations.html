@@ -84,7 +84,7 @@
                         <h4 data-toc-skip class="author">Jonathan
 Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2022-08-16</h4>
+            <h4 data-toc-skip class="date">2022-08-17</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/HEAD/vignettes/FAQ_and_limitations.Rmd" class="external-link"><code>vignettes/FAQ_and_limitations.Rmd</code></a></small>
       <div class="d-none name"><code>FAQ_and_limitations.Rmd</code></div>
@@ -98,8 +98,8 @@ Bakdash and Laura Marusich</h4>
 <div class="section level3">
 <h3 id="how-to-calculate-power">How to Calculate Power<a class="anchor" aria-label="anchor" href="#how-to-calculate-power"></a>
 </h3>
-<p>Power can be calculated using the function. This function modifies
-pwr.r.test from the
+<p>Power can be calculated using the <em>power.rmcorr</em> function.
+This function modifies pwr.r.test from the
 <a href="https://CRAN.R-project.org/package=pwr" class="external-link">pwr</a> package to use
 the rmcorr degrees of freedom. It is not presently included in the
 rmcorr package.</p>
@@ -111,13 +111,13 @@ number of repeated measures for each individual, and
 </h4>
 <p><em>N</em> = 100, <em>k</em> = 3, and
 <em>r</em><sub><em>rm</em></sub> = 0.20. This design has 82% power.</p>
-<pre class="{r}"><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pwr"</span><span class="op">)</span></span>
+<pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pwr"</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr" class="external-link">pwr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">power.rmcorr</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">k</span>, <span class="va">N</span>, <span class="va">effectsizer</span>, <span class="va">sig</span><span class="op">)</span></span>
 <span>    <span class="op">{</span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.r.test.html" class="external-link">pwr.r.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="op">(</span><span class="op">(</span><span class="va">N</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="va">k</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span><span class="fl">1</span>, r <span class="op">=</span> <span class="va">effectsizer</span>, sig.level <span class="op">=</span> <span class="va">sig</span><span class="op">)</span><span class="op">}</span></span>
 <span>    </span>
-<span><span class="fu">power.rmcorr</span><span class="op">(</span><span class="fl">3</span>, <span class="fl">100</span>, <span class="fl">0.20</span>, <span class="fl">0.05</span><span class="op">)</span>    </span>
+<span><span class="fu">power.rmcorr</span><span class="op">(</span>k <span class="op">=</span> <span class="fl">3</span>, N <span class="op">=</span> <span class="fl">100</span>, effectsizer <span class="op">=</span> <span class="fl">0.20</span>, sig <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span>    </span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;      approximate correlation power calculation (arctangh transformation) </span></span>
 <span><span class="co">#&gt; </span></span>
@@ -154,22 +154,22 @@ freedom.<br></p>
 G*Power will calculate the degrees of freedom as <em>N</em> - 2 = 201 -
 2 = 199. Thus, using the correct degrees of freedom for rmcorr. <br></p>
 <p><em>Note</em> power is just slighty different in than the same
-calulcation in R, which uses an approximation.</p>
+calculation in R, which uses an approximation.</p>
 <div class="figure">
-<img src="Gpower_exact_df.jpg" alt=""><p class="caption">G*Power using the exact degrees of freedom</p>
+<img src="../reference/figures/Gpower_exact_df.jpg" alt=""><p class="caption">G*Power using the exact degrees of freedom</p>
 </div>
 </div>
 <div class="section level4">
 <h4 id="approximate-degrees-of-freedom-example">Approximate Degrees of Freedom Example<a class="anchor" aria-label="anchor" href="#approximate-degrees-of-freedom-example"></a>
 </h4>
-<p>Vaules: <em>N</em> = 100, <em>k</em> = 3, and
+<p>Values: <em>N</em> = 100, <em>k</em> = 3, and
 <em>r</em><sub><em>rm</em></sub> = 0.20 (again, same as above) <br>
 approx rmcorr df = (100 - 1) x (3 - 1) = 99 x 2 = 198 <br> Note the
 small difference between the approximate vs. exact calculation:
 <em>one</em> degree of freedom <br> Add two (same kludge) for G*Power,
 entering a sample size of <em>N</em> = 200 <br></p>
 <p><em>Note</em> power is slighty different than the exact formula
-above. <img src="Gpower_exact_df.jpg" alt="G*Power using the approx degrees of freedom"></p>
+above. <img src="../reference/figures/Gpower_approx_df.jpg" alt="G*Power using the approx degrees of freedom"></p>
 </div>
 </div>
 <div class="section level3">
@@ -298,8 +298,14 @@ Paper</a></p></li>
 <ul>
 <li><p><a href="https://pingouin-stats.org/generated/pingouin.rm_corr.html#pingouin.rm_corr" class="external-link">rm_corr</a></p></li>
 <li><p><a href="https://doi.org/10.21105/joss.01026" class="external-link">Corresponding
-Paper</a> ### 3) Stata: RMCORR</p></li>
-<li><p><a href="https://ideas.repec.org/c/boc/bocode/s458971.html" class="external-link">RMCORR</a></p></li>
+Paper</a></p></li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="stata-rmcorr">3) Stata: RMCORR<a class="anchor" aria-label="anchor" href="#stata-rmcorr"></a>
+</h3>
+<ul>
+<li><a href="https://ideas.repec.org/c/boc/bocode/s458971.html" class="external-link">RMCORR</a></li>
 </ul>
 </div>
 </div>

@@ -7,6 +7,9 @@ vignette: >
   %\VignetteIndexEntry{Frequently Asked Questions and Limitations}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+# resource_files:
+#   - Gpower_exact_df.jpg
+#   - Gpower_approx_df.jpg
 ---
 
 ```{r, include = FALSE}
@@ -27,7 +30,7 @@ require(rmcorr)
 ## Frequently Asked Questions 
 
 ### How to Calculate Power
-Power can be calculated using the \emph{power.rmcorr} function. This function 
+Power can be calculated using the *power.rmcorr* function. This function 
 modifies pwr.r.test from the <a href="https://CRAN.R-project.org/package=pwr">pwr</a> 
 package to use the rmcorr degrees of freedom. It is not presently included in 
 the rmcorr package. 
@@ -37,14 +40,14 @@ Notation: *N* is the sample size, *k* is the (average) number of repeated measur
 #### power.rmcorr Example
 *N* = 100, *k* = 3, and *r*<sub>*rm*</sub> = 0.20. This design has 82\% power.
 
-`r ''````{r}
+```
 install.packages("pwr")
 require(pwr)
 
 power.rmcorr <- function(k, N, effectsizer, sig)
     {pwr.r.test(n = ((N)*(k-1))+1, r = effectsizer, sig.level = sig)}
     
-power.rmcorr(3, 100, 0.20, 0.05)    
+power.rmcorr(k = 3, N = 100, effectsizer = 0.20, sig = 0.05)    
 #> 
 #>      approximate correlation power calculation (arctangh transformation) 
 #> 
@@ -72,18 +75,18 @@ G\*Power will calculate the degrees of freedom as *N* - 2 = 201 - 2 = 199.
 Thus, using the correct degrees of freedom for rmcorr.
 <br>
 
-*Note* power is just slighty different in than the same calulcation in R, which uses an approximation.
+*Note* power is just slighty different in than the same calculation in R, which uses an approximation.
 
-![G\*Power using the exact degrees of freedom](Gpower_exact_df.jpg)
+![G\*Power using the exact degrees of freedom](../man/figures/Gpower_exact_df.jpg)
 
 #### Approximate Degrees of Freedom Example
-Vaules: *N* = 100, *k* = 3, and *r*<sub>*rm*</sub> = 0.20 (again, same as above) <br>
+Values: *N* = 100, *k* = 3, and *r*<sub>*rm*</sub> = 0.20 (again, same as above) <br>
 approx rmcorr df = (100 - 1) x (3 - 1) = 99 x 2 = 198 <br>
 Note the small difference between the approximate vs. exact calculation: *one* degree of freedom <br>
 Add two (same kludge) for G\*Power, entering a sample size of *N* = 200 <br>
 
 *Note* power is slighty different than the exact formula above. 
-![G\*Power using the approx degrees of freedom](Gpower_exact_df.jpg)
+![G\*Power using the approx degrees of freedom](../man/figures/Gpower_approx_df.jpg)
 
 ### How to Extract the Slope and its Confidence Interval
 ```{r}
@@ -170,5 +173,6 @@ We know of three other implementations of rmcorr.
 - <a href="https://pingouin-stats.org/generated/pingouin.rm_corr.html#pingouin.rm_corr">rm_corr</a>
 
 - <a href="https://doi.org/10.21105/joss.01026">Corresponding Paper</a> 
+
 ### 3) Stata: RMCORR
 - <a href="https://ideas.repec.org/c/boc/bocode/s458971.html">RMCORR</a>
