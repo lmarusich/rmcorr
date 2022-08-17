@@ -40,7 +40,8 @@ Suggests:
     AICcmodavg,
     pals,
     testthat (>= 3.0.0),
-    corrplot
+    corrplot,
+    cocor
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://github.com/lmarusich/rmcorr, https://lmarusich.github.io/rmcorr/

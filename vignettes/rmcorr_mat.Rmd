@@ -1,10 +1,10 @@
 ---
-title: "Plotting with rmcorr_mat"
+title: "Plotting and Multiple Comparisons with rmcorr_mat"
 author: "Jonathan Bakdash and Laura Marusich"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Plotting with rmcorr_mat}
+  %\VignetteIndexEntry{Plotting and Multiple Comparisons with rmcorr_mat}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -31,7 +31,7 @@ require(corrplot)
 ```
 
 ## Plotting a Correlation Matrix 
-The output from rmcorr_mat can be used be used to plot a correlation matrix.
+The output from *rmcorr_mat* can be used be used to plot a correlation matrix.
 ```{r}
 dist_rmc_mat <- rmcorr_mat(participant = Subject, 
                            variables = c("Blindwalk Away",
@@ -65,6 +65,31 @@ for (i in 1:n.models) {
 ```
 
 ## Adjusting for Multiple Comparisons
+The third component of the output from *rmcorr_mat()* contains a summary of results. Using the summary component, we demonstrate adjusting for multiple comparisons using two methods: the Bonferroni correction and the False Discovery Rate (FDR). <br>
+<br>
+This example also compares the unadjusted *p*-values to both adjustment methods. Because most of the unadjusted *p*-values are quite small, many of the adjusted *p*-values tend to be similar to the unadjusted ones and the two adjustment methods also tend to produce similar *p*-values.   
+
+
 ```{r}
+#Third component: Summary
 dist_rmc_mat$summary
+
+#p-values only
+dist_rmc_mat$summary$p.vals
+
+#Vector of original, unadjusted p-values for all 10 comparisons
+p.vals <- dist_rmc_mat$summary$p.vals
+
+p.vals.bonferroni <- p.adjust(p.vals, 
+                              method = "bonferroni",
+                              n = length(p.vals))
+
+p.vals.fdr <- p.adjust(p.vals, 
+                       method = "fdr",
+                       n = length(p.vals))
+
+#All p-values together
+all.pvals <- cbind(p.vals, p.vals.bonferroni, p.vals.fdr)
+colnames(all.pvals) <- c("Unadjusted", "Bonferroni", "fdr")
+round(all.pvals, digits = 5)
 ```
