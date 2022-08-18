@@ -48,6 +48,7 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/compcor.html">Comparing Correlations</a>
     <a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a>
     <a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce the Results of Repeated Measures Correlation paper</a>
     <a class="dropdown-item" href="../articles/rmcorr_mat.html">Plotting and Multiple Comparisons with rmcorr_mat</a>
@@ -84,7 +85,7 @@
                         <h4 data-toc-skip class="author">Jonathan
 Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2022-08-17</h4>
+            <h4 data-toc-skip class="date">2022-08-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/HEAD/vignettes/FAQ_and_limitations.Rmd" class="external-link"><code>vignettes/FAQ_and_limitations.Rmd</code></a></small>
       <div class="d-none name"><code>FAQ_and_limitations.Rmd</code></div>
@@ -173,121 +174,9 @@ above. <img src="../reference/figures/Gpower_approx_df.jpg" alt="G*Power using t
 </div>
 </div>
 <div class="section level3">
-<h3 id="comparing-correlations">Comparing Correlations<a class="anchor" aria-label="anchor" href="#comparing-correlations"></a>
-</h3>
-<p>We show examples for comparing the magnitude of two
-<em>r</em><sub><em>rm</em></sub> values. Correlations are compared using
-the cocor package: <br><a href="https://cran.r-project.org/web/packages/cocor/index.html" class="external-link">R
-package</a> <br><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945" class="external-link">Paper</a>
-<br><a href="http://comparingcorrelations.org" class="external-link">Web Version</a> <br></p>
-<div class="section level4">
-<h4 id="independent-correlations">Independent Correlations<a class="anchor" aria-label="anchor" href="#independent-correlations"></a>
-</h4>
-<p>In this example, we compare <em>r</em><sub><em>rm</em></sub> values
-from two distinct datasets. That is, the datasets are completely
-independent – they do not have the same participants. This is a nonsense
-example because the two datasets are from completely different
-experimental design that do not have common measures. <br><br> Note the
-two <em>r</em><sub><em>rm</em></sub> values are similar in magnitude and
-have large overlap in their confidence intervals:
-<em>r</em><sub><em>rm</em></sub> = -0.58, 95% CI [-0.74, -0.38] and
-<em>r</em><sub><em>rm</em></sub> = -0.40, 95% CI [-0.66, -0.07]. Thus,
-they are not significantly different.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="http://comparingcorrelations.org" class="external-link">cocor</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Loading required package: cocor</span></span>
-<span><span class="co">#&gt; Warning: package 'cocor' was built under R version 4.1.3</span></span>
-<span></span>
-<span><span class="co">#1) Run rmcorr on two different datasets</span></span>
-<span><span class="va">model1.marusich2016_exp2</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr.html">rmcorr</a></span><span class="op">(</span><span class="va">Pair</span>, <span class="va">HVT_capture</span>, <span class="va">MARS</span>, <span class="va">marusich2016_exp2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in rmcorr(Pair, HVT_capture, MARS, marusich2016_exp2): 'Pair' coerced</span></span>
-<span><span class="co">#&gt; into a factor</span></span>
-<span><span class="va">model1.marusich2016_exp2</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Repeated measures correlation</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; r</span></span>
-<span><span class="co">#&gt; -0.5890471</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; degrees of freedom</span></span>
-<span><span class="co">#&gt; 55</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; p-value</span></span>
-<span><span class="co">#&gt; 1.434929e-06</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 95% confidence interval</span></span>
-<span><span class="co">#&gt; -0.738878 -0.3837139</span></span>
-<span></span>
-<span><span class="va">model2.gilden2010</span>         <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr.html">rmcorr</a></span><span class="op">(</span><span class="va">sub</span>, <span class="va">rt</span>, <span class="va">acc</span>, <span class="va">gilden2010</span> <span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in rmcorr(sub, rt, acc, gilden2010): 'sub' coerced into a factor</span></span>
-<span><span class="va">model2.gilden2010</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Repeated measures correlation</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; r</span></span>
-<span><span class="co">#&gt; -0.406097</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; degrees of freedom</span></span>
-<span><span class="co">#&gt; 32</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; p-value</span></span>
-<span><span class="co">#&gt; 0.01716871</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; 95% confidence interval</span></span>
-<span><span class="co">#&gt; -0.6611673 -0.06687244</span></span>
-<span></span>
-<span><span class="co">#2) Extract relevant parameters</span></span>
-<span><span class="co">#Model 1</span></span>
-<span><span class="va">rmcorr1</span> <span class="op">&lt;-</span> <span class="va">model1.marusich2016_exp2</span><span class="op">$</span><span class="va">r</span></span>
-<span><span class="va">rmcorr1</span></span>
-<span><span class="co">#&gt; [1] -0.5890471</span></span>
-<span></span>
-<span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="va">model1.marusich2016_exp2</span><span class="op">$</span><span class="va">df</span> <span class="op">+</span> <span class="fl">2</span> <span class="co">#note the same kludge as power above</span></span>
-<span><span class="va">n1</span>                                    <span class="co">#this is the effective sample size</span></span>
-<span><span class="co">#&gt; [1] 57</span></span>
-<span></span>
-<span><span class="co">#Model 2</span></span>
-<span><span class="va">rmcorr2</span> <span class="op">&lt;-</span> <span class="va">model2.gilden2010</span><span class="op">$</span><span class="va">r</span></span>
-<span><span class="va">rmcorr2</span></span>
-<span><span class="co">#&gt; [1] -0.406097</span></span>
-<span></span>
-<span><span class="va">n2</span> <span class="op">&lt;-</span> <span class="va">model2.gilden2010</span><span class="op">$</span><span class="va">df</span> <span class="op">+</span> <span class="fl">2</span> </span>
-<span><span class="va">n2</span></span>
-<span><span class="co">#&gt; [1] 34</span></span>
-<span></span>
-<span><span class="co">#3) at long last, compare the two rmcorr coefficients</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.indep.groups.html" class="external-link">cocor.indep.groups</a></span><span class="op">(</span><span class="va">rmcorr1</span>, <span class="va">rmcorr2</span>, <span class="va">n1</span>, <span class="va">n2</span>, var.labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HVT_capture"</span>, </span>
-<span>                                                            <span class="st">"MARS"</span>,</span>
-<span>                                                            <span class="st">"rt"</span>,</span>
-<span>                                                            <span class="st">"acc"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   Results of a comparison of two correlations based on independent groups</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Comparison between r1.jk (HVT_capture, MARS) = -0.589 and r2.hm (rt, acc) = -0.4061</span></span>
-<span><span class="co">#&gt; Difference: r1.jk - r2.hm = -0.183</span></span>
-<span><span class="co">#&gt; Data: j = HVT_capture, k = MARS, h = rt, m = acc</span></span>
-<span><span class="co">#&gt; Group sizes: n1 = 57, n2 = 34</span></span>
-<span><span class="co">#&gt; Null hypothesis: r1.jk is equal to r2.hm</span></span>
-<span><span class="co">#&gt; Alternative hypothesis: r1.jk is not equal to r2.hm (two-sided)</span></span>
-<span><span class="co">#&gt; Alpha: 0.05</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; fisher1925: Fisher's z (1925)</span></span>
-<span><span class="co">#&gt;   z = -1.0885, p-value = 0.2764</span></span>
-<span><span class="co">#&gt;   Null hypothesis retained</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; zou2007: Zou's (2007) confidence interval</span></span>
-<span><span class="co">#&gt;   95% confidence interval for r1.jk - r2.hm: -0.5420 0.1365</span></span>
-<span><span class="co">#&gt;   Null hypothesis retained (Interval includes 0)</span></span></code></pre></div>
-</div>
-<div class="section level4">
-<h4 id="correlateddependentoverlapping-correlations">Correlated/Dependent/Overlapping Correlations<a class="anchor" aria-label="anchor" href="#correlateddependentoverlapping-correlations"></a>
-</h4>
-</div>
-</div>
-<div class="section level3">
 <h3 id="how-to-extract-the-slope-and-its-confidence-interval">How to Extract the Slope and its Confidence Interval<a class="anchor" aria-label="anchor" href="#how-to-extract-the-slope-and-its-confidence-interval"></a>
 </h3>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my.rmc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr.html">rmcorr</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">Subject</span>, measure1 <span class="op">=</span> <span class="va">PaCO2</span>, measure2 <span class="op">=</span> <span class="va">pH</span>, </span>
 <span>                 dataset <span class="op">=</span> <span class="va">bland1995</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, :</span></span>

@@ -7,9 +7,6 @@ vignette: >
   %\VignetteIndexEntry{Frequently Asked Questions and Limitations}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-# resource_files:
-#   - Gpower_exact_df.jpg
-#   - Gpower_approx_df.jpg
 ---
 
 ```{r, include = FALSE}
@@ -89,62 +86,6 @@ Add two (same kludge) for G\*Power, entering a sample size of *N* = 200 <br>
 ![G\*Power using the approx degrees of freedom](../man/figures/Gpower_approx_df.jpg)
 
 
-
-
-### Comparing Correlations
-We show examples for comparing the magnitude of two *r*<sub>*rm*</sub> values. Correlations are compared using the cocor package: 
-<br>
-<a href="https://cran.r-project.org/web/packages/cocor/index.html">R package</a> 
-<br>
-<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945">Paper</a> 
-<br>
-<a href="http://comparingcorrelations.org">Web Version</a> 
-<br>
-
-#### Independent Correlations
-In this example, we compare *r*<sub>*rm*</sub> values from two distinct datasets. That is, the datasets are completely independent -- they do  not have the same participants. This is a nonsense example because the two datasets are from completely different experimental design that do not have common measures. 
-<br>
-<br>
-Note the two *r*<sub>*rm*</sub> values are similar in magnitude and have large overlap in their confidence intervals: *r*<sub>*rm*</sub> = -0.58, 95% CI [-0.74, -0.38] and *r*<sub>*rm*</sub> = -0.40, 95% CI [-0.66, -0.07]. Thus, they are not significantly different. 
-
-```{r}
-require(cocor)
-
-#1) Run rmcorr on two different datasets
-model1.marusich2016_exp2  <- rmcorr(Pair, HVT_capture, MARS, marusich2016_exp2)
-model1.marusich2016_exp2
-
-model2.gilden2010         <- rmcorr(sub, rt, acc, gilden2010 )
-model2.gilden2010
-
-#2) Extract relevant parameters
-#Model 1
-rmcorr1 <- model1.marusich2016_exp2$r
-rmcorr1
-
-n1 <- model1.marusich2016_exp2$df + 2 #note the same kludge as power above
-n1                                    #this is the effective sample size
-
-#Model 2
-rmcorr2 <- model2.gilden2010$r
-rmcorr2
-
-n2 <- model2.gilden2010$df + 2 
-n2
-
-#3) at long last, compare the two rmcorr coefficients
-cocor.indep.groups(rmcorr1, rmcorr2, n1, n2, var.labels = c("HVT_capture", 
-                                                            "MARS",
-                                                            "rt",
-                                                            "acc"))
-
-```
-
-#### Correlated/Dependent/Overlapping Correlations
-```{r}
-
-
-```
 
 ### How to Extract the Slope and its Confidence Interval
 ```{r}
