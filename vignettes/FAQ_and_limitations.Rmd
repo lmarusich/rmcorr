@@ -72,7 +72,7 @@ G\*Power will calculate the degrees of freedom as *N* - 2 = 201 - 2 = 199.
 Thus, using the correct degrees of freedom for rmcorr.
 <br>
 
-*Note* power is just slighty different in than the same calculation in R, which uses an approximation.
+*Note* power is just slighty different than the same calculation in R, which uses an arctan approximation.
 
 ![G\*Power using the exact degrees of freedom](../man/figures/Gpower_exact_df.jpg)
 
@@ -119,26 +119,41 @@ Error in isa(Participant, "character") : could not find function "isa"
 <a href="https://stackoverflow.com/questions/73146762/how-to-solve-the-following-error-running-rmcorr-in-r-error-in-isaparticipant">Stack Question with error</a>
 
 #### Cause(s) for the error? 
-rmcorr uses isa(). isa() is a base function included with R. We think this error 
+rmcorr uses isa(), a base function included with R. We think this error 
 occurs in versions of R prior to 3.5.0 (due to a change in serialization?) and 
-also ran into the error in R 4.0.4 
+also ran into the error in R 4.0.4. 
 
 Code to test if isa() works:
 `r ''````{r}
 isa("test", "character")
 isa(5, "numeric")
+
+#Both should return:
+#[1] TRUE
 ```
 
 If there is a different error with isa, another possibility is that an older 
 package may have overwritten the base isa() function:
 `r ''````{r}
+base::isa
+#Should return:
+#function (x, what) 
+#{
+#    if (isS4(x)) 
+#        methods::is(x, what)
+#    else all(class(x) %in% what)
+#}
+#<bytecode: 0x0000025bbe9b5968>
+#<environment: namespace:base>
+
 base::isa("test", "character")
 base::isa(5, "numeric")
+#Both should return:
+#[1] TRUE
 ```
 
 ### Transformations
-Transformations can be used to make the data (errors) more normal. We highly recommend graphing both the raw and transformed data.
-<br> It may be appropriate to only transform one measure or transform both measures. "Consider transforming every variable in sight" (Gelman \& Hill, 2017: *Data Analysis Using Regression and Multilevel/Hierarchical Models*, ISBN: 9780521686891, p. 548): <a href="https://www.google.com/books/edition/Data_Analysis_Using_Regression_and_Multi/lV3DIdV0F9AC?hl=en&gbpv=1&bsq=consider%20transforming%20every%20variable%20in%20sight">Google Books</a> 
+Transformations can be used to make the data (errors) more normal. We highly recommend graphing both the raw and transformed data. It may be appropriate to only transform one measure or transform both measures. "Consider transforming every variable in sight" (Gelman \& Hill, 2017: *Data Analysis Using Regression and Multilevel/Hierarchical Models*, ISBN: 9780521686891, p. 548): <a href="https://www.google.com/books/edition/Data_Analysis_Using_Regression_and_Multi/lV3DIdV0F9AC?hl=en&gbpv=1&bsq=consider%20transforming%20every%20variable%20in%20sight">Google Books</a> 
 <br>
 
 ## Limitations 
@@ -149,11 +164,11 @@ exception is if time is a measure, such as age in the raz2005 dataset.
 <br>
 
 ### Non-Linearity
-Rmcorr fits a linear model. If the data are non-linear, we recommend using multilevel modeling instead. 
+Rmcorr fits a linear model. If the data are non-linear, we recommend trying to transform it or using multilevel modeling. 
 
 ### Varying Slopes with Influential Observations and/or Unbalanced Data
 If slopes meaningfully vary by individual, we recommend using multilevel modeling instead of rmcorr.
-Random effect slopes are even more \emph{problematic} for rmcorr with influential observations
+Random effect slopes are even more problematic for rmcorr with influential observations
 and/or highly unbalanced data. This is nicely illustrated in simulations by Dr. Marta Karas: 
 <br>
 <a href="https://martakarass.github.io/post/2022-04-27-rmcorr_vs_lmm/">When rmcorr may not be ideal</a> 
@@ -161,14 +176,14 @@ and/or highly unbalanced data. This is nicely illustrated in simulations by Dr. 
 ## Other Implementations of rmcorr
 We know of three other implementations of rmcorr.
 
-### 1) Shiny: Web App and Standalone with a graphical interface 
+### 1) rmcorrShiny: Web and Standalone App with a Graphical Interface 
 - <a href="https://lmarusich.shinyapps.io/shiny_rmcorr/">Web App</a>
 
-- <a href="https://github.com/lmarusich/rmcorrShiny">Shiny Source Code and Information on Running Standalone</a> 
+- <a href="https://github.com/lmarusich/rmcorrShiny">Shiny Source Code and Running the Standalone App</a> 
 
 - <a href="https://doi.org/10.12688/f1000research.55027.2">Corresponding Paper</a> 
 
-### 2) Python: rm_corr in pinguion 
+### 2) Python: rm_corr in Pinguion 
 - <a href="https://pingouin-stats.org/generated/pingouin.rm_corr.html#pingouin.rm_corr">rm_corr</a>
 
 - <a href="https://doi.org/10.21105/joss.01026">Corresponding Paper</a> 
