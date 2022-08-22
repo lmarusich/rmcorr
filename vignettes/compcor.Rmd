@@ -151,7 +151,7 @@ r.kh <- model5.bwt.verb$rmcorr.r #bwt ~ verb
 r.km <- model6.bwt.vis$rmcorr.r  #bwt ~ vis
 
 #Since there is missing data, we use the average effective sample size.
-n    <- round(mean(dist_rmc_mat_nonoverlap$summary$effective.N), digits = 0)
+n    <- round(mean(dist_rmc_mat_nonoverlap$summary$effective.N), digits = 0) + 2
 
 cocor.dep.groups.nonoverlap(r.jk,
                             r.hm, 
