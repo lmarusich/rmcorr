@@ -50,6 +50,8 @@
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a>
     <a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce the Results of Repeated Measures Correlation paper</a>
+    <a class="dropdown-item" href="../articles/compcor.html">Comparing Correlations</a>
+    <a class="dropdown-item" href="../articles/rmcorr_mat.html">Plotting and Multiple Comparisons with rmcorr_mat</a>
   </div>
 </li>
 <li class="nav-item">
@@ -81,7 +83,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Reproduce the Results of Repeated Measures Correlation paper</h1>
                         <h4 data-toc-skip class="author">Jonathan Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2022-08-09</h4>
+            <h4 data-toc-skip class="date">2022-08-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/HEAD/vignettes/New_rmcorr_paper_analyses_figures.Rmd" class="external-link"><code>vignettes/New_rmcorr_paper_analyses_figures.Rmd</code></a></small>
       <div class="d-none name"><code>New_rmcorr_paper_analyses_figures.Rmd</code></div>
@@ -331,12 +333,12 @@
 <span><span class="co">#dev.off()</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="figure-4-power-curves">4. Figure 4: Power curves<a class="anchor" aria-label="anchor" href="#figure-4-power-curves"></a>
+<h3 id="power">4. Figure 4: Power curves<a class="anchor" aria-label="anchor" href="#power"></a>
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">power.rmcorr</span><span class="op">&lt;-</span><span class="kw">function</span><span class="op">(</span><span class="va">k</span>, <span class="va">N</span>, <span class="va">effectsizer</span>, <span class="va">sig</span><span class="op">)</span></span>
 <span><span class="op">{</span></span>
-<span>    <span class="fu">pwr.r.test</span><span class="op">(</span>n <span class="op">=</span> <span class="op">(</span><span class="op">(</span><span class="va">N</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="va">k</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span><span class="fl">1</span>, r <span class="op">=</span> <span class="va">effectsizer</span>, sig.level <span class="op">=</span> <span class="va">sig</span><span class="op">)</span> </span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.r.test.html" class="external-link">pwr.r.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="op">(</span><span class="op">(</span><span class="va">N</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="va">k</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span><span class="fl">1</span>, r <span class="op">=</span> <span class="va">effectsizer</span>, sig.level <span class="op">=</span> <span class="va">sig</span><span class="op">)</span> </span>
 <span>    <span class="co">#df are specified this way because pwr.r.test assumes the input is N, so it uses N - 2 for the df</span></span>
 <span><span class="op">}</span></span>
 <span></span>
@@ -345,7 +347,7 @@
 <span><span class="co">#Small effect size</span></span>
 <span><span class="va">k</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span> </span>
 <span><span class="va">nvals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">300</span><span class="op">)</span></span>
-<span><span class="va">powPearsonSmall</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">nvals</span>, <span class="kw">function</span> <span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">pwr.r.test</span><span class="op">(</span>n<span class="op">=</span><span class="va">x</span>, r<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span><span class="op">$</span><span class="va">power</span><span class="op">)</span></span>
+<span><span class="va">powPearsonSmall</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">nvals</span>, <span class="kw">function</span> <span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.r.test.html" class="external-link">pwr.r.test</a></span><span class="op">(</span>n<span class="op">=</span><span class="va">x</span>, r<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span><span class="op">$</span><span class="va">power</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">bluecolors</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#c6dbef"</span>, <span class="st">"#9ecae1"</span>, <span class="st">"#6baed6"</span>, <span class="st">"#4292c6"</span>, <span class="st">"#2171b5"</span>, <span class="st">"#084594"</span><span class="op">)</span></span>
 <span></span>
@@ -372,7 +374,7 @@
 <span><span class="co">#Medium effect size</span></span>
 <span><span class="va">k</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span></span>
 <span><span class="va">nvals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">60</span><span class="op">)</span></span>
-<span><span class="va">powPearsonMedium</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">nvals</span>, <span class="kw">function</span> <span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">pwr.r.test</span><span class="op">(</span>n<span class="op">=</span><span class="va">x</span>, r<span class="op">=</span><span class="fl">0.3</span><span class="op">)</span><span class="op">$</span><span class="va">power</span><span class="op">)</span></span>
+<span><span class="va">powPearsonMedium</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">nvals</span>, <span class="kw">function</span> <span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.r.test.html" class="external-link">pwr.r.test</a></span><span class="op">(</span>n<span class="op">=</span><span class="va">x</span>, r<span class="op">=</span><span class="fl">0.3</span><span class="op">)</span><span class="op">$</span><span class="va">power</span><span class="op">)</span></span>
 <span><span class="va">greencolors</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#c7e9c0"</span>,<span class="st">"#a1d99b"</span>,<span class="st">"#74c476"</span>,<span class="st">"#41ab5d"</span>,<span class="st">"#238b45"</span>,<span class="st">"#005a32"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#orangecols&lt;-brewer.pal(9, "Oranges")</span></span>
@@ -400,7 +402,7 @@
 <span><span class="co">#Large effect size</span></span>
 <span><span class="va">k</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span></span>
 <span><span class="va">nvals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">30</span><span class="op">)</span></span>
-<span><span class="va">powPearsonlarge</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">nvals</span>, <span class="kw">function</span> <span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">pwr.r.test</span><span class="op">(</span>n<span class="op">=</span><span class="va">x</span>, r<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">$</span><span class="va">power</span><span class="op">)</span></span>
+<span><span class="va">powPearsonlarge</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">nvals</span>, <span class="kw">function</span> <span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.r.test.html" class="external-link">pwr.r.test</a></span><span class="op">(</span>n<span class="op">=</span><span class="va">x</span>, r<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">$</span><span class="va">power</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">purplecolors</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#f2f0f7"</span>, <span class="st">"#dadaeb"</span>, <span class="st">"#bcbddc"</span>, <span class="st">"#9e9ac8"</span>, <span class="st">"#807dba"</span>, <span class="st">"#6a51a3"</span>, <span class="st">"#4a1486"</span><span class="op">)</span></span>
 <span></span>
