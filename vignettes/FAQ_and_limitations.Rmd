@@ -23,29 +23,74 @@ library("knitr", "rmarkdown", "rmcorr") #, "stats")
 require(knitr)
 require(rmarkdown)
 require(rmcorr)
-
 ```
 ## Frequently Asked Questions 
 
 ### How to Calculate Power
-Power can be calculated using the \emph{power.rmcorr} function in the paper vignette. This function modifies pwr.r.test from the <a href="https://CRAN.R-project.org/package=pwr">pwr</a> package to use the rmcorr degrees of freedom.
-<br> 
+Power can be calculated using the *power.rmcorr* function. This function 
+modifies pwr.r.test from the <a href="https://CRAN.R-project.org/package=pwr">pwr</a> 
+package to use the rmcorr degrees of freedom. It is not presently included in 
+the rmcorr package. 
 
-For G\*Power or another package, power can be calculated by substituting the rmcorr degrees of freedom for a Pearson correlation. Instead of sample size, use the degrees of freedom for rmcorr plus two. This is because a Pearson correlation has *N* - 2 degrees of freedom.<br>
+Notation: *N* is the sample size, *k* is the (average) number of repeated measures for each individual, and *r*<sub>*rm*</sub> is the rmcorr effect size.
+
+#### power.rmcorr Example
+*N* = 100, *k* = 3, and *r*<sub>*rm*</sub> = 0.20. This design has 82\% power.
+
+```
+install.packages("pwr")
+require(pwr)
+
+power.rmcorr <- function(k, N, effectsizer, sig)
+    {pwr.r.test(n = ((N)*(k-1))+1, r = effectsizer, sig.level = sig)}
+    
+power.rmcorr(k = 3, N = 100, effectsizer = 0.20, sig = 0.05)    
+#> 
+#>      approximate correlation power calculation (arctangh transformation) 
+#> 
+#>               n = 201
+#>               r = 0.2
+#>       sig.level = 0.05
+#>           power = 0.8156984
+#>     alternative = two.sided
+```
+
+See [Power curves](./New_rmcorr_paper_analyses_figures.html#power) for more information. 
+
+For <a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower">G\*Power</a> or other software, power can be calculated by substituting the rmcorr degrees of freedom for a Pearson correlation. Instead of sample size, use the degrees of freedom for rmcorr plus two (effective sample size). This is because a Pearson correlation has *N* - 2 degrees of freedom.<br>
+
+
+- Rmcorr exact degrees of freedom = *N* x (*k* - 1) - 1 <br>
+- Approximate degrees of freedom = (*N* -1) x (*k* - 1)  <br>
+
+#### Exact Degrees of Freedom Example
+Values: *N* = 100, *k* = 3 , and *r*<sub>*rm*</sub> = 0.20 (same as above) <br> 
+rmcorr df = 100 x (3 - 1) - 1 = 200 - 1 = 199 <br>
+Add two (kludge): 199 + 2 = 201 <br>
+Enter *N* = 201 as the effective sample size in G\*Power <br>
+G\*Power will calculate the degrees of freedom as *N* - 2 = 201 - 2 = 199. 
+Thus, using the correct degrees of freedom for rmcorr.
 <br>
-Rmcorr exact degrees of freedom: (*k* - 1) x (*N* - 1), where *k* is the number of repeated measures for each individual and *N* is the sample size.<br>
 
-#### Example 
-Example: *k* = 3 and *N* = 100.<br> 
-rmcorr df = (3 - 1) x (100 - 1) = 2 x 99 = 198.<br>
-Add two (kludge): 198 + 2 = 200.<br>
-Enter *N* = 200 as the effective sample size in G\*Power.<br>
-G\*Power will calculate the degrees of freedom as *N* - 2 = 200 - 2 = 198. Thus, using the correct degrees of freedom for rmcorr.<br>
+*Note* power is just slighty different than the same calculation in R, which uses an arctan approximation.
+
+![G\*Power using the exact degrees of freedom](../man/figures/Gpower_exact_df.jpg)
+
+#### Approximate Degrees of Freedom Example
+Values: *N* = 100, *k* = 3, and *r*<sub>*rm*</sub> = 0.20 (again, same as above) <br>
+approx rmcorr df = (100 - 1) x (3 - 1) = 99 x 2 = 198 <br>
+Note the small difference between the approximate vs. exact calculation: *one* degree of freedom <br>
+Add two (same kludge) for G\*Power, entering a sample size of *N* = 200 <br>
+
+*Note* power is slighty different than the exact formula above. 
+![G\*Power using the approx degrees of freedom](../man/figures/Gpower_approx_df.jpg)
+
+
 
 ### How to Extract the Slope and its Confidence Interval
 ```{r}
 my.rmc <- rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, 
-                  dataset = bland1995)
+                 dataset = bland1995)
  
 # Structure of rmcorr object
 #str(my.rmc)
@@ -63,10 +108,52 @@ coefs.all <- cbind(coef.rmc, coef.CIs)
 coefs.all
 ```
 
+### isa Error
+**tldr**: Updating R appears to resolve this error. <br>
+
+We have had reports of this error when running rmcorr: <br>
+`r ''````{r}
+Error in isa(Participant, "character") : could not find function "isa" 
+```
+
+<a href="https://stackoverflow.com/questions/73146762/how-to-solve-the-following-error-running-rmcorr-in-r-error-in-isaparticipant">Stack Question with error</a>
+
+#### Cause(s) for the error? 
+rmcorr uses isa(), a base function included with R. We think this error 
+occurs in versions of R prior to 3.5.0 (due to a change in serialization?) and 
+also ran into the error in R 4.0.4. 
+
+Code to test if isa() works:
+`r ''````{r}
+isa("test", "character")
+isa(5, "numeric")
+
+#Both should return:
+#[1] TRUE
+```
+
+If there is a different error with isa, another possibility is that an older 
+package may have overwritten the base isa() function:
+`r ''````{r}
+base::isa
+#Should return:
+#function (x, what) 
+#{
+#    if (isS4(x)) 
+#        methods::is(x, what)
+#    else all(class(x) %in% what)
+#}
+#<bytecode: 0x0000025bbe9b5968>
+#<environment: namespace:base>
+
+base::isa("test", "character")
+base::isa(5, "numeric")
+#Both should return:
+#[1] TRUE
+```
+
 ### Transformations
-Transformations can be used to make the data (errors) more normal. We highly recommend graphing both the raw and transformed data.
-<br>
-It may be appropriate to only transform one measure or transform both measures. "Consider transforming every variable in sight" (Gelman \& Hill, 2017: *Data Analysis Using Regression and Multilevel/Hierarchical Models*, ISBN: 9780521686891, p. 548).  
+Transformations can be used to make the data (errors) more normal. We highly recommend graphing both the raw and transformed data. It may be appropriate to only transform one measure or transform both measures. "Consider transforming every variable in sight" (Gelman \& Hill, 2017: *Data Analysis Using Regression and Multilevel/Hierarchical Models*, ISBN: 9780521686891, p. 548): <a href="https://www.google.com/books/edition/Data_Analysis_Using_Regression_and_Multi/lV3DIdV0F9AC?hl=en&gbpv=1&bsq=consider%20transforming%20every%20variable%20in%20sight">Google Books</a> 
 <br>
 
 ## Limitations 
@@ -76,10 +163,30 @@ In general, rmcorr is a time-independent model-- it does not model change over t
 exception is if time is a measure, such as age in the raz2005 dataset.
 <br>
 
-### Varying Slopes with Influential Observations and/or Unbalanced Data 
-If slopes meaningfully vary by individual, we recommend using multilevel modeling.
-Random effect slopes are even more \emph{problematic} for rmcorr with influential observations
+### Non-Linearity
+Rmcorr fits a linear model. If the data are non-linear, we recommend trying to transform it or using multilevel modeling. 
+
+### Varying Slopes with Influential Observations and/or Unbalanced Data
+If slopes meaningfully vary by individual, we recommend using multilevel modeling instead of rmcorr.
+Random effect slopes are even more problematic for rmcorr with influential observations
 and/or highly unbalanced data. This is nicely illustrated in simulations by Dr. Marta Karas: 
 <br>
 <a href="https://martakarass.github.io/post/2022-04-27-rmcorr_vs_lmm/">When rmcorr may not be ideal</a> 
 
+## Other Implementations of rmcorr
+We know of three other implementations of rmcorr.
+
+### 1) rmcorrShiny: Web and Standalone App with a Graphical Interface 
+- <a href="https://lmarusich.shinyapps.io/shiny_rmcorr/">Web App</a>
+
+- <a href="https://github.com/lmarusich/rmcorrShiny">Shiny Source Code and Running the Standalone App</a> 
+
+- <a href="https://doi.org/10.12688/f1000research.55027.2">Corresponding Paper</a> 
+
+### 2) Python: rm_corr in Pinguion 
+- <a href="https://pingouin-stats.org/generated/pingouin.rm_corr.html#pingouin.rm_corr">rm_corr</a>
+
+- <a href="https://doi.org/10.21105/joss.01026">Corresponding Paper</a> 
+
+### 3) Stata: RMCORR
+- <a href="https://ideas.repec.org/c/boc/bocode/s458971.html">RMCORR</a>

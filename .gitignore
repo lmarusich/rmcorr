@@ -35,7 +35,8 @@ inst/doc
 .Rproj.user/shared/notebooks/paths
 old
 .Renviron
-
+.Rdata
+.Rhistory
 /doc/
 /Meta/
 docs

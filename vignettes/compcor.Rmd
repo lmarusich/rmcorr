@@ -1,0 +1,166 @@
+---
+title: "Comparing Correlations"
+author: "Jonathan Bakdash and Laura Marusich"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Comparing Correlations}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
+options(width = 80)
+library("knitr", "rmarkdown", "rmcorr") 
+require(knitr)
+require(rmarkdown)
+require(rmcorr)
+
+#Kludge to add cocor b/c of lib loc error 
+if(!require("cocor"))
+  install.packages("cocor")
+```
+
+### Comparing Correlations
+We show examples for comparing the magnitude of two *r*<sub>*rm*</sub> values. Correlations are compared using the cocor package: 
+<br>
+<a href="https://CRAN.R-project.org/package=cocor">R package</a> 
+<br>
+<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945">Paper</a> 
+<br>
+<a href="http://comparingcorrelations.org">Web Version</a> 
+<br>
+
+#### Independent Correlations
+In the first example, we compare *r*<sub>*rm*</sub> values from two distinct, independent datasets. That is, they do not have the same participants. This is a nonsense example because the two datasets are from completely different experimental designs that do not share common measures. 
+<br>
+<br>
+Note the two *r*<sub>*rm*</sub> values are similar in magnitude and have large overlap in their confidence intervals: *r*<sub>*rm*</sub> = -0.58, 95% CI [-0.74, -0.38] and *r*<sub>*rm*</sub> = -0.40, 95% CI [-0.66, -0.07]. Thus, they are not significantly different. 
+
+```{r}
+#1) Run rmcorr on two different datasets
+model1.marusich2016_exp2  <- rmcorr(Pair, HVT_capture, MARS, marusich2016_exp2)
+model1.marusich2016_exp2
+
+model2.gilden2010         <- rmcorr(sub, rt, acc, gilden2010 )
+model2.gilden2010
+
+#2) Extract relevant parameters
+#Model 1
+rmcorr1 <- model1.marusich2016_exp2$r
+rmcorr1
+
+n1 <- model1.marusich2016_exp2$df + 2 #note the same kludge as power above
+n1                                    #this is the effective sample size
+
+#Model 2
+rmcorr2 <- model2.gilden2010$r
+rmcorr2
+
+n2 <- model2.gilden2010$df + 2 
+n2
+
+#3) Compare the two indendent rmcorr coefficients
+cocor.indep.groups(rmcorr1, rmcorr2, n1, n2, 
+                   var.labels = c(model1.marusich2016_exp2$var[2:3],
+                                  model2.gilden2010$vars[2:3]))
+
+```
+
+#### Correlated Correlations
+In the next two examples, we compare *r*<sub>*rm*</sub> from the same dataset. These are dependent groups -- data from the same participants.
+
+##### Overlapping Correlations 
+For overlapping correlations, there is a common variable. Here, we compare correlations between action measures of distance perception. The first correlation is Blindwalk Away and Blindwalk Toward (*r*<sub>*rm*</sub> = 0.81, 95\% CI [0.75, 0.85]) and the second is Blindwalk Toward and Triangulated Blindwalk (*r*<sub>*rm*</sub> = 0.23, 95\% CI [0.08, 0.36]). Note that both correlations are significantly different than 0 but have substantially different magnitudes and wide separation in their confidence intervals. Hence, the two correlations are significantly different *p* < 0.0001 for all 9 comparison tests. Also, note the overlapping or common variable is Blindwalk Toward.
+```{r}
+variables.overlap<- c("Blindwalk Away",
+                      "Blindwalk Toward",
+                      "Triangulated BW")
+
+dist_rmc_mat_overlap <- rmcorr_mat(participant = Subject, 
+                                   variables = variables.overlap, 
+                                   dataset = twedt_dist_measures,
+                                   CI.level = 0.95)
+
+#dist_rmc_mat_action$summary
+
+#Use summary component 
+model1.bwa.bwt <- dist_rmc_mat_overlap$summary[1,] 
+model2.bwa.tri <- dist_rmc_mat_overlap$summary[2,]
+model3.bwt.tri <- dist_rmc_mat_overlap$summary[3,]
+
+r.jk <- model1.bwa.bwt$rmcorr.r
+r.jh <- model2.bwa.tri$rmcorr.r #overlap
+r.kh <- model3.bwt.tri$rmcorr.r
+
+
+#Since there is missing data, the results are unbalanced. We use the average effective sample size.
+n    <- mean(dist_rmc_mat_overlap$summary$effective.N)
+
+cocor.dep.groups.overlap(r.jk, 
+                         r.jh, 
+                         r.kh, 
+                         n, 
+                         alternative = "two.sided", 
+                         test = "all", 
+                         var.labels = variables.overlap) #Same as variables used in rmcorr_mat()
+```
+
+##### Non-Overlapping Correlations 
+For non-overlapping correlations, data are from the same participants but there is no overlapping variable in the comparison. We compare correlations between two action measures of distance perception (blindwalk away and blindwalk toward) and two direct measures (verbal and visual matching). The respective correlations are  (*r*<sub>*rm*</sub> = 0.81, 95\% CI [0.75, 0.85]) and (*r*<sub>*rm*</sub> = 0.73, 95\% CI [0.66, 0.80]). The non-overlapping correlations are similar in magnitude with partially overlapping confidence intervals. Thus, they are barely significantly different *p* < 0.04.
+```{r}
+variables.nonoverlap  <- c("Blindwalk Away",
+                           "Blindwalk Toward",
+                           "Verbal",
+                           "Visual matching")
+
+dist_rmc_mat_nonoverlap <- rmcorr_mat(participant = Subject, 
+                                      variables = variables.nonoverlap, 
+                                      dataset = twedt_dist_measures,
+                                      CI.level = 0.95)
+
+dist_rmc_mat_nonoverlap$summary
+
+#Use summary component 
+model1.bwa.bwt   <- dist_rmc_mat_nonoverlap$summary[1,] 
+model2.verb.vis  <- dist_rmc_mat_nonoverlap$summary[6,]
+model3.bwa.verb  <- dist_rmc_mat_nonoverlap$summary[2,]
+model4.bwa.vis   <- dist_rmc_mat_nonoverlap$summary[3,] 
+model5.bwt.verb  <- dist_rmc_mat_nonoverlap$summary[4,] 
+model6.bwt.vis   <- dist_rmc_mat_nonoverlap$summary[5,] 
+
+#Cheatsheet
+    #j = bwa
+    #k = bwt
+    #h = verb
+    #m = vis
+
+r.jk <- model1.bwa.bwt$rmcorr.r  #Action measures
+r.hm <- model2.verb.vis$rmcorr.r #Direct measures
+r.jh <- model3.bwa.verb$rmcorr.r #bwa ~ verb
+r.jm <- model4.bwa.vis$rmcorr.r  #bwa ~ vis
+r.kh <- model5.bwt.verb$rmcorr.r #bwt ~ verb
+r.km <- model6.bwt.vis$rmcorr.r  #bwt ~ vis
+
+#Since there is missing data, we use the average effective sample size.
+n    <- round(mean(dist_rmc_mat_nonoverlap$summary$effective.N), digits = 0) + 2
+
+cocor.dep.groups.nonoverlap(r.jk,
+                            r.hm, 
+                            r.jh, 
+                            r.jm, 
+                            r.kh, 
+                            r.km, 
+                            n, 
+                            alternative = "two.sided", 
+                            test = "all", 
+                            var.labels = variables.nonoverlap) #Same as variables used in rmcorr_mat()
+```
