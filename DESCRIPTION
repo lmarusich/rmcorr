@@ -1,6 +1,6 @@
 Package: rmcorr
 Title: Repeated Measures Correlation
-Version: 0.5.1
+Version: 0.5.2
 Authors@R: c(
     person("Jonathan Z.", "Bakdash", role = "aut",
       comment = c(ORCID = "0000-0002-1409-4779")
@@ -18,7 +18,7 @@ Description: Compute the repeated measures correlation, a statistical technique
     <https://lmarusich.github.io/rmcorr/index.html> and the 
     original paper: Bakdash and Marusich (2017) <doi:10.3389/fpsyg.2017.00456>.
 Depends:
-    R (>= 3.5.0)
+    R (>= 4.1.0)
 License: GPL-2
 LazyData: true
 Imports:
