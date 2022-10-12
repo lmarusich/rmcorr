@@ -60,3 +60,17 @@ test_that("changing CI level works", {
     expect_equal(rmc.out$CI[[1]], -0.610, tolerance = 0.001)
 })
 
+test_that("invalid CI levels", {
+    #CI > 1
+    expect_error(rmc.out <- rmcorr(as.factor(sub), rt, acc, gilden2010, CI.level = 1.99))
+    
+    #CI < 0
+    expect_error(rmc.out <- rmcorr(as.factor(sub), rt, acc, gilden2010, CI.level = -0.01))
+})
+
+
+test_that("invalid num of bootstraps for CI", {
+    #Character instead of numeric 
+    expect_error(rmc.out <- rmcorr(as.factor(sub), rt, acc, gilden2010, CIs = "bootstrap", nreps = "500"))
+})
+
