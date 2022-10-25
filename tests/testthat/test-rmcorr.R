@@ -74,3 +74,21 @@ test_that("invalid num of bootstraps for CI", {
     expect_error(rmc.out <- rmcorr(as.factor(sub), rt, acc, gilden2010, CIs = "bootstrap", nreps = "500"))
 })
 
+test_that("Return bootstrapped CIs", {
+    set.seed(531)
+    expect_warning(test.boot <- 
+                       rmcorr(Subject, PaCO2, pH, bland1995,
+                              CI.level = 0.95,
+                              nreps = 100,
+                              bstrap.out = T))
+    
+    expect_equal(test.boot$CI[[1]], -0.7112297, tolerance = 0.001)
+    expect_equal(test.boot$CI[[2]], -0.223255, tolerance = 0.001)
+})
+
+test_that("Test class of output",{
+    expect_warning(rmc.out <- rmcorr(Subject, PaCO2, pH, bland1995))
+    expect_match(class(rmc.out), "rmc")
+    expect_snapshot(print(rmc.out))
+})
+
