@@ -37,12 +37,16 @@ plot(dist_rmc_mat$models[[2]])
 }
 \references{
 Bakdash, J.Z., & Marusich, L.R. (2017). 
-Repeated Measures Correlation. \emph{Frontiers in Psychology, 8}, 256. 
+Repeated Measures Correlation. \emph{Frontiers in Psychology, 8}, 456. 
 \doi{10.3389/fpsyg.2017.00456}.
 
 Bland, J.M., & Altman, D.G. (1995). Calculating correlation 
-coefficients with repeated observations: Part 1 - correlation within
+coefficients with repeated observations: Part 1 -- correlation within
 subjects. \emph{BMJ, 310}, 446, \doi{https://doi.org/10.1136/bmj.310.6977.446}.
+
+Cohen, P., West, S. G., & Aiken, L. S. (2002). \emph{Applied multiple 
+regression/correlation analysis for the behavioral sciences} (3rd edition), 
+Routledge. ISBN: 9780805822236.
 }
 \seealso{
 \code{\link{rmcorr}, \link{plot.rmc}}

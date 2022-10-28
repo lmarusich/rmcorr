@@ -4,6 +4,9 @@ require(covr)
 install.packages("vdiffr")
 require(vdiffr)
 
+install.packages('diffviewer')
+require(diffviewer)
+
 #Dev tools test
 devtools::test()
 

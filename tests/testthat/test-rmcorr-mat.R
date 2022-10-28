@@ -115,5 +115,17 @@ test_that('rmcorr_mat summary matches single rmcorr model', {
     
 })
 
+test_that("Test class of output",{
+    dist_rmc_mat <- rmcorr_mat(participant = Subject, 
+                               variables = c("Blindwalk Away",
+                                             "Blindwalk Toward",
+                                             "Triangulated BW",
+                                             "Verbal",
+                                             "Visual matching"),
+                               dataset = twedt_dist_measures)
+    
+    expect_match(class(dist_rmc_mat), "rmcmat")
+    expect_snapshot(print(dist_rmc_mat))
+})
 
 

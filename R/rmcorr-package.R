@@ -3,12 +3,14 @@
 #' @docType package
 #' @name rmcorr-package
 #' @description \packageDescription{rmcorr}
+#' 
 #' @references Bakdash, J.Z. & Marusich, L.R. (2017). 
-#' Repeated Measures Correlation, \emph{Frontiers in Psychology, 8}, 256, 
+#' Repeated Measures Correlation, \emph{Frontiers in Psychology, 8}, 456, 
 #' \doi{https://doi.org/10.3389/fpsyg.2017.00456}
+#' 
 #' @references Bakdash, J.Z. & Marusich, L.R. (2019). 
-#' Corrigendum: Repeated Measures Correlation, \emph{Frontiers in Psychology}, 
-#' \doi{https://doi.org/10.3389/fpsyg.2019.01201}
+#' Corrigendum: Repeated Measures Correlation, \emph{Frontiers in Psychology, 
+#' 10}, \doi{https://doi.org/10.3389/fpsyg.2019.01201}
 NULL
 
 # \name{rmcorr-package}

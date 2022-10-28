@@ -50,12 +50,19 @@ rmcorr(Subject, PaCO2, pH, bland1995)
 }
 \references{
 Bakdash, J.Z., & Marusich, L.R. (2017). 
-Repeated Measures Correlation. \emph{Frontiers in Psychology, 8}, 256. 
-\doi{10.3389/fpsyg.2017.00456}.
+Repeated Measures Correlation. \emph{Frontiers in Psychology, 8}, 456, 
+\doi{https://doi.org/10.3389/fpsyg.2017.00456}.
 
-Bland, J.M., & Altman, D.G. (1995). Calculating correlation 
-coefficients with repeated observations: Part 1 - correlation within
-subjects. \emph{BMJ, 310}, 446.
+Bakdash, J. Z., & Marusich, L. R. (2019). Corrigendum: Repeated Measures Correlation. 
+\emph{Frontiers in Psychology, 10}, \doi{https://doi.org/10.3389/fpsyg.2019.01201}.
+
+Bland, J.M., & Altman, D.G. (1995a). Calculating correlation 
+coefficients with repeated observations: Part 1 -- correlation within
+subjects. \emph{BMJ, 310}, 446, \doi{https://doi.org/10.1136/bmj.310.6977.446}
+
+Bland, J.M., & Altman, D.G. (1995b). Calculating correlation 
+coefficients with repeated observations: Part 2 -- correlation within
+subjects. \emph{BMJ, 310}, 633, \doi{https://doi.org/10.1136/bmj.310.6980.633}
 }
 \seealso{
 \code{\link{plot.rmc}}

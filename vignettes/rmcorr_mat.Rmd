@@ -29,6 +29,12 @@ if(!require("corrplot"))
   install.packages("corrplot")
 require(corrplot)
 ```
+#### Running Examples Requires corrplot
+```{r, eval = FALSE}
+#Install corrplot
+install.packages("corrplot")
+require(corrplot)
+```
 
 ## Plotting a Correlation Matrix 
 The output from *rmcorr_mat* can be used be used to plot a correlation matrix.
