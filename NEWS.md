@@ -1,7 +1,7 @@
 # rmcorr 0.5.3 (dev release only, not on CRAN)
 
 * Added more unit tests 
-* Use codecov to evaluate code coverage
+* Use covr to evaluate code coverage
 * Documentation updates 
 
 # rmcorr 0.5.2
