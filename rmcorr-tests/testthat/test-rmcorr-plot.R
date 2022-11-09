@@ -20,12 +20,3 @@ test_that("Expected plot for example w/Gilden dataset", {
          ylab = "Accuracy")
     expect_doppelganger("p2", p2)
 })
-
-test_that("Overall line still works even though not recommended", {
-    my.rmc2 <- rmcorr(participant = as.factor(sub), measure1 = rt, measure2 = acc, 
-                      dataset = gilden2010)
-    p3 <- function() plot(my.rmc2, overall = T, overall.col = 'gray60', overall.lwd = 3,
-                          overall.lty = 2, lty = 2, main = "p2", xlab = "Reaction Time", 
-                          ylab = "Accuracy")
-    expect_doppelganger("p3", p3)
-})
