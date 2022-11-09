@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,7 +83,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Comparing Correlations</h1>
                         <h4 data-toc-skip class="author">Jonathan Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2022-08-25</h4>
+            <h4 data-toc-skip class="date">2022-11-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/HEAD/vignettes/compcor.Rmd" class="external-link"><code>vignettes/compcor.Rmd</code></a></small>
       <div class="d-none name"><code>compcor.Rmd</code></div>
@@ -96,10 +96,18 @@
 </h3>
 <p>We show examples for comparing the magnitude of two <em>r</em><sub><em>rm</em></sub> values. Correlations are compared using the cocor package: <br><a href="https://CRAN.R-project.org/package=cocor" class="external-link">R package</a> <br><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945" class="external-link">Paper</a> <br><a href="http://comparingcorrelations.org" class="external-link">Web Version</a> <br></p>
 <div class="section level4">
+<h4 id="running-examples-requires-cocor">Running Examples Requires cocor<a class="anchor" aria-label="anchor" href="#running-examples-requires-cocor"></a>
+</h4>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Install cocor</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"cocor"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="http://comparingcorrelations.org" class="external-link">cocor</a></span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level4">
 <h4 id="independent-correlations">Independent Correlations<a class="anchor" aria-label="anchor" href="#independent-correlations"></a>
 </h4>
 <p>In the first example, we compare <em>r</em><sub><em>rm</em></sub> values from two distinct, independent datasets. That is, they do not have the same participants. This is a nonsense example because the two datasets are from completely different experimental designs that do not share common measures. <br><br> Note the two <em>r</em><sub><em>rm</em></sub> values are similar in magnitude and have large overlap in their confidence intervals: <em>r</em><sub><em>rm</em></sub> = -0.58, 95% CI [-0.74, -0.38] and <em>r</em><sub><em>rm</em></sub> = -0.40, 95% CI [-0.66, -0.07]. Thus, they are not significantly different.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#1) Run rmcorr on two different datasets</span></span>
 <span><span class="va">model1.marusich2016_exp2</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr.html">rmcorr</a></span><span class="op">(</span><span class="va">Pair</span>, <span class="va">HVT_capture</span>, <span class="va">MARS</span>, <span class="va">marusich2016_exp2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in rmcorr(Pair, HVT_capture, MARS, marusich2016_exp2): 'Pair' coerced</span></span>
@@ -158,7 +166,7 @@
 <span><span class="co">#&gt; [1] 34</span></span>
 <span></span>
 <span><span class="co">#3) Compare the two indendent rmcorr coefficients</span></span>
-<span><span class="fu">cocor.indep.groups</span><span class="op">(</span><span class="va">rmcorr1</span>, <span class="va">rmcorr2</span>, <span class="va">n1</span>, <span class="va">n2</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.indep.groups.html" class="external-link">cocor.indep.groups</a></span><span class="op">(</span><span class="va">rmcorr1</span>, <span class="va">rmcorr2</span>, <span class="va">n1</span>, <span class="va">n2</span>, </span>
 <span>                   var.labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">model1.marusich2016_exp2</span><span class="op">$</span><span class="va">var</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>,</span>
 <span>                                  <span class="va">model2.gilden2010</span><span class="op">$</span><span class="va">vars</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -188,7 +196,7 @@
 <h5 id="overlapping-correlations">Overlapping Correlations<a class="anchor" aria-label="anchor" href="#overlapping-correlations"></a>
 </h5>
 <p>For overlapping correlations, there is a common variable. Here, we compare correlations between action measures of distance perception. The first correlation is Blindwalk Away and Blindwalk Toward (<em>r</em><sub><em>rm</em></sub> = 0.81, 95% CI [0.75, 0.85]) and the second is Blindwalk Toward and Triangulated Blindwalk (<em>r</em><sub><em>rm</em></sub> = 0.23, 95% CI [0.08, 0.36]). Note that both correlations are significantly different than 0 but have substantially different magnitudes and wide separation in their confidence intervals. Hence, the two correlations are significantly different <em>p</em> &lt; 0.0001 for all 9 comparison tests. Also, note the overlapping or common variable is Blindwalk Toward.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">variables.overlap</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Blindwalk Away"</span>,</span>
 <span>                      <span class="st">"Blindwalk Toward"</span>,</span>
 <span>                      <span class="st">"Triangulated BW"</span><span class="op">)</span></span>
@@ -213,7 +221,7 @@
 <span><span class="co">#Since there is missing data, the results are unbalanced. We use the average effective sample size.</span></span>
 <span><span class="va">n</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">dist_rmc_mat_overlap</span><span class="op">$</span><span class="va">summary</span><span class="op">$</span><span class="va">effective.N</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">cocor.dep.groups.overlap</span><span class="op">(</span><span class="va">r.jk</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.dep.groups.overlap.html" class="external-link">cocor.dep.groups.overlap</a></span><span class="op">(</span><span class="va">r.jk</span>, </span>
 <span>                         <span class="va">r.jh</span>, </span>
 <span>                         <span class="va">r.kh</span>, </span>
 <span>                         <span class="va">n</span>, </span>
@@ -278,7 +286,7 @@
 <h5 id="non-overlapping-correlations">Non-Overlapping Correlations<a class="anchor" aria-label="anchor" href="#non-overlapping-correlations"></a>
 </h5>
 <p>For non-overlapping correlations, data are from the same participants but there is no overlapping variable in the comparison. We compare correlations between two action measures of distance perception (blindwalk away and blindwalk toward) and two direct measures (verbal and visual matching). The respective correlations are (<em>r</em><sub><em>rm</em></sub> = 0.81, 95% CI [0.75, 0.85]) and (<em>r</em><sub><em>rm</em></sub> = 0.73, 95% CI [0.66, 0.80]). The non-overlapping correlations are similar in magnitude with partially overlapping confidence intervals. Thus, they are barely significantly different <em>p</em> &lt; 0.04.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">variables.nonoverlap</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Blindwalk Away"</span>,</span>
 <span>                           <span class="st">"Blindwalk Toward"</span>,</span>
 <span>                           <span class="st">"Verbal"</span>,</span>
@@ -329,7 +337,7 @@
 <span><span class="co">#Since there is missing data, we use the average effective sample size.</span></span>
 <span><span class="va">n</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">dist_rmc_mat_nonoverlap</span><span class="op">$</span><span class="va">summary</span><span class="op">$</span><span class="va">effective.N</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span> <span class="fl">2</span></span>
 <span></span>
-<span><span class="fu">cocor.dep.groups.nonoverlap</span><span class="op">(</span><span class="va">r.jk</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/cocor/man/cocor.dep.groups.nonoverlap.html" class="external-link">cocor.dep.groups.nonoverlap</a></span><span class="op">(</span><span class="va">r.jk</span>,</span>
 <span>                            <span class="va">r.hm</span>, </span>
 <span>                            <span class="va">r.jh</span>, </span>
 <span>                            <span class="va">r.jm</span>, </span>

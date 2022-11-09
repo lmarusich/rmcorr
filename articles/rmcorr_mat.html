@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,7 +83,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Plotting and Multiple Comparisons with rmcorr_mat</h1>
                         <h4 data-toc-skip class="author">Jonathan Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2022-08-25</h4>
+            <h4 data-toc-skip class="date">2022-11-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/HEAD/vignettes/rmcorr_mat.Rmd" class="external-link"><code>vignettes/rmcorr_mat.Rmd</code></a></small>
       <div class="d-none name"><code>rmcorr_mat.Rmd</code></div>
@@ -91,11 +91,19 @@
 
     
     
+<div class="section level4">
+<h4 id="running-examples-requires-corrplot">Running Examples Requires corrplot<a class="anchor" aria-label="anchor" href="#running-examples-requires-corrplot"></a>
+</h4>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Install corrplot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"corrplot"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/taiyun/corrplot" class="external-link">corrplot</a></span><span class="op">)</span></span></code></pre></div>
+</div>
 <div class="section level2">
 <h2 id="plotting-a-correlation-matrix">Plotting a Correlation Matrix<a class="anchor" aria-label="anchor" href="#plotting-a-correlation-matrix"></a>
 </h2>
 <p>The output from <em>rmcorr_mat</em> can be used be used to plot a correlation matrix.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dist_rmc_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr_mat.html">rmcorr_mat</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">Subject</span>, </span>
 <span>                           variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Blindwalk Away"</span>,</span>
 <span>                                         <span class="st">"Blindwalk Toward"</span>,</span>
@@ -105,14 +113,14 @@
 <span>                           dataset <span class="op">=</span> <span class="va">twedt_dist_measures</span>,</span>
 <span>                           CI.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">corrplot</span><span class="op">(</span><span class="va">dist_rmc_mat</span><span class="op">$</span><span class="va">matrix</span><span class="op">)</span></span></code></pre></div>
-<p><img src="rmcorr_mat_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+<span><span class="fu"><a href="https://rdrr.io/pkg/corrplot/man/corrplot.html" class="external-link">corrplot</a></span><span class="op">(</span><span class="va">dist_rmc_mat</span><span class="op">$</span><span class="va">matrix</span><span class="op">)</span></span></code></pre></div>
+<p><img src="rmcorr_mat_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
 <div class="section level2">
 <h2 id="plotting-multiple-models">Plotting Multiple Models<a class="anchor" aria-label="anchor" href="#plotting-multiple-models"></a>
 </h2>
 <p>The output can also be used to plot multiple models side-by-side.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Number of models being plotted</span></span>
 <span><span class="va">n.models</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">dist_rmc_mat</span><span class="op">$</span><span class="va">models</span><span class="op">)</span></span>
 <span></span>
@@ -127,13 +135,13 @@
 <span></span>
 <span><span class="co">#Reset graphing parameters</span></span>
 <span><span class="co">#dev.off()</span></span></code></pre></div>
-<p><img src="rmcorr_mat_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<p><img src="rmcorr_mat_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
 <div class="section level2">
 <h2 id="adjusting-for-multiple-comparisons">Adjusting for Multiple Comparisons<a class="anchor" aria-label="anchor" href="#adjusting-for-multiple-comparisons"></a>
 </h2>
 <p>The third component of the output from <em>rmcorr_mat()</em> contains a summary of results. Using the summary component, we demonstrate adjusting for multiple comparisons using two methods: the Bonferroni correction and the False Discovery Rate (FDR). <br><br> This example also compares the unadjusted <em>p</em>-values to both adjustment methods. Because most of the unadjusted <em>p</em>-values are quite small, many of the adjusted <em>p</em>-values tend to be similar to the unadjusted ones and the two adjustment methods also tend to produce similar <em>p</em>-values.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Third component: Summary</span></span>
 <span><span class="va">dist_rmc_mat</span><span class="op">$</span><span class="va">summary</span></span>
 <span><span class="co">#&gt;            measure1         measure2  df  rmcorr.r    lowerCI   upperCI</span></span>
