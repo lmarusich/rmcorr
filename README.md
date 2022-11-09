@@ -8,6 +8,8 @@ Status](https://travis-ci.org/lmarusich/rmcorr.svg?branch=master)](https://travi
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmcorr)](https://cran.r-project.org/package=rmcorr)
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/rmcorr)](https://cran.r-project.org/package=rmcorr)
+[![Codecov test
+coverage](https://codecov.io/gh/lmarusich/rmcorr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/lmarusich/rmcorr?branch=master)
 
 # rmcorr <img src="man/figures/logo.png" align="right" />
 
