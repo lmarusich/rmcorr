@@ -39,6 +39,13 @@ We show examples for comparing the magnitude of two *r*<sub>*rm*</sub> values. C
 <a href="http://comparingcorrelations.org">Web Version</a> 
 <br>
 
+#### Running Examples Requires cocor
+```{r, eval = FALSE}
+#Install cocor
+install.packages("cocor")
+require(cocor)
+```
+
 #### Independent Correlations
 In the first example, we compare *r*<sub>*rm*</sub> values from two distinct, independent datasets. That is, they do not have the same participants. This is a nonsense example because the two datasets are from completely different experimental designs that do not share common measures. 
 <br>
