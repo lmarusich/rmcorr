@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +48,7 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/CI_fix.html">Confidence Interval Fix</a>
     <a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a>
     <a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce the Results of Repeated Measures Correlation paper</a>
     <a class="dropdown-item" href="../articles/compcor.html">Comparing Correlations</a>
@@ -78,12 +79,14 @@
 
 
 
-<script src="rmcorr_mat_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Plotting and Multiple Comparisons with rmcorr_mat</h1>
-                        <h4 data-toc-skip class="author">Jonathan Bakdash and Laura Marusich</h4>
+                        <h4 data-toc-skip class="author">Jonathan
+Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2022-11-09</h4>
+            <h4 data-toc-skip class="date">2022-12-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/HEAD/vignettes/rmcorr_mat.Rmd" class="external-link"><code>vignettes/rmcorr_mat.Rmd</code></a></small>
       <div class="d-none name"><code>rmcorr_mat.Rmd</code></div>
@@ -102,7 +105,8 @@
 <div class="section level2">
 <h2 id="plotting-a-correlation-matrix">Plotting a Correlation Matrix<a class="anchor" aria-label="anchor" href="#plotting-a-correlation-matrix"></a>
 </h2>
-<p>The output from <em>rmcorr_mat</em> can be used be used to plot a correlation matrix.</p>
+<p>The output from <em>rmcorr_mat</em> can be used be used to plot a
+correlation matrix.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dist_rmc_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr_mat.html">rmcorr_mat</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">Subject</span>, </span>
 <span>                           variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Blindwalk Away"</span>,</span>
@@ -140,21 +144,29 @@
 <div class="section level2">
 <h2 id="adjusting-for-multiple-comparisons">Adjusting for Multiple Comparisons<a class="anchor" aria-label="anchor" href="#adjusting-for-multiple-comparisons"></a>
 </h2>
-<p>The third component of the output from <em>rmcorr_mat()</em> contains a summary of results. Using the summary component, we demonstrate adjusting for multiple comparisons using two methods: the Bonferroni correction and the False Discovery Rate (FDR). <br><br> This example also compares the unadjusted <em>p</em>-values to both adjustment methods. Because most of the unadjusted <em>p</em>-values are quite small, many of the adjusted <em>p</em>-values tend to be similar to the unadjusted ones and the two adjustment methods also tend to produce similar <em>p</em>-values.</p>
+<p>The third component of the output from <em>rmcorr_mat()</em> contains
+a summary of results. Using the summary component, we demonstrate
+adjusting for multiple comparisons using two methods: the Bonferroni
+correction and the False Discovery Rate (FDR). <br><br> This example
+also compares the unadjusted <em>p</em>-values to both adjustment
+methods. Because most of the unadjusted <em>p</em>-values are quite
+small, many of the adjusted <em>p</em>-values tend to be similar to the
+unadjusted ones and the two adjustment methods also tend to produce
+similar <em>p</em>-values.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Third component: Summary</span></span>
 <span><span class="va">dist_rmc_mat</span><span class="op">$</span><span class="va">summary</span></span>
 <span><span class="co">#&gt;            measure1         measure2  df  rmcorr.r    lowerCI   upperCI</span></span>
-<span><span class="co">#&gt; 1    Blindwalk Away Blindwalk Toward 175 0.8065821 0.74770226 0.8528777</span></span>
-<span><span class="co">#&gt; 2    Blindwalk Away  Triangulated BW 174 0.2382857 0.09280577 0.3738042</span></span>
-<span><span class="co">#&gt; 3    Blindwalk Away           Verbal 175 0.7355813 0.65916526 0.7969613</span></span>
-<span><span class="co">#&gt; 4    Blindwalk Away  Visual matching 174 0.7758245 0.70887224 0.8289209</span></span>
-<span><span class="co">#&gt; 5  Blindwalk Toward  Triangulated BW 176 0.2254866 0.08024293 0.3613540</span></span>
-<span><span class="co">#&gt; 6  Blindwalk Toward           Verbal 177 0.7160551 0.63569573 0.7810611</span></span>
-<span><span class="co">#&gt; 7  Blindwalk Toward  Visual matching 177 0.7575109 0.68674230 0.8140545</span></span>
-<span><span class="co">#&gt; 8   Triangulated BW           Verbal 178 0.1835838 0.03751202 0.3219744</span></span>
-<span><span class="co">#&gt; 9   Triangulated BW  Visual matching 177 0.2537431 0.11037346 0.3867680</span></span>
-<span><span class="co">#&gt; 10           Verbal  Visual matching 179 0.7341831 0.65841140 0.7952224</span></span>
+<span><span class="co">#&gt; 1    Blindwalk Away Blindwalk Toward 175 0.8065821 0.74808182 0.8526427</span></span>
+<span><span class="co">#&gt; 2    Blindwalk Away  Triangulated BW 174 0.2382857 0.09366711 0.3730565</span></span>
+<span><span class="co">#&gt; 3    Blindwalk Away           Verbal 175 0.7355813 0.65965209 0.7966468</span></span>
+<span><span class="co">#&gt; 4    Blindwalk Away  Visual matching 174 0.7758245 0.70930425 0.8286489</span></span>
+<span><span class="co">#&gt; 5  Blindwalk Toward  Triangulated BW 176 0.2254866 0.08109132 0.3606114</span></span>
+<span><span class="co">#&gt; 6  Blindwalk Toward           Verbal 177 0.7160551 0.63619996 0.7807308</span></span>
+<span><span class="co">#&gt; 7  Blindwalk Toward  Visual matching 177 0.7575109 0.68718940 0.8137687</span></span>
+<span><span class="co">#&gt; 8   Triangulated BW           Verbal 178 0.1835838 0.03835025 0.3212218</span></span>
+<span><span class="co">#&gt; 9   Triangulated BW  Visual matching 177 0.2537431 0.11120971 0.3860478</span></span>
+<span><span class="co">#&gt; 10           Verbal  Visual matching 179 0.7341831 0.65888265 0.7949162</span></span>
 <span><span class="co">#&gt;          p.vals effective.N</span></span>
 <span><span class="co">#&gt; 1  8.228992e-42         177</span></span>
 <span><span class="co">#&gt; 2  1.449081e-03         176</span></span>

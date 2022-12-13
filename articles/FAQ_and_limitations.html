@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +48,7 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/CI_fix.html">Confidence Interval Fix</a>
     <a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a>
     <a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce the Results of Repeated Measures Correlation paper</a>
     <a class="dropdown-item" href="../articles/compcor.html">Comparing Correlations</a>
@@ -78,12 +79,14 @@
 
 
 
-<script src="FAQ_and_limitations_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Frequently Asked Questions and Limitations</h1>
-                        <h4 data-toc-skip class="author">Jonathan Bakdash and Laura Marusich</h4>
+                        <h4 data-toc-skip class="author">Jonathan
+Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2022-11-09</h4>
+            <h4 data-toc-skip class="date">2022-12-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/HEAD/vignettes/FAQ_and_limitations.Rmd" class="external-link"><code>vignettes/FAQ_and_limitations.Rmd</code></a></small>
       <div class="d-none name"><code>FAQ_and_limitations.Rmd</code></div>
@@ -97,12 +100,19 @@
 <div class="section level3">
 <h3 id="how-to-calculate-power">How to Calculate Power<a class="anchor" aria-label="anchor" href="#how-to-calculate-power"></a>
 </h3>
-<p>Power can be calculated using the <em>power.rmcorr</em> function. This function modifies pwr.r.test from the <a href="https://CRAN.R-project.org/package=pwr" class="external-link">pwr</a> package to use the rmcorr degrees of freedom. It is not presently included in the rmcorr package.</p>
-<p>Notation: <em>N</em> is the sample size, <em>k</em> is the (average) number of repeated measures for each individual, and <em>r</em><sub><em>rm</em></sub> is the rmcorr effect size.</p>
+<p>Power can be calculated using the <em>power.rmcorr</em> function.
+This function modifies pwr.r.test from the
+<a href="https://CRAN.R-project.org/package=pwr" class="external-link">pwr</a> package to use
+the rmcorr degrees of freedom. It is not presently included in the
+rmcorr package.</p>
+<p>Notation: <em>N</em> is the sample size, <em>k</em> is the (average)
+number of repeated measures for each individual, and
+<em>r</em><sub><em>rm</em></sub> is the rmcorr effect size.</p>
 <div class="section level4">
 <h4 id="power-rmcorr-example">power.rmcorr Example<a class="anchor" aria-label="anchor" href="#power-rmcorr-example"></a>
 </h4>
-<p><em>N</em> = 100, <em>k</em> = 3, and <em>r</em><sub><em>rm</em></sub> = 0.20. This design has 82% power.</p>
+<p><em>N</em> = 100, <em>k</em> = 3, and
+<em>r</em><sub><em>rm</em></sub> = 0.20. This design has 82% power.</p>
 <pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pwr"</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr" class="external-link">pwr</a></span><span class="op">)</span></span>
 <span></span>
@@ -118,20 +128,35 @@
 <span><span class="co">#&gt;       sig.level = 0.05</span></span>
 <span><span class="co">#&gt;           power = 0.8156984</span></span>
 <span><span class="co">#&gt;     alternative = two.sided</span></span></code></pre>
-<p>See <a href="./New_rmcorr_paper_analyses_figures.html#power">Power curves</a> for more information.</p>
-<p>For <a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower" class="external-link">G*Power</a> or other software, power can be calculated by substituting the rmcorr degrees of freedom for a Pearson correlation. Instead of sample size, use the degrees of freedom for rmcorr plus two (effective sample size). This is because a Pearson correlation has <em>N</em> - 2 degrees of freedom.<br></p>
+<p>See <a href="./New_rmcorr_paper_analyses_figures.html#power">Power
+curves</a> for more information.</p>
+<p>For
+<a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower" class="external-link">G*Power</a>
+or other software, power can be calculated by substituting the rmcorr
+degrees of freedom for a Pearson correlation. Instead of sample size,
+use the degrees of freedom for rmcorr plus two (effective sample size).
+This is because a Pearson correlation has <em>N</em> - 2 degrees of
+freedom.<br></p>
 <ul>
-<li>Rmcorr exact degrees of freedom = <em>N</em> x (<em>k</em> - 1) - 1 <br>
+<li>Rmcorr exact degrees of freedom = <em>N</em> x (<em>k</em> - 1) - 1
+<br>
 </li>
-<li>Approximate degrees of freedom = (<em>N</em> -1) x (<em>k</em> - 1) <br>
+<li>Approximate degrees of freedom = (<em>N</em> -1) x (<em>k</em> - 1)
+<br>
 </li>
 </ul>
 </div>
 <div class="section level4">
 <h4 id="exact-degrees-of-freedom-example">Exact Degrees of Freedom Example<a class="anchor" aria-label="anchor" href="#exact-degrees-of-freedom-example"></a>
 </h4>
-<p>Values: <em>N</em> = 100, <em>k</em> = 3 , and <em>r</em><sub><em>rm</em></sub> = 0.20 (same as above) <br> rmcorr df = 100 x (3 - 1) - 1 = 200 - 1 = 199 <br> Add two (kludge): 199 + 2 = 201 <br> Enter <em>N</em> = 201 as the effective sample size in G*Power <br> G*Power will calculate the degrees of freedom as <em>N</em> - 2 = 201 - 2 = 199. Thus, using the correct degrees of freedom for rmcorr. <br></p>
-<p><em>Note</em> power is just slighty different than the same calculation in R, which uses an arctan approximation.</p>
+<p>Values: <em>N</em> = 100, <em>k</em> = 3 , and
+<em>r</em><sub><em>rm</em></sub> = 0.20 (same as above) <br> rmcorr df =
+100 x (3 - 1) - 1 = 200 - 1 = 199 <br> Add two (kludge): 199 + 2 = 201
+<br> Enter <em>N</em> = 201 as the effective sample size in G*Power <br>
+G*Power will calculate the degrees of freedom as <em>N</em> - 2 = 201 -
+2 = 199. Thus, using the correct degrees of freedom for rmcorr. <br></p>
+<p><em>Note</em> power is just slighty different than the same
+calculation in R, which uses an arctan approximation.</p>
 <div class="figure">
 <img src="../reference/figures/Gpower_exact_df.jpg" alt=""><p class="caption">G*Power using the exact degrees of freedom</p>
 </div>
@@ -139,8 +164,14 @@
 <div class="section level4">
 <h4 id="approximate-degrees-of-freedom-example">Approximate Degrees of Freedom Example<a class="anchor" aria-label="anchor" href="#approximate-degrees-of-freedom-example"></a>
 </h4>
-<p>Values: <em>N</em> = 100, <em>k</em> = 3, and <em>r</em><sub><em>rm</em></sub> = 0.20 (again, same as above) <br> approx rmcorr df = (100 - 1) x (3 - 1) = 99 x 2 = 198 <br> Note the small difference between the approximate vs. exact calculation: <em>one</em> degree of freedom <br> Add two (same kludge) for G*Power, entering a sample size of <em>N</em> = 200 <br></p>
-<p><em>Note</em> power is slighty different than the exact formula above. <img src="../reference/figures/Gpower_approx_df.jpg" alt="G*Power using the approx degrees of freedom"></p>
+<p>Values: <em>N</em> = 100, <em>k</em> = 3, and
+<em>r</em><sub><em>rm</em></sub> = 0.20 (again, same as above) <br>
+approx rmcorr df = (100 - 1) x (3 - 1) = 99 x 2 = 198 <br> Note the
+small difference between the approximate vs. exact calculation:
+<em>one</em> degree of freedom <br> Add two (same kludge) for G*Power,
+entering a sample size of <em>N</em> = 200 <br></p>
+<p><em>Note</em> power is slighty different than the exact formula
+above. <img src="../reference/figures/Gpower_approx_df.jpg" alt="G*Power using the approx degrees of freedom"></p>
 </div>
 </div>
 <div class="section level3">
@@ -188,13 +219,21 @@
 </h3>
 <p>We have had reports of this error when running rmcorr: <br></p>
 <pre><code>Error in isa(Participant, "character") : could not find function "isa" </code></pre>
-<p><a href="https://stackoverflow.com/questions/73146762/how-to-solve-the-following-error-running-rmcorr-in-r-error-in-isaparticipant" class="external-link">Stack Question with error</a></p>
+<p><a href="https://stackoverflow.com/questions/73146762/how-to-solve-the-following-error-running-rmcorr-in-r-error-in-isaparticipant" class="external-link">Stack
+Question with error</a></p>
 <p>Updating R to version 4.1.0 or later resolves this error. <br></p>
 </div>
 <div class="section level3">
 <h3 id="transformations">Transformations<a class="anchor" aria-label="anchor" href="#transformations"></a>
 </h3>
-<p>Transformations can be used to make the data (errors) more normal. We highly recommend graphing both the raw and transformed data. It may be appropriate to only transform one measure or transform both measures. “Consider transforming every variable in sight” (Gelman &amp; Hill, 2017: <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>, ISBN: 9780521686891, p. 548): <a href="https://www.google.com/books/edition/Data_Analysis_Using_Regression_and_Multi/lV3DIdV0F9AC?hl=en&amp;gbpv=1&amp;bsq=consider%20transforming%20every%20variable%20in%20sight" class="external-link">Google Books</a> <br></p>
+<p>Transformations can be used to make the data (errors) more normal. We
+highly recommend graphing both the raw and transformed data. It may be
+appropriate to only transform one measure or transform both measures.
+“Consider transforming every variable in sight” (Gelman &amp; Hill,
+2017: <em>Data Analysis Using Regression and Multilevel/Hierarchical
+Models</em>, ISBN: 9780521686891, p. 548):
+<a href="https://www.google.com/books/edition/Data_Analysis_Using_Regression_and_Multi/lV3DIdV0F9AC?hl=en&amp;gbpv=1&amp;bsq=consider%20transforming%20every%20variable%20in%20sight" class="external-link">Google
+Books</a> <br></p>
 </div>
 </div>
 <div class="section level2">
@@ -203,17 +242,26 @@
 <div class="section level3">
 <h3 id="change-over-time">Change Over Time<a class="anchor" aria-label="anchor" href="#change-over-time"></a>
 </h3>
-<p>In general, rmcorr is a time-independent model– it does not model change over time. A partial exception is if time is a measure, such as age in the raz2005 dataset. <br></p>
+<p>In general, rmcorr is a time-independent model– it does not model
+change over time. A partial exception is if time is a measure, such as
+age in the raz2005 dataset. <br></p>
 </div>
 <div class="section level3">
 <h3 id="non-linearity">Non-Linearity<a class="anchor" aria-label="anchor" href="#non-linearity"></a>
 </h3>
-<p>Rmcorr fits a linear model. If the data are non-linear, we recommend trying to transform it or using multilevel modeling.</p>
+<p>Rmcorr fits a linear model. If the data are non-linear, we recommend
+trying to transform it or using multilevel modeling.</p>
 </div>
 <div class="section level3">
-<h3 id="varying-slopes-with-influential-observations-andor-unbalanced-data">Varying Slopes with Influential Observations and/or Unbalanced Data<a class="anchor" aria-label="anchor" href="#varying-slopes-with-influential-observations-andor-unbalanced-data"></a>
+<h3 id="varying-slopes-with-influential-observations-andor-unbalanced-data">Varying Slopes with Influential Observations and/or Unbalanced
+Data<a class="anchor" aria-label="anchor" href="#varying-slopes-with-influential-observations-andor-unbalanced-data"></a>
 </h3>
-<p>If slopes meaningfully vary by individual, we recommend using multilevel modeling instead of rmcorr. Random effect slopes are even more problematic for rmcorr with influential observations and/or highly unbalanced data. This is nicely illustrated in simulations by Dr. Marta Karas: <br><a href="https://martakarass.github.io/post/2022-04-27-rmcorr_vs_lmm/" class="external-link">When rmcorr may not be ideal</a></p>
+<p>If slopes meaningfully vary by individual, we recommend using
+multilevel modeling instead of rmcorr. Random effect slopes are even
+more problematic for rmcorr with influential observations and/or highly
+unbalanced data. This is nicely illustrated in simulations by Dr. Marta
+Karas: <br><a href="https://martakarass.github.io/post/2022-04-27-rmcorr_vs_lmm/" class="external-link">When
+rmcorr may not be ideal</a></p>
 </div>
 </div>
 <div class="section level2">
@@ -221,12 +269,16 @@
 </h2>
 <p>We know of three other implementations of rmcorr.</p>
 <div class="section level3">
-<h3 id="rmcorrshiny-web-and-standalone-app-with-a-graphical-interface">1) rmcorrShiny: Web and Standalone App with a Graphical Interface<a class="anchor" aria-label="anchor" href="#rmcorrshiny-web-and-standalone-app-with-a-graphical-interface"></a>
+<h3 id="rmcorrshiny-web-and-standalone-app-with-a-graphical-interface">1) rmcorrShiny: Web and Standalone App with a Graphical
+Interface<a class="anchor" aria-label="anchor" href="#rmcorrshiny-web-and-standalone-app-with-a-graphical-interface"></a>
 </h3>
 <ul>
-<li><p><a href="https://lmarusich.shinyapps.io/shiny_rmcorr/" class="external-link">Web App</a></p></li>
-<li><p><a href="https://github.com/lmarusich/rmcorrShiny" class="external-link">Shiny Source Code and Running the Standalone App</a></p></li>
-<li><p><a href="https://doi.org/10.12688/f1000research.55027.2" class="external-link">Corresponding Paper</a></p></li>
+<li><p><a href="https://lmarusich.shinyapps.io/shiny_rmcorr/" class="external-link">Web
+App</a></p></li>
+<li><p><a href="https://github.com/lmarusich/rmcorrShiny" class="external-link">Shiny Source
+Code and Running the Standalone App</a></p></li>
+<li><p><a href="https://doi.org/10.12688/f1000research.55027.2" class="external-link">Corresponding
+Paper</a></p></li>
 </ul>
 </div>
 <div class="section level3">
@@ -234,7 +286,8 @@
 </h3>
 <ul>
 <li><p><a href="https://pingouin-stats.org/generated/pingouin.rm_corr.html#pingouin.rm_corr" class="external-link">rm_corr</a></p></li>
-<li><p><a href="https://doi.org/10.21105/joss.01026" class="external-link">Corresponding Paper</a></p></li>
+<li><p><a href="https://doi.org/10.21105/joss.01026" class="external-link">Corresponding
+Paper</a></p></li>
 </ul>
 </div>
 <div class="section level3">

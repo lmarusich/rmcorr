@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +48,7 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/CI_fix.html">Confidence Interval Fix</a>
     <a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a>
     <a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce the Results of Repeated Measures Correlation paper</a>
     <a class="dropdown-item" href="../articles/compcor.html">Comparing Correlations</a>
@@ -78,12 +79,14 @@
 
 
 
-<script src="New_rmcorr_paper_analyses_figures_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Reproduce the Results of Repeated Measures Correlation paper</h1>
-                        <h4 data-toc-skip class="author">Jonathan Bakdash and Laura Marusich</h4>
+                        <h4 data-toc-skip class="author">Jonathan
+Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2022-11-09</h4>
+            <h4 data-toc-skip class="date">2022-12-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/HEAD/vignettes/New_rmcorr_paper_analyses_figures.Rmd" class="external-link"><code>vignettes/New_rmcorr_paper_analyses_figures.Rmd</code></a></small>
       <div class="d-none name"><code>New_rmcorr_paper_analyses_figures.Rmd</code></div>
@@ -493,7 +496,8 @@
 <span><span class="co">#dev.off()</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="brain-volume-and-age-rmcorr-and-simple-regcor-results-and-figure-5">5. Brain volume and age rmcorr and simple reg/cor results and Figure 5<a class="anchor" aria-label="anchor" href="#brain-volume-and-age-rmcorr-and-simple-regcor-results-and-figure-5"></a>
+<h3 id="brain-volume-and-age-rmcorr-and-simple-regcor-results-and-figure-5">5. Brain volume and age rmcorr and simple reg/cor results and Figure
+5<a class="anchor" aria-label="anchor" href="#brain-volume-and-age-rmcorr-and-simple-regcor-results-and-figure-5"></a>
 </h3>
 <div class="section level4">
 <h4 id="rmcorr-and-simple-reg-results">rmcorr and simple reg results<a class="anchor" aria-label="anchor" href="#rmcorr-and-simple-reg-results"></a>
@@ -536,7 +540,7 @@
 <span><span class="co">#&gt; 3.561007e-12</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; 95% confidence interval</span></span>
-<span><span class="co">#&gt; -0.8053581 -0.5637514</span></span>
+<span><span class="co">#&gt; -0.804153 -0.56608</span></span>
 <span></span>
 <span><span class="va">rmcorr.5b.r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"%.2f"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">brainvolage.rmc</span><span class="op">$</span><span class="va">r</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">rmcorr.5b.p</span> <span class="op">&lt;-</span> <span class="fu">pvals.fct</span><span class="op">(</span><span class="va">brainvolage.rmc</span><span class="op">$</span><span class="va">p</span><span class="op">)</span></span>
@@ -680,7 +684,7 @@
 <span><span class="co">#&gt; 0.01716871</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; 95% confidence interval</span></span>
-<span><span class="co">#&gt; -0.6611673 -0.06687244</span></span>
+<span><span class="co">#&gt; -0.6543958 -0.07874527</span></span>
 <span></span>
 <span><span class="co">#b - averaged data</span></span>
 <span><span class="va">gildenMeans</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html" class="external-link">aggregate</a></span><span class="op">(</span><span class="va">gilden2010</span><span class="op">[</span>,<span class="fl">3</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">gilden2010</span><span class="op">$</span><span class="va">sub</span><span class="op">)</span>, <span class="va">mean</span><span class="op">)</span></span>
@@ -1012,7 +1016,8 @@
 <span><span class="co">#&gt; 44 0.9756523 1.0049782 0.9452859</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/warnings.html" class="external-link">warnings</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
-<h3 id="diagnostic-plot-rmcorr-and-straight-lines-between-points-not-in-paper">Diagnostic Plot: Rmcorr and straight lines between points (not in paper)<a class="anchor" aria-label="anchor" href="#diagnostic-plot-rmcorr-and-straight-lines-between-points-not-in-paper"></a>
+<h3 id="diagnostic-plot-rmcorr-and-straight-lines-between-points-not-in-paper">Diagnostic Plot: Rmcorr and straight lines between points (not in
+paper)<a class="anchor" aria-label="anchor" href="#diagnostic-plot-rmcorr-and-straight-lines-between-points-not-in-paper"></a>
 </h3>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">brainvolage.rmc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr.html">rmcorr</a></span><span class="op">(</span>participant <span class="op">=</span> <span class="va">Participant</span>, measure1 <span class="op">=</span> <span class="va">Age</span>, measure2 <span class="op">=</span> <span class="va">Volume</span>, dataset <span class="op">=</span> <span class="va">raz2005</span><span class="op">)</span></span>
@@ -1032,7 +1037,7 @@
 <span><span class="co">#&gt; 3.561007e-12</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; 95% confidence interval</span></span>
-<span><span class="co">#&gt; -0.8053581 -0.5637514</span></span>
+<span><span class="co">#&gt; -0.804153 -0.56608</span></span>
 <span></span>
 <span><span class="va">theme_minimal</span> <span class="op">=</span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>            <span class="fu">theme</span><span class="op">(</span></span>

@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +48,7 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/CI_fix.html">Confidence Interval Fix</a>
     <a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a>
     <a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce the Results of Repeated Measures Correlation paper</a>
     <a class="dropdown-item" href="../articles/compcor.html">Comparing Correlations</a>
@@ -78,12 +79,14 @@
 
 
 
-<script src="compcor_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Comparing Correlations</h1>
-                        <h4 data-toc-skip class="author">Jonathan Bakdash and Laura Marusich</h4>
+                        <h4 data-toc-skip class="author">Jonathan
+Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2022-11-09</h4>
+            <h4 data-toc-skip class="date">2022-12-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/HEAD/vignettes/compcor.Rmd" class="external-link"><code>vignettes/compcor.Rmd</code></a></small>
       <div class="d-none name"><code>compcor.Rmd</code></div>
@@ -94,7 +97,10 @@
 <div class="section level3">
 <h3 id="comparing-correlations">Comparing Correlations<a class="anchor" aria-label="anchor" href="#comparing-correlations"></a>
 </h3>
-<p>We show examples for comparing the magnitude of two <em>r</em><sub><em>rm</em></sub> values. Correlations are compared using the cocor package: <br><a href="https://CRAN.R-project.org/package=cocor" class="external-link">R package</a> <br><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945" class="external-link">Paper</a> <br><a href="http://comparingcorrelations.org" class="external-link">Web Version</a> <br></p>
+<p>We show examples for comparing the magnitude of two
+<em>r</em><sub><em>rm</em></sub> values. Correlations are compared using
+the cocor package: <br><a href="https://CRAN.R-project.org/package=cocor" class="external-link">R package</a> <br><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945" class="external-link">Paper</a>
+<br><a href="http://comparingcorrelations.org" class="external-link">Web Version</a> <br></p>
 <div class="section level4">
 <h4 id="running-examples-requires-cocor">Running Examples Requires cocor<a class="anchor" aria-label="anchor" href="#running-examples-requires-cocor"></a>
 </h4>
@@ -106,7 +112,16 @@
 <div class="section level4">
 <h4 id="independent-correlations">Independent Correlations<a class="anchor" aria-label="anchor" href="#independent-correlations"></a>
 </h4>
-<p>In the first example, we compare <em>r</em><sub><em>rm</em></sub> values from two distinct, independent datasets. That is, they do not have the same participants. This is a nonsense example because the two datasets are from completely different experimental designs that do not share common measures. <br><br> Note the two <em>r</em><sub><em>rm</em></sub> values are similar in magnitude and have large overlap in their confidence intervals: <em>r</em><sub><em>rm</em></sub> = -0.58, 95% CI [-0.74, -0.38] and <em>r</em><sub><em>rm</em></sub> = -0.40, 95% CI [-0.66, -0.07]. Thus, they are not significantly different.</p>
+<p>In the first example, we compare <em>r</em><sub><em>rm</em></sub>
+values from two distinct, independent datasets. That is, they do not
+have the same participants. This is a nonsense example because the two
+datasets are from completely different experimental designs that do not
+share common measures. <br><br> Note the two
+<em>r</em><sub><em>rm</em></sub> values are similar in magnitude and
+have large overlap in their confidence intervals:
+<em>r</em><sub><em>rm</em></sub> = -0.58, 95% CI [-0.74, -0.38] and
+<em>r</em><sub><em>rm</em></sub> = -0.40, 95% CI [-0.66, -0.07]. Thus,
+they are not significantly different.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#1) Run rmcorr on two different datasets</span></span>
 <span><span class="va">model1.marusich2016_exp2</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr.html">rmcorr</a></span><span class="op">(</span><span class="va">Pair</span>, <span class="va">HVT_capture</span>, <span class="va">MARS</span>, <span class="va">marusich2016_exp2</span><span class="op">)</span></span>
@@ -126,7 +141,7 @@
 <span><span class="co">#&gt; 1.434929e-06</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; 95% confidence interval</span></span>
-<span><span class="co">#&gt; -0.738878 -0.3837139</span></span>
+<span><span class="co">#&gt; -0.7365623 -0.3880381</span></span>
 <span></span>
 <span><span class="va">model2.gilden2010</span>         <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr.html">rmcorr</a></span><span class="op">(</span><span class="va">sub</span>, <span class="va">rt</span>, <span class="va">acc</span>, <span class="va">gilden2010</span> <span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in rmcorr(sub, rt, acc, gilden2010): 'sub' coerced into a factor</span></span>
@@ -144,7 +159,7 @@
 <span><span class="co">#&gt; 0.01716871</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; 95% confidence interval</span></span>
-<span><span class="co">#&gt; -0.6611673 -0.06687244</span></span>
+<span><span class="co">#&gt; -0.6543958 -0.07874527</span></span>
 <span></span>
 <span><span class="co">#2) Extract relevant parameters</span></span>
 <span><span class="co">#Model 1</span></span>
@@ -191,11 +206,23 @@
 <div class="section level4">
 <h4 id="correlated-correlations">Correlated Correlations<a class="anchor" aria-label="anchor" href="#correlated-correlations"></a>
 </h4>
-<p>In the next two examples, we compare <em>r</em><sub><em>rm</em></sub> from the same dataset. These are dependent groups – data from the same participants.</p>
+<p>In the next two examples, we compare <em>r</em><sub><em>rm</em></sub>
+from the same dataset. These are dependent groups – data from the same
+participants.</p>
 <div class="section level5">
 <h5 id="overlapping-correlations">Overlapping Correlations<a class="anchor" aria-label="anchor" href="#overlapping-correlations"></a>
 </h5>
-<p>For overlapping correlations, there is a common variable. Here, we compare correlations between action measures of distance perception. The first correlation is Blindwalk Away and Blindwalk Toward (<em>r</em><sub><em>rm</em></sub> = 0.81, 95% CI [0.75, 0.85]) and the second is Blindwalk Toward and Triangulated Blindwalk (<em>r</em><sub><em>rm</em></sub> = 0.23, 95% CI [0.08, 0.36]). Note that both correlations are significantly different than 0 but have substantially different magnitudes and wide separation in their confidence intervals. Hence, the two correlations are significantly different <em>p</em> &lt; 0.0001 for all 9 comparison tests. Also, note the overlapping or common variable is Blindwalk Toward.</p>
+<p>For overlapping correlations, there is a common variable. Here, we
+compare correlations between action measures of distance perception. The
+first correlation is Blindwalk Away and Blindwalk Toward
+(<em>r</em><sub><em>rm</em></sub> = 0.81, 95% CI [0.75, 0.85]) and the
+second is Blindwalk Toward and Triangulated Blindwalk
+(<em>r</em><sub><em>rm</em></sub> = 0.23, 95% CI [0.08, 0.36]). Note
+that both correlations are significantly different than 0 but have
+substantially different magnitudes and wide separation in their
+confidence intervals. Hence, the two correlations are significantly
+different <em>p</em> &lt; 0.0001 for all 9 comparison tests. Also, note
+the overlapping or common variable is Blindwalk Toward.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">variables.overlap</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Blindwalk Away"</span>,</span>
 <span>                      <span class="st">"Blindwalk Toward"</span>,</span>
@@ -285,7 +312,16 @@
 <div class="section level5">
 <h5 id="non-overlapping-correlations">Non-Overlapping Correlations<a class="anchor" aria-label="anchor" href="#non-overlapping-correlations"></a>
 </h5>
-<p>For non-overlapping correlations, data are from the same participants but there is no overlapping variable in the comparison. We compare correlations between two action measures of distance perception (blindwalk away and blindwalk toward) and two direct measures (verbal and visual matching). The respective correlations are (<em>r</em><sub><em>rm</em></sub> = 0.81, 95% CI [0.75, 0.85]) and (<em>r</em><sub><em>rm</em></sub> = 0.73, 95% CI [0.66, 0.80]). The non-overlapping correlations are similar in magnitude with partially overlapping confidence intervals. Thus, they are barely significantly different <em>p</em> &lt; 0.04.</p>
+<p>For non-overlapping correlations, data are from the same participants
+but there is no overlapping variable in the comparison. We compare
+correlations between two action measures of distance perception
+(blindwalk away and blindwalk toward) and two direct measures (verbal
+and visual matching). The respective correlations are
+(<em>r</em><sub><em>rm</em></sub> = 0.81, 95% CI [0.75, 0.85]) and
+(<em>r</em><sub><em>rm</em></sub> = 0.73, 95% CI [0.66, 0.80]). The
+non-overlapping correlations are similar in magnitude with partially
+overlapping confidence intervals. Thus, they are barely significantly
+different <em>p</em> &lt; 0.04.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">variables.nonoverlap</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Blindwalk Away"</span>,</span>
 <span>                           <span class="st">"Blindwalk Toward"</span>,</span>
@@ -299,12 +335,12 @@
 <span></span>
 <span><span class="va">dist_rmc_mat_nonoverlap</span><span class="op">$</span><span class="va">summary</span></span>
 <span><span class="co">#&gt;           measure1         measure2  df  rmcorr.r   lowerCI   upperCI</span></span>
-<span><span class="co">#&gt; 1   Blindwalk Away Blindwalk Toward 175 0.8065821 0.7477023 0.8528777</span></span>
-<span><span class="co">#&gt; 2   Blindwalk Away           Verbal 175 0.7355813 0.6591653 0.7969613</span></span>
-<span><span class="co">#&gt; 3   Blindwalk Away  Visual matching 174 0.7758245 0.7088722 0.8289209</span></span>
-<span><span class="co">#&gt; 4 Blindwalk Toward           Verbal 177 0.7160551 0.6356957 0.7810611</span></span>
-<span><span class="co">#&gt; 5 Blindwalk Toward  Visual matching 177 0.7575109 0.6867423 0.8140545</span></span>
-<span><span class="co">#&gt; 6           Verbal  Visual matching 179 0.7341831 0.6584114 0.7952224</span></span>
+<span><span class="co">#&gt; 1   Blindwalk Away Blindwalk Toward 175 0.8065821 0.7480818 0.8526427</span></span>
+<span><span class="co">#&gt; 2   Blindwalk Away           Verbal 175 0.7355813 0.6596521 0.7966468</span></span>
+<span><span class="co">#&gt; 3   Blindwalk Away  Visual matching 174 0.7758245 0.7093042 0.8286489</span></span>
+<span><span class="co">#&gt; 4 Blindwalk Toward           Verbal 177 0.7160551 0.6362000 0.7807308</span></span>
+<span><span class="co">#&gt; 5 Blindwalk Toward  Visual matching 177 0.7575109 0.6871894 0.8137687</span></span>
+<span><span class="co">#&gt; 6           Verbal  Visual matching 179 0.7341831 0.6588827 0.7949162</span></span>
 <span><span class="co">#&gt;         p.vals effective.N</span></span>
 <span><span class="co">#&gt; 1 8.228992e-42         177</span></span>
 <span><span class="co">#&gt; 2 2.056415e-31         177</span></span>
