@@ -1,4 +1,4 @@
-# Test class of output
+# output has correct class
 
     Code
       print(rmc.out)
@@ -16,6 +16,6 @@
       0.0008471081
       
       95% confidence interval
-      -0.7112297 -0.223255 
+      -0.7067146 -0.2318631 
       
 

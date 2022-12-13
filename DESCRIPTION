@@ -1,6 +1,6 @@
 Package: rmcorr
 Title: Repeated Measures Correlation
-Version: 0.5.3
+Version: 0.5.4
 Authors@R: c(
     person("Jonathan Z.", "Bakdash", email = "jbakdash@gmail.com", role = "aut",
       comment = c(ORCID = "0000-0002-1409-4779")
@@ -27,7 +27,7 @@ Imports:
     graphics,
     psych,
     RColorBrewer
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Encoding: UTF-8
 Suggests: 
     knitr,
@@ -40,6 +40,7 @@ Suggests:
     AICcmodavg,
     pals,
     testthat (>= 3.0.0),
+    vdiffr,
     corrplot,
     cocor,
     covr

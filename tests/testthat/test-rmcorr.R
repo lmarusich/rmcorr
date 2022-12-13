@@ -18,7 +18,7 @@ test_that("different classes of sub_ids work", {
     bland1995mod$Subject[1:4]  <- "a"
     
     expect_warning(rmc.out <- rmcorr(Subject, PaCO2, pH, bland1995mod), "coerced into a factor")
-    expect_equal(rmc.out$CI[1], -0.711, tolerance = 0.001)
+    expect_equal(rmc.out$CI[1], -0.7067, tolerance = 0.001)
     
     #change to factor, shouldn't get warning
     expect_silent(rmc.out <- rmcorr(as.factor(Subject), PaCO2, pH, bland1995mod))
@@ -45,7 +45,7 @@ test_that("non-numeric data columns throw error", {
 test_that("changing CI level works", {
     #use default 95% CIs
     expect_warning(rmc.out <- rmcorr(sub, rt, acc, gilden2010))
-    expect_equal(rmc.out$CI[1], -0.661, tolerance = 0.001)
+    expect_equal(rmc.out$CI[1], -0.654, tolerance = 0.001)
     
     set.seed(1753)
     expect_warning(rmc.out <- rmcorr(sub, rt, acc, gilden2010, CIs = "bootstrap"))
@@ -53,14 +53,14 @@ test_that("changing CI level works", {
     
     #use 99% CIs
     expect_warning(rmc.out <- rmcorr(sub, rt, acc, gilden2010, CI.level = 0.99))
-    expect_equal(rmc.out$CI[1], -0.721, tolerance = 0.001)
+    expect_equal(rmc.out$CI[1], -0.713, tolerance = 0.001)
     
     set.seed(1212)
     expect_warning(rmc.out <- rmcorr(sub, rt, acc, gilden2010, CIs = "bootstrap", CI.level = 0.99))
     expect_equal(rmc.out$CI[[1]], -0.610, tolerance = 0.001)
 })
 
-test_that("invalid CI levels", {
+test_that("invalid CI levels throw an error", {
     #CI > 1
     expect_error(rmc.out <- rmcorr(as.factor(sub), rt, acc, gilden2010, CI.level = 1.99))
     
@@ -69,24 +69,27 @@ test_that("invalid CI levels", {
 })
 
 
-test_that("invalid num of bootstraps for CI", {
+test_that("invalid num of bootstraps for CI throws an error", {
     #Character instead of numeric 
     expect_error(rmc.out <- rmcorr(as.factor(sub), rt, acc, gilden2010, CIs = "bootstrap", nreps = "500"))
 })
 
-test_that("Return bootstrapped CIs", {
+test_that("Returning bootstrapped values works", {
     set.seed(531)
     expect_warning(test.boot <- 
                        rmcorr(Subject, PaCO2, pH, bland1995,
                               CI.level = 0.95,
                               nreps = 100,
+                              CIs = "bootstrap",
                               bstrap.out = T))
     
-    expect_equal(test.boot$CI[[1]], -0.7112297, tolerance = 0.001)
-    expect_equal(test.boot$CI[[2]], -0.223255, tolerance = 0.001)
+    expect_equal(test.boot$CI[[1]], -0.7271, tolerance = 0.001)
+    expect_equal(test.boot$CI[[2]], -0.1808, tolerance = 0.001)
+    
+    expect_length(test.boot$resamples, 100)
 })
 
-test_that("Test class of output",{
+test_that("output has correct class",{
     expect_warning(rmc.out <- rmcorr(Subject, PaCO2, pH, bland1995))
     expect_match(class(rmc.out), "rmc")
     expect_snapshot(print(rmc.out))
