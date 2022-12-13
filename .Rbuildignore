@@ -1,3 +1,15 @@
 ^\.github$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.travis\.yml$
+^README\.Rmd$
+^old$
+^.Renviron$
+^doc$
+^Meta$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^rmcorr-tests$
+^codecov.yml$
+^codecov_test.R$
