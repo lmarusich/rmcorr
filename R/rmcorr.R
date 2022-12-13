@@ -110,7 +110,7 @@ rmcorr <- function(participant, measure1, measure2, dataset,
     #analytic
     resamples <- NULL
     if (CIs == "analytic"){
-        rmcorrvalueCI <- psych::r.con(rmcorrvalue, errordf, p = CI.level) 
+        rmcorrvalueCI <- psych::r.con(rmcorrvalue, errordf + 2, p = CI.level) 
     } else if (CIs == "bootstrap") {
         nsubs <- length(levels(Participant))
         if (!is.numeric(nreps)){stop("Specify the number of bootstrap resamples to take")}
