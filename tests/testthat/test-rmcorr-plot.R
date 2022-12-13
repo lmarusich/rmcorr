@@ -1,12 +1,14 @@
-test_that("dataset param depcreated", {
+require(vdiffr)
+
+test_that("dataset param deprecated", {
     rmc.out <- rmcorr(as.factor(Subject), PaCO2, pH, bland1995)
     expect_warning(plot(rmc.out, dataset = bland1995))
 
 })
 
-require(vdiffr)
 
-test_that("Expected plot for non-standard characeters in xlab and ylab", {
+
+test_that("Expected plot for non-standard characters in xlab and ylab", {
     rmc.out <- rmcorr(as.factor(Subject), PaCO2, pH, bland1995)
     p1 <- function() plot(rmc.out, main = "p1", xlab = "T\ e & s T^", ylab = "blah$% * b!@>h")
     expect_doppelganger("p1", p1)
