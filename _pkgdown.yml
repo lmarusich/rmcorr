@@ -1,4 +1,17 @@
 url: http://lmarusich.github.io/rmcorr
 template:
   bootstrap: 5
-
+# navbar: ~
+#   menu:
+#     - text: Frequently Asked Questions and Limitations
+#       href: articles/FAQ_and_limitations.html
+#     - text: Reproduce Paper Results
+#       href: articles/New_rmcorr_paper_analyses_figures.html
+#     - text: Confidence Interval Fix
+#       href: articles/CI_fix.html
+#     - text: Bootstrapping Example
+#       href: articles/repro_bootstrapping.html
+#     - text: Comparing Correlations
+#       href: articles/compcor.html
+#     - text: Correlation Matrix using rmcorr_mat
+#       href: articles/rmcorr_mat.html

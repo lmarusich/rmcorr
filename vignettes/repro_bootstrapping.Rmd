@@ -1,0 +1,74 @@
+---
+title: "Bootstrapping Example"
+author: "Jonathan Bakdash and Laura Marusich"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Bootstrapping Example}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
+options(width = 80)
+library("knitr", "rmarkdown", "rmcorr") 
+require(knitr)
+require(rmarkdown)
+require(rmcorr)
+```
+### Reproducible Example of Bootstrapping
+Below we illustrate a reproducible example of bootstrapping with rmcorr. Note, *only* the estimated confidence interval changes with bootstrapping. We also show how to extract the sampling distribution for bootstrapped rmcorr effect size. 
+- *set.seed()* is used to make the results reproducible
+- *nreps* is set to only 100 to run this example quickly. Ideally, it should be > 500.
+
+#### Rmcorr effect size with Bootstrapped 95% Confidence Inverval
+```{r}
+set.seed(532) 
+boot.blandrmc <- rmcorr(Subject, PaCO2, pH, bland1995,
+                        CIs = "bootstrap",
+                        nreps = 100, 
+                        bstrap.out = T)
+boot.blandrmc
+```
+
+#### Sampling Distribution of Bootstrapped Effects 
+In this graph, the x-axis is the bootstrapped *rmcorr* effect sizes and the y-axis frequency. The red line is mean of the sampling distribution and blue line is the median of the sampling distribution. Because these two values are calculated from the bootstrapping sampling distribution, note that they slight differ from the non-bootstrapped point estimated effect size. 
+
+```{r}
+boot.rmcorr.samplingdist <- round(boot.blandrmc$resamples, digits = 2)
+boot.rmcorr.mean <- mean(boot.blandrmc$resamples)
+boot.rmcorr.median <- median(boot.blandrmc$resamples)
+
+x.vals <- sprintf("%.2f", seq(-0.80, 0.00, by = 0.10))
+
+hist(boot.rmcorr.samplingdist, 
+     main = "Sampling Distribution of Bootstrapped Effect Sizes",
+     xaxt = "n",
+     xlab = "Effect Size",
+     las = 1)
+abline(v = boot.rmcorr.mean,   col = "red",  lwd = 2)
+abline(v = boot.rmcorr.median, col = "blue", lwd = 2)
+axis(1, 
+     at = as.numeric(x.vals),
+     labels = x.vals) 
+
+#Compare point-est effect for bootstrap vs. non-bootstrap model
+#Boostrapped effect sizes
+#Mean
+boot.rmcorr.mean
+#Median
+boot.rmcorr.median
+
+#Non-bootstrapped 
+blandrmc <- rmcorr(Subject, PaCO2, pH, bland1995)
+blandrmc$r
+
+```

@@ -1,3 +1,8 @@
+# rmcorr 0.5.4.1
+
+* Added reproducible example of bootstrapping
+* Specify article order for web docs
+
 # rmcorr 0.5.4
 
 * Corrected df for confidence intervals. We thank Benjamin Zobel for finding this mistake

@@ -1,6 +1,6 @@
 Package: rmcorr
 Title: Repeated Measures Correlation
-Version: 0.5.4
+Version: 0.5.4.1
 Authors@R: c(
     person("Jonathan Z.", "Bakdash", email = "jbakdash@gmail.com", role = "aut",
       comment = c(ORCID = "0000-0002-1409-4779")
