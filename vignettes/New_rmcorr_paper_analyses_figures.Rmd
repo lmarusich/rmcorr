@@ -1,10 +1,10 @@
 ---
-title: "Reproduce the Results of Repeated Measures Correlation paper"
+title: "Reproduce Paper Results"
 author: "Jonathan Bakdash and Laura Marusich"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Reproduce the Results of Repeated Measures Correlation paper}
+  %\VignetteIndexEntry{Reproduce Paper Results}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

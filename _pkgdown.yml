@@ -1,6 +1,16 @@
 url: http://lmarusich.github.io/rmcorr
 template:
   bootstrap: 5
+articles:
+- title: Articles
+  navbar: ~
+  contents:
+  - FAQ_and_limitations
+  - New_rmcorr_paper_analyses_figures
+  - CI_fix
+  - repro_bootstrapping
+  - compcor
+  - rmcorr_mat
 # navbar: ~
 #   menu:
 #     - text: Frequently Asked Questions and Limitations
