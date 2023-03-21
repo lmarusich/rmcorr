@@ -1,13 +1,14 @@
 pandoc: 2.19.2
-pkgdown: 2.0.6
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   CI_fix: CI_fix.html
   FAQ_and_limitations: FAQ_and_limitations.html
   New_rmcorr_paper_analyses_figures: New_rmcorr_paper_analyses_figures.html
   compcor: compcor.html
+  repro_bootstrapping: repro_bootstrapping.html
   rmcorr_mat: rmcorr_mat.html
-last_built: 2022-12-13T20:56Z
+last_built: 2023-03-21T15:38Z
 urls:
   reference: http://lmarusich.github.io/rmcorr/reference
   article: http://lmarusich.github.io/rmcorr/articles
