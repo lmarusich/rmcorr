@@ -1,10 +1,10 @@
 ---
-title: "Plotting and Multiple Comparisons with rmcorr_mat"
+title: "Correlation Matrix using rmcorr_mat"
 author: "Jonathan Bakdash and Laura Marusich"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Plotting and Multiple Comparisons with rmcorr_mat}
+  %\VignetteIndexEntry{Correlation Matrix using rmcorr_mat}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
