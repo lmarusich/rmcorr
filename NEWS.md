@@ -1,6 +1,6 @@
 # rmcorr 0.5.4.2 (dev release only, not on CRAN)
 
-* Documentation update: Remove TravisCI from readme and web docs, add citation info to readme, and add disclaimer to readme
+* Documentation update: Remove TravisCI and add U.S. gov disclaimer 
 
 # rmcorr 0.5.4.1 (dev release only, not on CRAN)
 

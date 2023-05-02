@@ -48,21 +48,6 @@ rmcorr(Subject, PaCO2, pH, bland1995)
 #> -0.7067146 -0.2318631
 ```
 
-## Citing rmcorr
-
-Bakdash J.Z. and Marusich L.R. (2023). rmcorr: Repeated Measures
-Correlation. <https://github.com/lmarusich/rmcorr>,
-<https://lmarusich.github.io/rmcorr/>.
-
-### Bibtex
-
-    @Manual{,
-      title = {rmcorr: Repeated Measures Correlation},
-      author = {Jonathan Z. Bakdash and Laura R. Marusich},
-      year = {2023},
-      note = {https://github.com/lmarusich/rmcorr, https://lmarusich.github.io/rmcorr/},
-    }
-
 ## Graphical Interface for rmcorr
 
 A Shiny web and standalone app with a graphical user interface is also
