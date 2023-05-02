@@ -1,4 +1,8 @@
-# rmcorr 0.5.4.1
+# rmcorr 0.5.4.2 (dev release only, not on CRAN)
+
+* Documentation update: Remove TravisCI from readme and web docs
+
+# rmcorr 0.5.4.1 (dev release only, not on CRAN)
 
 * Added reproducible example of bootstrapping
 * Specify article order for web docs
