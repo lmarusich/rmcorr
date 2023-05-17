@@ -26,8 +26,11 @@ require(rmcorr)
 ```
 ### Reproducible Example of Bootstrapping
 Below we illustrate a reproducible example of bootstrapping with rmcorr. Note, *only* the estimated confidence interval changes with bootstrapping. We also show how to extract the sampling distribution for bootstrapped rmcorr effect size. 
-+ *set.seed()* is used to make the results reproducible
-+ *nreps* is set to only 100 to run this example quickly. Ideally, it should be > 500.
+<br>
+- *set.seed()* is used to make the results reproducible.
+<br>
+- *nreps* is set to only 100 to run this example quickly. Ideally, it should be > 500.
+
 
 #### Rmcorr effect size with Bootstrapped 95% Confidence Inverval
 ```{r}
@@ -40,7 +43,7 @@ boot.blandrmc
 ```
 
 #### Sampling Distribution of Bootstrapped Effects 
-In this graph, the x-axis is the bootstrapped *rmcorr* effect sizes and the y-axis frequency. The red line is mean of the sampling distribution and blue line is the median of the sampling distribution. Because these two values are calculated from the bootstrapping sampling distribution, note that they slightly differ from the non-bootstrapped point estimated effect size. 
+In this graph, the x-axis is the bootstrapped *rmcorr* effect sizes and the y-axis frequency. The red line is the mean of the sampling distribution and blue line is the median of the sampling distribution. Because these two values are calculated from the bootstrap sampling distribution, note that they slightly differ from the non-bootstrapped point estimated effect size. 
 
 ```{r}
 boot.rmcorr.samplingdist <- round(boot.blandrmc$resamples, digits = 2)
