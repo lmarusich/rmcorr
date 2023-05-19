@@ -1,8 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![Build
-Status](https://travis-ci.org/lmarusich/rmcorr.svg?branch=master)](https://travis-ci.org/lmarusich/rmcorr)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/rmcorr)](https://cran.r-project.org/package=rmcorr)
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmcorr)](https://cran.r-project.org/package=rmcorr)
@@ -47,7 +45,7 @@ rmcorr(Subject, PaCO2, pH, bland1995)
 #> 0.0008471081
 #> 
 #> 95% confidence interval
-#> -0.7112297 -0.223255
+#> -0.7067146 -0.2318631
 ```
 
 ## Graphical Interface for rmcorr
@@ -58,3 +56,22 @@ available: <br>
 <a href="https://github.com/lmarusich/rmcorrShiny">Standalone app</a>
 
 <img src="man/figures/rmcorr_example_input_plot.jpg" width="80%" />
+
+## Disclaimer
+
+This software was developed by U.S. Government employees and is subject
+to revision. The views expressed in the documentation and corresponding
+publications do not necessary represent the views of the U.S.
+Government.
+
+This software is being provided to meet the need for timely best
+science. No warranty, expressed or implied, is made by the U.S.
+Government as to the functionality of the software and related material
+nor shall the fact of release constitute any such warranty. The software
+is provided on the condition that the U.S. Government shall not be held
+liable for any damages resulting from the authorized or unauthorized use
+of the software.
+
+The above text was adapted from the USGS software disclaimer:
+<a href="https://github.com/DOI-USGS/toxEval/tree/27eb744edb86dd7e7842e8907ec875ca6c0f5674">toxEval
+U.S. Government disclaimer</a>
