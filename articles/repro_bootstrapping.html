@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.4.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.4.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,7 +87,7 @@
                         <h4 data-toc-skip class="author">Jonathan
 Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2023-03-21</h4>
+            <h4 data-toc-skip class="date">2023-05-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/HEAD/vignettes/repro_bootstrapping.Rmd" class="external-link"><code>vignettes/repro_bootstrapping.Rmd</code></a></small>
       <div class="d-none name"><code>repro_bootstrapping.Rmd</code></div>
@@ -101,9 +101,10 @@ Bakdash and Laura Marusich</h4>
 <p>Below we illustrate a reproducible example of bootstrapping with
 rmcorr. Note, <em>only</em> the estimated confidence interval changes
 with bootstrapping. We also show how to extract the sampling
-distribution for bootstrapped rmcorr effect size. + <em>set.seed()</em>
-is used to make the results reproducible + <em>nreps</em> is set to only
-100 to run this example quickly. Ideally, it should be &gt; 500.</p>
+distribution for bootstrapped rmcorr effect size. <br> -
+<em>set.seed()</em> is used to make the results reproducible. <br> -
+<em>nreps</em> is set to only 100 to run this example quickly. Ideally,
+it should be &gt; 500.</p>
 <div class="section level4">
 <h4 id="rmcorr-effect-size-with-bootstrapped-95-confidence-inverval">Rmcorr effect size with Bootstrapped 95% Confidence Inverval<a class="anchor" aria-label="anchor" href="#rmcorr-effect-size-with-bootstrapped-95-confidence-inverval"></a>
 </h4>
@@ -135,9 +136,9 @@ is used to make the results reproducible + <em>nreps</em> is set to only
 <h4 id="sampling-distribution-of-bootstrapped-effects">Sampling Distribution of Bootstrapped Effects<a class="anchor" aria-label="anchor" href="#sampling-distribution-of-bootstrapped-effects"></a>
 </h4>
 <p>In this graph, the x-axis is the bootstrapped <em>rmcorr</em> effect
-sizes and the y-axis frequency. The red line is mean of the sampling
+sizes and the y-axis frequency. The red line is the mean of the sampling
 distribution and blue line is the median of the sampling distribution.
-Because these two values are calculated from the bootstrapping sampling
+Because these two values are calculated from the bootstrap sampling
 distribution, note that they slightly differ from the non-bootstrapped
 point estimated effect size.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
