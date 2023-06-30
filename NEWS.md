@@ -1,3 +1,9 @@
+# rmcorr 0.6.0 (dev release only, not on CRAN)
+* Added new dataset (TO-DO)
+* Added vignette demonstrating diagnostic plots (DONE)
+* Added vignette of synthetic dataset w/insufficient variability and potential solution (thanks to Sherya Ghosh for identifying the issue and the dataset) (TO-DO)
+* Added vignette references using bibtex (DONE)
+
 # rmcorr 0.5.4.2 (dev release only, not on CRAN)
 
 * Documentation update: Remove TravisCI, add U.S. gov disclaimer, fix typos and formatting 

@@ -3,6 +3,7 @@ title: "Correlation Matrix using rmcorr_mat"
 author: "Jonathan Bakdash and Laura Marusich"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+bibliography: references.bib 
 vignette: >
   %\VignetteIndexEntry{Correlation Matrix using rmcorr_mat}
   %\VignetteEngine{knitr::rmarkdown}
@@ -29,11 +30,11 @@ if(!require("corrplot"))
   install.packages("corrplot")
 require(corrplot)
 ```
-#### Running Examples Requires corrplot
+#### Running Examples Requires corrplot [@corrplot2021]
 ```{r, eval = FALSE}
 #Install corrplot
-install.packages("corrplot")
-require(corrplot)
+ install.packages("corrplot")
+ require(corrplot)
 ```
 
 ## Plotting a Correlation Matrix 

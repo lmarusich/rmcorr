@@ -3,6 +3,7 @@ title: "Frequently Asked Questions and Limitations"
 author: "Jonathan Bakdash and Laura Marusich"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+bibliography: references.bib 
 vignette: >
   %\VignetteIndexEntry{Frequently Asked Questions and Limitations}
   %\VignetteEngine{knitr::rmarkdown}
@@ -57,7 +58,7 @@ power.rmcorr(k = 3, N = 100, effectsizer = 0.20, sig = 0.05)
 
 See [Power curves](./New_rmcorr_paper_analyses_figures.html#power) for more information. 
 
-For <a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower">G\*Power</a> or other software, power can be calculated by substituting the rmcorr degrees of freedom for a Pearson correlation. Instead of sample size, use the degrees of freedom for rmcorr plus two (effective sample size). This is because a Pearson correlation has *N* - 2 degrees of freedom.<br>
+For G\*Power [@faul_statistical_2009] or other software, power can be calculated by substituting the rmcorr degrees of freedom for a Pearson correlation. Instead of sample size, use the degrees of freedom for rmcorr plus two (effective sample size). This is because a Pearson correlation has *N* - 2 degrees of freedom.<br>
 
 
 - Rmcorr exact degrees of freedom = *N* x (*k* - 1) - 1 <br>
@@ -121,8 +122,7 @@ Updating R to version 4.1.0 or later resolves this error. <br>
 
 
 ### Transformations
-Transformations can be used to make the data (errors) more normal. We highly recommend graphing both the raw and transformed data. It may be appropriate to only transform one measure or transform both measures. "Consider transforming every variable in sight" (Gelman \& Hill, 2017: *Data Analysis Using Regression and Multilevel/Hierarchical Models*, ISBN: 9780521686891, p. 548): <a href="https://www.google.com/books/edition/Data_Analysis_Using_Regression_and_Multi/lV3DIdV0F9AC?hl=en&gbpv=1&bsq=consider%20transforming%20every%20variable%20in%20sight">Google Books</a> 
-<br>
+Transformations can be used to make the data (errors) more normal. We highly recommend graphing both the raw and transformed data. It may be appropriate to only transform one measure or transform both measures. "Consider transforming every variable in sight" [@gelman2007, p. 548].
 
 ## Limitations 
 
@@ -132,7 +132,7 @@ exception is if time is a measure, such as age in the raz2005 dataset.
 <br>
 
 ### Non-Linearity
-Rmcorr fits a linear model. If the data are non-linear, we recommend trying to transform it or using multilevel modeling. 
+Rmcorr fits a linear model. If the data are non-linear, we recommend trying to transform it (see above) or using multilevel modeling. Also see [Diagnostic Plots](./model_diag.html)
 
 ### Varying Slopes with Influential Observations and/or Unbalanced Data
 If slopes meaningfully vary by individual, we recommend using multilevel modeling instead of rmcorr.
@@ -144,17 +144,12 @@ and/or highly unbalanced data. This is nicely illustrated in simulations by Dr. 
 ## Other Implementations of rmcorr
 We know of three other implementations of rmcorr.
 
-### 1) rmcorrShiny: Web and Standalone App with a Graphical Interface 
+### 1) rmcorrShiny: Web and Standalone App with a Graphical Interface [@marusich2021rmcorrshiny]
 - <a href="https://lmarusich.shinyapps.io/shiny_rmcorr/">Web App</a>
-
 - <a href="https://github.com/lmarusich/rmcorrShiny">Shiny Source Code and Running the Standalone App</a> 
 
-- <a href="https://doi.org/10.12688/f1000research.55027.2">Corresponding Paper</a> 
-
-### 2) Python: rm_corr in Pinguion 
+### 2) Python: rm_corr in Pingouin [@vallat2018pingouin]
 - <a href="https://pingouin-stats.org/generated/pingouin.rm_corr.html#pingouin.rm_corr">rm_corr</a>
 
-- <a href="https://doi.org/10.21105/joss.01026">Corresponding Paper</a> 
-
-### 3) Stata: RMCORR
+### 3) Stata: RMCORR [@stata.rmcorr]
 - <a href="https://ideas.repec.org/c/boc/bocode/s458971.html">RMCORR</a>

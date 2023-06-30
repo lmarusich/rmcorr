@@ -1,0 +1,66 @@
+---
+title: "Diagnostic Plots"
+author: "Jonathan Bakdash and Laura Marusich"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+bibliography: references.bib 
+vignette: >
+  %\VignetteIndexEntry{Diagnostic Plots}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
+options(width = 80)
+library("knitr", "rmarkdown", "rmcorr") 
+require(knitr)
+require(rmarkdown)
+require(rmcorr)
+
+#Kludge b/c of lib loc error 
+if(!require("gglm"))
+  install.packages("gglm")
+require(gglm)
+```
+
+#### Running Example Requires gglm [@gglm]
+```{r, eval = FALSE}
+#Install gglm
+install.packages("gglm")
+require(gglm)
+```
+
+## Plotting Model Diagnostics 
+The code below demonstrates how to plot model diagnostics for *rmcorr*.
+There are four diagnostic plots assessing:
+<br>
+1. Residuals vs. Fitted values: Linearity
+<br>
+2. Quantile-Quantile (Q-Q): Normality of residuals
+<br>
+3. Scale-Location: Equality of variance (homoscedasticity)
+<br>
+4. Residuals vs. Leverage: Influential observations
+
+```{r}
+raz.rmc <- rmcorr(participant = Participant, measure1 = Age, 
+                  measure2 = Volume, dataset = raz2005) 
+
+#Using gglm
+ gglm(raz.rmc$model)
+
+#using base R 
+ par(mfrow = c(2,2)) #2 x 2 plot 
+ plot(raz.rmc$model)
+ par(mfrow = c(1,1)) #Reset plotting parameters
+```
+
+How much do violations of the above four assumptions matter? It depends. General Linear Model (GLM) is typically robust to deviations from the above assumptions, but severe violations may produce misleading results [@gelman2020regression]. Also, the reason(s) for violations can matter: "Violations of assumptions may result from problems in the dataset, the use of an incorrect regression model, or both" [@cohen2013applied, p. ???].  
