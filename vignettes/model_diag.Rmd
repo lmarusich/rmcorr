@@ -58,9 +58,7 @@ raz.rmc <- rmcorr(participant = Participant, measure1 = Age,
  gglm(raz.rmc$model)
 
 #using base R 
- par(mfrow = c(2,2)) #2 x 2 plot 
- plot(raz.rmc$model)
- par(mfrow = c(1,1)) #Reset plotting parameters
+#plot(raz.rmc$model)
 ```
 
-How much do violations of the above four assumptions matter? It depends. General Linear Model (GLM) is typically robust to deviations from the above assumptions, but severe violations may produce misleading results [@gelman2020regression]. Also, the reason(s) for violations can matter: "Violations of assumptions may result from problems in the dataset, the use of an incorrect regression model, or both" [@cohen2013applied, p. ???].  
+How much do violations of these assumptions matter? It depends. General Linear Model (GLM) is typically robust to deviations from the above assumptions, but severe violations may produce misleading results [@gelman2020regression]. Also, the reason(s) for violations can matter: "Violations of assumptions may result from problems in the dataset, the use of an incorrect regression model, or both" [@cohen2013applied, p. 117].  

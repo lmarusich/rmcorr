@@ -25,7 +25,7 @@ twedt_dist_measures
 }
 \description{
 A dataset of repeated measures of distance perception
-at  physical distances of 7, 8, 9, 10, and 11 meters. The data are also
+at physical distances of 7, 8, 9, 10, and 11 meters. The data are also
 multivariate, with five dependent measures of distance perception. This is a
 5 (physical distance) x 5 (dependent measure) within-participants design
 with a sample size of 46.

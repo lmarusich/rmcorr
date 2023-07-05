@@ -42,7 +42,7 @@ require(ggExtra)
 
 #### Load data, visualize, and model
 ```{r}
-load(file = "../man/ghosh_synth.rda")
+load(file = "../man/data/ghosh_synth.rda")
 
 #Look at data
 ghosh_synth #Note lots of repeated zeros in A3 and A4
@@ -90,4 +90,4 @@ p3
 ```
 
 #### Caveats
-The results with rmcorr should be interpreted with some caution because the data are non-normal with zero-inflation. Still, these results provides at least a starting point. A much more complicated alternative is fitting a multilevel model with an appropriate distribution for zero-inflated data (e.g., negative binomial distribution or zero-inflated Poisson). 
+The results with rmcorr should be interpreted with some caution because the data are non-normal with zero-inflation. Still, these results  provides at least a starting point: A common linear association around 0. A much more complicated alternative is fitting a multilevel model with an appropriate distribution for zero-inflated data (e.g., negative binomial distribution or zero-inflated Poisson). 

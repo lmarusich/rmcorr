@@ -1,0 +1,14 @@
+reference:
+- title: Functions
+- plot
+- print
+- rmcorr
+- rmcorr_mat
+- title: Built in datasets
+contents:
+- bland1995
+- gilden2010
+- HCAHPS2022
+- marusich2016_exp2
+- raz2005
+- twedt_dist_measures
