@@ -99,7 +99,7 @@ NULL
 #' multivariate, with five dependent measures of distance perception. This is a 
 #' 5 (physical distance) x 5 (dependent measure) within-participants design 
 #' with a sample size of 46. 
-#' Note data is missing for 15 trials due participant and experimenter errors.
+#' Note data is missing for 15 trials due to participant and experimenter errors.
 #' @docType data
 #' @usage twedt_dist_measures
 #' @format A data frame with 230 rows and 7 columns
