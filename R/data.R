@@ -120,32 +120,38 @@ NULL
 NULL
 
 #' @name HCAHPS2022
-#' @title Nested and multivariate survey measures of hospital patient experience and other measures
-#' @description A summary dataset from non-independent units of analysis (six regions 
-#' nesting 50 U.S. states and 3 U.S. territories) with multivariate 
+#' @title Nested and multivariate survey measures of hospital patient experience 
+#' and other measures
+#' @description A summary dataset from non-independent units of analysis (six 
+#' regions nesting 50 U.S. states and 3 U.S. territories) with multivariate 
 #' (composite) measures. This is a survey assessing patient experience for  
-#' hospitalized care, the Hospital Consumer Assessment of Healthcare Providers and Systems 
-#' (HCAHPS) Survey. It was publicly released in April 2023 by the U.S. Centers for Medicare & Medicaid Services (CMS). 
+#' hospitalized care, the Hospital Consumer Assessment of Healthcare Providers 
+#' and Systems (HCAHPS) Survey; also referred to as the CAHPS® Hospital Survey. 
+#' The data were publicly released in April 2023 by the U.S. Centers for 
+#' Medicare & Medicaid Services (CMS). 
 #' 
-#' HCAHPS is a standardized survey instrument for evaluating patient 
-#' experience. Patient experience is an indicator of healthcare quality and is defined 
-#' as the "... range of interactions at patients have with the healthcare 
-#' system, including their care from health plans, and from doctors, nurses, and 
-#' staff in hospitals..."  \url{https://web.archive.org/web/20230206233908/https://www.ahrq.gov/cahps/about-cahps/patient-experience/index.html}.
+#' HCAHPS is a standardized and validated survey instrument for evaluating 
+#' patient experience. Patient experience is an indicator of healthcare quality 
+#' and is defined as the "... range of interactions at patients have with the 
+#' healthcare system, including their care from health plans, and from doctors, 
+#' nurses, and staff in hospitals..."  \url{https://web.archive.org/web/20230206233908/https://www.ahrq.gov/cahps/about-cahps/patient-experience/index.html}.
 #' 
-#' The HCAHPS composite measures have multiple questions and linear scores, see \url{https://www.hcahpsonline.org/en/summary-analyses/}. 
-#' In addition to patient experience, there are also additional measures such as whether the hospital is 
-#' recommended or not, the number or participating hospitals, and the survey response rate. 
+#' The HCAHPS composite measures consist of multiple questions and, here, are top box scores (see \url{https://www.hcahpsonline.org/en/summary-analyses/}). 
+#' In addition to patient experience, there are additional measures such as whether the hospital is 
+#' recommended or not, the number or participating hospitals, and the survey response rate
+#' - Note this is \emph{not} a representative sample 
 #' - Measures are averaged at the state/territory level
-#' - Respondents were discharged from a hospital between July 2021 to July 2022. Note it is \emph{not} a representative sample 
-#' - Mean estimates are patient-mix adjusted, see \url{https://doi.org/10.1111/j.1475-6773.2008.00914.x}
+#' - Respondents were discharged from a hospital between July 2021 to July 2022 
+#' - Results are patient-mix adjusted, see \url{https://doi.org/10.1111/j.1475-6773.2008.00914.x}
 #'
 #' Additional Information: 
 #' - For details about the data and questions comprising composite measures, see 
 #' \url{https://www.hcahpsonline.org/globalassets/hcahps/star-ratings/tech-notes/april_2023_star-ratings_tech_notes.pdf} 
 #' - For the specific questions on the HCAHPS survey, 
 #' see \url{https://www.hcahpsonline.org/globalassets/hcahps/quality-assurance/2023_survey-instruments_english_mail.pdf}
-#'
+#' - CAHPS® is a registered trademark of the U.S. Agency for Healthcare Research
+#' and Quality: \url{https://www.ahrq.gov/cahps/about-cahps/using-cahps-name/index.html}
+#'  
 #' @docType data
 #' @usage HCAHPS2022
 #' @format A data frame with 53 rows and 14 columns
