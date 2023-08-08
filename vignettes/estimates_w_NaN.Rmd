@@ -29,13 +29,14 @@ require(ggplot2)
 #Kludge 
 if(!require("ggExtra"))
   install.packages("ggExtra")
+require(ggExtra)
 ```
 
 ### NaN estimates
 This synthetic dataset produces NaN estimates with rmcorr. Thanks to Shreya Ghosh for this example. 
 
 #### Running Examples Requires ggExtra [@ggExtra]
-```{r, eval = FALSE}
+```{r, eval=FALSE}
 install.packages("ggExtra")
 require(ggExtra)
 ```

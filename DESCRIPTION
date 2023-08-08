@@ -44,7 +44,8 @@ Suggests:
     corrplot,
     cocor,
     covr,
-    gglm
+    gglm,
+    ggExtra
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://github.com/lmarusich/rmcorr, https://lmarusich.github.io/rmcorr/
