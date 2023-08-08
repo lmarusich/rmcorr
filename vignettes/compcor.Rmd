@@ -3,6 +3,7 @@ title: "Comparing Correlations"
 author: "Jonathan Bakdash and Laura Marusich"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+bibliography: references.bib 
 vignette: >
   %\VignetteIndexEntry{Comparing Correlations}
   %\VignetteEngine{knitr::rmarkdown}
@@ -30,16 +31,14 @@ if(!require("cocor"))
 ```
 
 ### Comparing Correlations
-We show examples for comparing the magnitude of two *r*<sub>*rm*</sub> values. Correlations are compared using the cocor package: 
+We show examples for comparing the magnitude of two *r*<sub>*rm*</sub> values. Correlations are compared using the cocor package [@cocor]: 
 <br>
 <a href="https://CRAN.R-project.org/package=cocor">R package</a> 
-<br>
-<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945">Paper</a> 
 <br>
 <a href="http://comparingcorrelations.org">Web Version</a> 
 <br>
 
-#### Running Examples Requires cocor
+#### Running Examples Requires cocor 
 ```{r, eval = FALSE}
 #Install cocor
 install.packages("cocor")

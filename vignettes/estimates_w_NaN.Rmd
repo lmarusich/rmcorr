@@ -1,0 +1,93 @@
+---
+title: "rmcorr Estimates with NaN"
+author: "Jonathan Bakdash and Laura Marusich"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+bibliography: references.bib 
+vignette: >
+  %\VignetteIndexEntry{rmcorr Estimates with NaN}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
+options(width = 80)
+library("knitr", "rmarkdown", "rmcorr") 
+require(knitr)
+require(rmarkdown)
+require(rmcorr)
+require(ggplot2)
+
+#Kludge 
+if(!require("ggExtra"))
+  install.packages("ggExtra")
+```
+
+### NaN estimates
+This synthetic dataset produces NaN estimates with rmcorr. Thanks to Shreya Ghosh for this example. 
+
+#### Running Examples Requires ggExtra [@ggExtra]
+```{r, eval = FALSE}
+install.packages("ggExtra")
+require(ggExtra)
+```
+
+#### Load data, visualize, and model
+```{r}
+load(file = "../man/data/ghosh_synth.rda")
+
+#Look at data
+ghosh_synth #Note lots of repeated zeros in A3 and A4
+
+set.seed(40) #Make jittering reproducible 
+p <- ggplot(ghosh_synth, aes(x = A4, y = A3)) +
+            geom_point(alpha = 0.2) +
+            geom_jitter(width = 2, height = 2) 
+p1 <- ggMarginal(p, type="histogram")
+p1
+
+rmc.ghosh <- rmcorr(Subject, A3, A4, ghosh_synth)
+
+rmc.ghosh
+
+#The default rmcorr plot doesn't jitter values, this masks identical values because they are drawn on top of each other
+plot(rmc.ghosh)
+```
+
+The NaN estimates appear to be due to insufficient varability in the dataset. A possible way to address this issue is adding a small amount of random noise.
+
+#### Add random noise
+```{r}
+set.seed(67) 
+small.noise1 <- rnorm(dim(ghosh_synth)[[1]], 0, 0.2)
+small.noise2 <- rnorm(dim(ghosh_synth)[[1]], 0, 0.2)
+    
+ghosh_synth$A3.noise <- ghosh_synth$A3 + small.noise1
+ghosh_synth$A4.noise <- ghosh_synth$A4 + small.noise2
+
+rmc.ghosh.noise <- rmcorr(Subject, A3.noise, A4.noise, ghosh_synth)
+
+rmc.ghosh.noise
+
+p2 <- ggplot(ghosh_synth, aes(x = A3.noise, y = A4.noise, 
+       group = factor(Subject), color = factor(Subject))) +
+       ggplot2::geom_point(ggplot2::aes(colour = factor(Subject), 
+                                        alpha = 0.10)) +
+       ggplot2::geom_line(aes(y = rmc.ghosh.noise$model$fitted.values),
+                         linetype = 1) +
+     theme(legend.position="none")
+
+p3 <- ggMarginal(p2, type="histogram")
+p3
+```
+
+#### Caveats
+The results with rmcorr should be interpreted with some caution because the data are non-normal with zero-inflation. Still, these results  provides at least a starting point: A common linear association around 0. A much more complicated alternative is fitting a multilevel model with an appropriate distribution for zero-inflated data (e.g., negative binomial distribution or zero-inflated Poisson). 

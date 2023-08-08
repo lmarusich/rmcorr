@@ -67,4 +67,3 @@ psych::r.con(0.88, 19, p = 0.95)
 #Current, correct CI using effective sample size
 psych::r.con(0.88, 21, p = 0.95)
 ```
-```

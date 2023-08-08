@@ -1,3 +1,10 @@
+# rmcorr 0.6.0 (dev release only, not on CRAN)
+* Added HCAHPS2022 dataset and description  
+* Added vignette showing diagnostic plots 
+* Added vignette for synthetic dataset w/NaN estimates (thanks to Shreya Ghosh) and a possible solution
+* Added references in vignettes using bibtex
+* Split references in documentation into functions and datasets
+
 # rmcorr 0.5.4.2 (dev release only, not on CRAN)
 
 * Documentation update: Remove TravisCI, add U.S. gov disclaimer, fix typos and formatting 

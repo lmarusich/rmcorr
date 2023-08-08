@@ -1,4 +1,4 @@
-url: http://lmarusich.github.io/rmcorr
+url: ~
 template:
   bootstrap: 5
 articles:
@@ -11,17 +11,24 @@ articles:
   - repro_bootstrapping
   - compcor
   - rmcorr_mat
-# navbar: ~
-#   menu:
-#     - text: Frequently Asked Questions and Limitations
-#       href: articles/FAQ_and_limitations.html
-#     - text: Reproduce Paper Results
-#       href: articles/New_rmcorr_paper_analyses_figures.html
-#     - text: Confidence Interval Fix
-#       href: articles/CI_fix.html
-#     - text: Bootstrapping Example
-#       href: articles/repro_bootstrapping.html
-#     - text: Comparing Correlations
-#       href: articles/compcor.html
-#     - text: Correlation Matrix using rmcorr_mat
-#       href: articles/rmcorr_mat.html
+  - model_diag
+  - estimates_w_NaN
+
+reference:
+- title: Functions
+  contents:
+  - rmcorr
+  - plot.rmc
+  - print.rmc
+  - rmcorr_mat
+  - print.rmcmat
+  - rmcorr-package
+- title: Datasets
+  contents:
+  - bland1995
+  - HCAHPS2022
+  - gilden2010
+  - marusich2016_exp2
+  - raz2005
+  - twedt_dist_measures
+
