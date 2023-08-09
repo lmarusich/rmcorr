@@ -19,10 +19,10 @@ knitr::opts_chunk$set(
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
 options(width = 80)
-library("knitr", "rmarkdown", "rmcorr") 
-require(knitr)
-require(rmarkdown)
-require(rmcorr)
+library(knitr)
+library(rmarkdown)
+library(rmcorr) 
+
 ```
 ### Reproducible Example of Bootstrapping
 Below we illustrate a reproducible example of bootstrapping with rmcorr. Note, *only* the estimated confidence interval changes with bootstrapping. We also show how to extract the sampling distribution for bootstrapped rmcorr effect size. 

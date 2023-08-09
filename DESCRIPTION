@@ -44,6 +44,7 @@ Suggests:
     corrplot,
     cocor,
     covr,
+    ggExtra,
     gglm
 VignetteBuilder: knitr
 Config/testthat/edition: 3

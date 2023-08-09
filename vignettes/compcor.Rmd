@@ -20,14 +20,11 @@ knitr::opts_chunk$set(
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
 options(width = 80)
-library("knitr", "rmarkdown", "rmcorr") 
-require(knitr)
-require(rmarkdown)
-require(rmcorr)
+library(knitr)
+library(rmarkdown)
+library(rmcorr) 
+library(cocor) 
 
-#Kludge to add cocor b/c of lib loc error 
-if(!require("cocor"))
-  install.packages("cocor")
 ```
 
 ### Comparing Correlations

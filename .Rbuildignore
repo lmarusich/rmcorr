@@ -13,3 +13,4 @@
 ^rmcorr-tests$
 ^codecov.yml$
 ^codecov_test.R$
+^CRAN-SUBMISSION$
