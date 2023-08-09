@@ -1,72 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/404.html</loc>
+    <loc>/404.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/articles/CI_fix.html</loc>
+    <loc>/articles/CI_fix.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/articles/FAQ_and_limitations.html</loc>
+    <loc>/articles/FAQ_and_limitations.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/articles/New_rmcorr_paper_analyses_figures.html</loc>
+    <loc>/articles/New_rmcorr_paper_analyses_figures.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/articles/compcor.html</loc>
+    <loc>/articles/compcor.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/articles/index.html</loc>
+    <loc>/articles/estimates_w_NaN.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/articles/repro_bootstrapping.html</loc>
+    <loc>/articles/index.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/articles/rmcorr_mat.html</loc>
+    <loc>/articles/model_diag.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/authors.html</loc>
+    <loc>/articles/repro_bootstrapping.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/index.html</loc>
+    <loc>/articles/rmcorr_mat.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/news/index.html</loc>
+    <loc>/authors.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/reference/bland1995.html</loc>
+    <loc>/index.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/reference/gilden2010.html</loc>
+    <loc>/news/index.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/reference/index.html</loc>
+    <loc>/reference/HCAHPS2022.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/reference/marusich2016_exp2.html</loc>
+    <loc>/reference/bland1995.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/reference/plot.rmc.html</loc>
+    <loc>/reference/gilden2010.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/reference/print.rmc.html</loc>
+    <loc>/reference/index.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/reference/print.rmcmat.html</loc>
+    <loc>/reference/marusich2016_exp2.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/reference/raz2005.html</loc>
+    <loc>/reference/plot.rmc.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/reference/rmcorr-package.html</loc>
+    <loc>/reference/print.rmc.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/reference/rmcorr.html</loc>
+    <loc>/reference/print.rmcmat.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/reference/rmcorr_mat.html</loc>
+    <loc>/reference/raz2005.html</loc>
   </url>
   <url>
-    <loc>http://lmarusich.github.io/rmcorr/reference/twedt_dist_measures.html</loc>
+    <loc>/reference/rmcorr-package.html</loc>
+  </url>
+  <url>
+    <loc>/reference/rmcorr.html</loc>
+  </url>
+  <url>
+    <loc>/reference/rmcorr_mat.html</loc>
+  </url>
+  <url>
+    <loc>/reference/twedt_dist_measures.html</loc>
   </url>
 </urlset>

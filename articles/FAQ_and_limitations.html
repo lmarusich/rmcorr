@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Frequently Asked Questions and Limitations">
 <meta property="og:description" content="rmcorr">
-<meta property="og:image" content="http://lmarusich.github.io/rmcorr/logo.png">
+<meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.4.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,6 +54,8 @@
     <a class="dropdown-item" href="../articles/repro_bootstrapping.html">Bootstrapping Example</a>
     <a class="dropdown-item" href="../articles/compcor.html">Comparing Correlations</a>
     <a class="dropdown-item" href="../articles/rmcorr_mat.html">Correlation Matrix using rmcorr_mat</a>
+    <a class="dropdown-item" href="../articles/model_diag.html">Diagnostic Plots</a>
+    <a class="dropdown-item" href="../articles/estimates_w_NaN.html">rmcorr Estimates with NaN</a>
   </div>
 </li>
 <li class="nav-item">
@@ -87,7 +89,7 @@
                         <h4 data-toc-skip class="author">Jonathan
 Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2023-05-19</h4>
+            <h4 data-toc-skip class="date">2023-08-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/HEAD/vignettes/FAQ_and_limitations.Rmd" class="external-link"><code>vignettes/FAQ_and_limitations.Rmd</code></a></small>
       <div class="d-none name"><code>FAQ_and_limitations.Rmd</code></div>
@@ -131,12 +133,11 @@ number of repeated measures for each individual, and
 <span><span class="co">#&gt;     alternative = two.sided</span></span></code></pre>
 <p>See <a href="./New_rmcorr_paper_analyses_figures.html#power">Power
 curves</a> for more information.</p>
-<p>For
-<a href="https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower" class="external-link">G*Power</a>
-or other software, power can be calculated by substituting the rmcorr
-degrees of freedom for a Pearson correlation. Instead of sample size,
-use the degrees of freedom for rmcorr plus two (effective sample size).
-This is because a Pearson correlation has <em>N</em> - 2 degrees of
+<p>For G*Power <span class="citation">(Faul et al. 2009)</span> or other
+software, power can be calculated by substituting the rmcorr degrees of
+freedom for a Pearson correlation. Instead of sample size, use the
+degrees of freedom for rmcorr plus two (effective sample size). This is
+because a Pearson correlation has <em>N</em> - 2 degrees of
 freedom.<br></p>
 <ul>
 <li>Rmcorr exact degrees of freedom = <em>N</em> x (<em>k</em> - 1) - 1
@@ -230,11 +231,7 @@ Question with error</a></p>
 <p>Transformations can be used to make the data (errors) more normal. We
 highly recommend graphing both the raw and transformed data. It may be
 appropriate to only transform one measure or transform both measures.
-“Consider transforming every variable in sight” (Gelman &amp; Hill,
-2017: <em>Data Analysis Using Regression and Multilevel/Hierarchical
-Models</em>, ISBN: 9780521686891, p. 548):
-<a href="https://www.google.com/books/edition/Data_Analysis_Using_Regression_and_Multi/lV3DIdV0F9AC?hl=en&amp;gbpv=1&amp;bsq=consider%20transforming%20every%20variable%20in%20sight" class="external-link">Google
-Books</a> <br></p>
+“Consider transforming every variable in sight” <span class="citation">(Gelman and Hill 2007, 548)</span>.</p>
 </div>
 </div>
 <div class="section level2">
@@ -251,7 +248,8 @@ age in the raz2005 dataset. <br></p>
 <h3 id="non-linearity">Non-Linearity<a class="anchor" aria-label="anchor" href="#non-linearity"></a>
 </h3>
 <p>Rmcorr fits a linear model. If the data are non-linear, we recommend
-trying to transform it or using multilevel modeling.</p>
+trying to transform it (see above) or using multilevel modeling. Also
+see <a href="./model_diag.html">Diagnostic Plots</a></p>
 </div>
 <div class="section level3">
 <h3 id="varying-slopes-with-influential-observations-andor-unbalanced-data">Varying Slopes with Influential Observations and/or Unbalanced
@@ -270,33 +268,59 @@ rmcorr may not be ideal</a></p>
 </h2>
 <p>We know of three other implementations of rmcorr.</p>
 <div class="section level3">
-<h3 id="rmcorrshiny-web-and-standalone-app-with-a-graphical-interface">1) rmcorrShiny: Web and Standalone App with a Graphical
-Interface<a class="anchor" aria-label="anchor" href="#rmcorrshiny-web-and-standalone-app-with-a-graphical-interface"></a>
+<h3 id="rmcorrshiny-web-and-standalone-app-with-a-graphical-interface-marusich2021rmcorrshiny">1) rmcorrShiny: Web and Standalone App with a Graphical Interface
+<span class="citation">(Marusich and Bakdash 2021)</span><a class="anchor" aria-label="anchor" href="#rmcorrshiny-web-and-standalone-app-with-a-graphical-interface-marusich2021rmcorrshiny"></a>
 </h3>
 <ul>
-<li><p><a href="https://lmarusich.shinyapps.io/shiny_rmcorr/" class="external-link">Web
-App</a></p></li>
-<li><p><a href="https://github.com/lmarusich/rmcorrShiny" class="external-link">Shiny Source
-Code and Running the Standalone App</a></p></li>
-<li><p><a href="https://doi.org/10.12688/f1000research.55027.2" class="external-link">Corresponding
-Paper</a></p></li>
+<li><a href="https://lmarusich.shinyapps.io/shiny_rmcorr/" class="external-link">Web
+App</a></li>
+<li><a href="https://github.com/lmarusich/rmcorrShiny" class="external-link">Shiny Source Code
+and Running the Standalone App</a></li>
 </ul>
 </div>
 <div class="section level3">
-<h3 id="python-rm_corr-in-pinguion">2) Python: rm_corr in Pinguion<a class="anchor" aria-label="anchor" href="#python-rm_corr-in-pinguion"></a>
+<h3 id="python-rm_corr-in-pingouin-vallat2018pingouin">2) Python: rm_corr in Pingouin <span class="citation">(Vallat
+2018)</span><a class="anchor" aria-label="anchor" href="#python-rm_corr-in-pingouin-vallat2018pingouin"></a>
 </h3>
 <ul>
-<li><p><a href="https://pingouin-stats.org/generated/pingouin.rm_corr.html#pingouin.rm_corr" class="external-link">rm_corr</a></p></li>
-<li><p><a href="https://doi.org/10.21105/joss.01026" class="external-link">Corresponding
-Paper</a></p></li>
+<li><a href="https://pingouin-stats.org/generated/pingouin.rm_corr.html#pingouin.rm_corr" class="external-link">rm_corr</a></li>
 </ul>
 </div>
 <div class="section level3">
-<h3 id="stata-rmcorr">3) Stata: RMCORR<a class="anchor" aria-label="anchor" href="#stata-rmcorr"></a>
+<h3 id="stata-rmcorr-stata-rmcorr">3) Stata: RMCORR <span class="citation">(Linden 2021)</span><a class="anchor" aria-label="anchor" href="#stata-rmcorr-stata-rmcorr"></a>
 </h3>
 <ul>
 <li><a href="https://ideas.repec.org/c/boc/bocode/s458971.html" class="external-link">RMCORR</a></li>
 </ul>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-faul_statistical_2009" class="csl-entry">
+Faul, Franz, Edgar Erdfelder, Axel Buchner, and Albert-Georg Lang. 2009.
+<span>“Statistical Power Analyses Using
+<span>G</span>*<span>Power</span> 3.1: <span>Tests</span> for
+Correlation and Regression Analyses.”</span> <em>Behavior Research
+Methods</em> 41 (4): 1149–60. <a href="https://doi.org/10.3758/BRM.41.4.1149" class="external-link">https://doi.org/10.3758/BRM.41.4.1149</a>.
+</div>
+<div id="ref-gelman2007" class="csl-entry">
+Gelman, Andrew, and Jennifer Hill. 2007. <em>Data Analysis Using
+Regression and Multilevel/Hierarchical Models</em>. Cambridge University
+Press.
+</div>
+<div id="ref-stata.rmcorr" class="csl-entry">
+Linden, Ariel. 2021. <span>“<span class="nocase">RMCORR: Stata module to
+compute a correlation for data with repeated measures</span>.”</span>
+Statistical Software Components, Boston College Department of Economics.
+<a href="https://ideas.repec.org/c/boc/bocode/s458971.html" class="external-link">https://ideas.repec.org/c/boc/bocode/s458971.html</a>.
+</div>
+<div id="ref-marusich2021rmcorrshiny" class="csl-entry">
+Marusich, Laura R, and Jonathan Z Bakdash. 2021. <span>“rmcorrShiny: A
+Web and Standalone Application for Repeated Measures
+Correlation.”</span> <em>F1000Research</em> 10: 697. <a href="https://doi.org/10.12688/f1000research.55027.2" class="external-link">https://doi.org/10.12688/f1000research.55027.2</a>.
+</div>
+<div id="ref-vallat2018pingouin" class="csl-entry">
+Vallat, Raphael. 2018. <span>“Pingouin: Statistics in Python.”</span>
+<em>J. Open Source Softw.</em> 3 (31): 1026. <a href="https://doi.org/10.21105/joss.01026" class="external-link">https://doi.org/10.21105/joss.01026</a>.
+</div>
+</div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

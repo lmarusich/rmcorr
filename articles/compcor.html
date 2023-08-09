@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Comparing Correlations">
 <meta property="og:description" content="rmcorr">
-<meta property="og:image" content="http://lmarusich.github.io/rmcorr/logo.png">
+<meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.4.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,6 +54,8 @@
     <a class="dropdown-item" href="../articles/repro_bootstrapping.html">Bootstrapping Example</a>
     <a class="dropdown-item" href="../articles/compcor.html">Comparing Correlations</a>
     <a class="dropdown-item" href="../articles/rmcorr_mat.html">Correlation Matrix using rmcorr_mat</a>
+    <a class="dropdown-item" href="../articles/model_diag.html">Diagnostic Plots</a>
+    <a class="dropdown-item" href="../articles/estimates_w_NaN.html">rmcorr Estimates with NaN</a>
   </div>
 </li>
 <li class="nav-item">
@@ -87,7 +89,7 @@
                         <h4 data-toc-skip class="author">Jonathan
 Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2023-05-19</h4>
+            <h4 data-toc-skip class="date">2023-08-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/HEAD/vignettes/compcor.Rmd" class="external-link"><code>vignettes/compcor.Rmd</code></a></small>
       <div class="d-none name"><code>compcor.Rmd</code></div>
@@ -100,8 +102,10 @@ Bakdash and Laura Marusich</h4>
 </h3>
 <p>We show examples for comparing the magnitude of two
 <em>r</em><sub><em>rm</em></sub> values. Correlations are compared using
-the cocor package: <br><a href="https://CRAN.R-project.org/package=cocor" class="external-link">R package</a> <br><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945" class="external-link">Paper</a>
-<br><a href="http://comparingcorrelations.org" class="external-link">Web Version</a> <br></p>
+the cocor package <span class="citation">(Diedenhofen and Musch
+2015)</span>: <br><a href="https://CRAN.R-project.org/package=cocor" class="external-link">R
+package</a> <br><a href="http://comparingcorrelations.org" class="external-link">Web
+Version</a> <br></p>
 <div class="section level4">
 <h4 id="running-examples-requires-cocor">Running Examples Requires cocor<a class="anchor" aria-label="anchor" href="#running-examples-requires-cocor"></a>
 </h4>
@@ -419,6 +423,13 @@ different <em>p</em> &lt; 0.04.</p>
 <span><span class="co">#&gt; zou2007: Zou's (2007) confidence interval</span></span>
 <span><span class="co">#&gt;   95% confidence interval for r.jk - r.hm: 0.0048 0.1456</span></span>
 <span><span class="co">#&gt;   Null hypothesis rejected (Interval does not include 0)</span></span></code></pre></div>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-cocor" class="csl-entry">
+Diedenhofen, Birk, and Jochen Musch. 2015. <span>“Cocor: A Comprehensive
+Solution for the Statistical Comparison of Correlations.”</span>
+<em>PLoS ONE</em> 10 (4): e0121945. <a href="https://doi.org/10.1371/journal.pone.0121945" class="external-link">https://doi.org/10.1371/journal.pone.0121945</a>.
+</div>
+</div>
 </div>
 </div>
 </div>
