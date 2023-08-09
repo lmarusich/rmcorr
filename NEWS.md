@@ -1,4 +1,5 @@
-# rmcorr 0.6.0 (dev release only, not on CRAN)
+# rmcorr 0.6.0
+
 * Added HCAHPS2022 dataset and description  
 * Added vignette showing diagnostic plots 
 * Added vignette for synthetic dataset w/NaN estimates (thanks to Shreya Ghosh) and a possible solution
