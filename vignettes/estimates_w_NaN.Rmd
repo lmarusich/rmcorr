@@ -20,15 +20,12 @@ knitr::opts_chunk$set(
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
 options(width = 80)
-library("knitr", "rmarkdown", "rmcorr") 
-require(knitr)
-require(rmarkdown)
-require(rmcorr)
-require(ggplot2)
+library(knitr)
+library(rmarkdown)
+library(rmcorr) 
+library(ggplot2)
+library(ggExtra) 
 
-#Kludge 
-if(!require("ggExtra"))
-  install.packages("ggExtra")
 ```
 
 ### NaN estimates

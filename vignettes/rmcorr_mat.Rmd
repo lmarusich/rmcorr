@@ -20,15 +20,11 @@ knitr::opts_chunk$set(
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
 options(width = 80)
-library("knitr", "rmarkdown", "rmcorr") 
-require(knitr)
-require(rmarkdown)
-require(rmcorr)
+library(knitr)
+library(rmarkdown)
+library(rmcorr) 
+library(corrplot) 
 
-#Kludge to add corrplot b/c of lib loc error 
-if(!require("corrplot"))
-  install.packages("corrplot")
-require(corrplot)
 ```
 #### Running Examples Requires corrplot [@corrplot2021]
 ```{r, eval = FALSE}
