@@ -14,7 +14,11 @@ coverage](https://codecov.io/gh/lmarusich/rmcorr/branch/master/graph/badge.svg)]
 Repeated measures correlation (rmcorr) is a statistical technique for
 determining the common within-individual association for paired measures
 assessed on two or more occasions for multiple individuals.
-
+<br>
+<br>
+<br>
+<br>
+<br>
 ## Installation
 
 ``` r
