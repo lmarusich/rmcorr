@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="rmcorr Estimates with NaN">
 <meta property="og:description" content="rmcorr">
@@ -89,7 +89,7 @@
                         <h4 data-toc-skip class="author">Jonathan
 Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2023-08-09</h4>
+            <h4 data-toc-skip class="date">2024-04-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/HEAD/vignettes/estimates_w_NaN.Rmd" class="external-link"><code>vignettes/estimates_w_NaN.Rmd</code></a></small>
       <div class="d-none name"><code>estimates_w_NaN.Rmd</code></div>
@@ -152,14 +152,13 @@ Baker 2022)</span><a class="anchor" aria-label="anchor" href="#running-examples-
 <span><span class="va">rmc.ghosh</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmcorr.html">rmcorr</a></span><span class="op">(</span><span class="va">Subject</span>, <span class="va">A3</span>, <span class="va">A4</span>, <span class="va">ghosh_synth</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in rmcorr(Subject, A3, A4, ghosh_synth): 'Subject' coerced into a</span></span>
 <span><span class="co">#&gt; factor</span></span>
-<span><span class="co">#&gt; Warning in sqrt(SSFactor/(SSFactor + SSresidual)): NaNs produced</span></span>
 <span></span>
 <span><span class="va">rmc.ghosh</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Repeated measures correlation</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; r</span></span>
-<span><span class="co">#&gt; NaN</span></span>
+<span><span class="co">#&gt; 0</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; degrees of freedom</span></span>
 <span><span class="co">#&gt; 9</span></span>
@@ -168,7 +167,7 @@ Baker 2022)</span><a class="anchor" aria-label="anchor" href="#running-examples-
 <span><span class="co">#&gt; 1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; 95% confidence interval</span></span>
-<span><span class="co">#&gt; NaN NaN</span></span>
+<span><span class="co">#&gt; -0.599875 0.599875</span></span>
 <span></span>
 <span><span class="co">#The default rmcorr plot doesn't jitter values, this masks identical values because they are drawn on top of each other</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">rmc.ghosh</span><span class="op">)</span></span></code></pre></div>
@@ -229,7 +228,7 @@ results provides at least a starting point: A common linear association
 around 0. A much more complicated alternative is fitting a multilevel
 model with an appropriate distribution for zero-inflated data (e.g.,
 negative binomial distribution or zero-inflated Poisson).</p>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-ggExtra" class="csl-entry">
 Attali, Dean, and Christopher Baker. 2022. <em>ggExtra: Add Marginal
 Histograms to ’Ggplot2’, and More ’Ggplot2’ Enhancements</em>. <a href="https://CRAN.R-project.org/package=ggExtra" class="external-link">https://CRAN.R-project.org/package=ggExtra</a>.
