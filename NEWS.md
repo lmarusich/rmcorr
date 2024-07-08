@@ -1,3 +1,8 @@
+# rmcorr 0.6.5
+* roxygen version update and use _PACKAGE
+*
+*
+
 # rmcorr 0.6.0
 
 * Added HCAHPS2022 dataset and description  
@@ -14,7 +19,6 @@
 
 * Added reproducible example of bootstrapping
 * Specify article order for web docs
-
 # rmcorr 0.5.4
 
 * Corrected df for confidence intervals. We thank Benjamin Zobel for finding this mistake
@@ -83,6 +87,3 @@
 * column names can be entered as strings and dynamically
 * dataset parameter is no longer required in the plot.rmc function
 * Added a `NEWS.md` file to track changes to the package.
-
-
-

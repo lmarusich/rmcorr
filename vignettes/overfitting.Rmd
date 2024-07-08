@@ -1,0 +1,122 @@
+---
+title: "Overfitting/Pseudoreplication"
+author: "Jonathan Bakdash and Laura Marusich"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+bibliography: references.bib 
+vignette: >
+  %\VignetteIndexEntry{Overfitting/Pseudoreplication}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tidy = FALSE)
+options(width = 80)
+library(knitr)
+library(rmarkdown)
+library(rmcorr) 
+library(ggplot2) 
+require(dplyr)
+library(patchwork)
+```
+
+### Overfitting/Pseudoreplication
+Switch example?
+In the original rmcorr paper [@bakdash2017repeated], we noted that analyzing non-independent observations as independent will "often produce erroneous results." In this vignette, we illustrate the specific, potential consequences for this type of overfitting: **misestimated associations combined with underestimated variance leading to *p*-values that are too low**. Ignoring dependencies in data is also referred to as *pseudoreplication*, see X, Y, and Z. 
+
+#### Example of Overfitting/Pseudoreplication
+We demonstrate overfitting/pseudoreplication using data from  [Marusich et al. 2016](../reference/marusich2016_exp2.html).
+
+In the left figure, we fit a simple regression/correlation to 47 data points which are incorrectly treated as independent because there are only 8 unique participants. In the right figure, we demonstrate one approach to analyzing the between-participants relationship without overfitting is averaging the data by participant.
+
+```{r}
+overfit.plot <- 
+    ggplot(data = marusich2016_exp2, aes(x = MARS, y = HVT_capture)) +
+    geom_point(aes(colour = factor(Pair))) +
+    geom_smooth(method= "lm", level = 0.95) +
+    coord_cartesian(xlim = c(2,4), ylim=c(0,30)) + 
+    theme(legend.position="none")
+
+marusich2016_avg <- marusich2016_exp2 %>%
+                    group_by(Pair) %>%
+                    summarize(Mean_MARS = mean(MARS),
+                              Mean_HVT_capture = mean(HVT_capture))
+
+average.plot <- 
+    ggplot(data = marusich2016_avg, 
+           aes(x = Mean_MARS, y = Mean_HVT_capture)) +
+    geom_smooth(fullrange = TRUE, method= "lm", level = 0.95) +
+    coord_cartesian(xlim = c(2,4), ylim=c(0,30)) +
+    geom_point(aes(colour = factor(Pair))) +
+    scale_colour_discrete(name = "Pair") 
+
+overfit.plot + average.plot
+```
+
+```{r}
+overfit.cor <- cor.test(marusich2016_exp2$MARS, marusich2016_exp2$HVT_capture)
+overfit.cor
+
+average.cor <- cor.test(marusich2016_avg$Mean_MARS, marusich2016_avg$Mean_HVT_capture)
+average.cor
+```
+
+The inferential statistics for this plot:
+```{r}
+df.s <- rbind(overfit.cor$parameter, average.cor$paramter)
+r.s  <- rbind(overfit.cor$estimate, average.cor$estimate) 
+CI.s <- rbind(overfit.cor$conf.int[1:2], 
+          average.cor$conf.int[1:2])
+```
+
+Overfit: *r(45)* = -0.07 95\%  CI[-0.34, 0.22],  *p* = 0.66
+Average: *r(6)*  =  0.08, 95\% CI[-0.66, 0.74] *p* = 0.85
+
+1) Misestimated association: Note the negative correlation for the overift *r* = 0.07 (left). Whereas the increasing trend for the right figure indicates a positive correlation (right)
+
+2) Underestimated variance
+
+3) Too small p-value 
+
+For the overfit results, the Pearson correlation is *r(45)* = -0.07, *p* = 0.66. The degrees of freedom of 45 are excessive, implying an inflated sample size of *N* = 47; given there are *N*-2 degrees of freedom for a correlation. 
+
+
+
+ The downsides of this approach are the limited sample size and that it masks within-participant relationship(s).
+
+```{r}
+bland1995_avg <- bland1995 %>%
+                    group_by(Subject) %>%
+                    summarize(Mean_PaCO2 = mean(PaCO2),
+                              Mean_pH    = mean(pH))
+
+
+average.plot <- 
+    ggplot(data = bland1995_avg, 
+           aes(x = Mean_PaCO2, y = Mean_pH)) +
+    geom_smooth(fullrange = TRUE, method= "lm", level = 0.95) +
+    coord_cartesian(xlim = c(3,7), ylim=c(6,7.5)) +
+    geom_point(aes(colour = factor(Subject))) 
+    scale_colour_discrete(name = "Participant") 
+
+average.plot
+
+
+
+```
+
+
+#### Prevalence of Overfitting/Pseudoreplication
+
+#### Analytic Function for Underestimation of Variance
+```{r, eval = FALSE}
+
+```
