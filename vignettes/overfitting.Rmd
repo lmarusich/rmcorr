@@ -33,9 +33,15 @@ Switch example?
 In the original rmcorr paper [@bakdash2017repeated], we noted that analyzing non-independent observations as independent will "often produce erroneous results." In this vignette, we illustrate the specific, potential consequences for this type of overfitting: **misestimated associations combined with underestimated variance leading to *p*-values that are too low**. Ignoring dependencies in data is also referred to as *pseudoreplication*, see X, Y, and Z. 
 
 #### Example of Overfitting/Pseudoreplication
-We demonstrate overfitting/pseudoreplication using data from  [Marusich et al. 2016](../reference/marusich2016_exp2.html).
+```{r, echo = FALSE}
+N.Marusich2016 <- length(unique(marusich2016_exp2$Pair))
+k.Marusich2016 <- length(unique(marusich2016_exp2$SourceReliablity))
+total.obs.Marusich2016 <- length(marusich2016_exp2$Pair)
+```
 
-In the left figure, we fit a simple regression/correlation to 47 data points which are incorrectly treated as independent because there are only 8 unique participants. In the right figure, we demonstrate one approach to analyzing the between-participants relationship without overfitting is averaging the data by participant.
+We demonstrate overfitting/pseudoreplication using [data](../reference/marusich2016_exp2.html) from [@marusich2016]. This dataset has a sample size of *N* = `r N.Marusich2016` dyads (two participants working together) with *k* = `r k.Marusich2016` paired repeated measures observations per dyad. There is a total of `r total.obs.Marusich2016` paired observations (*N* x *k*).
+
+In the left figure, we fit a simple regression/correlation incorrectly treating the `r total.obs.Marusich2016` observations as independent. In the right figure, we demonstrate one approach to analyzing the between-participants relationship without overfitting: averaging the data by participant.
 
 ```{r}
 overfit.plot <- 
@@ -59,64 +65,49 @@ average.plot <-
     scale_colour_discrete(name = "Pair") 
 
 overfit.plot + average.plot
-```
 
-```{r}
+#Inferential stats
 overfit.cor <- cor.test(marusich2016_exp2$MARS, marusich2016_exp2$HVT_capture)
-overfit.cor
 
 average.cor <- cor.test(marusich2016_avg$Mean_MARS, marusich2016_avg$Mean_HVT_capture)
-average.cor
-```
 
-The inferential statistics for this plot:
-```{r}
 df.s <- rbind(overfit.cor$parameter, average.cor$paramter)
-r.s  <- rbind(overfit.cor$estimate, average.cor$estimate) 
-CI.s <- rbind(overfit.cor$conf.int[1:2], 
-          average.cor$conf.int[1:2])
+
+r.s  <- rbind(round(rbind(overfit.cor$estimate, average.cor$estimate), digits = 2)) 
+
+CI.s <- formatC(rbind(overfit.cor$conf.int, 
+          average.cor$conf.int), digits = 2,
+          format = 'f')
+
+p.vals <- rbind(round(overfit.cor$p.value, digits = 3), 
+                prettyNum(average.cor$p.value, digits = 2, 
+                          drop0trailing = TRUE))
 ```
 
-Overfit: *r(45)* = -0.07 95\%  CI[-0.34, 0.22],  *p* = 0.66
-Average: *r(6)*  =  0.08, 95\% CI[-0.66, 0.74] *p* = 0.85
+The x-axis is the Mission Awareness Rating Scale (MARS), higher values indicate better situation awareness. The y-axis is task performance, the time in seconds to capture High Value Targets (HVT). Lower time values depict greater performance. The band around each regression line is a 95\% confidence interval.
 
-1) Misestimated association: Note the negative correlation for the overift *r* = 0.07 (left). Whereas the increasing trend for the right figure indicates a positive correlation (right)
+The inferential statistics for these plots are:
+Overfit (left): *r(`r df.s[1]`)* = `r r.s[1]` 95\% CI [`r CI.s[1,]`],  *p* = `r p.vals[1]`.
 
-2) Underestimated variance
+Average (right): *r(`r df.s[2]`)* = `r r.s[2]` , 95\% [`r CI.s[2,]`], *p* = `r p.vals[2]`.
 
-3) Too small p-value 
+For the overfit results, note the Pearson correlation `r df.s[1]` the excessive degrees of freedom imply an inflated sample size of *N* = `r df.s[1] + 2` (there are *N*-2 degrees of freedom for a correlation). This is the total number of observations, **not** the sample size.
 
-For the overfit results, the Pearson correlation is *r(45)* = -0.07, *p* = 0.66. The degrees of freedom of 45 are excessive, implying an inflated sample size of *N* = 47; given there are *N*-2 degrees of freedom for a correlation. 
+1) Misestimated effect size: The overfit analysis has an approximately medium negative correlation, whereas the averaged analysis has slightly less than small negative correlation.  
 
+2) Underestimated variance: The coverage of the confidence intervals (visually on the plot and in the inferential statistics) is narrower than it should be for the overfit analysis compared to the averaged data.
 
-
- The downsides of this approach are the limited sample size and that it masks within-participant relationship(s).
-
-```{r}
-bland1995_avg <- bland1995 %>%
-                    group_by(Subject) %>%
-                    summarize(Mean_PaCO2 = mean(PaCO2),
-                              Mean_pH    = mean(pH))
-
-
-average.plot <- 
-    ggplot(data = bland1995_avg, 
-           aes(x = Mean_PaCO2, y = Mean_pH)) +
-    geom_smooth(fullrange = TRUE, method= "lm", level = 0.95) +
-    coord_cartesian(xlim = c(3,7), ylim=c(6,7.5)) +
-    geom_point(aes(colour = factor(Subject))) 
-    scale_colour_discrete(name = "Participant") 
-
-average.plot
-
-
-
-```
-
+3) *p*-value too small: Because variance is underestimated with excessive degrees of freedom, the overfit example is highly significant. 
 
 #### Prevalence of Overfitting/Pseudoreplication
 
 #### Analytic Function for Underestimation of Variance
+
 ```{r, eval = FALSE}
 
 ```
+
+##### Detecing Overfitting/Pseudoreplication
+The simplest way too detect overfitting is if the degrees of freedom imply an inflated sample size, such as the above example. 
+
+When the degrees of freedom are not reported, it *may* still be possible to detect overfitting if sufficient information is provided by reporting of other values. For example, an exact *p*-value and the known sample size *N* can be used to calculate the expected effect size and compare it to the reported effect size. See the last code chunk in this R Markdown document for an example: https://osf.io/cnfjt.
