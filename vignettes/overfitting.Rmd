@@ -24,13 +24,13 @@ library(knitr)
 library(rmarkdown)
 library(rmcorr) 
 library(ggplot2) 
-require(dplyr)
+library(dplyr)
 library(patchwork)
+library(esc)
 ```
 
 ### Overfitting/Pseudoreplication
-Switch example?
-In the original rmcorr paper [@bakdash2017repeated], we noted that analyzing non-independent observations as independent will "often produce erroneous results." In this vignette, we illustrate the specific, potential consequences for this type of overfitting: **misestimated associations combined with underestimated variance leading to *p*-values that are too low**. Ignoring dependencies in data is also referred to as *pseudoreplication*, see X, Y, and Z. 
+In this vignette, we demonstrate the potential consequences statistical analysis that ignores dependencies in data. Such overfitting can result in **misestimated effect sizes combined with underestimated variance leading to *p*-values that are too low**. This is also commonly referred to as *pseudoreplication* see [@hurlbert1984pseudoreplication; @lazic2010problem; @eisner2021pseudoreplication]. 
 
 #### Example of Overfitting/Pseudoreplication
 ```{r, echo = FALSE}
@@ -39,10 +39,11 @@ k.Marusich2016 <- length(unique(marusich2016_exp2$SourceReliablity))
 total.obs.Marusich2016 <- length(marusich2016_exp2$Pair)
 ```
 
-We demonstrate overfitting/pseudoreplication using [data](../reference/marusich2016_exp2.html) from [@marusich2016]. This dataset has a sample size of *N* = `r N.Marusich2016` dyads (two participants working together) with *k* = `r k.Marusich2016` paired repeated measures observations per dyad. There is a total of `r total.obs.Marusich2016` paired observations (*N* x *k*).
+We demonstrate overfitting/pseudoreplication using our [data](../reference/marusich2016_exp2.html) from [@marusich2016]. This dataset has a sample size of *N* = `r N.Marusich2016` dyads (two participants working together) with *k* = `r k.Marusich2016` paired repeated measures observations per dyad. There are a total of `r total.obs.Marusich2016` paired observations (*N* x *k*).
 
-In the left figure, we fit a simple regression/correlation incorrectly treating the `r total.obs.Marusich2016` observations as independent. In the right figure, we demonstrate one approach to analyzing the between-participants relationship without overfitting: averaging the data by participant.
+In the left figure, we fit a simple regression/correlation incorrectly treating the `r total.obs.Marusich2016` observations as an independent unit of analysis. In the right figure, we demonstrate one approach to analyzing the between relationship without overfitting: averaging the data by the unit of analysis (dyad). Note this approach removes all within variation.
 
+The x-axis is the Mission Awareness Rating Scale (MARS), higher values indicate better situation awareness. The y-axis is task performance, the time in seconds to capture High Value Targets (HVT). Lower time values depict greater performance. The band around each regression line is a 95\% confidence interval.
 ```{r}
 overfit.plot <- 
     ggplot(data = marusich2016_exp2, aes(x = MARS, y = HVT_capture)) +
@@ -62,16 +63,13 @@ average.plot <-
     geom_smooth(fullrange = TRUE, method= "lm", level = 0.95) +
     coord_cartesian(xlim = c(2,4), ylim=c(0,30)) +
     geom_point(aes(colour = factor(Pair))) +
-    scale_colour_discrete(name = "Pair") 
+    scale_colour_discrete(name = "Dyad") 
 
-overfit.plot + average.plot
-
-#Inferential stats
 overfit.cor <- cor.test(marusich2016_exp2$MARS, marusich2016_exp2$HVT_capture)
 
 average.cor <- cor.test(marusich2016_avg$Mean_MARS, marusich2016_avg$Mean_HVT_capture)
 
-df.s <- rbind(overfit.cor$parameter, average.cor$paramter)
+df.s <- rbind(overfit.cor$parameter, average.cor$parameter)
 
 r.s  <- rbind(round(rbind(overfit.cor$estimate, average.cor$estimate), digits = 2)) 
 
@@ -82,32 +80,82 @@ CI.s <- formatC(rbind(overfit.cor$conf.int,
 p.vals <- rbind(round(overfit.cor$p.value, digits = 3), 
                 prettyNum(average.cor$p.value, digits = 2, 
                           drop0trailing = TRUE))
+
+overfit.plot + average.plot
 ```
 
-The x-axis is the Mission Awareness Rating Scale (MARS), higher values indicate better situation awareness. The y-axis is task performance, the time in seconds to capture High Value Targets (HVT). Lower time values depict greater performance. The band around each regression line is a 95\% confidence interval.
+The inferential statistics are:
 
-The inferential statistics for these plots are:
-Overfit (left): *r(`r df.s[1]`)* = `r r.s[1]` 95\% CI [`r CI.s[1,]`],  *p* = `r p.vals[1]`.
+Overfit (left): *r(`r df.s[1]`)* = `r r.s[1]`, 95\% CI [`r CI.s[1,]`],  *p* = `r p.vals[1]`.
 
-Average (right): *r(`r df.s[2]`)* = `r r.s[2]` , 95\% [`r CI.s[2,]`], *p* = `r p.vals[2]`.
+Average (right): *r(`r df.s[2]`)* = `r r.s[2]`, 95\% CI [`r CI.s[2,]`], *p* = `r p.vals[2]`.
 
-For the overfit results, note the Pearson correlation `r df.s[1]` the excessive degrees of freedom imply an inflated sample size of *N* = `r df.s[1] + 2` (there are *N*-2 degrees of freedom for a correlation). This is the total number of observations, **not** the sample size.
+For the overfit results, note the Pearson correlation has `r df.s[1]` degrees of freedom which is excessive because it implies an inflated sample size of *N* = `r df.s[1] + 2` (*N* - 2 degrees of freedom for a correlation). That is, the three repeated paired observations per dyad are being erroneously modeled as `r df.s[1] + 2` independent units. 
 
-1) Misestimated effect size: The overfit analysis has an approximately medium negative correlation, whereas the averaged analysis has slightly less than small negative correlation.  
+These two analyses produce distinct results. The overfit model suggests a clear moderate, negative correlation for higher MARS values being associated with lower times to capture targets (better performance). In contrast, the average model indicates a weak negative link with high uncertainty.
 
-2) Underestimated variance: The coverage of the confidence intervals (visually on the plot and in the inferential statistics) is narrower than it should be for the overfit analysis compared to the averaged data.
+1) Misestimated effect size: The overfit analysis has an approximately medium negative correlation, whereas the averaged analysis has slightly less than a small negative correlation.  
 
-3) *p*-value too small: Because variance is underestimated with excessive degrees of freedom, the overfit example is highly significant. 
+2) Spurious precision: The coverage of the confidence intervals (visually on the plot and in the inferential statistics) is narrower than it should be for the overfit analysis compared to the averaged data.
 
-#### Prevalence of Overfitting/Pseudoreplication
+3) *p*-value is too small: Because variance is underestimated with excessive degrees of freedom, this overfit example is highly significant. 
 
-#### Analytic Function for Underestimation of Variance
+#### Spurious Precision: Underestimation of Variability
+We use the Fisher *Z* approximation for the standard deviation (1/sqrt(*N*-3)) to compare the magnitude of the overfit (smaller) standard deviation to the correct (larger) standard deviation. 
 
-```{r, eval = FALSE}
+Unlike the possiblities of the misestimation of the effect size and the *p*-value being too small, it can be possible to determine the how much variability is understatimed without data. This calculation only requires the actual sample size and the inflated sample size from the overfit model.
 
+The dots on the graph above shows the sample size (x-axis) with their correponding Fisher *Z* standard deviation values (y-axis). Underestimation of the standard deviation with overfitting for the current example is illustrated by the red vertical line. 
+```{r}
+N.vals <- seq(5, 100, by = 1)
+sd.Z <- 1/sqrt(N.vals-3)
+
+sd.overfit <- data.frame(cbind(N.vals, sd.Z))
+
+sd.cor <- sd.Z[N.Marusich2016-5] #Have to subtract 5 because N.vals starts at 5, not zero
+sd.overf <- sd.Z[total.obs.Marusich2016-5]
+
+#We could determine the inflated sample size for the overfit model using its degrees of freedom + 2
+df.s + 2  == total.obs.Marusich2016
+
+sd.overfit.plot <- 
+    ggplot(data = sd.overfit, 
+           aes(x = N.vals, y = sd.Z)) +
+    coord_cartesian(xlim = c(0,100), ylim=c(0, 0.75)) +
+    geom_point(alpha = 0.25) +
+    geom_segment(x = 28, y =  sd.cor, xend = 84, 
+                 yend =  sd.cor) +
+    geom_segment(x = 84, y =  sd.cor, xend = 84, 
+                 yend =  sd.overf, colour = "red") +
+    xlab("Analysis Sample Size") + 
+    ylab("Fisher Z standard deviation") +
+    theme_minimal()
+
+sd.overfit.plot
 ```
 
-##### Detecing Overfitting/Pseudoreplication
-The simplest way too detect overfitting is if the degrees of freedom imply an inflated sample size, such as the above example. 
+The overfit model has a Fisher *Z* *sd* = `r round(sd.overf, digits = 2)` (*N* = 84 on the x-axis) of about half the value of the correct model Fisher *Z* *sd* = `r format(round(sd.cor, digits = 2), nsmall = 2)` (*N* = 28 on the x-axis). 
 
-When the degrees of freedom are not reported, it *may* still be possible to detect overfitting if sufficient information is provided by reporting of other values. For example, an exact *p*-value and the known sample size *N* can be used to calculate the expected effect size and compare it to the reported effect size. See the last code chunk in this R Markdown document for an example: https://osf.io/cnfjt.
+#### Detecing Overfitting/Pseudoreplication
+The simplest way too detect overfitting is checking the implied sample size for the reported degrees of freedom against the actual sample size, such as the above example. 
+
+However, if this information is not reported it may still be possible to detect overfitting if sufficient information is provided for other statistical parameters. For example, the actual sample size *N* and reported (ideally exact) *p*-value* can be used to calculate their expected effect size. The reported and expected effects can then be compared.  
+
+We use the *esc* package [@esc2019] to calculate the expected correlation for the actual sample size of  *N* = `r N.Marusich2016` and reported *p* =  `r p.vals[1]` from the overfit analysis. 
+```{r}
+#Calculate the expected correlation using the reported p-value and actual sample size 
+#esc_t assumes p-value is two-tailed
+calculated.r <- esc_t(p = as.numeric(p.vals[1]), 
+                      totaln = N.Marusich2016, 
+                      es.type = "r")$es
+
+
+overfit.r = as.numeric(r.s[1])
+
+
+#Overfit?
+calculated.r != abs(overfit.r) 
+calculated.r
+overfit.r
+```
+See the last code chunk in this R Markdown document for  empirical examples of detecting overfitting: https://osf.io/cnfjt.
