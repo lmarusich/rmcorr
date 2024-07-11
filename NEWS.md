@@ -1,6 +1,6 @@
-# rmcorr 0.6.5
-* Added simplified graphing with ggplot2 
-* Added vignette for overfitting/pseudoreplication
+# rmcorr 0.7.0
+* Added simplified graphing with ggplot2 (need to add)
+* Added vignette for overfitting/pseudoreplication (clean-up)
 * roxygen version update to 7.3.2 and use of _PACKAGE
 
 # rmcorr 0.6.0
