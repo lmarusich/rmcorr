@@ -30,7 +30,7 @@ library(esc)
 library(psych)
 ```
 
-#### Running Code Below Requires: dplyr, patchwork, and esc   
+#### Running Code Below Requires: dplyr, patchwork, psych, and esc   
 ```{r, eval = FALSE}
 install.packages("dplyr")
 require(dplyr)
@@ -46,9 +46,9 @@ require(psych)
 ```
 
 ### Overfitting/Pseudoreplication
-In this vignette, we demonstrate the potential consequences of statistical analysis that ignores dependencies in data. Such overfitting can result in **misestimated effect sizes combined with underestimated variance leading to *p*-values that are too low**. This is also referred to as *pseudoreplication* see [@hurlbert1984pseudoreplication; @lazic2010problem; @eisner2021pseudoreplication] and a "unit of analysis error" [@hurlbert2009ancient]. 
-
-This vignette is a simplified illustration and brief explanation of overfitting/pseudoreplication. It is not comprehensive. Critically, overfitting is not limited to analysis using simple regression/correlation and there are multiple types of pseudoreplication see  [@hurlbert1984pseudoreplication; @hurlbert2009ancient]. 
+In this vignette, we demonstrate the potential consequences of statistical analysis that ignores dependencies in data. Such overfitting can result in **misestimated effect sizes combined with underestimated variance leading to *p*-values that are too low**. This is also referred to as *pseudoreplication* [@hurlbert1984pseudoreplication; @lazic2010problem; @eisner2021pseudoreplication] or a "unit of analysis error" [@hurlbert2009ancient]. See  @reinhart2015statistics for a highly accessible introduction to pseudoreplication.   
+ 
+This vignette is not comprehensive, it is a simplified illustration of overfitting/pseudoreplication. Critically, overfitting is not limited to analysis using simple regression/correlation and there are multiple types of pseudoreplication including data collected over space and time [@hurlbert1984pseudoreplication; @hurlbert2009ancient]. 
 
 #### Example of Overfitting
 ```{r, echo = FALSE}
@@ -59,7 +59,7 @@ total.obs.Marusich2016 <- length(marusich2016_exp2$Pair)
 
 We illustrate the consequences of overfitting/pseudoreplication using our [data](../reference/marusich2016_exp2.html) from [@marusich2016]. This dataset has a sample size of *N* = `r N.Marusich2016` dyads (two participants working together) with *k* = `r k.Marusich2016` paired repeated measures per dyad: a total of `r total.obs.Marusich2016` paired observations (*N* x *k*).
 
-In the left figure, we fit a simple regression/correlation incorrectly treating the `r total.obs.Marusich2016` total observations as independent units of analysis. In the right figure, we demonstrate one approach to analyzing the between (dyad) relationship without overfitting: averaging the data by the unit of analysis (dyad). Note this approach removes all *within (dyad) information*.
+In the left figure, we fit a simple regression/correlation improprely treating the `r total.obs.Marusich2016` total observations as independent units of analysis. In the right figure, we demonstrate one approach to analyzing the between (dyad) relationship without overfitting: averaging the data by the unit of analysis (dyad). Note this approach removes all *within (dyad) information*.
 
 The x-axis is the Mission Awareness Rating Scale (MARS), higher values indicate better situation awareness. The y-axis is task performance, the time in seconds to capture High Value Targets (HVT). Lower time values depict greater performance. The band around each regression line is a 95\% confidence interval.
 ```{r}
@@ -68,7 +68,9 @@ overfit.plot <-
     geom_point(aes(colour = factor(Pair))) +
     geom_smooth(method= "lm", level = 0.95) +
     coord_cartesian(xlim = c(2,4), ylim=c(0,30)) + 
-    theme(legend.position="none")
+    theme(legend.position="none") +
+    ylab("Capture Time (seconds)") + 
+    theme_minimal()
 
 marusich2016_avg <- marusich2016_exp2 %>%
                     group_by(Pair) %>%
@@ -81,7 +83,10 @@ average.plot <-
     geom_smooth(fullrange = TRUE, method= "lm", level = 0.95) +
     coord_cartesian(xlim = c(2,4), ylim=c(0,30)) +
     geom_point(aes(colour = factor(Pair))) +
-    scale_colour_discrete(name = "Dyad") 
+    xlab("Mean MARS") +
+    ylab("Mean Capture Time (seconds)") +
+    scale_colour_discrete(name = "Dyad") +
+    theme_minimal()
 
 overfit.cor <- cor.test(marusich2016_exp2$MARS, marusich2016_exp2$HVT_capture)
 
@@ -99,7 +104,7 @@ p.vals <- rbind(round(overfit.cor$p.value, digits = 3),
                 prettyNum(average.cor$p.value, digits = 2, 
                           drop0trailing = TRUE))
 
-overfit.plot + average.plot
+overfit.plot + average.plot 
 ```
 
 The inferential statistics for the above plots are:
@@ -110,30 +115,32 @@ Average (right): *r(`r df.s[2]`)* = `r r.s[2]`, 95\% CI [`r CI.s[2,]`], *p* = `r
 
 For the overfit results, note the Pearson correlation has `r df.s[1]` degrees of freedom which is excessive because it implies an inflated sample size of *N* = `r df.s[1] + 2` (*N* - 2 degrees of freedom for a correlation [@cohen2013applied]). Again, we emphasize the three repeated, paired observations per dyad are being erroneously modeled as `r df.s[1] + 2` independent units. 
 
-These two analyses produce distinct results. The overfit model falsely produces a precise moderate, negative correlation for higher MARS values being associated with lower times to capture targets (better performance). In contrast, the average model indicates a weak negative correlation with high uncertainty between dyads.
+These two analyses produce distinct results. The overfit model erroneously produces a precise moderate, negative correlation for higher MARS values being associated with lower times to capture targets (better performance). In contrast, the average model indicates a weak negative correlation with high uncertainty between dyads.
 
-1) Misestimated effect size: The overfit analysis has an approximately medium negative correlation, whereas the averaged analysis has slightly less than a small negative correlation.  
+##### Consequences of Ovefitting:
 
-2) Spurious precision: The coverage of the confidence intervals (visually on the plot and in the inferential statistics) is narrower than it should be for the overfit analysis compared to the averaged data.
+1) Misestimated effect size: The overfit analysis has an approximately point-estimated medium negative correlation, whereas the averaged analysis has slightly less than a small negative point-estimated correlation.  
 
-3) *p*-value is too small: Because variance is underestimated with excessive degrees of freedom, this overfit example is highly significant. 
+2) Spurious precision: The coverage of the confidence intervals (visually on the plot and matching inferential statistics) is narrower than it should be for the overfit analysis compared to the averaged data.
+
+3) Suppressed *p*-value: Because overfitting produces a medium negative effect size and underestimates variance, the overfit example is highly statistically significant. 
 
 #### Spurious Precision: Underestimation of Variability
 To compare the precision of the overfit model with the correct model, we use the Fisher *Z* approximation for the standard deviation which uses the sample size: 
 $$
 Fisher\space Z_{sd} = \frac{1}{\sqrt{N-3}}
 $$
-Unlike the extent of the misestimation of the effect size and underestimation *p*-value -- without data, it may be possible to determine how much variability is suppressed by overfitting. The variability calculation requires two values: the actual sample size and the inflated sample size from the overfit model.
+Unlike the extent of the misestimation of the effect size and underestimation *p*-value -- without data, it may be possible the extent to which variability is suppressed by overfitting. The calculation requires three values: the actual sample size and the inflated sample size from the overfit model.  
 
-The dots on the graph above shows the sample size (x-axis) with their correponding Fisher *Z* standard deviation values (y-axis). Underestimation of the standard deviation with overfitting for the current example is illustrated by the red vertical line. 
+The dots on the graph above shows the sample size (x-axis) with corresponding Fisher *Z* standard deviation values (y-axis). Underestimation of the standard deviation with overfitting is shown by the red vertical line. 
 ```{r}
 N.vals <- seq(5, 100, by = 1)
 sd.Z <- 1/sqrt(N.vals-3)
 
 sd.overfit <- data.frame(cbind(N.vals, sd.Z))
 
-sd.cor <- sd.Z[N.Marusich2016-5] #Have to subtract 5 because N.vals starts at 5, not zero
-sd.overf <- sd.Z[total.obs.Marusich2016-5]
+sd.cor <- sd.Z[N.Marusich2016-4] #Have to subtract 4 because N.vals starts at 5, not 1
+sd.overf <- sd.Z[total.obs.Marusich2016-4]
 
 #We could determine the inflated sample size for the overfit model using its degrees of freedom + 2
 df.s + 2  == total.obs.Marusich2016
@@ -144,11 +151,18 @@ sd.overfit.plot <-
     coord_cartesian(xlim = c(0,100), ylim=c(0, 0.75)) +
     geom_point(alpha = 0.25) +
     geom_segment(x = 28, y =  sd.cor, xend = 84, 
-                 yend =  sd.cor) +
+                 yend =  sd.cor, linetype = 2) +
     geom_segment(x = 84, y =  sd.cor, xend = 84, 
-                 yend =  sd.overf, colour = "red") +
+                 yend =  sd.overf, colour = "red",
+                 linetype = 2) +
     xlab("Analysis Sample Size") + 
-    ylab(expression(paste("Fisher ", italic("Z"), " standard deviation"))) +
+    ylab(expression(paste("Fisher ",
+                          italic("Z"), " standard         
+                          deviation"))) +
+    annotate(geom = "point", x = 28, y = sd.cor, 
+             colour = "black", size = 2.5) +
+    annotate(geom = "point", x = 84, y = sd.overf, 
+             colour = "red", size = 2.5) +
     theme_minimal()
 
 sd.overfit.plot
@@ -160,7 +174,7 @@ The overfit model has a Fisher *Z* *sd* = `r round(sd.overf, digits = 2)` (*N* =
 #### Detecting Overfitting
 The simplest way too detect overfitting is a checking the  sample size implied by the degrees of freedom reported in a statistical test against the actual sample size, such as the above example. 
 
-However, if this information is not reported it may still be possible to detect overfitting. For example, the actual sample size *N* and reported (ideally exact) *p*-value can be used to calculate their expected effect size. Then, the reported effect and expected effect can be compared.  
+However, if this information is not reported it may still be possible to detect overfitting. For example, the actual sample size *N* and reported, ideally exact, *p*-value can be used to calculate their corresponding expected effect size. Then, the expected effect and reported effect can be compared.  
 
 We use the *esc* package [@esc2019] to calculate the expected correlation (Fisher *Z*) for the actual sample size of  *N* = `r N.Marusich2016` with the reported *p* =  `r p.vals[1]` from the overfit analysis. The *psych* package [@psych2024] is used for the Fisher *Z*-to-*r* transformation to compare the values of the expected correlation versus the reported correlation.  
 ```{r}
@@ -184,5 +198,4 @@ reported.r
 See the last code chunk in this R Markdown document for  examples of detecting overfit correlations from results reported in published papers (https://osf.io/cnfjt) from a systematic review and meta-analysis [@bakdash2022SAmeta].
 
 #### Prevelance of Pseudoreplication
-The prevalence of overfitting/pseudoreplication in published papers suggest it is a frequent statistical error across disciplines. For neuroscience, using a single issue of one journal, 36\% of papers had one or more results with suspected overfitting and 12\% of papers had definitive evidence of pseudoreplication [@lazic2010problem]. In human factors, using only results relevant to a systematic review and meta-analysis, overfitting was found in 28\% of papers (29 out of 103)
-^[26 papers had all overfit results and 3 papers had some  results with overfitting. This calculation had 103 total papers = 74 (no overfitting) + 3 (partial overfitting) + 26 (all overfitting).][@bakdash2022SAmeta].
+The prevalence of overfitting/pseudoreplication in published papers suggest it is a frequent statistical error across disciplines. Based on a single issue of the journal *Nature Neuroscience*: 36\% of papers had one or more results with suspected overfitting and 12\% of papers had definitive evidence of pseudoreplication [@lazic2010problem]. In human factors, using only results relevant to a systematic review and meta-analysis, overfitting was found in 28\% of papers: 29 out of 103^[26 papers had all overfit results and 3 papers had some results with overfitting. This calculation had 103 total papers = 74 (no overfitting) + 3 (partial overfitting) + 26 (all overfitting).][@bakdash2022SAmeta].
