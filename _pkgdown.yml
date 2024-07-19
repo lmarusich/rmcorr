@@ -13,12 +13,14 @@ articles:
   - rmcorr_mat
   - model_diag
   - estimates_w_NaN
-
+  - overfitting 
+  
 reference:
 - title: Functions
   contents:
   - rmcorr
   - plot.rmc
+  - geom_rmc
   - print.rmc
   - rmcorr_mat
   - print.rmcmat
@@ -31,4 +33,3 @@ reference:
   - marusich2016_exp2
   - raz2005
   - twedt_dist_measures
-

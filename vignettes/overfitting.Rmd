@@ -31,23 +31,20 @@ library(psych)
 ```
 
 ### Overfitting/Pseudoreplication
-In this vignette, we demonstrate the potential consequences of statistical analysis that ignores dependencies in data. Such overfitting may produce **misestimated effect sizes with suppressed variability leading to underestimated *p*-values**. This is also referred to as **pseudoreplication** [@hurlbert1984pseudoreplication; @lazic2010problem; @eisner2021pseudoreplication] or a "unit of analysis error" [@hurlbert2009ancient]. For an accessible introduction to this topic see @reinhart2015statistics 
+In this vignette, we demonstrate the potential consequences of a statistical analysis that ignores dependencies in data. Such overfitting may produce **misestimated effect sizes with suppressed variability leading to underestimated *p*-values**. This phenomon is also widely referred to as **pseudoreplication** [@hurlbert1984pseudoreplication; @lazic2010problem; @eisner2021pseudoreplication] or a "unit of analysis error" [@hurlbert2009ancient]. For an accessible introduction to this topic see @reinhart2015statistics 
  
-This is a simplified illustration of the consequences for overfitting/pseudoreplication, it is not intended to be comprehensive. Overfitting is not limited to simple regression/correlation and there are multiple types of pseudoreplication including data collected over space and time [@hurlbert1984pseudoreplication; @hurlbert2009ancient]. 
+This is a simplified illustration of the consequences for overfitting/pseudoreplication, it is not  comprehensive. Overfitting is not limited to simple regression/correlation and there are multiple types of pseudoreplication including data collected over space and time [@hurlbert1984pseudoreplication; @hurlbert2009ancient]. 
 
-#### Running Code Below Requires: dplyr, patchwork, psych, and esc   
+#### Running Code Below Requires: dplyr, esc, and patchwork
 ```{r, eval = FALSE}
 install.packages("dplyr")
 require(dplyr)
 
-install.packages("patchwork")
-require(patchwork)
-
 install.packages("esc")
 require(esc)
 
-install.packages("psych")
-require(psych)
+install.packages("patchwork")
+require(patchwork)
 ```
 
 #### Example of Overfitting
@@ -109,9 +106,9 @@ overfit.plot + average.plot
 
 The inferential statistics for the above plots are:
 
-Overfit (left): *r(`r df.s[1]`)* = `r r.s[1]`, 95\% CI [`r CI.s[1,]`],  *p* = `r p.vals[1]`.
+Overfit (left): *r(`r df.s[1]`)* = `r r.s[1]`, 95\% CI [`r CI.s[1,]`],  *p* = `r p.vals[1]`
 
-Average (right): *r(`r df.s[2]`)* = `r r.s[2]`, 95\% CI [`r CI.s[2,]`], *p* = `r p.vals[2]`.
+Average (right): *r(`r df.s[2]`)* = `r r.s[2]`, 95\% CI [`r CI.s[2,]`], *p* = `r p.vals[2]`
 
 For the overfit results, note the Pearson correlation has `r df.s[1]` degrees of freedom which is excessive because it implies a sample size of *N* = `r df.s[1] + 2` dyads (*N* - 2 degrees of freedom for a correlation [@cohen2013applied]). That is, the actual sample size (*N* = `r df.s[2] + 2` dyads) is erroneously modeled as **`r df.s[1] + 2` independent units** by ignoring the three paired, repeated measures per dyad.
 
@@ -119,7 +116,7 @@ These two analyses produce varied results. The overfit model erroneously produce
 
 ##### Consequences of Ovefitting:
 
-1) Misestimated effect size: The overfit analysis has an approximately point-estimated medium negative correlation, whereas the averaged analysis has slightly less than a small negative point-estimated correlation.  
+1) Misestimated effect size: The overfit analysis has an approximately point-estimated medium negative correlation, whereas the averaged analysis has slightly less than a small negative point-estimated correlation.
 
 2) Spurious precision: The coverage of the confidence intervals (visually on the plot and matching inferential statistics) is narrower than it should be for the overfit analysis compared to the averaged data.
 
@@ -190,9 +187,11 @@ reported.r
 See the last code chunk in this R Markdown document for examples of detecting overfit correlations from results reported in published papers (https://osf.io/cnfjt) from a systematic review and meta-analysis [@bakdash2022SAmeta].
 
 ##### Caveats
-These approaches to detecting overfitting should be used carefully. It possible that mismatches in reported versus expected values could be due to excluded/missing observations. However, missing data may produce a sample size (based on reported statistics) that is lower than the actual sample size; as opposed to an inflated sample size with true pseudoreplication. 
+Detection of overfitting should be used with caution because mismatches in reported versus expected values could be due to missing or excluded data in the reported statistics. Missing data can produce a lower sample size (based on the reported statistics) than the actual sample size; as opposed to an inflated sample size with true pseudoreplication. 
 
-In addition, there are approaches that can help account for model overfitting due to dependencies (e.g., cluster adjusted errors, detrending). Last, there **might** be limited circumstances where overfitting is "acceptable" (e.g., exploratory data analysis including visualization, separate models for each participant in psychophysics).  
+Additionally, overfit models can be adjusted or penalized to account for dependencies in data. Examples of such techniques include cluster-robust errors, regularization, and ensembles. 
+
+Last, we contend there **may** be some circumstances where overfitting is acceptable (e.g., exploratory data analysis including visualization, separate models for each participant in psychophysics, or no meaningful difference between the overfit model with and without adjustment techniques).  
 
 #### Prevelance of Pseudoreplication
 The prevalence of overfitting/pseudoreplication in published papers suggest it is a frequent statistical error across disciplines. For results reported in a single issue of the journal *Nature Neuroscience* 36\% of papers had one or more results with suspected overfitting and 12\% of papers had definitive evidence of pseudoreplication [@lazic2010problem]. In human factors, using only results meeting inclusion for a systematic review, overfitting was found in 28\% of papers: 29 out of 103^[26 papers had all overfit results and 3 papers had partial results with overfitting. This calculation had 103 total papers = 74 (no overfitting) + 3 (partial overfitting) + 26 (all overfitting).][@bakdash2022SAmeta].

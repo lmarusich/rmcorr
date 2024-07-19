@@ -48,7 +48,6 @@ Suggests:
     gglm,
     dplyr,
     esc,
-    psych, 
     patchwork
 VignetteBuilder: knitr
 Config/testthat/edition: 3

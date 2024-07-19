@@ -1,14 +1,35 @@
+url: ~
+template:
+  bootstrap: 5
+articles:
+- title: Articles
+  navbar: ~
+  contents:
+  - FAQ_and_limitations
+  - New_rmcorr_paper_analyses_figures
+  - CI_fix
+  - repro_bootstrapping
+  - compcor
+  - rmcorr_mat
+  - model_diag
+  - estimates_w_NaN
+  - overfitting
+
 reference:
 - title: Functions
-- plot
-- print
-- rmcorr
-- rmcorr_mat
-- title: Built in datasets
-contents:
-- bland1995
-- gilden2010
-- HCAHPS2022
-- marusich2016_exp2
-- raz2005
-- twedt_dist_measures
+  contents:
+  - rmcorr
+  - plot.rmc
+  - geom_rmc
+  - print.rmc
+  - rmcorr_mat
+  - print.rmcmat
+  - rmcorr-package
+- title: Datasets
+  contents:
+  - bland1995
+  - HCAHPS2022
+  - gilden2010
+  - marusich2016_exp2
+  - raz2005
+  - twedt_dist_measures
