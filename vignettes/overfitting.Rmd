@@ -31,9 +31,9 @@ library(psych)
 ```
 
 ### Overfitting/Pseudoreplication
-In this vignette, we demonstrate the potential consequences of a statistical analysis that ignores dependencies in data. Such overfitting may produce **misestimated effect sizes with suppressed variability leading to underestimated *p*-values**. This phenomon is also widely referred to as **pseudoreplication** [@hurlbert1984pseudoreplication; @lazic2010problem; @eisner2021pseudoreplication] or a "unit of analysis error" [@hurlbert2009ancient]. For an accessible introduction to this topic see @reinhart2015statistics 
+In this vignette, we demonstrate the potential consequences of a statistical analysis that ignores dependencies in data. Such overfitting may produce **misestimated effect sizes with suppressed variability leading to underestimated *p*-values**. This phenomenon is also widely referred to as **pseudoreplication** [@hurlbert1984pseudoreplication; @lazic2010problem; @eisner2021pseudoreplication] or a "unit of analysis error" [@hurlbert2009ancient]. For an accessible introduction to this topic see @reinhart2015statistics 
  
-This is a simplified illustration of the consequences for overfitting/pseudoreplication, it is not  comprehensive. Overfitting is not limited to simple regression/correlation and there are multiple types of pseudoreplication including data collected over space and time [@hurlbert1984pseudoreplication; @hurlbert2009ancient]. 
+This is a simplified illustration of the consequences for overfitting/pseudoreplication, it is not comprehensive. Overfitting is not limited to simple regression/correlation and there are multiple types of pseudoreplication including data collected over space and time [@hurlbert1984pseudoreplication; @hurlbert2009ancient]. 
 
 #### Running Code Below Requires: dplyr, esc, and patchwork
 ```{r, eval = FALSE}
@@ -54,11 +54,13 @@ k.Marusich2016 <- length(unique(marusich2016_exp2$SourceReliablity))
 total.obs.Marusich2016 <- length(marusich2016_exp2$Pair)
 ```
 
-We illustrate the consequences of overfitting/pseudoreplication using our [data](../reference/marusich2016_exp2.html) from [@marusich2016]. This dataset has a sample size of *N* = `r N.Marusich2016` dyads (two participants working together) with *k* = `r k.Marusich2016` paired repeated measures per dyad: a total of `r total.obs.Marusich2016` paired observations (*N* x *k*).
+We illustrate the consequences of overfitting/pseudoreplication using our [data](../reference/marusich2016_exp2.html) from @marusich2016. This dataset has a sample size of *N* = `r N.Marusich2016` dyads (two participants working together), where each dyad has *k* = `r k.Marusich2016` repeated measures of two variables: a total of `r total.obs.Marusich2016` paired observations (*N* x *k*). The two measured variables were scores on the Mission Awareness Rating Scale (MARS) and target-capture time, both assessed in three separate experimental blocks. 
 
-In the left figure, we fit a simple regression/correlation improprely treating the `r total.obs.Marusich2016` total observations as independent units of analysis. In the right figure, we demonstrate one approach to analyzing the between (dyad) relationship without overfitting: averaging the data by the unit of analysis (dyad). Note this approach removes all *within (dyad) information*.
+Repeated measures correlation is a technique for assessing the within-subject (in this example, within-dyad) relationship between two variables; for example, does a dyad tend to demonstrate higher awareness scores in blocks where it also generates faster target-capture times? Sometimes, however, the relevant research question is about between-subject (dyad) associations; for example, do dyads who tend to perform better on one variable also tend to perform better on the other? To answer this second question, it may be tempting to treat the repeated measures data as independent. Below we demonstrate the potential consequences of this approach.
 
-The x-axis is the Mission Awareness Rating Scale (MARS), higher values indicate better situation awareness. The y-axis is task performance, the time in seconds to capture High Value Targets (HVT). Lower time values depict greater performance. The band around each regression line is a 95\% confidence interval.
+In the left figure, we fit a simple regression/correlation improperly treating the `r total.obs.Marusich2016` total observations as independent units of analysis. In the right figure, we demonstrate one approach to analyzing the between (dyad) relationship without overfitting: averaging the data by the unit of analysis (dyad). Note this approach removes all *within (dyad) information*.
+
+The x-axis depicts scores on the Mission Awareness Rating Scale (MARS), with higher values representing better situation awareness. The y-axis is target-capture times, the time in seconds to capture High Value Targets (HVT) during the task. Smaller values (faster times) represent better task performance. The band around each regression line is a 95\% confidence interval.
 ```{r}
 overfit.plot <- 
     ggplot(data = marusich2016_exp2, aes(x = MARS, y = HVT_capture)) +
@@ -114,7 +116,36 @@ For the overfit results, note the Pearson correlation has `r df.s[1]` degrees of
 
 These two analyses produce varied results. The overfit model erroneously produces a precise moderate, negative correlation for higher MARS values being associated with lower times to capture targets (better performance). In contrast, the average model indicates a weak negative correlation with high uncertainty between dyads.
 
-##### Consequences of Ovefitting:
+##### Comparison to rmcorr
+As a comparison, we show the results of conducting a repeated measures correlation analysis on the same dataset. As described above, this method addresses a different question of the nature of the within-dyad relationship, rather than between dyads. In this analysis, averaging is not required, as the dependencies in the data are taken into account.
+```{r}
+marusich.rmc <- rmcorr(participant = Pair, 
+                       measure1 = MARS, 
+                       measure2 = HVT_capture, 
+                       data = marusich2016_exp2)
+rmc.plot <- 
+    ggplot(data = marusich2016_exp2, 
+           aes(x = MARS, y = HVT_capture, group = factor(Pair), color = factor(Pair))) +
+    geom_point(aes(colour = factor(Pair))) +
+    geom_line(aes(y = marusich.rmc$model$fitted.values)) +
+    theme_minimal() +
+    scale_colour_discrete(name = "Dyad") +
+    ylab("Capture Time (seconds)")
+
+rmc.r <- round(marusich.rmc$r, 2)
+rmc.CI <- round(marusich.rmc$CI, 2)
+rmc.p <- formatC(marusich.rmc$p, format = "fg", digits = 2)
+                # prettyNum(average.cor$p.value, digits = 2,
+                          # drop0trailing = TRUE))
+
+rmc.plot
+```
+
+The inferential statistics for the rmcorr analysis are:
+
+*r~rmcorr~(`r marusich.rmc$df`)* = `r rmc.r`, 95\% CI [`r rmc.CI`],  *p* = `r rmc.p`
+
+##### Consequences of Overfitting:
 
 1) Misestimated effect size: The overfit analysis has an approximately point-estimated medium negative correlation, whereas the averaged analysis has slightly less than a small negative point-estimated correlation.
 
