@@ -143,7 +143,10 @@ rmc.plot
 
 The inferential statistics for the rmcorr analysis are:
 
-*r~rmcorr~(`r marusich.rmc$df`)* = `r rmc.r`, 95\% CI [`r rmc.CI`],  *p* = `r rmc.p`
+*r~rmcorr~(`r marusich.rmc$df`)* = `r rmc.r`, 95\% CI [`r rmc.CI`],  *p* = `r rmc.p`. 
+
+###### Levels of Analysis
+The above analysis indicates a strong *within-dyad* or relative relationship for the two measures. At the within level of analysis, higher values of MARS have a large to very large relative (within-dyad) negative association with better performance, lower target capture times; and vice-versa. However, the dyad-to-dyad comparisons for MARS or performance values are only weakly predictive at the between level of analysis. In other words, using a specific MARS (or performance value) to predict the other is quite limited between dyads. Results at the between level of analysis may not necessarily generalize to the within level of analysis (refs). 
 
 ##### Consequences of Overfitting:
 
