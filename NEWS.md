@@ -1,7 +1,7 @@
 # rmcorr 0.7.0
-* Added geom for simplified graphing with ggplot2: geom_rmc (need to add features, unit tests, and vignette)
+* Added geom for simplified graphing with ggplot2: geom_rmc (need to add unit tests)
 * Added vignette for overfitting/pseudoreplication (near final draft)
-* Updated roxygen to 7.3.2 and now use _PACKAGE
+* Updated roxygen to 7.3.2 and now using _PACKAGE
 
 # rmcorr 0.6.0
 
@@ -19,6 +19,7 @@
 
 * Added reproducible example of bootstrapping
 * Specify article order for web docs
+
 # rmcorr 0.5.4
 
 * Corrected df for confidence intervals. We thank Benjamin Zobel for finding this mistake

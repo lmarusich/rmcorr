@@ -108,9 +108,9 @@ overfit.plot + average.plot
 
 The inferential statistics for the above plots are:
 
-Overfit (left): *r(`r df.s[1]`)* = `r r.s[1]`, 95\% CI [`r CI.s[1,]`],  *p* = `r p.vals[1]`
+Overfit (left): *r(`r df.s[1]`)* = `r r.s[1]`, 95\% CI [`r CI.s[1,]`],  *p* = `r p.vals[1]` (Exact *p*-value = `r overfit.cor$p.value`)
 
-Average (right): *r(`r df.s[2]`)* = `r r.s[2]`, 95\% CI [`r CI.s[2,]`], *p* = `r p.vals[2]`
+Average (right): *r(`r df.s[2]`)* = `r r.s[2]`, 95\% CI [`r CI.s[2,]`], *p* = `r p.vals[2]` (Exact *p*-value = `r average.cor$p.value`)
 
 For the overfit results, note the Pearson correlation has `r df.s[1]` degrees of freedom which is excessive because it implies a sample size of *N* = `r df.s[1] + 2` dyads (*N* - 2 degrees of freedom for a correlation [@cohen2013applied]). That is, the actual sample size (*N* = `r df.s[2] + 2` dyads) is erroneously modeled as **`r df.s[1] + 2` independent units** by ignoring the three paired, repeated measures per dyad.
 
@@ -146,7 +146,7 @@ The inferential statistics for the rmcorr analysis are:
 *r~rmcorr~(`r marusich.rmc$df`)* = `r rmc.r`, 95\% CI [`r rmc.CI`],  *p* = `r rmc.p`. 
 
 ###### Levels of Analysis
-The above analysis indicates a strong *within-dyad* or relative relationship for the two measures. At the within level of analysis, higher values of MARS have a large to very large relative (within-dyad) negative association with better performance, lower target capture times; and vice-versa. However, the dyad-to-dyad comparisons for MARS or performance values are only weakly predictive at the between level of analysis. In other words, using a specific MARS (or performance value) to predict the other is quite limited between dyads. Results at the between level of analysis may not necessarily generalize to the within level of analysis (refs). 
+The above analysis indicates a strong *within-dyad* or relative relationship for the two measures. At the within level of analysis, higher values of MARS have a large to very large relative (within-dyad) association with better performance, lower target capture times; and vice-versa. However, the dyad-to-dyad comparisons for MARS or performance values are only weakly predictive at the between level of analysis. In other words, using a specific MARS (or performance) value to predict the other is quite limited between the dyads. Results at the between level of analysis may not necessarily generalize to the within level of analysis [@fisher2018lack; @molenaar2009new].
 
 ##### Consequences of Overfitting:
 
@@ -157,7 +157,11 @@ The above analysis indicates a strong *within-dyad* or relative relationship for
 3) Suppressed *p*-value: Because overfitting produces a medium negative effect size and underestimates variance, the overfit example is highly statistically significant. 
 
 #### Spurious Precision: Underestimation of Variability
-To compare the suppression of variability with the overfit model versus a correct model, we use the Fisher *Z* approximation for the standard deviation (sd) $\frac{1}{\sqrt{N-3}}$. This formula is calculated using the respective sample sizes for each model  *N* = `r df.s[1] + 2` (overfit) and *N* = `r df.s[2] + 2` (correct). 
+To compare the suppression of variability with the overfit model versus a correct model, we use the Fisher *Z* approximation for the standard deviation (sd) is:
+$$
+\frac{1}{\sqrt{N-3}}
+$$ 
+This formula is calculated using the respective sample sizes for each model  *N* = `r df.s[1] + 2` (overfit) and *N* = `r df.s[2] + 2` (correct). 
 
 ```{r}
 N.vals <- seq(5, 100, by = 1)
@@ -197,9 +201,10 @@ In the graph, the red dot indicates the overfit model and black dot shows a corr
 
 #### Detecting Overfitting
 The easiest way to detect overfitting is comparing the the sample size (degrees of freedom) in statistical results to the actual sample size, as shown above. 
+
 However, if degrees of freedom for reported results are unavailable it may still be possible to detect overfitting. For example, the actual sample size *N* and reported (ideally exact) *p*-value can be used to calculate their corresponding expected effect size. Then, the expected effect and reported effect can be compared.  
 
-We demonstrate this using the *esc* package [@esc2019] to determine the expected correlation (Fisher *Z*) for an actual sample size of  *N* = `r N.Marusich2016` with a reported *p* =  `r p.vals[1]` from the overfit analysis. We perform the Fisher *Z*-to-*r* transformation, using the *psych* package [@psych2024], to compare the values of the expected correlation versus the reported correlation.  
+We demonstrate this using the *esc* package [@esc2019] to determine the expected correlation (Fisher *Z*) for an actual sample size of  *N* = `r N.Marusich2016` with a reported *p-value (exact)* =  `r overfit.cor$p.value` from the overfit analysis. We perform the Fisher *Z*-to-*r* transformation, using the *psych* package [@psych2024], to compare the values of the expected correlation versus the reported correlation.  
 ```{r}
 #Calculate the expected correlation using the reported p-value and actual sample size 
 #esc_t assumes p-value is two-tailed and uses a Fisher Z transformation
@@ -223,9 +228,9 @@ See the last code chunk in this R Markdown document for examples of detecting ov
 ##### Caveats
 Detection of overfitting should be used with caution because mismatches in reported versus expected values could be due to missing or excluded data in the reported statistics. Missing data can produce a lower sample size (based on the reported statistics) than the actual sample size; as opposed to an inflated sample size with true pseudoreplication. 
 
-Additionally, overfit models can be adjusted or penalized to account for dependencies in data. Examples of such techniques include cluster-robust errors, regularization, and ensembles. 
+Additionally, overfit models can be adjusted or penalized to account for dependencies in data. Examples of such techniques include cluster-robust errors, regularization, and ensemble models.
 
-Last, we contend there **may** be some circumstances where overfitting is acceptable (e.g., exploratory data analysis including visualization, separate models for each participant in psychophysics, or no meaningful difference between the overfit model with and without adjustment techniques).  
+Last, we contend there **may** be some circumstances where overfitting is acceptable (e.g., exploratory data analysis including visualization, separate models for each participant with a large number of repeated trials [such as psychophysics], or no meaningful difference between the overfit model without and with adjustment techniques).  
 
 #### Prevelance of Pseudoreplication
 The prevalence of overfitting/pseudoreplication in published papers suggest it is a frequent statistical error across disciplines. For results reported in a single issue of the journal *Nature Neuroscience* 36\% of papers had one or more results with suspected overfitting and 12\% of papers had definitive evidence of pseudoreplication [@lazic2010problem]. In human factors, using only results meeting inclusion for a systematic review, overfitting was found in 28\% of papers: 29 out of 103^[26 papers had all overfit results and 3 papers had partial results with overfitting. This calculation had 103 total papers = 74 (no overfitting) + 3 (partial overfitting) + 26 (all overfitting).][@bakdash2022SAmeta].
