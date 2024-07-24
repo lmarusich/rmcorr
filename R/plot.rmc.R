@@ -5,32 +5,16 @@
 #' Parallel lines are fitted to each subject's data.
 #'
 #' @param x an object of class "rmc" generated from the \code{\link{rmcorr}} function.
-#' @param dataset Deprecated: This argument is no longer required
-#' @param overall logical: if TRUE, plots the regression line between measure1 and
-#' measure2, ignoring the participant variable.
 #' @param palette the palette to be used. Defaults to the RColorBrewer "Paired" palette
 #' @param xlab label for the x axis, defaults to the variable name for measure1.
 #' @param ylab label for the y axis, defaults to the variable name for measure2.
-#' @param overall.col the color of the overall regression line
-#' @param overall.lwd the line thickness of the overall regression line
-#' @param overall.lty the line type of the overall regression line
 #' @param ... additional arguments to \code{\link[graphics:plot.default]{plot}}.
-#' @seealso \code{\link{rmcorr}}
+#' @seealso \code{\link{rmcorr}, \link{geom_rmc} for plotting with ggplot}
 #' @examples
 #' ## Bland Altman 1995 data
 #' my.rmc <- rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, 
 #'                  dataset = bland1995)
 #' plot(my.rmc)
-#'
-#' #using ggplot instead
-#' if (requireNamespace("ggplot2", quietly = TRUE)){
-#'  ggplot2::ggplot(bland1995, ggplot2::aes(x = PaCO2, y = pH, 
-#'                  group = factor(Subject), color = factor(Subject))) +
-#'       ggplot2::geom_point(ggplot2::aes(colour = factor(Subject))) +
-#'       ggplot2::geom_line(ggplot2::aes(y = my.rmc$model$fitted.values), 
-#'                          linetype = 1)
-#' }
-#'
 #'
 #' ## Raz et al. 2005 data
 #' my.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = 
@@ -46,14 +30,17 @@
 #'                  dataset = gilden2010)
 #' plot(my.rmc, overall = FALSE, lty = 2, xlab = "Reaction Time", 
 #'      ylab = "Accuracy")
+#'      
+#'      
 #' @export
+plot.rmc <- function(x, palette = NULL, xlab = NULL, ylab = NULL, ...) {
+    .plotrmc(x, palette, xlab, ylab, ...)
+}
 
-
-
-plot.rmc <-function(x, dataset = NULL, overall = F, palette = NULL, xlab = NULL,
-                    ylab = NULL, overall.col = "gray60", overall.lwd = 3,
-                    overall.lty = 2, ...) {
-    
+# Don't export this function
+.plotrmc <- function(x, palette = NULL, xlab = NULL, ylab = NULL, dataset = NULL, 
+                     overall = F, overall.col = "gray60", overall.lwd = 3,
+                     overall.lty = 2, ...) {
     calls <- names(sapply(match.call(), deparse))[-1]
     if(any("dataset" %in% calls)) {
         warning("dataset parameter is deprecated")

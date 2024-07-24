@@ -32,8 +32,8 @@ Encoding: UTF-8
 Suggests: 
     knitr,
     rmarkdown,
-    plotrix,
     ggplot2,
+    plotrix,
     lme4,
     merTools,
     pwr,

@@ -3,5 +3,6 @@
 S3method(plot,rmc)
 S3method(print,rmc)
 S3method(print,rmcmat)
+export(geom_rmc)
 export(rmcorr)
 export(rmcorr_mat)
