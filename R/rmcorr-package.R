@@ -1,6 +1,8 @@
 #' A package for computing the repeated measures correlation coefficient
 #' 
-#' @docType package
+# @docType package
+"_PACKAGE"
+#' @keywords internal
 #' @name rmcorr-package
 #' @description \packageDescription{rmcorr}
 #' 

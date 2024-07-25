@@ -65,5 +65,5 @@ coefficients with repeated observations: Part 2 -- correlation within
 subjects. \emph{BMJ, 310}, 633, \doi{https://doi.org/10.1136/bmj.310.6980.633}
 }
 \seealso{
-\code{\link{plot.rmc}}
+\code{\link{plot.rmc}, \link{geom_rmc}}
 }

@@ -5,6 +5,10 @@
 \alias{rmcorr-package}
 \title{A package for computing the repeated measures correlation coefficient}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+Compute the repeated measures correlation, a statistical technique for determining the overall within-individual relationship among paired measures assessed on two or more occasions, first introduced by Bland and Altman (1995). Includes functions for diagnostics, p-value, effect size with confidence interval including optional bootstrapping, as well as graphing. Also includes several example datasets. For more details, see the web documentation \url{https://lmarusich.github.io/rmcorr/index.html} and the original paper: Bakdash and Marusich (2017) \doi{10.3389/fpsyg.2017.00456}.
+
 \packageDescription{rmcorr}
 }
 \references{
@@ -16,3 +20,22 @@ Bakdash, J.Z. & Marusich, L.R. (2019).
 Corrigendum: Repeated Measures Correlation, \emph{Frontiers in Psychology, 
 10}, \doi{https://doi.org/10.3389/fpsyg.2019.01201}
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/lmarusich/rmcorr}
+  \item \url{https://lmarusich.github.io/rmcorr/}
+  \item Report bugs at \url{https://github.com/lmarusich/rmcorr/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Laura R. Marusich \email{lmarusich@gmail.com} (\href{https://orcid.org/0000-0002-3524-6110}{ORCID})
+
+Authors:
+\itemize{
+  \item Jonathan Z. Bakdash \email{jbakdash@gmail.com} (\href{https://orcid.org/0000-0002-1409-4779}{ORCID})
+}
+
+}
+\keyword{internal}

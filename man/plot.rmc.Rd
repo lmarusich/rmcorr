@@ -4,38 +4,16 @@
 \alias{plot.rmc}
 \title{Plot the repeated measures correlation coefficient.}
 \usage{
-\method{plot}{rmc}(
-  x,
-  dataset = NULL,
-  overall = F,
-  palette = NULL,
-  xlab = NULL,
-  ylab = NULL,
-  overall.col = "gray60",
-  overall.lwd = 3,
-  overall.lty = 2,
-  ...
-)
+\method{plot}{rmc}(x, palette = NULL, xlab = NULL, ylab = NULL, ...)
 }
 \arguments{
 \item{x}{an object of class "rmc" generated from the \code{\link{rmcorr}} function.}
-
-\item{dataset}{Deprecated: This argument is no longer required}
-
-\item{overall}{logical: if TRUE, plots the regression line between measure1 and
-measure2, ignoring the participant variable.}
 
 \item{palette}{the palette to be used. Defaults to the RColorBrewer "Paired" palette}
 
 \item{xlab}{label for the x axis, defaults to the variable name for measure1.}
 
 \item{ylab}{label for the y axis, defaults to the variable name for measure2.}
-
-\item{overall.col}{the color of the overall regression line}
-
-\item{overall.lwd}{the line thickness of the overall regression line}
-
-\item{overall.lty}{the line type of the overall regression line}
 
 \item{...}{additional arguments to \code{\link[graphics:plot.default]{plot}}.}
 }
@@ -49,16 +27,6 @@ Parallel lines are fitted to each subject's data.
 my.rmc <- rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, 
                  dataset = bland1995)
 plot(my.rmc)
-
-#using ggplot instead
-if (requireNamespace("ggplot2", quietly = TRUE)){
- ggplot2::ggplot(bland1995, ggplot2::aes(x = PaCO2, y = pH, 
-                 group = factor(Subject), color = factor(Subject))) +
-      ggplot2::geom_point(ggplot2::aes(colour = factor(Subject))) +
-      ggplot2::geom_line(ggplot2::aes(y = my.rmc$model$fitted.values), 
-                         linetype = 1)
-}
-
 
 ## Raz et al. 2005 data
 my.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = 
@@ -74,7 +42,9 @@ my.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc,
                  dataset = gilden2010)
 plot(my.rmc, overall = FALSE, lty = 2, xlab = "Reaction Time", 
      ylab = "Accuracy")
+     
+     
 }
 \seealso{
-\code{\link{rmcorr}}
+\code{\link{rmcorr}, \link{geom_rmc} for plotting with ggplot}
 }

@@ -1,12 +1,12 @@
 ^\.github$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^\.travis\.yml$
 ^README\.Rmd$
 ^old$
 ^.Renviron$
 ^doc$
 ^Meta$
+^pkgdown\.yml$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
