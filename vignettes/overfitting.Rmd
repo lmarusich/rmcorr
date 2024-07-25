@@ -146,8 +146,8 @@ The inferential statistics for the rmcorr analysis are:
 *r~rmcorr~(`r marusich.rmc$df`)* = `r rmc.r`, 95\% CI [`r rmc.CI`],  *p* = `r rmc.p`. 
 
 ###### Levels of Analysis
-The above analysis indicates a strong *within-dyad* or relative relationship for the two measures. At the within level of analysis, higher values of MARS have a large to very large relative (within-dyad) association with better performance, lower target capture times; and vice-versa. However, the dyad-to-dyad comparisons for MARS or performance values are only weakly predictive at the between level of analysis. In other words, using a specific MARS (or performance) value to predict the other is quite limited between the dyads. Results at the between level of analysis may not necessarily generalize to the within level of analysis [@fisher2018lack; @molenaar2009new].
-
+The above analysis indicates a strong *within-dyad* or relative relationship for the two measures. At the within level of analysis, higher values of MARS have a large to very large relative (within-dyad) association with better performance, lower target capture times; and vice-versa. However, the dyad-to-dyad comparisons for MARS or performance values are only weakly predictive at the between level of analysis. In other words, using a specific MARS (or performance) value to predict the other is quite limited between the dyads. Results at the between level of analysis may not necessarily generalize to the within level of analysis [@curran2011disaggregation; @fisher2018lack; @molenaar2009new]
+ 
 ##### Consequences of Overfitting:
 
 1) Misestimated effect size: The overfit analysis has an approximately point-estimated medium negative correlation, whereas the averaged analysis has slightly less than a small negative point-estimated correlation.
