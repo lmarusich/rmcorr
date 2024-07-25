@@ -1,81 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/articles/CI_fix.html</loc>
-  </url>
-  <url>
-    <loc>/articles/FAQ_and_limitations.html</loc>
-  </url>
-  <url>
-    <loc>/articles/New_rmcorr_paper_analyses_figures.html</loc>
-  </url>
-  <url>
-    <loc>/articles/compcor.html</loc>
-  </url>
-  <url>
-    <loc>/articles/estimates_w_NaN.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/model_diag.html</loc>
-  </url>
-  <url>
-    <loc>/articles/repro_bootstrapping.html</loc>
-  </url>
-  <url>
-    <loc>/articles/rmcorr_mat.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/HCAHPS2022.html</loc>
-  </url>
-  <url>
-    <loc>/reference/bland1995.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gilden2010.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/marusich2016_exp2.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot.rmc.html</loc>
-  </url>
-  <url>
-    <loc>/reference/print.rmc.html</loc>
-  </url>
-  <url>
-    <loc>/reference/print.rmcmat.html</loc>
-  </url>
-  <url>
-    <loc>/reference/raz2005.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rmcorr-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rmcorr.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rmcorr_mat.html</loc>
-  </url>
-  <url>
-    <loc>/reference/twedt_dist_measures.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/articles/CI_fix.html</loc></url>
+<url><loc>/articles/FAQ_and_limitations.html</loc></url>
+<url><loc>/articles/New_rmcorr_paper_analyses_figures.html</loc></url>
+<url><loc>/articles/compcor.html</loc></url>
+<url><loc>/articles/estimates_w_NaN.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/articles/model_diag.html</loc></url>
+<url><loc>/articles/overfitting.html</loc></url>
+<url><loc>/articles/repro_bootstrapping.html</loc></url>
+<url><loc>/articles/rmcorr_mat.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/HCAHPS2022.html</loc></url>
+<url><loc>/reference/bland1995.html</loc></url>
+<url><loc>/reference/geom_rmc.html</loc></url>
+<url><loc>/reference/gilden2010.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/marusich2016_exp2.html</loc></url>
+<url><loc>/reference/plot.rmc.html</loc></url>
+<url><loc>/reference/print.rmc.html</loc></url>
+<url><loc>/reference/print.rmcmat.html</loc></url>
+<url><loc>/reference/raz2005.html</loc></url>
+<url><loc>/reference/rmcorr-package.html</loc></url>
+<url><loc>/reference/rmcorr.html</loc></url>
+<url><loc>/reference/rmcorr_mat.html</loc></url>
+<url><loc>/reference/twedt_dist_measures.html</loc></url>
 </urlset>
+

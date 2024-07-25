@@ -1,14 +1,14 @@
 pandoc: 3.1.11
-pkgdown: 2.0.7
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   CI_fix: CI_fix.html
-  FAQ_and_limitations: FAQ_and_limitations.html
-  New_rmcorr_paper_analyses_figures: New_rmcorr_paper_analyses_figures.html
   compcor: compcor.html
   estimates_w_NaN: estimates_w_NaN.html
+  FAQ_and_limitations: FAQ_and_limitations.html
   model_diag: model_diag.html
+  New_rmcorr_paper_analyses_figures: New_rmcorr_paper_analyses_figures.html
+  overfitting: overfitting.html
   repro_bootstrapping: repro_bootstrapping.html
   rmcorr_mat: rmcorr_mat.html
-last_built: 2024-04-07T23:49Z
-
+last_built: 2024-07-25T19:40Z
