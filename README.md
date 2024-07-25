@@ -1,6 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+# rmcorr <img src="man/figures/logo.png" align="right" width = "120"/>
+
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/rmcorr)](https://cran.r-project.org/package=rmcorr)
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmcorr)](https://cran.r-project.org/package=rmcorr)
@@ -8,7 +10,6 @@ downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmcorr)](https://cran.r
 downloads](https://cranlogs.r-pkg.org/badges/rmcorr)](https://cran.r-project.org/package=rmcorr)
 [![Codecov test
 coverage](https://codecov.io/gh/lmarusich/rmcorr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/lmarusich/rmcorr?branch=master)
-\# rmcorr <img src="man/figures/logo.png" align="right" />
 
 Repeated measures correlation (rmcorr) is a statistical technique for
 determining the common within-individual association for paired measures

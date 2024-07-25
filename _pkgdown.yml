@@ -1,5 +1,6 @@
 url: ~
 template:
+  light-switch: true
   bootstrap: 5
 articles:
 - title: Articles
