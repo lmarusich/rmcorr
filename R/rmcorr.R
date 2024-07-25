@@ -32,7 +32,7 @@
 #' coefficients with repeated observations: Part 2 -- correlation within
 #' subjects. \emph{BMJ, 310}, 633, \doi{https://doi.org/10.1136/bmj.310.6980.633}
 #' 
-#' @seealso \code{\link{plot.rmc}}
+#' @seealso \code{\link{plot.rmc}, \link{geom_rmc}}
 #' @examples
 #' ## Bland Altman 1995 data
 #' rmcorr(Subject, PaCO2, pH, bland1995)

@@ -4,10 +4,10 @@
 \alias{geom_rmc}
 \title{geom_rmc: ggplot2 geom for simplified graphing}
 \usage{
-geom_rmc(my.rmc)
+geom_rmc(rmc)
 }
 \arguments{
-\item{my.rmc}{an object of class "rmc" generated from the \code{\link{rmcorr}} function.}
+\item{rmc}{an object of class "rmc" generated from the \code{\link{rmcorr}} function.}
 }
 \description{
 geom_rmc: ggplot2 geom for simplified graphing
@@ -19,7 +19,6 @@ my.rmc <- rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH,
 ggplot2::ggplot(bland1995, 
      ggplot2::aes(x = PaCO2, 
                   y = pH, 
-                  group = factor(Subject), 
                   color = factor(Subject))) +
      geom_rmc(my.rmc)
                   
@@ -28,24 +27,22 @@ ggplot2::ggplot(bland1995,
 ggplot2::ggplot(bland1995, 
      ggplot2::aes(x = PaCO2, 
                   y = pH, 
-                  group = factor(Subject), 
                   color = factor(Subject))) +
     ggplot2::geom_point(ggplot2::aes(colour = factor(Subject))) +
     ggplot2::geom_line(ggplot2::aes(y = my.rmc$model$fitted.values), 
                        linetype = 1)
 
 
-##another example: 
+##another example:
 ##new theme, remove legend, and custom color pal
-ggplot2::ggplot(bland1995, 
-                ggplot2::aes(x = PaCO2, 
-                             y = pH, 
-                             group = factor(Subject), 
+ggplot2::ggplot(bland1995,
+                ggplot2::aes(x = PaCO2,
+                             y = pH,
                              color = factor(Subject))) +
-   geom_rmc(my.rmc) +  
-   ggplot2::theme_minimal() + 
+   geom_rmc(my.rmc) +
+   ggplot2::theme_minimal() +
    ggplot2::theme(legend.position="none") +
-   ggplot2::scale_color_brewer(palette="Dark2") 
+   ggplot2::scale_color_brewer(palette="Dark2")
 
 }
 \seealso{
