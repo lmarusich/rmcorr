@@ -2,6 +2,8 @@ url: ~
 template:
   light-switch: true
   bootstrap: 5
+figures: 
+    bg: white
 articles:
 - title: Articles
   navbar: ~
