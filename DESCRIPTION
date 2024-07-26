@@ -51,5 +51,5 @@ Suggests:
     patchwork
 VignetteBuilder: knitr
 Config/testthat/edition: 3
-URL: https://github.com/lmarusich/rmcorr, https://lmarusich.github.io/rmcorr/
+URL: https://github.com/lmarusich/rmcorr
 BugReports: https://github.com/lmarusich/rmcorr/issues

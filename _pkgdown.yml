@@ -1,7 +1,7 @@
-url: ~
+url: http://lmarusich.github.io/rmcorr/
 template:
-  light-switch: true
   bootstrap: 5
+  light-switch: true
 figures: 
     bg: white
 articles:
@@ -16,8 +16,8 @@ articles:
   - rmcorr_mat
   - model_diag
   - estimates_w_NaN
-  - overfitting 
-  
+  - overfitting
+
 reference:
 - title: Functions
   contents:

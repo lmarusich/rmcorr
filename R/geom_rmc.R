@@ -2,7 +2,6 @@
 #' @param rmc an object of class "rmc" generated from the \code{\link{rmcorr}} function.
 #' @seealso \code{\link{rmcorr}, \link{plot.rmc} for base plotting}
 #' @examples
-# 
 #' my.rmc <- rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, 
 #'                  dataset = bland1995)
 #'                  
