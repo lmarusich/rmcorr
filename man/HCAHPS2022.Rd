@@ -53,7 +53,7 @@ recommended or not, the number or participating hospitals, and the survey respon
 \item Note this is \emph{not} a representative sample
 \item Measures are averaged at the state/territory level
 \item Respondents were discharged from a hospital between July 2021 to July 2022
-\item Results are patient-mix adjusted, see \url{https://doi.org/10.1111/j.1475-6773.2008.00914.x}
+\item Results are patient-mix adjusted, see \doi{10.1111/j.1475-6773.2008.00914.x}
 }
 
 Additional Information:

@@ -149,7 +149,7 @@ We know of three other implementations of rmcorr.
 - <a href="https://github.com/lmarusich/rmcorrShiny">Shiny Source Code and Running the Standalone App</a> 
 
 ### 2) Python: rm_corr in Pingouin [@vallat2018pingouin]
-- <a href="https://pingouin-stats.org/generated/pingouin.rm_corr.html#pingouin.rm_corr">rm_corr</a>
+- <a href="https://pingouin-stats.org/build/html/generated/pingouin.rm_corr.html">rm_corr</a>
 
 ### 3) Stata: RMCORR [@stata.rmcorr]
 - <a href="https://ideas.repec.org/c/boc/bocode/s458971.html">RMCORR</a>
