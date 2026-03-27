@@ -127,12 +127,13 @@ rmcorr <- function(participant, measure1, measure2, dataset,
             bs.Part <- bs.df$Participant
             
             
-            repmodel<-stats::lm(bs.1 ~ bs.Part + bs.2)
+            repmodel <- stats::lm(bs.1 ~ bs.Part + bs.2)
             repslope <- stats::coef(repmodel)["bs.2"]
             errordf <- repmodel$df.residual
             repsign <- sign(repslope)  
             
-            type3rmcorr<-stats::drop1(repmodel, ~., test="F" )
+            type3rmcorr <-stats::drop1(repmodel, ~., test="F" )
+            
             SSFactor<-type3rmcorr$'Sum of Sq'[3] 
             SSresidual<-type3rmcorr$RSS[1]
             
@@ -149,10 +150,13 @@ rmcorr <- function(participant, measure1, measure2, dataset,
                      CI = rmcorrvalueCI, 
                      CI.level = CI.level,
                      model = lmmodel, 
-                     vars = vars)
+                     vars = vars,
+                     out = type3rmcorr
+                     )
     if (bstrap.out) {rmoutput$resamples <- resamples}
     class(rmoutput) <- "rmc"
     return (rmoutput)
+    
 } 
 
 

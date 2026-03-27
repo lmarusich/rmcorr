@@ -23,6 +23,7 @@ Corrigendum: Repeated Measures Correlation, \emph{Frontiers in Psychology,
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://lmarusich.github.io/rmcorr/}
   \item \url{https://github.com/lmarusich/rmcorr}
   \item Report bugs at \url{https://github.com/lmarusich/rmcorr/issues}
 }
