@@ -21,6 +21,7 @@ tidy.rmcorr(my.rmc)
 Robinson D, Hayes A, Couch S, Hvitfeldt E (2025). 
 \emph{broom: Convert Statistical Objects into Tidy Tibbles.} 
 R package version 1.0.11, https://broom.tidymodels.org/.
+
 usethis::use_package("generics", "Imports")
 }
 \seealso{

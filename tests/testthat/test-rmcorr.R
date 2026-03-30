@@ -94,4 +94,3 @@ test_that("output has correct class",{
     expect_match(class(rmc.out), "rmc")
     expect_snapshot(print(rmc.out))
 })
-
