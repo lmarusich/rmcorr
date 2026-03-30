@@ -26,7 +26,8 @@ Imports:
     grDevices,
     graphics,
     psych,
-    RColorBrewer
+    RColorBrewer,
+    generics
 RoxygenNote: 7.3.3
 Encoding: UTF-8
 Suggests: 
