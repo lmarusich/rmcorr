@@ -49,7 +49,9 @@ Suggests:
     gglm,
     dplyr,
     esc,
-    patchwork
+    patchwork,
+    corrr, 
+    broom
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://lmarusich.github.io/rmcorr/, https://github.com/lmarusich/rmcorr

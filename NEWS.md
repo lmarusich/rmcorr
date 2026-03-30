@@ -1,7 +1,7 @@
 # rmcorr 0.8.0
 
 * Added support for [broom::tidy()] and [broom::glance()]
-* 
+* Added example for [rmcorr::rmcorr_mat()] using [corr] package
 
 # rmcorr 0.7.0
 

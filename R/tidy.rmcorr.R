@@ -1,11 +1,20 @@
+#' Tidy for a(n) rmcorr object
+#' 
+#' @param x rmcorr output 
+#' @references 
+#' Robinson D, Hayes A, Couch S, Hvitfeldt E (2025). 
+#' \emph{broom: Convert Statistical Objects into Tidy Tibbles.} 
+#' 
+#' R package version 1.0.11, https://broom.tidymodels.org/.
+#' usethis::use_package("generics", "Imports")
+#' @examples
+#' my.rmc <- rmcorr(Subject, PaCO2, pH, bland1995)
+#' tidy.rmcorr(my.rmc)
 #tidymodels.org/learn/develop/broom
 #Re-export the tidier generics
-usethis::use_package("generics", "Imports")
-
-#' @importFrom generics tidy glance
-#' @export
+#' @importFrom generics tidy 
 generics::tidy
-generics::glance
+#' @export
 
 tidy.rmcorr <- function(x) {
     result.tab <- x$out
@@ -63,9 +72,5 @@ tidy.rmcorr <- function(x) {
      result.tab2 <- result.tab[,c(order2)]
      
      #Generates table similar to Table 2, Bland and Altman (1995a)
-     as_tibble(result.tab2)
+      as_tibble(result.tab2)
      }
-
-my.rmc <- rmcorr(Subject, PaCO2, pH, bland1995)
-tidy.rmcorr(my.rmc)
-#test <- tidy.rmcorr(my.rmc)
