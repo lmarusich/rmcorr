@@ -6,18 +6,25 @@
 \alias{tidy}
 \title{Tidy for a(n) rmcorr object}
 \arguments{
-\item{x}{rmcorr output}
+\item{x}{An rmcorr object created by rmcorr::rmcorr().}
+}
+\value{
+A tidy [tibble::tibble::()] summarizing component-level 
+information about the model.
 }
 \examples{
 my.rmc <- rmcorr(Subject, PaCO2, pH, bland1995)
 tidy.rmcorr(my.rmc)
+
 }
 \references{
 Robinson D, Hayes A, Couch S, Hvitfeldt E (2025). 
 \emph{broom: Convert Statistical Objects into Tidy Tibbles.} 
-
 R package version 1.0.11, https://broom.tidymodels.org/.
 usethis::use_package("generics", "Imports")
+}
+\seealso{
+[tidy()], [rmcorr::rmcorr()]
 }
 \keyword{internal}
 \description{

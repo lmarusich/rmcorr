@@ -51,6 +51,7 @@ Suggests:
     esc,
     patchwork,
     corrr, 
+    tibble, 
     broom
 VignetteBuilder: knitr
 Config/testthat/edition: 3

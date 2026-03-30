@@ -26,7 +26,7 @@ library(rmcorr)
 library(corrplot) 
 
 ```
-#### Running Examples Requires corrplot [@corrplot2021] and [@corrr2025] 
+#### Running Examples Requires corrplot [@corrplot2021] and corrr [@corrr2025]
 ```{r, eval = FALSE}
 #Install corrplot and corrr
  install.packages("corrplot")
@@ -100,7 +100,7 @@ round(all.pvals, digits = 5)
 ```
 
 ## Examples with corrr package
-The rmc matrix can be converted to a correlation data frame object for use with *corrr*
+The rmc matrix can be converted to a correlation data frame object for use with *corrr*.
 ```{r}
 #rmc matrix
 dist_rmc_mat$matrix
