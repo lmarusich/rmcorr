@@ -52,7 +52,8 @@ Suggests:
     patchwork,
     corrr, 
     tibble, 
-    broom
+    broom, 
+    modeltests
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://lmarusich.github.io/rmcorr/, https://github.com/lmarusich/rmcorr
