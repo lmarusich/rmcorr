@@ -4,13 +4,20 @@
 \name{reexports}
 \alias{reexports}
 \alias{tidy}
+\alias{glance}
+\alias{required_pkgs}
 \title{Objects exported from other packages}
+\seealso{
+[tidy.rmcorr()]
+
+[glance.rmcorr()]
+}
 \keyword{internal}
 \description{
 These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{generics}{\code{\link[generics]{tidy}}}
+  \item{generics}{\code{\link[generics]{glance}}, \code{\link[generics]{required_pkgs}}, \code{\link[generics]{tidy}}}
 }}
 

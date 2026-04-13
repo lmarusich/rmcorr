@@ -1,20 +1,17 @@
 #' Tidy for a(n) rmcorr object
 #' 
-#' @param x 	An rmcorr object created by rmcorr::rmcorr(). 
+#' @param x A(n) 'rmcorr' object created by rmcorr::rmcorr(). 
 #' @param ... Unused, included for generic consistency only.
 #' @return A tidy [tibble::tibble::()] summarizing component-level 
 #' information about the model.
-#' @references 
-#' Robinson D, Hayes A, Couch S, Hvitfeldt E (2025). 
-#' \emph{broom: Convert Statistical Objects into Tidy Tibbles.} 
-#' R package version 1.0.11, https://broom.tidymodels.org/.
-#'
+#' 
 #' @examples
 #' my.rmc <- rmcorr(Subject, PaCO2, pH, bland1995)
+#' tidy(my.rmc)
 #' @seealso [tidy()], [rmcorr::rmcorr()]
-#' @export
-#'
-tidy.rmcorr <- function(x, ...) {
+#' @method tidy rmc
+#' @exportS3Method tidy rmc
+tidy.rmc <- function(x, ...) {
     result.tab <- x$out
     rmc.terms <- c("Error", x$vars[1:2])
     rmc.df    <- c(x$df)
@@ -64,8 +61,6 @@ tidy.rmcorr <- function(x, ...) {
      
     result.tab <- result.tab[,c(reorder)]
      
-     #Generates table similar to Table 2, Bland and Altman (1995a)
-     results <- tibble::tibble(result.tab)
-     results
+return(tibble::tibble(result.tab))
 }
 

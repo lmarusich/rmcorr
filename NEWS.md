@@ -1,6 +1,8 @@
 # rmcorr 0.8.0
 
-* Added support for [broom](https://broom.tidymodels.org/): [generics::tidy](https://generics.r-lib.org/reference/tidy.html)
+* Added support for [broom](https://broom.tidymodels.org/): 
+[generics::tidy](https://generics.r-lib.org/reference/tidy.html) and
+[generics::glance](https://generics.r-lib.org/reference/glance.html) 
 * Added example using [corr](https://corrr.tidymodels.org/)
 
 # rmcorr 0.7.0
