@@ -12,7 +12,7 @@
 \item{...}{Unused, included for generic consistency only.}
 }
 \value{
-A tidy [tibble::tibble::()] summarizing component-level 
+A tidy \code{\link[tibble:tibble]{tibble::tibble()}} summarizing component-level
 information about the model.
 }
 \description{
@@ -23,5 +23,5 @@ my.rmc <- rmcorr(Subject, PaCO2, pH, bland1995)
 tidy(my.rmc)
 }
 \seealso{
-[tidy()], [rmcorr::rmcorr()]
+\code{\link[=tidy]{tidy()}}, \code{\link[=rmcorr]{rmcorr()}}
 }

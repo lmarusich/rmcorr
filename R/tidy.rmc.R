@@ -2,7 +2,7 @@
 #' 
 #' @param x A(n) 'rmcorr' object created by rmcorr::rmcorr(). 
 #' @param ... Unused, included for generic consistency only.
-#' @return A tidy [tibble::tibble::()] summarizing component-level 
+#' @return A tidy [tibble::tibble()] summarizing component-level 
 #' information about the model.
 #' 
 #' @examples

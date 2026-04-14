@@ -28,6 +28,7 @@ Imports:
     psych,
     RColorBrewer,
     generics
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Encoding: UTF-8
 Suggests: 

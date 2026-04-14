@@ -1,11 +1,11 @@
 #' @importFrom generics tidy
 #' @export
-#' @seealso [tidy.rmcorr()]
+#' @seealso [tidy.rmc()]
 generics::tidy
 
 #' @importFrom generics glance
 #' @export
-#' @seealso [glance.rmcorr()]
+#' @seealso [glance.rmc()]
 generics::glance
 
 #' @importFrom generics required_pkgs

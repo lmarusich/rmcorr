@@ -2,7 +2,7 @@
 #' 
 #' @param x A(n) rmcorr object created by rmcorr::rmcorr(). 
 #' @param ... Unused, included for generic consistency only.
-#' @return A single row summary "glance" [tibble::tibble::()] of the rmc model.
+#' @return A single row summary "glance" [tibble::tibble()] of the rmc model.
 #'
 #' @examples
 #' my.rmc <- rmcorr(Subject, PaCO2, pH, bland1995)

@@ -8,9 +8,9 @@
 \alias{required_pkgs}
 \title{Objects exported from other packages}
 \seealso{
-[tidy.rmcorr()]
+\code{\link[=tidy.rmc]{tidy.rmc()}}
 
-[glance.rmcorr()]
+\code{\link[=glance.rmc]{glance.rmc()}}
 }
 \keyword{internal}
 \description{

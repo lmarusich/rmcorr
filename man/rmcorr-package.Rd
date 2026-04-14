@@ -12,12 +12,12 @@ Compute the repeated measures correlation, a statistical technique for determini
 \packageDescription{rmcorr}
 }
 \references{
-Bakdash, J.Z. & Marusich, L.R. (2017). 
-Repeated Measures Correlation, \emph{Frontiers in Psychology, 8}, 456, 
+Bakdash, J.Z. & Marusich, L.R. (2017).
+Repeated Measures Correlation, \emph{Frontiers in Psychology, 8}, 456,
 \doi{https://doi.org/10.3389/fpsyg.2017.00456}
 
-Bakdash, J.Z. & Marusich, L.R. (2019). 
-Corrigendum: Repeated Measures Correlation, \emph{Frontiers in Psychology, 
+Bakdash, J.Z. & Marusich, L.R. (2019).
+Corrigendum: Repeated Measures Correlation, \emph{Frontiers in Psychology,
 10}, \doi{https://doi.org/10.3389/fpsyg.2019.01201}
 }
 \seealso{

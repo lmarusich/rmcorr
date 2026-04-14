@@ -12,7 +12,7 @@
 \item{...}{Unused, included for generic consistency only.}
 }
 \value{
-A single row summary "glance" [tibble::tibble::()] of the rmc model.
+A single row summary "glance" \code{\link[tibble:tibble]{tibble::tibble()}} of the rmc model.
 }
 \description{
 Glance for a(n) rmcorr object
@@ -22,5 +22,5 @@ my.rmc <- rmcorr(Subject, PaCO2, pH, bland1995)
 glance(my.rmc)
 }
 \seealso{
-[glance()], [rmcorr::rmcorr()]
+\code{\link[=glance]{glance()}}, \code{\link[=rmcorr]{rmcorr()}}
 }

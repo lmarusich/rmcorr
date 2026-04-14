@@ -3,7 +3,7 @@
 \docType{data}
 \name{marusich2016_exp2}
 \alias{marusich2016_exp2}
-\title{Repeated measurements of dyads performance and subjective situation 
+\title{Repeated measurements of dyads performance and subjective situation
 awareness}
 \format{
 A data frame with 84 rows (28 dyads/pairs) and 4 variables
@@ -16,19 +16,19 @@ A data frame with 84 rows (28 dyads/pairs) and 4 variables
 }
 }
 \source{
-Marusich et al. (2016). Effects of information availability 
-on command-and-control decision making: performance, trust, and situation 
-awareness. \emph{Human Factors, 58}(2), 301-321, 
+Marusich et al. (2016). Effects of information availability
+on command-and-control decision making: performance, trust, and situation
+awareness. \emph{Human Factors, 58}(2), 301-321,
 \doi{https://doi.org/10.1177/0018720815619515}
 }
 \usage{
 marusich2016_exp2
 }
 \description{
-A dataset containing three repeated measures of dyads (paired  
-participants) working together to capture High Value Targets (lower task time 
-is better performance) and their averaged Mission Awareness Rating Scale 
-(MARS) score for each block, repeated three times. MARS evaluates subjective 
-situation awareness (”knowing what is going on”), higher values indicate 
+A dataset containing three repeated measures of dyads (paired
+participants) working together to capture High Value Targets (lower task time
+is better performance) and their averaged Mission Awareness Rating Scale
+(MARS) score for each block, repeated three times. MARS evaluates subjective
+situation awareness (”knowing what is going on”), higher values indicate
 better situation awareness.
 }
