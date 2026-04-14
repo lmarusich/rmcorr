@@ -1,4 +1,4 @@
-require(vdiffr)
+#require(vdiffr)
 
 test_that("custom geom works as expected", {
     my.rmc <- rmcorr(participant = as.factor(Subject), measure1 = PaCO2, measure2 = pH,
@@ -18,7 +18,7 @@ test_that("custom geom works as expected", {
                                      color = factor(Subject))) +
             geom_rmc(my.rmc)
         }
-    expect_doppelganger("p1", p1)
+    vdiffr::expect_doppelganger("p1", p1)
     
     p2 <- function() {
         ggplot2::ggplot(bland1995,
@@ -30,7 +30,7 @@ test_that("custom geom works as expected", {
         ggplot2::theme(legend.position="none") +
         ggplot2::scale_color_brewer(palette="Dark2")
     }
-    expect_doppelganger("p2", p2)
+    vdiffr::expect_doppelganger("p2", p2)
 
     ##manually:
     p3 <- function() {
@@ -39,6 +39,6 @@ test_that("custom geom works as expected", {
         ggplot2::geom_line(ggplot2::aes(y = my.rmc$model$fitted.values),
                            linetype = 1)
     }
-    expect_doppelganger("p3", p3)
+    vdiffr::expect_doppelganger("p3", p3)
     
 })
