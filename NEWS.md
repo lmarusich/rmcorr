@@ -1,3 +1,7 @@
+# rmcorr 0.8.1  (dev release only, not on CRAN)
+
+* Fix missing fields in _pkgdown.yml
+
 # rmcorr 0.8.0  (dev release only, not on CRAN)
 
 * Added support for [broom](https://broom.tidymodels.org/): 
