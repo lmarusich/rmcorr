@@ -26,11 +26,13 @@ library(rmcorr)
 library(corrplot) 
 
 ```
-#### Running Examples Requires corrplot [@corrplot2021]
+#### Running Examples Requires corrplot [@corrplot2021] and corrr [@corrr2025]
 ```{r, eval = FALSE}
-#Install corrplot
+#Install corrplot and corrr
  install.packages("corrplot")
+ install.packages("corrr")
  require(corrplot)
+ require(corrr)
 ```
 
 ## Plotting a Correlation Matrix 
@@ -95,4 +97,20 @@ p.vals.fdr <- p.adjust(p.vals,
 all.pvals <- cbind(p.vals, p.vals.bonferroni, p.vals.fdr)
 colnames(all.pvals) <- c("Unadjusted", "Bonferroni", "fdr")
 round(all.pvals, digits = 5)
+```
+
+## Examples with corrr package
+The rmc matrix can be converted to a correlation data frame object for use with *corrr*.
+```{r}
+#rmc matrix
+dist_rmc_mat$matrix
+
+#Convert to data frame
+cordf_dist_rmc <- corrr::as_cordf(dist_rmc_mat$matrix, diagonal = 1)
+
+#Formatted matrix
+corrr::fashion(cordf_dist_rmc)
+
+#Plot
+corrr::rplot(cordf_dist_rmc)
 ```

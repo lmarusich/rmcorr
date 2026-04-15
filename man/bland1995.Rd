@@ -8,15 +8,15 @@
 A data frame with 47 rows and 3 variables
 \tabular{lll}{
 \code{[,1]} \tab \code{Subject} \tab {Unique identifer} \cr
-\code{[,2]} \tab \code{pH}      \tab {Potential of hydrogen, 
-                                       acidity to base} \cr
-\code{[,3]} \tab \code{PaCO2}   \tab {Partial pressure of carbon dioxide}\cr     
+\code{[,2]} \tab \code{pH}      \tab {Potential of hydrogen,
+acidity to base} \cr
+\code{[,3]} \tab \code{PaCO2}   \tab {Partial pressure of carbon dioxide}\cr
 }
 }
 \source{
 Bland, J.M., & Altman, D.G. (1995). Calculating correlation
 coefficients with repeated observations: Part 1 -- correlation within
-subjects. \emph{BMJ, 310}, 446, 
+subjects. \emph{BMJ, 310}, 446,
 \doi{https://doi.org/10.1136/bmj.310.6977.446}
 }
 \usage{

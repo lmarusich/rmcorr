@@ -1,6 +1,6 @@
 Package: rmcorr
 Title: Repeated Measures Correlation
-Version: 0.7.0
+Version: 0.8.0
 Authors@R: c(
     person("Jonathan Z.", "Bakdash", email = "jbakdash@gmail.com", role = "aut",
       comment = c(ORCID = "0000-0002-1409-4779")
@@ -26,8 +26,10 @@ Imports:
     grDevices,
     graphics,
     psych,
-    RColorBrewer
-RoxygenNote: 7.3.2
+    RColorBrewer,
+    generics
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
 Encoding: UTF-8
 Suggests: 
     knitr,
@@ -48,7 +50,13 @@ Suggests:
     gglm,
     dplyr,
     esc,
-    patchwork
+    patchwork,
+    corrr, 
+    tibble, 
+    tidyverse,
+    tidymodels, 
+    modeltests, 
+    qpdf
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://lmarusich.github.io/rmcorr/, https://github.com/lmarusich/rmcorr

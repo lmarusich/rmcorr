@@ -1,4 +1,12 @@
+# rmcorr 0.8.0  (dev release only, not on CRAN)
+
+* Added support for [broom](https://broom.tidymodels.org/): 
+[generics::tidy](https://generics.r-lib.org/reference/tidy.html) and
+[generics::glance](https://generics.r-lib.org/reference/glance.html) 
+* Added example using [corr](https://corrr.tidymodels.org/)
+
 # rmcorr 0.7.0
+
 * Added geom for simplified graphing with ggplot2: geom_rmc 
 * Added vignette for overfitting/pseudoreplication
 * Updated roxygen to 7.3.2 and now using _PACKAGE

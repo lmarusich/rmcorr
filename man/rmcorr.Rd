@@ -34,12 +34,14 @@ rmcorr(
 }
 \value{
 A list with class "rmc" containing the following components.
-\item{r}{the value of the repeated measures correlation coefficient.}
-\item{df}{the degrees of freedom}
-\item{p}{the p-value for the repeated measures correlation coefficient.}
-\item{CI}{the 95\% confidence interval for the repeated measures correlation coefficient.}
-\item{model}{the multiple regression model used to calculate the correlation coefficient.}
-\item{resamples}{the bootstrap resampled correlation values.}
+\itemize{
+\item \code{r}: the value of the repeated measures correlation coefficient
+\item \code{df}: the degrees of freedom
+\item \code{p}: the p-value for the repeated measures correlation coefficient
+\item \code{CI}: the 95\% confidence interval for the repeated measures correlation coefficient
+\item \code{model}: the multiple regression model used to calculate the correlation coefficient
+\item \code{resamples}: the bootstrap resampled correlation values
+}
 }
 \description{
 Calculate the repeated measures correlation coefficient.
@@ -49,18 +51,18 @@ Calculate the repeated measures correlation coefficient.
 rmcorr(Subject, PaCO2, pH, bland1995)
 }
 \references{
-Bakdash, J.Z., & Marusich, L.R. (2017). 
-Repeated Measures Correlation. \emph{Frontiers in Psychology, 8}, 456, 
+Bakdash, J.Z., & Marusich, L.R. (2017).
+Repeated Measures Correlation. \emph{Frontiers in Psychology, 8}, 456,
 \doi{https://doi.org/10.3389/fpsyg.2017.00456}.
 
-Bakdash, J. Z., & Marusich, L. R. (2019). Corrigendum: Repeated Measures Correlation. 
-\emph{Frontiers in Psychology, 10}, \doi{https://doi.org/10.3389/fpsyg.2019.01201}.
+Bakdash, J. Z., & Marusich, L. R. (2019). Corrigendum: Repeated Measures Correlation.
+\emph{Frontiers in Psychology, 10}, \doi{https://doi.org/10.3389/fpsyg.2019.01201}
 
-Bland, J.M., & Altman, D.G. (1995a). Calculating correlation 
+Bland, J.M., & Altman, D.G. (1995a). Calculating correlation
 coefficients with repeated observations: Part 1 -- correlation within
 subjects. \emph{BMJ, 310}, 446, \doi{https://doi.org/10.1136/bmj.310.6977.446}
 
-Bland, J.M., & Altman, D.G. (1995b). Calculating correlation 
+Bland, J.M., & Altman, D.G. (1995b). Calculating correlation
 coefficients with repeated observations: Part 2 -- correlation within
 subjects. \emph{BMJ, 310}, 633, \doi{https://doi.org/10.1136/bmj.310.6980.633}
 }

@@ -33,7 +33,7 @@ test_that("check class", {
 test_that("expected names for rmc", {
     #Change Subject to factor so there is no warning
     rmc.out <- rmcorr(as.factor(Subject), PaCO2, pH, bland1995)
-    expect_named(rmc.out, c("r", "df", "p", "CI", "CI.level", "model", "vars"))
+    expect_named(rmc.out, c("r", "df", "p", "CI", "CI.level", "model", "vars", "out"))
 })
 
 test_that("non-numeric data columns throw error", {
@@ -94,4 +94,3 @@ test_that("output has correct class",{
     expect_match(class(rmc.out), "rmc")
     expect_snapshot(print(rmc.out))
 })
-
