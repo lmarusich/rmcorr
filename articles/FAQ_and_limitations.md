@@ -33,8 +33,9 @@ effect size.
     #>           power = 0.8156984
     #>     alternative = two.sided
 
-See [Power curves](./New_rmcorr_paper_analyses_figures.html#power) for
-more information.
+See [Power
+curves](https://lmarusich.github.io/rmcorr/articles/New_rmcorr_paper_analyses_figures.html#power)
+for more information.
 
 For G\*Power (Faul et al. 2009) or other software, power can be
 calculated by substituting the rmcorr degrees of freedom for a Pearson
@@ -147,7 +148,8 @@ the raz2005 dataset.
 
 Rmcorr fits a linear model. If the data are non-linear, we recommend
 trying to transform it (see above) or using multilevel modeling. Also
-see [Diagnostic Plots](./model_diag.md)
+see [Diagnostic
+Plots](https://lmarusich.github.io/rmcorr/articles/model_diag.md)
 
 ### Varying Slopes with Influential Observations and/or Unbalanced Data
 

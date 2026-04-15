@@ -11,6 +11,6 @@ to see their documentation.
 
 ## See also
 
-[`tidy.rmc()`](tidy.rmc.md)
+[`tidy.rmc()`](https://lmarusich.github.io/rmcorr/reference/tidy.rmc.md)
 
-[`glance.rmc()`](glance.rmc.md)
+[`glance.rmc()`](https://lmarusich.github.io/rmcorr/reference/glance.rmc.md)

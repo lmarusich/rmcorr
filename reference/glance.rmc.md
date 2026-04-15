@@ -50,7 +50,7 @@ of the rmc model.
 ## See also
 
 [`glance()`](https://generics.r-lib.org/reference/glance.html),
-[`rmcorr()`](rmcorr.md)
+[`rmcorr()`](https://lmarusich.github.io/rmcorr/reference/rmcorr.md)
 
 ## Examples
 

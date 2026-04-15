@@ -14,7 +14,7 @@ print(x, ...)
 - x:
 
   An object of class "rmcmat", a result of a call to
-  [`rmcorr_mat`](rmcorr_mat.md).
+  [`rmcorr_mat`](https://lmarusich.github.io/rmcorr/reference/rmcorr_mat.md).
 
 - ...:
 
@@ -22,7 +22,7 @@ print(x, ...)
 
 ## See also
 
-[`rmcorr_mat`](rmcorr_mat.md)`,`[`rmcorr`](rmcorr.md)
+[`rmcorr_mat`](https://lmarusich.github.io/rmcorr/reference/rmcorr_mat.md)`,`[`rmcorr`](https://lmarusich.github.io/rmcorr/reference/rmcorr.md)
 
 ## Examples
 

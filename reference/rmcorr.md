@@ -92,7 +92,7 @@ subjects. *BMJ, 310*, 633,
 
 ## See also
 
-[`plot.rmc`](plot.rmc.md)`, `[`geom_rmc`](geom_rmc.md)
+[`plot.rmc`](https://lmarusich.github.io/rmcorr/reference/plot.rmc.md)`, `[`geom_rmc`](https://lmarusich.github.io/rmcorr/reference/geom_rmc.md)
 
 ## Examples
 

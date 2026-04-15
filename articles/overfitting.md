@@ -32,13 +32,14 @@ require(patchwork)
 #### Example of Overfitting
 
 We illustrate the consequences of overfitting/pseudoreplication using
-our [data](../reference/marusich2016_exp2.md) from Marusich et al.
-(2016). This dataset has a sample size of *N* = 28 dyads (two
-participants working together), where each dyad has *k* = 3 repeated
-measures of two variables: a total of 84 paired observations (*N* x
-*k*). The two measured variables were scores on the Mission Awareness
-Rating Scale (MARS) and target-capture time, both assessed in three
-separate experimental blocks.
+our
+[data](https://lmarusich.github.io/rmcorr/reference/marusich2016_exp2.md)
+from Marusich et al. (2016). This dataset has a sample size of *N* = 28
+dyads (two participants working together), where each dyad has *k* = 3
+repeated measures of two variables: a total of 84 paired observations
+(*N* x *k*). The two measured variables were scores on the Mission
+Awareness Rating Scale (MARS) and target-capture time, both assessed in
+three separate experimental blocks.
 
 Repeated measures correlation is a technique for assessing the
 within-subject (in this example, within-dyad) relationship between two

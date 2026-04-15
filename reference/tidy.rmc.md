@@ -40,7 +40,7 @@ summarizing component-level information about the model.
 ## See also
 
 [`tidy()`](https://generics.r-lib.org/reference/tidy.html),
-[`rmcorr()`](rmcorr.md)
+[`rmcorr()`](https://lmarusich.github.io/rmcorr/reference/rmcorr.md)
 
 ## Examples
 

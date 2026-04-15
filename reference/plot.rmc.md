@@ -15,7 +15,8 @@ plot(x, palette = NULL, xlab = NULL, ylab = NULL, ...)
 
 - x:
 
-  an object of class "rmc" generated from the [`rmcorr`](rmcorr.md)
+  an object of class "rmc" generated from the
+  [`rmcorr`](https://lmarusich.github.io/rmcorr/reference/rmcorr.md)
   function.
 
 - palette:
@@ -37,7 +38,7 @@ plot(x, palette = NULL, xlab = NULL, ylab = NULL, ...)
 
 ## See also
 
-[`rmcorr`](rmcorr.md)`, `[`geom_rmc`](geom_rmc.md)` for plotting with ggplot`
+[`rmcorr`](https://lmarusich.github.io/rmcorr/reference/rmcorr.md)`, `[`geom_rmc`](https://lmarusich.github.io/rmcorr/reference/geom_rmc.md)` for plotting with ggplot`
 
 ## Examples
 

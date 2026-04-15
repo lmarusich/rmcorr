@@ -21,7 +21,7 @@ print(x, ...)
 
 ## See also
 
-[`rmcorr`](rmcorr.md)
+[`rmcorr`](https://lmarusich.github.io/rmcorr/reference/rmcorr.md)
 
 ## Examples
 

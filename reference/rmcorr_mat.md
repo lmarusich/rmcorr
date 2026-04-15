@@ -62,7 +62,7 @@ edition), Routledge. ISBN: 9780805822236.
 
 ## See also
 
-[`rmcorr`](rmcorr.md)`, `[`plot.rmc`](plot.rmc.md)
+[`rmcorr`](https://lmarusich.github.io/rmcorr/reference/rmcorr.md)`, `[`plot.rmc`](https://lmarusich.github.io/rmcorr/reference/plot.rmc.md)
 
 ## Examples
 

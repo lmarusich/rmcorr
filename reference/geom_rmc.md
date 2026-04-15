@@ -12,12 +12,13 @@ geom_rmc(rmc)
 
 - rmc:
 
-  an object of class "rmc" generated from the [`rmcorr`](rmcorr.md)
+  an object of class "rmc" generated from the
+  [`rmcorr`](https://lmarusich.github.io/rmcorr/reference/rmcorr.md)
   function.
 
 ## See also
 
-[`rmcorr`](rmcorr.md)`, `[`plot.rmc`](plot.rmc.md)` for base plotting`
+[`rmcorr`](https://lmarusich.github.io/rmcorr/reference/rmcorr.md)`, `[`plot.rmc`](https://lmarusich.github.io/rmcorr/reference/plot.rmc.md)` for base plotting`
 
 ## Examples
 
