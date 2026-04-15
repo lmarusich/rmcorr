@@ -4,7 +4,14 @@
 #' @param ... Unused, included for generic consistency only.
 #' @return A tidy [tibble::tibble()] summarizing component-level 
 #' information about the model.
-#' 
+#' \itemize{
+#' \item \code{term}: the three model terms 
+#' \item \code{df}: the degrees of freedom
+#' \item \code{estimate}: the parameter estimate 
+#' \item \code{sumsq}: the sums of squares  
+#' \item \code{statistic}: the F-statistic 
+#' \item \code{p.value}: the p-value 
+#' }
 #' @examples
 #' my.rmc <- rmcorr(Subject, PaCO2, pH, bland1995)
 #' tidy(my.rmc)
