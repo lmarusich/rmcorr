@@ -1,0 +1,34 @@
+# Repeated measures and multivariate measures of perceived distance
+
+A dataset of repeated measures of distance perception at physical
+distances of 7, 8, 9, 10, and 11 meters. The data are also multivariate,
+with five dependent measures of distance perception. This is a 5
+(physical distance) x 5 (dependent measure) within-participants design
+with a sample size of 46. Note data is missing for 15 trials due to
+participant and experimenter errors.
+
+## Usage
+
+``` r
+twedt_dist_measures
+```
+
+## Format
+
+A data frame with 230 rows and 7 columns
+
+|        |                     |                                                                                                                                                                                                                                                                                                                                                   |
+|--------|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `[,1]` | `Subject`           | Unique identifier for each participant                                                                                                                                                                                                                                                                                                            |
+| `[,2]` | `Physical Distance` | Physical distance from the participant to the target cone, in meters                                                                                                                                                                                                                                                                              |
+| `[,3]` | `Blindwalk Away`    | Participants put on the blindfold after viewing the target. Next, participants took one step to the left and turned 180 degrees to face the opposite direction. Participants were instructed to walk forward until they had walked the original distance to the target                                                                            |
+| `[,4]` | `Blindwalk Toward`  | Participants put on the blindfold after viewing the target. Next, participants walked forward until they thought they had reached the target cone                                                                                                                                                                                                 |
+| `[,5]` | `Triangulated BW`   | Participants put on the blindfold after viewing the target. Next, participants turned right 90 degrees and walked forward 5 meters. The experimenter told participants when to stop walking. Finally, participants turned to face toward the target and walked forward two steps                                                                  |
+| `[,6]` | `Verbal`            | Participants stated the distance between the target cone and themselves, in feet and inches                                                                                                                                                                                                                                                       |
+| `[,7]` | `Visual Matching`   | An experimenter stood next to the target cone and walked away from the cone in a straight line that was perpendicular to the extent between the target and the participant. Participants instructed the experimenter to stop walking when they thought that the distance between the target and the experimenter was equal to the target distance |
+
+## Source
+
+Twedt, E. Bakdash, J.Z., and Proffitt, D.R. (2022). Repeated and
+multivariate measures of perceived distance (Dataset)
+[doi:10.5281/zenodo.6967162](https://doi.org/10.5281/zenodo.6967162)

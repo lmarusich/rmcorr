@@ -1,0 +1,76 @@
+# Confidence Interval Fix
+
+### Confidence Interval Fix in 0.5.4
+
+In versions of rmcorr prior to 0.5.4, confidence intervals (CIs) were
+incorrectly calculated using the error degrees of freedom instead of
+using the effective sample size (error df + 2). Generally, the
+difference is slight, with the previous incorrect CIs tending to be a
+bit too broad (conservative). However, when *both* the number of
+participants *and* repeated measures are small, the prior incorrect
+confidence intervals were substantially too wide. In other words, a
+difference of 2 in the df has diminishing impact on the width of CIs as
+the error df increases.
+
+This fix does not change the effect size, *p*-value, or the error
+degrees of freedom. All remain the same as prior versions. Bootstrapped
+CIs are also unaffected.
+
+#### Example with Slight Difference in CIs
+
+We use the data from raz2005 to compare the old, incorrect CI
+calculation to the current, correct CI. The sample size is *N* = 72 with
+*k* = 2 repeated measures. Note the difference in CI bounds is slight:
+old, incorrect 95% CI \[-0.8053581, -0.5637514\] and current, correct
+95% CI \[ -0.804153, -0.566080\].
+
+``` r
+brainvolage.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = Volume, dataset = raz2005)
+#> Warning in rmcorr(participant = Participant, measure1 = Age, measure2 = Volume,
+#> : 'Participant' coerced into a factor
+
+#Old, incorrect CI using error df
+psych::r.con(brainvolage.rmc$r, brainvolage.rmc$df, p = 0.95)
+#> [1] -0.8053581 -0.5637514
+
+#Current, correct CI using effective sample size
+brainvolage.rmc$CI
+#> [1] -0.804153 -0.566080
+
+#Manual calculation
+psych::r.con(brainvolage.rmc$r, brainvolage.rmc$df + 2, p = 0.95)
+#> [1] -0.804153 -0.566080
+```
+
+#### Example with Substantial Difference in CIs
+
+For a small sample size (*N* = 5 total participants) with *k* = 2
+repeated measures and *r*_(*rm*) = 0.88, we show a substantial
+difference in the old 95% CI \[-0.5257087, 0.9974701\] compared to the
+correct 95% CI \[0.2394418, 0.9868084\].
+
+``` r
+#Old, incorrect CI using error df
+psych::r.con(0.88, 4, p = 0.95)
+#> [1] -0.5257087  0.9974701
+
+#Current, correct CI using effective sample size
+psych::r.con(0.88, 6, p = 0.95)
+#> [1] 0.2394418 0.9868084
+```
+
+#### Another Slight Example: Same as Above with a Larger Sample Size
+
+The same example as above except with the number of participants
+quadrupled: *N* = 20. Note the difference in coverage of CIs is now
+slight.
+
+``` r
+#Old, incorrect CI using error df
+psych::r.con(0.88, 19, p = 0.95)
+#> [1] 0.7093015 0.9532081
+
+#Current, correct CI using effective sample size
+psych::r.con(0.88, 21, p = 0.95)
+#> [1] 0.7229510 0.9505773
+```

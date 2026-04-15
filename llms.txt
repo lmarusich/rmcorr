@@ -1,0 +1,119 @@
+# rmcorr
+
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/rmcorr)](https://cran.r-project.org/package=rmcorr)
+[![metacran
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmcorr)](https://cran.r-project.org/package=rmcorr)
+[![metacran
+downloads](https://cranlogs.r-pkg.org/badges/rmcorr)](https://cran.r-project.org/package=rmcorr)
+[![Codecov test
+coverage](https://codecov.io/gh/lmarusich/rmcorr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/lmarusich/rmcorr?branch=master)
+
+Repeated measures correlation (rmcorr) is a statistical technique for
+determining the common within-individual association for paired measures
+assessed on two or more occasions for multiple individuals.
+
+## Installation
+
+``` r
+install.packages('rmcorr')
+
+#development version:
+# install.packages("devtools")
+devtools::install_github("lmarusich/rmcorr")
+```
+
+## Example
+
+``` r
+library(rmcorr)
+rmcorr(Subject, PaCO2, pH, bland1995)
+#> Warning in rmcorr(Subject, PaCO2, pH, bland1995): 'Subject' coerced into a
+#> factor
+#> 
+#> Repeated measures correlation
+#> 
+#> r
+#> -0.5067697
+#> 
+#> degrees of freedom
+#> 38
+#> 
+#> p-value
+#> 0.0008471081
+#> 
+#> 95% confidence interval
+#> -0.7067146 -0.2318631
+```
+
+## Graphical Interface for rmcorr
+
+A Shiny web and standalone app with a graphical user interface is also
+available:  
+[Web app](https://lmarusich.shinyapps.io/shiny_rmcorr/)  
+[Standalone app](https://github.com/lmarusich/rmcorrShiny)
+
+![](reference/figures/rmcorr_example_input_plot.jpg)
+
+## Disclaimer
+
+This software was developed by U.S. Government employees and is subject
+to revision. The views expressed in the documentation and corresponding
+publications do not necessary represent the views of the U.S.
+Government.
+
+This software is being provided to meet the need for timely best
+science. No warranty, expressed or implied, is made by the U.S.
+Government as to the functionality of the software and related material
+nor shall the fact of release constitute any such warranty. The software
+is provided on the condition that the U.S. Government shall not be held
+liable for any damages resulting from the authorized or unauthorized use
+of the software.
+
+The above text was adapted from the USGS software disclaimer: [toxEval
+U.S. Government
+disclaimer](https://github.com/DOI-USGS/toxEval/tree/27eb744edb86dd7e7842e8907ec875ca6c0f5674)
+
+# Package index
+
+## All functions
+
+- [`HCAHPS2022`](HCAHPS2022.md) : Nested and multivariate survey
+  measures of hospital patient experience and other measures
+- [`bland1995`](bland1995.md) : Repeated measurements of intramural pH
+  and PaCO2
+- [`geom_rmc()`](geom_rmc.md) : geom_rmc: ggplot2 geom for simplified
+  graphing
+- [`gilden2010`](gilden2010.md) : Repeated measurements of reaction time
+  and accuracy
+- [`glance(`*`<rmc>`*`)`](glance.rmc.md) : Glance for a(n) rmcorr object
+- [`marusich2016_exp2`](marusich2016_exp2.md) : Repeated measurements of
+  dyads performance and subjective situation awareness
+- [`plot(`*`<rmc>`*`)`](plot.rmc.md) : Plot the repeated measures
+  correlation coefficient.
+- [`print(`*`<rmc>`*`)`](print.rmc.md) : Print the results of a repeated
+  measures correlation
+- [`print(`*`<rmcmat>`*`)`](print.rmcmat.md) : Print the repeated
+  measures correlation matrix
+- [`raz2005`](raz2005.md) : Repeated measurements of age and cerebellar
+  volume
+- [`rmcorr()`](rmcorr.md) : Calculate the repeated measures correlation
+  coefficient.
+- [`rmcorr_mat()`](rmcorr_mat.md) : Create a repeated measures
+  correlation matrix.
+- [`tidy(`*`<rmc>`*`)`](tidy.rmc.md) : Tidy for a(n) rmcorr object
+- [`twedt_dist_measures`](twedt_dist_measures.md) : Repeated measures
+  and multivariate measures of perceived distance
+
+# Articles
+
+### All vignettes
+
+- [Confidence Interval Fix](CI_fix.md):
+- [Comparing Correlations](compcor.md):
+- [rmcorr Estimates with NaN](estimates_w_NaN.md):
+- [Frequently Asked Questions and Limitations](FAQ_and_limitations.md):
+- [Diagnostic Plots](model_diag.md):
+- [Reproduce Paper Results](New_rmcorr_paper_analyses_figures.md):
+- [Overfitting/Pseudoreplication](overfitting.md):
+- [Bootstrapping Example](repro_bootstrapping.md):
+- [Correlation Matrix using rmcorr_mat](rmcorr_mat.md):

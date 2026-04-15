@@ -6,27 +6,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Correlation Matrix using rmcorr_mat • rmcorr</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Correlation Matrix using rmcorr_mat">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,15 +38,15 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a></li>
-    <li><a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce Paper Results</a></li>
-    <li><a class="dropdown-item" href="../articles/CI_fix.html">Confidence Interval Fix</a></li>
-    <li><a class="dropdown-item" href="../articles/repro_bootstrapping.html">Bootstrapping Example</a></li>
+<li><a class="dropdown-item" href="../articles/CI_fix.html">Confidence Interval Fix</a></li>
     <li><a class="dropdown-item" href="../articles/compcor.html">Comparing Correlations</a></li>
-    <li><a class="dropdown-item" href="../articles/rmcorr_mat.html">Correlation Matrix using rmcorr_mat</a></li>
-    <li><a class="dropdown-item" href="../articles/model_diag.html">Diagnostic Plots</a></li>
     <li><a class="dropdown-item" href="../articles/estimates_w_NaN.html">rmcorr Estimates with NaN</a></li>
+    <li><a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a></li>
+    <li><a class="dropdown-item" href="../articles/model_diag.html">Diagnostic Plots</a></li>
+    <li><a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce Paper Results</a></li>
     <li><a class="dropdown-item" href="../articles/overfitting.html">Overfitting/Pseudoreplication</a></li>
+    <li><a class="dropdown-item" href="../articles/repro_bootstrapping.html">Bootstrapping Example</a></li>
+    <li><a class="dropdown-item" href="../articles/rmcorr_mat.html">Correlation Matrix using rmcorr_mat</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -57,14 +56,6 @@
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/lmarusich/rmcorr/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
-<li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
-<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
-    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
-    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
-  </ul>
-</li>
       </ul>
 </div>
 
@@ -81,7 +72,7 @@
                         <h4 data-toc-skip class="author">Jonathan
 Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2024-08-14</h4>
+            <h4 data-toc-skip class="date">2026-04-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/master/vignettes/rmcorr_mat.Rmd" class="external-link"><code>vignettes/rmcorr_mat.Rmd</code></a></small>
       <div class="d-none name"><code>rmcorr_mat.Rmd</code></div>
@@ -90,13 +81,16 @@ Bakdash and Laura Marusich</h4>
     
     
 <div class="section level4">
-<h4 id="running-examples-requires-corrplot-corrplot2021">Running Examples Requires corrplot <span class="citation">(Wei and
-Simko 2021)</span><a class="anchor" aria-label="anchor" href="#running-examples-requires-corrplot-corrplot2021"></a>
+<h4 id="running-examples-requires-corrplot-corrplot2021-and-corrr-corrr2025">Running Examples Requires corrplot <span class="citation">(Wei and
+Simko 2021)</span> and corrr <span class="citation">(Kuhn, Jackson, and
+Cimentada 2025)</span><a class="anchor" aria-label="anchor" href="#running-examples-requires-corrplot-corrplot2021-and-corrr-corrr2025"></a>
 </h4>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#Install corrplot</span></span>
+<code class="sourceCode R"><span><span class="co">#Install corrplot and corrr</span></span>
 <span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"corrplot"</span><span class="op">)</span></span>
-<span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/taiyun/corrplot" class="external-link">corrplot</a></span><span class="op">)</span></span></code></pre></div>
+<span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"corrr"</span><span class="op">)</span></span>
+<span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/taiyun/corrplot" class="external-link">corrplot</a></span><span class="op">)</span></span>
+<span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/corrr" class="external-link">corrr</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="plotting-a-correlation-matrix">Plotting a Correlation Matrix<a class="anchor" aria-label="anchor" href="#plotting-a-correlation-matrix"></a>
@@ -114,7 +108,7 @@ correlation matrix.</p>
 <span>                           CI.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/corrplot/man/corrplot.html" class="external-link">corrplot</a></span><span class="op">(</span><span class="va">dist_rmc_mat</span><span class="op">$</span><span class="va">matrix</span><span class="op">)</span></span></code></pre></div>
-<p><img src="rmcorr_mat_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<p><img src="rmcorr_mat_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="" width="700"></p>
 </div>
 <div class="section level2">
 <h2 id="plotting-multiple-models">Plotting Multiple Models<a class="anchor" aria-label="anchor" href="#plotting-multiple-models"></a>
@@ -135,7 +129,7 @@ correlation matrix.</p>
 <span></span>
 <span><span class="co">#Reset graphing parameters</span></span>
 <span><span class="co">#dev.off()</span></span></code></pre></div>
-<p><img src="rmcorr_mat_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<p><img src="rmcorr_mat_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="" width="700"></p>
 </div>
 <div class="section level2">
 <h2 id="adjusting-for-multiple-comparisons">Adjusting for Multiple Comparisons<a class="anchor" aria-label="anchor" href="#adjusting-for-multiple-comparisons"></a>
@@ -206,7 +200,62 @@ similar <em>p</em>-values.</p>
 <span><span class="co">#&gt;  [8,]    0.01363    0.13630 0.01363</span></span>
 <span><span class="co">#&gt;  [9,]    0.00061    0.00610 0.00087</span></span>
 <span><span class="co">#&gt; [10,]    0.00000    0.00000 0.00000</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="examples-with-corrr-package">Examples with corrr package<a class="anchor" aria-label="anchor" href="#examples-with-corrr-package"></a>
+</h2>
+<p>The rmc matrix can be converted to a correlation data frame object
+for use with <em>corrr</em>.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#rmc matrix</span></span>
+<span><span class="va">dist_rmc_mat</span><span class="op">$</span><span class="va">matrix</span></span>
+<span><span class="co">#&gt;                  Blindwalk Away Blindwalk Toward Triangulated BW    Verbal</span></span>
+<span><span class="co">#&gt; Blindwalk Away        1.0000000        0.8065821       0.2382857 0.7355813</span></span>
+<span><span class="co">#&gt; Blindwalk Toward      0.8065821        1.0000000       0.2254866 0.7160551</span></span>
+<span><span class="co">#&gt; Triangulated BW       0.2382857        0.2254866       1.0000000 0.1835838</span></span>
+<span><span class="co">#&gt; Verbal                0.7355813        0.7160551       0.1835838 1.0000000</span></span>
+<span><span class="co">#&gt; Visual matching       0.7758245        0.7575109       0.2537431 0.7341831</span></span>
+<span><span class="co">#&gt;                  Visual matching</span></span>
+<span><span class="co">#&gt; Blindwalk Away         0.7758245</span></span>
+<span><span class="co">#&gt; Blindwalk Toward       0.7575109</span></span>
+<span><span class="co">#&gt; Triangulated BW        0.2537431</span></span>
+<span><span class="co">#&gt; Verbal                 0.7341831</span></span>
+<span><span class="co">#&gt; Visual matching        1.0000000</span></span>
+<span></span>
+<span><span class="co">#Convert to data frame</span></span>
+<span><span class="va">cordf_dist_rmc</span> <span class="op">&lt;-</span> <span class="fu">corrr</span><span class="fu">::</span><span class="fu"><a href="https://corrr.tidymodels.org/reference/as_cordf.html" class="external-link">as_cordf</a></span><span class="op">(</span><span class="va">dist_rmc_mat</span><span class="op">$</span><span class="va">matrix</span>, diagonal <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Formatted matrix</span></span>
+<span><span class="fu">corrr</span><span class="fu">::</span><span class="fu"><a href="https://corrr.tidymodels.org/reference/fashion.html" class="external-link">fashion</a></span><span class="op">(</span><span class="va">cordf_dist_rmc</span><span class="op">)</span></span>
+<span><span class="co">#&gt;               term Blindwalk.Away Blindwalk.Toward Triangulated.BW Verbal</span></span>
+<span><span class="co">#&gt; 1   Blindwalk Away           1.00              .81             .24    .74</span></span>
+<span><span class="co">#&gt; 2 Blindwalk Toward            .81             1.00             .23    .72</span></span>
+<span><span class="co">#&gt; 3  Triangulated BW            .24              .23            1.00    .18</span></span>
+<span><span class="co">#&gt; 4           Verbal            .74              .72             .18   1.00</span></span>
+<span><span class="co">#&gt; 5  Visual matching            .78              .76             .25    .73</span></span>
+<span><span class="co">#&gt;   Visual.matching</span></span>
+<span><span class="co">#&gt; 1             .78</span></span>
+<span><span class="co">#&gt; 2             .76</span></span>
+<span><span class="co">#&gt; 3             .25</span></span>
+<span><span class="co">#&gt; 4             .73</span></span>
+<span><span class="co">#&gt; 5            1.00</span></span>
+<span></span>
+<span><span class="co">#Plot</span></span>
+<span><span class="fu">corrr</span><span class="fu">::</span><span class="fu"><a href="https://corrr.tidymodels.org/reference/rplot.html" class="external-link">rplot</a></span><span class="op">(</span><span class="va">cordf_dist_rmc</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: `aes_string()` was deprecated in ggplot2 3.0.0.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use tidy evaluation idioms with `aes()`.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> See also `vignette("ggplot2-in-packages")` for more information.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">corrr</span> package.</span></span>
+<span><span class="co">#&gt;   Please report the issue at <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/tidymodels/corrr/issues&gt;</span>.</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once per session.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span></code></pre></div>
+<p><img src="rmcorr_mat_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="" width="700"></p>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-corrr2025" class="csl-entry">
+Kuhn, Max, Simon Jackson, and Jorge Cimentada. 2025. <em>Corrr:
+Correlations in r</em>. <a href="https://doi.org/10.32614/CRAN.package.corrr" class="external-link">https://doi.org/10.32614/CRAN.package.corrr</a>.
+</div>
 <div id="ref-corrplot2021" class="csl-entry">
 Wei, Taiyun, and Viliam Simko. 2021. <em>R Package ’Corrplot’:
 Visualization of a Correlation Matrix</em>. <a href="https://github.com/taiyun/corrplot" class="external-link">https://github.com/taiyun/corrplot</a>.
@@ -224,7 +273,7 @@ Visualization of a Correlation Matrix</em>. <a href="https://github.com/taiyun/c
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

@@ -6,27 +6,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Reproduce Paper Results • rmcorr</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Reproduce Paper Results">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="../index.html">rmcorr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,15 +38,15 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a></li>
-    <li><a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce Paper Results</a></li>
-    <li><a class="dropdown-item" href="../articles/CI_fix.html">Confidence Interval Fix</a></li>
-    <li><a class="dropdown-item" href="../articles/repro_bootstrapping.html">Bootstrapping Example</a></li>
+<li><a class="dropdown-item" href="../articles/CI_fix.html">Confidence Interval Fix</a></li>
     <li><a class="dropdown-item" href="../articles/compcor.html">Comparing Correlations</a></li>
-    <li><a class="dropdown-item" href="../articles/rmcorr_mat.html">Correlation Matrix using rmcorr_mat</a></li>
-    <li><a class="dropdown-item" href="../articles/model_diag.html">Diagnostic Plots</a></li>
     <li><a class="dropdown-item" href="../articles/estimates_w_NaN.html">rmcorr Estimates with NaN</a></li>
+    <li><a class="dropdown-item" href="../articles/FAQ_and_limitations.html">Frequently Asked Questions and Limitations</a></li>
+    <li><a class="dropdown-item" href="../articles/model_diag.html">Diagnostic Plots</a></li>
+    <li><a class="dropdown-item" href="../articles/New_rmcorr_paper_analyses_figures.html">Reproduce Paper Results</a></li>
     <li><a class="dropdown-item" href="../articles/overfitting.html">Overfitting/Pseudoreplication</a></li>
+    <li><a class="dropdown-item" href="../articles/repro_bootstrapping.html">Bootstrapping Example</a></li>
+    <li><a class="dropdown-item" href="../articles/rmcorr_mat.html">Correlation Matrix using rmcorr_mat</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -57,14 +56,6 @@
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/lmarusich/rmcorr/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
-<li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
-<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
-    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
-    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
-  </ul>
-</li>
       </ul>
 </div>
 
@@ -81,7 +72,7 @@
                         <h4 data-toc-skip class="author">Jonathan
 Bakdash and Laura Marusich</h4>
             
-            <h4 data-toc-skip class="date">2024-08-14</h4>
+            <h4 data-toc-skip class="date">2026-04-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/lmarusich/rmcorr/blob/master/vignettes/New_rmcorr_paper_analyses_figures.Rmd" class="external-link"><code>vignettes/New_rmcorr_paper_analyses_figures.Rmd</code></a></small>
       <div class="d-none name"><code>New_rmcorr_paper_analyses_figures.Rmd</code></div>
@@ -212,7 +203,7 @@ Bakdash and Laura Marusich</h4>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">0.90</span>, <span class="op">-</span><span class="fl">5.75</span>, adj <span class="op">=</span> <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/bquote.html" class="external-link">bquote</a></span><span class="op">(</span><span class="fu">italic</span><span class="op">(</span><span class="st">'p'</span><span class="op">)</span><span class="op">~</span><span class="st">"="</span><span class="op">~</span><span class="fu">.</span><span class="op">(</span><span class="va">example.cor.p</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">submeany</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">~</span><span class="va">submeanx</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span>,col<span class="op">=</span><span class="st">"gray50"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-3-1.png" width="768"></p>
+<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="" width="768"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#(A) Rmcorr plot: rmcorr plot for a set of hypothetical data and (B) simple regression plot: the </span></span>
@@ -279,7 +270,7 @@ Bakdash and Laura Marusich</h4>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html" class="external-link">mtext</a></span><span class="op">(</span>side <span class="op">=</span> <span class="fl">1</span>, outer <span class="op">=</span> <span class="cn">T</span>, line <span class="op">=</span> <span class="fl">1.5</span>, <span class="st">"x"</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.175</span>, <span class="fl">.5</span>, <span class="fl">.85</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html" class="external-link">mtext</a></span><span class="op">(</span>side <span class="op">=</span> <span class="fl">2</span>, outer <span class="op">=</span> <span class="cn">T</span>, line <span class="op">=</span> <span class="fl">1.5</span>, <span class="st">"y"</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.175</span>, <span class="fl">.5</span>, <span class="fl">.85</span><span class="op">)</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-4-1.png" width="768"></p>
+<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="" width="768"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># mtext(side = 3, outer = T, line = .5, </span></span>
 <span><span class="co">#       c("a) rmcorr = -1", "b) rmcorr = 0", "c) rmcorr = 1"),</span></span>
@@ -377,7 +368,7 @@ Bakdash and Laura Marusich</h4>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3.5</span>, <span class="fl">1.75</span>, adj <span class="op">=</span> <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/bquote.html" class="external-link">bquote</a></span><span class="op">(</span><span class="fu">italic</span><span class="op">(</span><span class="st">'p'</span><span class="op">)</span><span class="op">~</span><span class="fu">.</span><span class="op">(</span><span class="va">example3.rmc.p</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html" class="external-link">mtext</a></span><span class="op">(</span>side <span class="op">=</span> <span class="fl">2</span>, <span class="st">"y"</span>, las <span class="op">=</span> <span class="fl">1</span>, line <span class="op">=</span> <span class="fl">2.5</span>, cex <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-5-1.png" width="1152"></p>
+<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" alt="" width="1152"></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#Figure 3. Rmcorr-values (and corresponding p-values) do not change with linear </span></span>
@@ -393,7 +384,7 @@ Bakdash and Laura Marusich</h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">power.rmcorr</span><span class="op">&lt;-</span><span class="kw">function</span><span class="op">(</span><span class="va">k</span>, <span class="va">N</span>, <span class="va">effectsizer</span>, <span class="va">sig</span><span class="op">)</span></span>
 <span><span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.r.test.html" class="external-link">pwr.r.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="op">(</span><span class="op">(</span><span class="va">N</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="va">k</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span><span class="fl">1</span>, r <span class="op">=</span> <span class="va">effectsizer</span>, sig.level <span class="op">=</span> <span class="va">sig</span><span class="op">)</span> </span>
+<span>    <span class="fu">pwr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.r.test.html" class="external-link">pwr.r.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="op">(</span><span class="op">(</span><span class="va">N</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="va">k</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span><span class="fl">1</span>, r <span class="op">=</span> <span class="va">effectsizer</span>, sig.level <span class="op">=</span> <span class="va">sig</span><span class="op">)</span> </span>
 <span>    <span class="co">#df are specified this way because pwr.r.test assumes the input is N, so it uses N - 2 for the df</span></span>
 <span><span class="op">}</span></span>
 <span></span>
@@ -402,7 +393,7 @@ Bakdash and Laura Marusich</h4>
 <span><span class="co">#Small effect size</span></span>
 <span><span class="va">k</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">20</span><span class="op">)</span> </span>
 <span><span class="va">nvals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">300</span><span class="op">)</span></span>
-<span><span class="va">powPearsonSmall</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">nvals</span>, <span class="kw">function</span> <span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.r.test.html" class="external-link">pwr.r.test</a></span><span class="op">(</span>n<span class="op">=</span><span class="va">x</span>, r<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span><span class="op">$</span><span class="va">power</span><span class="op">)</span></span>
+<span><span class="va">powPearsonSmall</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">nvals</span>, <span class="kw">function</span> <span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">pwr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.r.test.html" class="external-link">pwr.r.test</a></span><span class="op">(</span>n<span class="op">=</span><span class="va">x</span>, r<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span><span class="op">$</span><span class="va">power</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">bluecolors</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#c6dbef"</span>, <span class="st">"#9ecae1"</span>, <span class="st">"#6baed6"</span>, <span class="st">"#4292c6"</span>, <span class="st">"#2171b5"</span>, <span class="st">"#084594"</span><span class="op">)</span></span>
 <span></span>
@@ -477,7 +468,7 @@ Bakdash and Laura Marusich</h4>
 <span>       cex <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">0.8</span>, b<span class="op">=</span><span class="fl">0</span>, col<span class="op">=</span><span class="fl">1</span>, lty<span class="op">=</span><span class="fl">2</span>, lwd<span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">nvals</span>, <span class="va">powPearsonlarge</span>, col<span class="op">=</span><span class="va">purplecolors</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, lwd <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span></span></code></pre></div>
-<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
+<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#Figure 4. Power curves for (A) small, rrm, and r = 0.10, (B) medium, rrm, and r = 0.3, and (C) large effect sizes, rrm, </span></span>
@@ -638,7 +629,7 @@ Bakdash and Laura Marusich</h4>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">20</span>,<span class="fl">105</span>, adj <span class="op">=</span> <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/bquote.html" class="external-link">bquote</a></span><span class="op">(</span><span class="fu">italic</span><span class="op">(</span><span class="st">'p'</span><span class="op">)</span><span class="op">~</span><span class="fu">.</span><span class="op">(</span><span class="va">fig.5c.p</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#text(20,107,paste('r =', round(c.rtest$est,2),'\np &lt; 0.001'), adj = 0)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/title.html" class="external-link">title</a></span><span class="op">(</span><span class="st">"C)"</span>, adj <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
-<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-7-1.png" width="864"></p>
+<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-7-1.png" class="r-plt" alt="" width="864"></p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#Figure 5. Comparison of rmcorr and simple regression/correlation results for age and brain structure volume data. </span></span>
@@ -760,7 +751,7 @@ Bakdash and Laura Marusich</h4>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">0.95</span>,<span class="fl">0.8</span>, adj <span class="op">=</span> <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/bquote.html" class="external-link">bquote</a></span><span class="op">(</span><span class="fu">italic</span><span class="op">(</span><span class="st">'r'</span><span class="op">)</span><span class="op">~</span><span class="st">"="</span><span class="op">~</span> <span class="fu">.</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">c.rtest</span><span class="op">$</span><span class="va">estimate</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, cex <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">0.95</span>,<span class="fl">0.7925</span>, adj <span class="op">=</span> <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/bquote.html" class="external-link">bquote</a></span><span class="op">(</span><span class="fu">italic</span><span class="op">(</span><span class="st">'p'</span><span class="op">)</span><span class="op">~</span><span class="st">"&lt;"</span><span class="op">~</span><span class="fu">.</span><span class="op">(</span><span class="fu">pvals.fct</span><span class="op">(</span><span class="va">c.rtest</span><span class="op">$</span><span class="va">p.value</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, cex <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/title.html" class="external-link">title</a></span><span class="op">(</span><span class="st">"C)"</span>, adj <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
-<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-8-1.png" width="864"></p>
+<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="" width="864"></p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#text(.95,.8,paste('r =', round(c.rtest$est,2),'\np =', round(c.rtest$p.value,2)), adj = 1)</span></span>
 <span></span>
@@ -791,7 +782,7 @@ Bakdash and Laura Marusich</h4>
 <span><span class="co">#&gt; Linear mixed model fit by maximum likelihood  ['lmerMod']</span></span>
 <span><span class="co">#&gt; Formula: Volume ~ Age + (1 | Participant)</span></span>
 <span><span class="co">#&gt;    Data: raz2005</span></span>
-<span><span class="co">#&gt;       AIC       BIC    logLik  deviance  df.resid </span></span>
+<span><span class="co">#&gt;       AIC       BIC    logLik -2*log(L)  df.resid </span></span>
 <span><span class="co">#&gt;  977.4705  989.3497 -484.7352  969.4705       140 </span></span>
 <span><span class="co">#&gt; Random effects:</span></span>
 <span><span class="co">#&gt;  Groups      Name        Std.Dev.</span></span>
@@ -844,7 +835,7 @@ Bakdash and Laura Marusich</h4>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">Participant</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_colour_gradientn</a></span><span class="op">(</span>colours<span class="op">=</span><span class="fu">kelly</span><span class="op">(</span><span class="fl">22</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_abline</a></span><span class="op">(</span>intercept <span class="op">=</span> <span class="fu">fixef</span><span class="op">(</span><span class="va">null.vol</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, slope <span class="op">=</span> <span class="fu">fixef</span><span class="op">(</span><span class="va">null.vol</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, colour <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">1</span>, linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> </span></code></pre></div>
-<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
+<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-9-1.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#Appendix C, Figure 1: Dots are actual data values, with color indicating participant. Solid</span></span>
@@ -875,9 +866,9 @@ Bakdash and Laura Marusich</h4>
 <span><span class="co">#&gt; Models:</span></span>
 <span><span class="co">#&gt; null.vis: acc ~ rt + (1 | sub)</span></span>
 <span><span class="co">#&gt; model1.vis: acc ~ rt + (1 + rt | sub)</span></span>
-<span><span class="co">#&gt;            npar     AIC     BIC logLik deviance  Chisq Df Pr(&gt;Chisq)</span></span>
-<span><span class="co">#&gt; null.vis      4 -197.41 -190.27 102.70  -205.41                     </span></span>
-<span><span class="co">#&gt; model1.vis    6 -193.46 -182.75 102.73  -205.46 0.0497  2     0.9754</span></span>
+<span><span class="co">#&gt;            npar     AIC     BIC logLik -2*log(L)  Chisq Df Pr(&gt;Chisq)</span></span>
+<span><span class="co">#&gt; null.vis      4 -197.41 -190.27 102.70   -205.41                     </span></span>
+<span><span class="co">#&gt; model1.vis    6 -193.46 -182.75 102.73   -205.46 0.0497  2     0.9754</span></span>
 <span></span>
 <span><span class="co">#b) Evidence ratio using AIC</span></span>
 <span><span class="va">Models.vis</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -937,7 +928,7 @@ Bakdash and Laura Marusich</h4>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_abline</a></span><span class="op">(</span>intercept <span class="op">=</span> <span class="fu">fixef</span><span class="op">(</span><span class="va">null.vis</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, slope <span class="op">=</span> <span class="fu">fixef</span><span class="op">(</span><span class="va">null.vis</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, colour <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">1</span>, linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0.80</span>, <span class="fl">1.0</span>, <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0.50</span>, <span class="fl">0.9</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
-<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
+<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#Converted to EPS file using Acrobat Pro b/c EPS doesn't support transparency</span></span>
@@ -955,8 +946,8 @@ Bakdash and Laura Marusich</h4>
 <span><span class="co">#&gt; Computing profile confidence intervals ...</span></span>
 <span><span class="co">#&gt;                   2.5 %     97.5 %</span></span>
 <span><span class="co">#&gt; .sig01       0.02197527 0.11293808</span></span>
-<span><span class="co">#&gt; .sig02      -1.00000000 1.00000000</span></span>
-<span><span class="co">#&gt; .sig03       0.00000000        Inf</span></span>
+<span><span class="co">#&gt; .sig02       0.00000000 0.16222660</span></span>
+<span><span class="co">#&gt; .sig03      -1.00000000 1.00000000</span></span>
 <span><span class="co">#&gt; .sigma       0.01303108 0.02157782</span></span>
 <span><span class="co">#&gt; (Intercept)  0.91458725 1.06378202</span></span>
 <span><span class="co">#&gt; rt          -0.15425292 0.03364490</span></span>
@@ -1052,7 +1043,7 @@ paper)<a class="anchor" aria-label="anchor" href="#diagnostic-plot-rmcorr-and-st
 <span>       y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="va">Cerebellar</span><span class="op">~</span><span class="va">Hemisphere</span><span class="op">~</span><span class="va">Volume</span><span class="op">~</span><span class="op">(</span><span class="va">cm</span><span class="op">^</span><span class="op">{</span><span class="fl">3</span><span class="op">}</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">Participant</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_colour_gradientn</a></span><span class="op">(</span>colours<span class="op">=</span><span class="fu">kelly</span><span class="op">(</span><span class="fl">22</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
+<p><img src="New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-11-1.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co">#ggsave(file = "plots/Figure_rmcorr_diagnostic.pdf", width = 5.70 , height = 5.73, dpi = 300)</span></span>
@@ -1071,7 +1062,7 @@ paper)<a class="anchor" aria-label="anchor" href="#diagnostic-plot-rmcorr-and-st
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>
