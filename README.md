@@ -22,7 +22,7 @@ install.packages('rmcorr')
 
 #development version:
 # install.packages("devtools")
-devtools::install_github("lmarusich/rmcorr")
+pak::pak("lmarusich/rmcorr")
 ```
 
 ## Example
