@@ -8,6 +8,7 @@ Shreya Ghosh for this example.
 #### Running Examples Requires ggExtra (Attali and Baker 2022)
 
 ``` r
+
 install.packages("ggExtra")
 require(ggExtra)
 ```
@@ -15,6 +16,7 @@ require(ggExtra)
 #### Load data, visualize, and model
 
 ``` r
+
 load(file = "../man/data/ghosh_synth.rda")
 
 #Look at data
@@ -53,16 +55,18 @@ p1
 
 ``` r
 
+
 rmc.ghosh <- rmcorr(Subject, A3, A4, ghosh_synth)
 #> Warning in rmcorr(Subject, A3, A4, ghosh_synth): 'Subject' coerced into a
 #> factor
+#> Warning in sqrt(SSFactor/(SSFactor + SSresidual)): NaNs produced
 
 rmc.ghosh
 #> 
 #> Repeated measures correlation
 #> 
 #> r
-#> 0
+#> NaN
 #> 
 #> degrees of freedom
 #> 9
@@ -71,7 +75,7 @@ rmc.ghosh
 #> 1
 #> 
 #> 95% confidence interval
-#> -0.599875 0.599875
+#> NaN NaN
 
 #The default rmcorr plot doesn't jitter values, this masks identical values because they are drawn on top of each other
 plot(rmc.ghosh)
@@ -86,6 +90,7 @@ of random noise.
 #### Add random noise
 
 ``` r
+
 set.seed(67) 
 small.noise1 <- rnorm(dim(ghosh_synth)[[1]], 0, 0.2)
 small.noise2 <- rnorm(dim(ghosh_synth)[[1]], 0, 0.2)

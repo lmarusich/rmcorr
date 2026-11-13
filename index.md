@@ -15,16 +15,18 @@ assessed on two or more occasions for multiple individuals.
 ## Installation
 
 ``` r
+
 install.packages('rmcorr')
 
 #development version:
 # install.packages("devtools")
-devtools::install_github("lmarusich/rmcorr")
+pak::pak("lmarusich/rmcorr")
 ```
 
 ## Example
 
 ``` r
+
 library(rmcorr)
 rmcorr(Subject, PaCO2, pH, bland1995)
 #> Warning in rmcorr(Subject, PaCO2, pH, bland1995): 'Subject' coerced into a

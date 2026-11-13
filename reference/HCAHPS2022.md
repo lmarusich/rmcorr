@@ -55,22 +55,22 @@ HCAHPS2022
 
 A data frame with 53 rows and 14 columns
 
-|         |                                       |                                                                                                                                                                                                    |
-|---------|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `[,1]`  | `State`                               | Unique identifier for each U.S. state/territory, see <https://npiregistry.cms.hhs.gov/help-api/state>                                                                                              |
-| `[,2]`  | `Region`                              | The region nesting states and territories, according to the U.S. Census Bureau                                                                                                                     |
-| `[,3]`  | `Communication with Nurses`           | Composite measure (3 questions) for nurse communication with patient (e.g., "During this hospital stay, how often did nurses listen carefully to you?")                                            |
-| `[,4]`  | `Communication with Doctors`          | Composite measure (3 questions) for doctor communication with patient (e.g., "During this hospital stay, how often did doctors explain things in a way you could understand?")                     |
-| `[,5]`  | `Responsiveness of Hospital Staff`    | Composite measure (2 questions) for responsiveness of hospital staff (e.g., How often did you get help in getting to the bathroom or in using a bedpan as soon as you wanted?)                     |
-| `[,6]`  | `Communication About Medicines`       | Composite measure (2 questions) for healthcare provider communication about medicines (e.g., Before giving you any new medicine, how often did hospital staff tell you what the medicine was for?) |
-| `[,7]`  | `Cleanliness of Hospital Environment` | Individual item: "During this hospital stay, how often were your room and bathroom kept clean?"                                                                                                    |
-| `[,8]`  | `Quietness of Hospital Environment`   | Individual item: "During this hospital stay, how often was the area around your room quiet at night?"                                                                                              |
-| `[,9]`  | `Discharge Information`               | Composite measure (2 questions) for communication about care needed after leaving the hospital (e.g., was help needed after leaving the hospital discussed?)                                       |
-| `[,10]` | `Care Transition`                     | Composite measure (3 questions) for understanding of care needed (e.g., "When I left the hospital, I had a good understanding of the things I was responsible for in managing my health?")         |
-| `[,11]` | `Hospital Rating`                     | Ten point Likert scale rating of hospital (worse possible to best possible)                                                                                                                        |
-| `[,12]` | `Recommend the Hospital`              | Individual item: "Would you recommend this hospital...?" Percent of "yes" responses                                                                                                                |
-| `[,13]` | `Participating Hospitals`             | Number of participating hospitals in the region                                                                                                                                                    |
-| `[,14]` | `Survey Response Rate`                | Patient survey response rate for each state/territory (%)                                                                                                                                          |
+|  |  |  |
+|----|----|----|
+| `[,1]` | `State` | Unique identifier for each U.S. state/territory, see <https://npiregistry.cms.hhs.gov/help-api/state> |
+| `[,2]` | `Region` | The region nesting states and territories, according to the U.S. Census Bureau |
+| `[,3]` | `Communication with Nurses` | Composite measure (3 questions) for nurse communication with patient (e.g., "During this hospital stay, how often did nurses listen carefully to you?") |
+| `[,4]` | `Communication with Doctors` | Composite measure (3 questions) for doctor communication with patient (e.g., "During this hospital stay, how often did doctors explain things in a way you could understand?") |
+| `[,5]` | `Responsiveness of Hospital Staff` | Composite measure (2 questions) for responsiveness of hospital staff (e.g., How often did you get help in getting to the bathroom or in using a bedpan as soon as you wanted?) |
+| `[,6]` | `Communication About Medicines` | Composite measure (2 questions) for healthcare provider communication about medicines (e.g., Before giving you any new medicine, how often did hospital staff tell you what the medicine was for?) |
+| `[,7]` | `Cleanliness of Hospital Environment` | Individual item: "During this hospital stay, how often were your room and bathroom kept clean?" |
+| `[,8]` | `Quietness of Hospital Environment` | Individual item: "During this hospital stay, how often was the area around your room quiet at night?" |
+| `[,9]` | `Discharge Information` | Composite measure (2 questions) for communication about care needed after leaving the hospital (e.g., was help needed after leaving the hospital discussed?) |
+| `[,10]` | `Care Transition` | Composite measure (3 questions) for understanding of care needed (e.g., "When I left the hospital, I had a good understanding of the things I was responsible for in managing my health?") |
+| `[,11]` | `Hospital Rating` | Ten point Likert scale rating of hospital (worse possible to best possible) |
+| `[,12]` | `Recommend the Hospital` | Individual item: "Would you recommend this hospital...?" Percent of "yes" responses |
+| `[,13]` | `Participating Hospitals` | Number of participating hospitals in the region |
+| `[,14]` | `Survey Response Rate` | Patient survey response rate for each state/territory (%) |
 
 ## Source
 

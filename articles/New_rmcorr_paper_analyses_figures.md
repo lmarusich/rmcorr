@@ -3,6 +3,7 @@
 #### Required Packages and Functions
 
 ``` r
+
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(pwr, psych, RColorBrewer, plotrix, rmcorr, lme4, ggplot2, 
                AICcmodavg, ggplot2, merTools, pals)
@@ -60,6 +61,7 @@ getOption("boot.ncpus", 1L)
 ### 1. Figure 1: rmcorr and reg plot
 
 ``` r
+
 # echo = FALSE, warning = FALSE, results =  "hide",
 set.seed(1)
 
@@ -128,6 +130,7 @@ abline(lm(submeany[,2]~submeanx[,2]),col="gray50")
 
 ``` r
 
+
 #(A) Rmcorr plot: rmcorr plot for a set of hypothetical data and (B) simple regression plot: the 
 #corresponding regression plot for the same data averaged by participant.
 
@@ -139,6 +142,7 @@ abline(lm(submeany[,2]~submeanx[,2]),col="gray50")
 ### 2. Figure 2: rmcorr vs OLS reg
 
 ``` r
+
 par(mfrow = c(3,3), mar = c(1,1,.5,.5), mgp = c(2.5,.75,0), 
     oma = c(4,4,4,0), cex = 1.1)
 
@@ -197,6 +201,7 @@ mtext(side = 2, outer = T, line = 1.5, "y", at = c(.175, .5, .85), las = 1)
 ![](New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-4-1.png)
 
 ``` r
+
 # mtext(side = 3, outer = T, line = .5, 
 #       c("a) rmcorr = -1", "b) rmcorr = 0", "c) rmcorr = 1"),
 #       at = c(.175, .5, .85), las = 1, cex = 1.5)
@@ -221,6 +226,7 @@ mtext(side = 2, outer = T, line = 1.5, "y", at = c(.175, .5, .85), las = 1)
 ### 3. Figure 3: rmcorr w/data transformations
 
 ``` r
+
 set.seed(10)
 initX <- rnorm(15)
 newY <- NULL
@@ -299,6 +305,7 @@ mtext(side = 2, "y", las = 1, line = 2.5, cex = 1.2)
 
 ``` r
 
+
 #Figure 3. Rmcorr-values (and corresponding p-values) do not change with linear 
 #transformations of the data, illustrated here with three examples: (A) original, (B) x/2 + 1, and (C) y − 1.
 
@@ -310,6 +317,7 @@ mtext(side = 2, "y", las = 1, line = 2.5, cex = 1.2)
 ### 4. Figure 4: Power curves
 
 ``` r
+
 power.rmcorr<-function(k, N, effectsizer, sig)
 {
     pwr::pwr.r.test(n = ((N)*(k-1))+1, r = effectsizer, sig.level = sig) 
@@ -402,6 +410,7 @@ lines(nvals, powPearsonlarge, col=purplecolors[2], lwd = 2.5)
 
 ``` r
 
+
 #Figure 4. Power curves for (A) small, rrm, and r = 0.10, (B) medium, rrm, and r = 0.3, and (C) large effect sizes, rrm, 
 #and r = 0.50. X-axis is sample size. Note the sample size range differs among the panels. Y-axis is power. k denotes 
 #the number of repeated paired measures. Eighty percent power is indicated by the dotted black line. For rmcorr, the power of 
@@ -418,6 +427,7 @@ lines(nvals, powPearsonlarge, col=purplecolors[2], lwd = 2.5)
 #### rmcorr and simple reg results
 
 ``` r
+
 #Note for details on Raz: Data captured from Figure 8, Cerebellar Hemispheres (lower right)
 #a) Reproduce correlations in the paper: Cross-sectional (correlation at Time 1)
 Time1raz2005<-subset(raz2005, Time == 1)
@@ -564,6 +574,7 @@ title("C)", adj = 0)
 
 ``` r
 
+
 #Figure 5. Comparison of rmcorr and simple regression/correlation results for age and brain structure volume data. 
 #Each dot represents one of two separate observations of age and CBH for a participant. (A) #Separate simple 
 #regressions/correlations by time: each observation is treated as independent, represented by shading all the data 
@@ -582,6 +593,7 @@ title("C)", adj = 0)
 #### rmcorr and simple reg results
 
 ``` r
+
 #a - rmcorr
 vissearch.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset = gilden2010)
 #> Warning in rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset =
@@ -686,6 +698,7 @@ title("C)", adj = 0)
 ![](New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-8-1.png)
 
 ``` r
+
 #text(.95,.8,paste('r =', round(c.rtest$est,2),'\np =', round(c.rtest$p.value,2)), adj = 1)
 
 #Figure 6. The x-axis is reaction time (seconds) and the y-axis is accuracy in visual search. (A) Rmcorr: each dot represents 
@@ -703,6 +716,7 @@ title("C)", adj = 0)
 1.  Rmcorr and multilevel model with Raz et al. 2005 data
 
 ``` r
+
 brainvolage.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = Volume, dataset = raz2005)
 
 #Null multilevel model: Random intercept and fixed slope
@@ -772,6 +786,7 @@ ggplot(raz2005, aes(x = Age, y = Volume, group = Participant, color = Participan
 
 ``` r
 
+
 #Appendix C, Figure 1: Dots are actual data values, with color indicating participant. Solid
 #colored lines show the rmcorr model fit. The multilevel model fit is indicated by the dashed
 #colored lines for Level 1 (participant) effects and the dashed black line for Level 2 (experiment)
@@ -786,6 +801,7 @@ ggplot(raz2005, aes(x = Age, y = Volume, group = Participant, color = Participan
 2.  Rmcorr and multilevel model with Gilden et al. 2010 data
 
 ``` r
+
 vissearch.rmc <- rmcorr(participant = sub, measure1 = rt, measure2 = acc, dataset = gilden2010)
 
 null.vis <- lmer(acc ~ rt + (1 | sub), data = gilden2010, REML = FALSE)
@@ -869,6 +885,7 @@ ggplot(gilden2010, aes(x = rt, y = acc, group = sub, color = sub)) +
 
 ``` r
 
+
 #Converted to EPS file using Acrobat Pro b/c EPS doesn't support transparency
 
 #Appendix C, Figure 2: Dots are actual data values, with color indicating participant. Solid
@@ -944,6 +961,7 @@ ggplot(gilden2010, aes(x = rt, y = acc, group = sub, color = sub)) +
 ### Diagnostic Plot: Rmcorr and straight lines between points (not in paper)
 
 ``` r
+
 brainvolage.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = Volume, dataset = raz2005)
 #> Warning in rmcorr(participant = Participant, measure1 = Age, measure2 = Volume,
 #> : 'Participant' coerced into a factor
@@ -986,6 +1004,7 @@ ggplot(raz2005, aes(x = Age, y = Volume, group = Participant, color = Participan
 ![](New_rmcorr_paper_analyses_figures_files/figure-html/unnamed-chunk-11-1.png)
 
 ``` r
+
 
 #ggsave(file = "plots/Figure_rmcorr_diagnostic.pdf", width = 5.70 , height = 5.73, dpi = 300)
 #ggsave(file = "plots/Figure_rmcorr_diagnostic.eps", width = 5.70 , height = 5.73, dpi = 300)

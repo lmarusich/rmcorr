@@ -11,6 +11,7 @@ Correlations are compared using the cocor package (Diedenhofen and Musch
 #### Running Examples Requires cocor
 
 ``` r
+
 #Install cocor
 install.packages("cocor")
 require(cocor)
@@ -29,6 +30,7 @@ overlap in their confidence intervals: *r*_(*rm*) = -0.58, 95% CI
 they are not significantly different.
 
 ``` r
+
 #1) Run rmcorr on two different datasets
 model1.marusich2016_exp2  <- rmcorr(Pair, HVT_capture, MARS, marusich2016_exp2)
 #> Warning in rmcorr(Pair, HVT_capture, MARS, marusich2016_exp2): 'Pair' coerced
@@ -129,6 +131,7 @@ different *p* \< 0.0001 for all 9 comparison tests. Also, note the
 overlapping or common variable is Blindwalk Toward.
 
 ``` r
+
 variables.overlap<- c("Blindwalk Away",
                       "Blindwalk Toward",
                       "Triangulated BW")
@@ -228,6 +231,7 @@ partially overlapping confidence intervals. Thus, they are barely
 significantly different *p* \< 0.04.
 
 ``` r
+
 variables.nonoverlap  <- c("Blindwalk Away",
                            "Blindwalk Toward",
                            "Verbal",

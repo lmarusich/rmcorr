@@ -25,6 +25,7 @@ old, incorrect 95% CI \[-0.8053581, -0.5637514\] and current, correct
 95% CI \[ -0.804153, -0.566080\].
 
 ``` r
+
 brainvolage.rmc <- rmcorr(participant = Participant, measure1 = Age, measure2 = Volume, dataset = raz2005)
 #> Warning in rmcorr(participant = Participant, measure1 = Age, measure2 = Volume,
 #> : 'Participant' coerced into a factor
@@ -50,6 +51,7 @@ difference in the old 95% CI \[-0.5257087, 0.9974701\] compared to the
 correct 95% CI \[0.2394418, 0.9868084\].
 
 ``` r
+
 #Old, incorrect CI using error df
 psych::r.con(0.88, 4, p = 0.95)
 #> [1] -0.5257087  0.9974701
@@ -66,6 +68,7 @@ quadrupled: *N* = 20. Note the difference in coverage of CIs is now
 slight.
 
 ``` r
+
 #Old, incorrect CI using error df
 psych::r.con(0.88, 19, p = 0.95)
 #> [1] 0.7093015 0.9532081

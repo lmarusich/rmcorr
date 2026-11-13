@@ -1,8 +1,9 @@
 # Correlation Matrix using rmcorr_mat
 
-#### Running Examples Requires corrplot (Wei and Simko 2021) and corrr (Kuhn, Jackson, and Cimentada 2025)
+#### Running Examples Requires corrplot (Wei and Simko 2021) and corrr (Kuhn et al. 2025)
 
 ``` r
+
 #Install corrplot and corrr
  install.packages("corrplot")
  install.packages("corrr")
@@ -16,6 +17,7 @@ The output from *rmcorr_mat* can be used be used to plot a correlation
 matrix.
 
 ``` r
+
 dist_rmc_mat <- rmcorr_mat(participant = Subject, 
                            variables = c("Blindwalk Away",
                                          "Blindwalk Toward",
@@ -35,6 +37,7 @@ corrplot(dist_rmc_mat$matrix)
 The output can also be used to plot multiple models side-by-side.
 
 ``` r
+
 #Number of models being plotted
 n.models <- length(dist_rmc_mat$models)
 
@@ -66,6 +69,7 @@ of the adjusted *p*-values tend to be similar to the unadjusted ones and
 the two adjustment methods also tend to produce similar *p*-values.
 
 ``` r
+
 #Third component: Summary
 dist_rmc_mat$summary
 #>            measure1         measure2  df  rmcorr.r    lowerCI   upperCI
@@ -130,6 +134,7 @@ The rmc matrix can be converted to a correlation data frame object for
 use with *corrr*.
 
 ``` r
+
 #rmc matrix
 dist_rmc_mat$matrix
 #>                  Blindwalk Away Blindwalk Toward Triangulated BW    Verbal

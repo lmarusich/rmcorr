@@ -19,6 +19,7 @@ types of pseudoreplication including data collected over space and time
 #### Running Code Below Requires: dplyr, esc, and patchwork
 
 ``` r
+
 install.packages("dplyr")
 require(dplyr)
 
@@ -67,6 +68,7 @@ better task performance. The band around each regression line is a 95%
 confidence interval.
 
 ``` r
+
 overfit.plot <- 
     ggplot(data = marusich2016_exp2, aes(x = MARS, y = HVT_capture)) +
     geom_point(aes(colour = factor(Pair))) +
@@ -145,6 +147,7 @@ relationship, rather than between dyads. In this analysis, averaging is
 not required, as the dependencies in the data are taken into account.
 
 ``` r
+
 marusich.rmc <- rmcorr(participant = Pair, 
                        measure1 = MARS, 
                        measure2 = HVT_capture, 
@@ -186,8 +189,8 @@ performance values are only weakly predictive at the between level of
 analysis. In other words, using a specific MARS (or performance) value
 to predict the other is quite limited between the dyads. Results at the
 between level of analysis may not necessarily generalize to the within
-level of analysis (Curran and Bauer 2011; Fisher, Medaglia, and
-Jeronimus 2018; Molenaar and Campbell 2009)
+level of analysis (Curran and Bauer 2011; Fisher et al. 2018; Molenaar
+and Campbell 2009)
 
 ##### Consequences of Overfitting:
 
@@ -209,11 +212,15 @@ Jeronimus 2018; Molenaar and Campbell 2009)
 
 To compare the suppression of variability with the overfit model versus
 a correct model, we use the Fisher *Z* approximation for the standard
-deviation (sd) is: $$\frac{1}{\sqrt{N - 3}}$$ This formula is calculated
-using the respective sample sizes for each model *N* = 84 (overfit) and
-*N* = 28 (correct).
+deviation (sd) is:
+``` math
+\frac{1}{\sqrt{N-3}}
+```
+This formula is calculated using the respective sample sizes for each
+model *N* = 84 (overfit) and *N* = 28 (correct).
 
 ``` r
+
 N.vals <- seq(5, 100, by = 1)
 sd.Z <- 1/sqrt(N.vals-3)
 
@@ -277,6 +284,7 @@ analysis. We perform the Fisher *Z*-to-*r* transformation, using the
 expected correlation versus the reported correlation.
 
 ``` r
+
 #Calculate the expected correlation using the reported p-value and actual sample size 
 #esc_t assumes p-value is two-tailed and uses a Fisher Z transformation
 calc.z <- esc_t(p = as.numeric(p.vals[1]), 
@@ -329,8 +337,11 @@ results reported in a single issue of the journal *Nature Neuroscience*
 36% of papers had one or more results with suspected overfitting and 12%
 of papers had definitive evidence of pseudoreplication (Lazic 2010). In
 human factors, using only results meeting inclusion for a systematic
-review, overfitting was found in 28% of papers: 29 out of
-103[¹](#fn1)(Bakdash et al. 2022).
+review, overfitting was found in 28% of papers: 29 out of 103^\[26
+papers had all overfit results and 3 papers had partial results with
+overfitting. This calculation had 103 total papers = 74 (no
+overfitting) + 3 (partial overfitting) + 26 (all overfitting).\](Bakdash
+et al. 2022).
 
 Bakdash, Jonathan Z, Laura R Marusich, Katherine R Cox, Michael N Geuss,
 Erin G Zaroukian, and Katelyn M Morris. 2022. “The Validity of Situation
@@ -360,9 +371,9 @@ Hurlbert, Stuart H. 1984. “Pseudoreplication and the Design of
 Ecological Field Experiments.” *Ecological Monographs* 54 (2): 187–211.
 <https://doi.org/10.2307/1942661>.
 
-———. 2009. “The Ancient Black Art and Transdisciplinary Extent of
-Pseudoreplication.” *Journal of Comparative Psychology* 123 (4): 434.
-<https://doi.org/10.1037/a0016221>.
+Hurlbert, Stuart H. 2009. “The Ancient Black Art and Transdisciplinary
+Extent of Pseudoreplication.” *Journal of Comparative Psychology* 123
+(4): 434. <https://doi.org/10.1037/a0016221>.
 
 Lazic, Stanley E. 2010. “The Problem of Pseudoreplication in
 Neuroscientific Studies: Is It Affecting Your Analysis?” *BMC
@@ -371,12 +382,10 @@ Neuroscience* 11: 1–17. <https://doi.org/10.1186/1471-2202-11-5>.
 Lüdecke, Daniel. 2019. *Esc: Effect Size Computation for Meta Analysis
 (Version 0.5.1)*. <https://doi.org/10.5281/zenodo.1249218>.
 
-Marusich, Laura R, Jonathan Z Bakdash, Emrah Onal, Michael S Yu, James
-Schaffer, John O’Donovan, Tobias Höllerer, Norbou Buchler, and Cleotilde
-Gonzalez. 2016. “Effects of Information Availability on
-Command-and-Control Decision Making: Performance, Trust, and Situation
-Awareness.” *Human Factors* 58 (2): 301–21.
-<https://doi.org/10.1177/0018720815619515>.
+Marusich, Laura R, Jonathan Z Bakdash, Emrah Onal, et al. 2016. “Effects
+of Information Availability on Command-and-Control Decision Making:
+Performance, Trust, and Situation Awareness.” *Human Factors* 58 (2):
+301–21. <https://doi.org/10.1177/0018720815619515>.
 
 Molenaar, Peter CM, and Cynthia G Campbell. 2009. “The New
 Person-Specific Paradigm in Psychology.” *Current Directions in
@@ -387,11 +396,5 @@ Reinhart, Alex. 2015. *Statistics Done Wrong: The Woefully Complete
 Guide*. No Starch Press.
 
 William Revelle. 2024. *Psych: Procedures for Psychological,
-Psychometric, and Personality Research*. Evanston, Illinois:
-Northwestern University. <https://CRAN.R-project.org/package=psych>.
-
-------------------------------------------------------------------------
-
-1.  26 papers had all overfit results and 3 papers had partial results
-    with overfitting. This calculation had 103 total papers = 74 (no
-    overfitting) + 3 (partial overfitting) + 26 (all overfitting).
+Psychometric, and Personality Research*. Northwestern University.
+<https://CRAN.R-project.org/package=psych>.

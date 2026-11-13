@@ -13,6 +13,7 @@ should be \> 500.
 #### Rmcorr effect size with Bootstrapped 95% Confidence Inverval
 
 ``` r
+
 set.seed(532) 
 boot.blandrmc <- rmcorr(Subject, PaCO2, pH, bland1995,
                         CIs = "bootstrap",
@@ -47,6 +48,7 @@ distribution, note that they slightly differ from the non-bootstrapped
 point estimated effect size.
 
 ``` r
+
 boot.rmcorr.samplingdist <- round(boot.blandrmc$resamples, digits = 2)
 boot.rmcorr.mean <- mean(boot.blandrmc$resamples)
 boot.rmcorr.median <- median(boot.blandrmc$resamples)
@@ -68,6 +70,7 @@ axis(1,
 ![](repro_bootstrapping_files/figure-html/unnamed-chunk-3-1.png)
 
 ``` r
+
 
 #Compare point-est effect for bootstrap vs. non-bootstrap model
 #Boostrapped effect sizes

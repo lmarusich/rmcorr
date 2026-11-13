@@ -80,6 +80,7 @@ freedom](../reference/figures/Gpower_approx_df.jpg)
 ### How to Extract the Slope and its Confidence Interval
 
 ``` r
+
 my.rmc <- rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, 
                  dataset = bland1995)
 #> Warning in rmcorr(participant = Subject, measure1 = PaCO2, measure2 = pH, :
@@ -187,8 +188,8 @@ and Regression Analyses.” *Behavior Research Methods* 41 (4): 1149–60.
 Gelman, Andrew, and Jennifer Hill. 2007. *Data Analysis Using Regression
 and Multilevel/Hierarchical Models*. Cambridge University Press.
 
-Linden, Ariel. 2021. “RMCORR: Stata module to compute a correlation for
-data with repeated measures.” Statistical Software Components, Boston
+Linden, Ariel. 2021. *RMCORR: Stata module to compute a correlation for
+data with repeated measures*. Statistical Software Components, Boston
 College Department of Economics.
 <https://ideas.repec.org/c/boc/bocode/s458971.html>.
 
